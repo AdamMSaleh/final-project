@@ -1,0 +1,70 @@
+name: flutter_finalproject
+description: A new Flutter project.
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # first :  flutter clean
+  #Font Awesome Icon
+  font_awesome_flutter: ^9.1.0
+  cupertino_icons: ^1.0.2
+  # Google fonts
+  google_fonts: ^2.1.0
+  # adapting screen and font size.Let your UI display a reasonable layout on different screen sizes!
+  flutter_screenutil: ^5.0.0+2
+  #navigation_bar
+  curved_navigation_bar: ^1.0.1
+  # cached network
+  cached_network_image: ^3.1.0
+  # Svg
+  flutter_svg: ^0.23.0+1
+  #language
+  easy_localization: ^3.0.0
+  # theme
+  easy_dynamic_theme: ^2.2.0
+  # Custom loading
+  flutter_spinkit: ^5.1.0
+  # validators
+  validators: ^3.0.0
+  # Menage State
+  provider: ^6.0.0
+  # toast
+  fluttertoast: ^8.0.8
+  # image
+  image_picker: ^0.8.4
+  
+  #drop
+  menu_button: ^1.4.2+1
+  flutter_dropdown: ^1.0.0+hotfix.1
+  
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^1.0.0
+
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  
+  assets:
+  - assets/Images/
+  - assets/lang/
+  - assets/icons/
+    
