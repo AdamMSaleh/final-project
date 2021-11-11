@@ -34,6 +34,7 @@ class _NewProjectState extends State<NewProject> {
     KeyLang.building,
   ];
   var z = 0;
+  var b = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -174,7 +175,9 @@ class _NewProjectState extends State<NewProject> {
                         child: Center(
                             child: SimpleBtnUp(
                           btnText: KeyLang.constructionLicense.tr(),
-                          onTap: () {},
+                          onTap: () {
+                            b = 1;
+                          },
                         )),
                       ),
 
@@ -185,7 +188,9 @@ class _NewProjectState extends State<NewProject> {
                         child: Center(
                             child: SimpleBtnUp(
                           btnText: KeyLang.schemes.tr(),
-                          onTap: () {},
+                          onTap: () {
+                            b = 2;
+                          },
                         )),
                       ),
                       //*Drop Down
@@ -246,10 +251,16 @@ class _NewProjectState extends State<NewProject> {
                                 onTap: () async {
                                   if (_keyFoem.currentState!.validate()) {
                                     if (z == 0) {
-                                      simpleToast(message: 'jjj');
-                                    } else if (z == 1) {
-                                      simpleToast(message: 'ok');
-                                    } else if (z == 2) {
+                                      simpleToast(
+                                          message: KeyLang.massTypeProj.tr());
+                                    } else {
+                                      if (b == 0) {
+                                        simpleToast(
+                                            message:
+                                                KeyLang.massNewProject.tr());
+                                      }
+                                    }
+                                    {
                                       simpleToast(message: 'ok');
                                     }
                                   }

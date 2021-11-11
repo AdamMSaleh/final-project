@@ -68,4 +68,6 @@ class KeyLang {
   static String add = "add";
   static String ask = "Ask us";
   static String massegRegister = "massegRegister";
+  static String massTypeProj = "massTypeProj";
+  static String massNewProject = "massNewProject";
 }
