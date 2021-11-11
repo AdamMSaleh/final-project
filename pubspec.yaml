@@ -40,12 +40,40 @@ dependencies:
   # toast
   fluttertoast: ^8.0.8
   # image
-  image_picker: ^0.8.4
+
   
   #drop
   menu_button: ^1.4.2+1
   flutter_dropdown: ^1.0.0+hotfix.1
-  
+
+  image_picker: ^0.8.4+3
+
+
+
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+
+  html: ^0.15.0
+  flutter_blurhash: ^0.6.0
+  intl: ^0.17.0
+  syncfusion_flutter_pdf: ^19.3.47-beta
+  bottom_picker: ^1.0.3
+  async_foreach: ^0.0.3+2
+  image_cropper: ^1.4.1
+
+
+  # create pdf document
+  pdf: ^3.1.0
+
+  # save file
+  path_provider: ^2.0.1
+
+  # open pdf document
+  open_file: ^3.1.0
+  flutter_launcher_icons: ^0.9.2
+
+
 
 
 
@@ -67,4 +95,5 @@ flutter:
   - assets/Images/
   - assets/lang/
   - assets/icons/
+  - assets/images/35844.jpg
     

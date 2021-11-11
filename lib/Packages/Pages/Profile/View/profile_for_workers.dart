@@ -1,19 +1,12 @@
-// ignore_for_file: prefer_const_constructors, implementation_imports, duplicate_ignore
+import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_finalproject/Packages/Components/Common_traits/Drawer/drawer.dart';
-import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar.dart';
-import 'dart:io';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile_edit.dart';
-import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile_for_workers.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/workerRequirements/laborManagementForProfessionals/labor_management_for_professionals.dart';
 
 
-class Profile extends StatefulWidget {
-
-  static const String id = 'Profile';
-
+class ProfileForWorkers extends StatefulWidget {
   static var imageDuf = Image.network(
       'https://i2.wp.com/alghad.com/wp-content/uploads/2021/10/Squid-Game-Games-Ranked.jpg?resize=1024%2C512&ssl=1');
   File? fileImage;
@@ -26,15 +19,15 @@ class Profile extends StatefulWidget {
   static String region1 = "الزرقاء";
   static String phoneNumber1 = '0780808080';
 
-  Profile(
+  ProfileForWorkers(
       {Key? key,
-        firstName,
-        lastName,
-        occupation,
-        age,
-        region,
-        phoneNumber,
-        fileImage})
+      firstName,
+      lastName,
+      occupation,
+      age,
+      region,
+      phoneNumber,
+      fileImage})
       : super(key: key) {
     if (fileImage != null) {
       imageNew1 = Image.file(fileImage,height:222,);
@@ -54,12 +47,11 @@ class Profile extends StatefulWidget {
     }
   }
 
-
   @override
-  State<Profile> createState() => _ProfileState();
+  _ProfileForWorkersState createState() => _ProfileForWorkersState();
 }
 
-class _ProfileState extends State<Profile> {
+class _ProfileForWorkersState extends State<ProfileForWorkers> {
   void SelectedItem(BuildContext context, item) {
     switch (item) {
       case 0:
@@ -83,14 +75,15 @@ class _ProfileState extends State<Profile> {
         break;
 
       case 5:
-      // print("User Logged out");
+        // print("User Logged out");
 
-      // Navigator.of(context).pushAndRemoveUntil(
-      //     MaterialPageRoute(builder: (context) => LoginPage()),
-      //         (route) => false);
+        // Navigator.of(context).pushAndRemoveUntil(
+        //     MaterialPageRoute(builder: (context) => LoginPage()),
+        //         (route) => false);
         break;
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -131,10 +124,6 @@ class _ProfileState extends State<Profile> {
           ),
         ],
       ),
-      //*Appbar
-      // appBar: AppBHome(),
-      //*drawer
-      // drawer: DrawerHome(),
       body: SingleChildScrollView(
         child: Container(
           height: (MediaQuery.of(context).size.height),
@@ -154,8 +143,8 @@ class _ProfileState extends State<Profile> {
                 borderRadius: BorderRadius.circular(222.0),
                 // padding: const EdgeInsets.all(20),
                 child: ProfileForWorkers.imageNew1 ?? Image.network(
-                  'https://i2.wp.com/alghad.com/wp-content/uploads/2021/10/Squid-Game-Games-Ranked.jpg?resize=1024%2C512&ssl=1'
-                  ,height:220,
+                        'https://i2.wp.com/alghad.com/wp-content/uploads/2021/10/Squid-Game-Games-Ranked.jpg?resize=1024%2C512&ssl=1'
+                ,height:220,
                 ),
 
               ),

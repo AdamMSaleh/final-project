@@ -4,6 +4,7 @@ import 'package:easy_dynamic_theme/easy_dynamic_theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Language/config/config_lang.dart';
+import 'package:flutter_finalproject/Packages/Pages/Home/View/body.dart';
 
 import 'package:flutter_finalproject/Packages/Pages/Splash/View/body.dart';
 import 'package:flutter_finalproject/Routers/app_routers.dart';
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,
-            initialRoute: PageSplash.id,
+            initialRoute:PageHome.id,// PageSplash.id,
             routes: AppRoutes.routes);
       },
     );

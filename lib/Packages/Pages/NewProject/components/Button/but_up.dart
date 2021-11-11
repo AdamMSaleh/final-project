@@ -36,7 +36,7 @@ class SimpleBtnUp extends StatelessWidget {
               Text(_btnText,
                   style: AppStyles.styleHeadline1Light.copyWith(
                     color: AppColors.white,
-                    fontSize: 20.sp,
+                    fontSize: 14.sp,
                   )).tr(),
               Icon(
                 Icons.backup_rounded,
