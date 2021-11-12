@@ -1,6 +1,7 @@
+// ignore_for_file: must_be_immutable, no_logic_in_create_state, prefer_const_constructors, sized_box_for_whitespace
+
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
-
 
 class AddCrafts extends StatefulWidget {
   String name;
@@ -17,6 +18,7 @@ class AddCrafts extends StatefulWidget {
 
   @override
   _AddCraftsState createState() =>
+      // ignore: unnecessary_this
       _AddCraftsState(this.name, this.age, this.craftsmanship);
 }
 
@@ -50,7 +52,9 @@ class _AddCraftsState extends State<AddCrafts> {
               ),
             ],
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           Row(
             children: [
               Container(
@@ -61,7 +65,9 @@ class _AddCraftsState extends State<AddCrafts> {
               ),
             ],
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           Row(
             children: [
               Container(
@@ -72,7 +78,9 @@ class _AddCraftsState extends State<AddCrafts> {
               ),
             ],
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           Row(
             children: [
               Container(
@@ -83,7 +91,9 @@ class _AddCraftsState extends State<AddCrafts> {
               ),
             ],
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           Row(
             children: [
               Container(
@@ -94,33 +104,34 @@ class _AddCraftsState extends State<AddCrafts> {
               ),
             ],
           ),
-
-          SizedBox(height: 50,),
+          SizedBox(
+            height: 50,
+          ),
           Row(
             children: [
               Container(
                 width: (MediaQuery.of(context).size.width),
                 child: ElevatedButton(
-                  onPressed: (){},
+                  onPressed: () {},
                   child: Icon(Icons.call),
                 ),
               ),
             ],
           ),
-
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           Row(
             children: [
               Container(
                 width: (MediaQuery.of(context).size.width),
                 child: ElevatedButton(
-                  onPressed: (){},
+                  onPressed: () {},
                   child: Icon(Icons.add_sharp),
                 ),
               ),
             ],
           ),
-
         ],
       ),
     );

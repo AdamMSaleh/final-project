@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 typedef SearchFilter<T> = List<String?> Function(T t);
@@ -79,20 +81,20 @@ class SearchPage<T> extends SearchDelegate<T?> {
     this.onQueryUpdate,
     this.searchStyle,
   }) : super(
-    searchFieldLabel: searchLabel,
-    searchFieldStyle: searchStyle,
-  );
+          searchFieldLabel: searchLabel,
+          searchFieldStyle: searchStyle,
+        );
 
   @override
   ThemeData appBarTheme(BuildContext context) {
     return barTheme ??
         Theme.of(context).copyWith(
           textTheme: Theme.of(context).textTheme.copyWith(
-            headline6: TextStyle(
-              color: Theme.of(context).primaryTextTheme.headline6!.color,
-              fontSize: 20,
-            ),
-          ),
+                headline6: TextStyle(
+                  color: Theme.of(context).primaryTextTheme.headline6!.color,
+                  fontSize: 20,
+                ),
+              ),
           inputDecorationTheme: InputDecorationTheme(
             hintStyle: TextStyle(
               color: Theme.of(context).primaryTextTheme.caption!.color,
@@ -150,26 +152,26 @@ class SearchPage<T> extends SearchDelegate<T?> {
     // in order to select matching items
     final List<T> result = items
         .where(
-      // First we collect all [String] representation of each [item]
+          // First we collect all [String] representation of each [item]
           (item) => filter(item)
-      // Then, transforms all results to lower case letters
-          .map((value) => value?.toLowerCase().trim())
-      // Finally, checks wheters any coincide with the cleaned query
-      // Checks wheter the [startsWith] or [endsWith] are 'true'
-          .any(
+              // Then, transforms all results to lower case letters
+              .map((value) => value?.toLowerCase().trim())
+              // Finally, checks wheters any coincide with the cleaned query
+              // Checks wheter the [startsWith] or [endsWith] are 'true'
+              .any(
             (value) {
-          if (itemStartsWith == true && itemEndsWith == true) {
-            return value == cleanQuery;
-          } else if (itemStartsWith == true) {
-            return value?.startsWith(cleanQuery) == true;
-          } else if (itemEndsWith == true) {
-            return value?.endsWith(cleanQuery) == true;
-          } else {
-            return value?.contains(cleanQuery) == true;
-          }
-        },
-      ),
-    )
+              if (itemStartsWith == true && itemEndsWith == true) {
+                return value == cleanQuery;
+              } else if (itemStartsWith == true) {
+                return value?.startsWith(cleanQuery) == true;
+              } else if (itemEndsWith == true) {
+                return value?.endsWith(cleanQuery) == true;
+              } else {
+                return value?.contains(cleanQuery) == true;
+              }
+            },
+          ),
+        )
         .toList();
 
     // Builds a list with all filtered items
@@ -179,8 +181,8 @@ class SearchPage<T> extends SearchDelegate<T?> {
       child: cleanQuery.isEmpty && !showItemsOnEmpty
           ? suggestion
           : result.isEmpty
-          ? failure
-          : ListView(children: result.map(builder).toList()),
+              ? failure
+              : ListView(children: result.map(builder).toList()),
     );
   }
 }

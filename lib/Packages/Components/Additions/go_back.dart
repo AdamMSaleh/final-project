@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable, non_constant_identifier_names, deprecated_member_use, avoid_unnecessary_containers, unnecessary_null_comparison
+
 import 'package:flutter/material.dart';
 
 class GoBack {
@@ -54,7 +56,7 @@ class GoBack {
               );
   }
 
-  static  selectScreen(BuildContext context, Widget page) {
+  static selectScreen(BuildContext context, Widget page) {
     Navigator.of(context).push(MaterialPageRoute(builder: (_ /*context*/) {
       return page;
     }));
@@ -151,11 +153,11 @@ class GoBack {
         onPressed: () => bottomSheet(
           ctx,
           card1: card1,
-          pageCard1:pageCard1,
+          pageCard1: pageCard1,
           card2: card2,
-          pageCard2:pageCard2,
+          pageCard2: pageCard2,
           card3: card3,
-          pageCard3:pageCard3,
+          pageCard3: pageCard3,
           page: page,
         ),
         child: tx(title),

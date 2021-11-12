@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Language/config/config_lang.dart';
 import 'package:flutter_finalproject/Packages/Pages/Home/View/body.dart';
 
-import 'package:flutter_finalproject/Packages/Pages/Splash/View/body.dart';
 import 'package:flutter_finalproject/Routers/app_routers.dart';
 import 'package:flutter_finalproject/Theme/custom_theme.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -40,7 +39,7 @@ class MyApp extends StatelessWidget {
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,
-            initialRoute:PageHome.id,// PageSplash.id,
+            initialRoute: PageHome.id, // PageSplash.id,
             routes: AppRoutes.routes);
       },
     );

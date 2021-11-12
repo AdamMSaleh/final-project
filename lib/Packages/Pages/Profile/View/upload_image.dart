@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison, avoid_print
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -33,7 +35,11 @@ class _UploadImageState extends State<UploadImage> {
             icon: const Icon(Icons.arrow_forward),
             tooltip: 'Image Cropper',
             onPressed: () {
-              GoBack.selectScreen(context, ProfileEdit(imageFile: imageFile,));
+              GoBack.selectScreen(
+                  context,
+                  ProfileEdit(
+                    imageFile: imageFile,
+                  ));
               // imageFile == imageFile1? showDialog(
               //   context: context,
               //   builder: (context) => AlertDialog(
@@ -102,7 +108,7 @@ class _UploadImageState extends State<UploadImage> {
   }
 
   Future _imageFromGallery(BuildContext context) async {
-    try{
+    try {
       // Pick an image
       final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
       final imageTemorary = File(image!.path);
@@ -113,13 +119,13 @@ class _UploadImageState extends State<UploadImage> {
         imageFile = imageTemorary;
       });
       Navigator.pop(context);
-    }on PlatformException catch (e){
+    } on PlatformException catch (e) {
       print("Failed to pick image : $e");
     }
   }
 
   Future _imageFromCamera(BuildContext context) async {
-    try{
+    try {
       // Capture a photo
       final XFile? photo = await _picker.pickImage(source: ImageSource.camera);
       final photoTemorary = File(photo!.path);
@@ -130,7 +136,7 @@ class _UploadImageState extends State<UploadImage> {
         imageFile = photoTemorary;
       });
       Navigator.pop(context);
-    }on PlatformException catch (e){
+    } on PlatformException catch (e) {
       print("Failed to pick image : $e");
     }
   }

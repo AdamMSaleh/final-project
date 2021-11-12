@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, duplicate_ignore, implementation_imports, unused_import
+// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, duplicate_ignore, implementation_imports, unused_import, avoid_print
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
@@ -39,18 +39,17 @@ class _ResearchState extends State<Research> {
       appBar: AppBHome(),
       //*drawer
       drawer: DrawerHome(),
-      body:  ListView.builder(
+      body: ListView.builder(
         itemCount: people.length,
         itemBuilder: (context, index) {
           final Person person = people[index];
           return ListTile(
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: (_) => AddCrafts(
-                  name: person.name,
-                  age: person.age,
-                  craftsmanship: person.occupation,
-                ))),
-
+                      name: person.name,
+                      age: person.age,
+                      craftsmanship: person.occupation,
+                    ))),
             title: Text(person.name),
             subtitle: Text(person.occupation),
             trailing: Text('العمر :  ${person.age}'),
@@ -79,20 +78,18 @@ class _ResearchState extends State<Research> {
             builder: (person) => ListTile(
               onTap: () => Navigator.of(context).push(MaterialPageRoute(
                   builder: (_) => AddCrafts(
-                    name: person.name,
-                    age: person.age,
-                    craftsmanship: person.occupation,
-                  ))),
+                        name: person.name,
+                        age: person.age,
+                        craftsmanship: person.occupation,
+                      ))),
               title: Text(person.name),
               subtitle: Text(person.occupation),
               trailing: Text('العمر :${person.age}'),
-
             ),
           ),
         ),
         child: Icon(Icons.search),
       ),
-
     );
   }
 }

@@ -1,3 +1,5 @@
+// ignore_for_file: slash_for_doc_comments, unnecessary_null_comparison, avoid_print
+
 import 'dart:async';
 import 'dart:io';
 
@@ -10,7 +12,6 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../../main.dart';
-
 
 // void main() => runApp(const MyApp());
 //
@@ -32,7 +33,7 @@ import '../../../../main.dart';
 class ImageCropperPage extends StatefulWidget {
   final String title;
 
-   const ImageCropperPage({Key? key, required this.title}) : super(key: key);
+  const ImageCropperPage({Key? key, required this.title}) : super(key: key);
 
   @override
   _ImageCropperPageState createState() => _ImageCropperPageState();
@@ -49,7 +50,7 @@ class _ImageCropperPageState extends State<ImageCropperPage> {
   late AppState state;
   File? imageFile;
   File? imageFile1;
-  Icon iconFloatingActionButton=const Icon(Icons.add);
+  Icon iconFloatingActionButton = const Icon(Icons.add);
 
   @override
   void initState() {
@@ -67,16 +68,27 @@ class _ImageCropperPageState extends State<ImageCropperPage> {
             icon: const Icon(Icons.check),
             tooltip: 'Image Cropper',
             onPressed: () {
-              imageFile == imageFile1  ? _showOptionActionsAppBar( context,'Please choose a picture'):state == AppState.cropped?GoBack.selectScreen(context, ProfileEdit(imageFile: imageFile,)):_showOptionActionsAppBar( context,'Please Cropper a picture');
+              imageFile == imageFile1
+                  ? _showOptionActionsAppBar(context, 'Please choose a picture')
+                  : state == AppState.cropped
+                      ? GoBack.selectScreen(
+                          context,
+                          ProfileEdit(
+                            imageFile: imageFile,
+                          ))
+                      : _showOptionActionsAppBar(
+                          context, 'Please Cropper a picture');
             },
           ),
         ],
       ),
       body: Center(
-        child: imageFile != null ? Image.file(imageFile!) : Container(
-          alignment: Alignment.center,
-          child: const Text('No Image Upload Yet'),
-        ),
+        child: imageFile != null
+            ? Image.file(imageFile!)
+            : Container(
+                alignment: Alignment.center,
+                child: const Text('No Image Upload Yet'),
+              ),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.deepOrange,
@@ -122,7 +134,7 @@ class _ImageCropperPageState extends State<ImageCropperPage> {
   }
 /***********************************************************************/
 
-  _showOptionActionsAppBar(BuildContext context,String str) {
+  _showOptionActionsAppBar(BuildContext context, String str) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -135,7 +147,6 @@ class _ImageCropperPageState extends State<ImageCropperPage> {
                 title: GoBack.tx('Ok'),
                 onTap: () => Navigator.pop(context),
               ),
-
             ],
           ),
         ),
@@ -173,7 +184,7 @@ class _ImageCropperPageState extends State<ImageCropperPage> {
   /*----------------------------------------------------------------------------------*/
 
   Future _imageFromGallery(BuildContext context) async {
-    try{
+    try {
       // Pick an image
       final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
       final imageTemorary = File(image!.path);
@@ -185,14 +196,14 @@ class _ImageCropperPageState extends State<ImageCropperPage> {
         state = AppState.picked;
       });
       Navigator.pop(context);
-    }on PlatformException catch (e){
+    } on PlatformException catch (e) {
       print("Failed to pick image : $e");
     }
   }
 /*----------------------------------------------------------------------------------*/
 
   Future _imageFromCamera(BuildContext context) async {
-    try{
+    try {
       // Capture a photo
       final XFile? photo = await _picker.pickImage(source: ImageSource.camera);
       final photoTemorary = File(photo!.path);
@@ -204,7 +215,7 @@ class _ImageCropperPageState extends State<ImageCropperPage> {
         state = AppState.picked;
       });
       Navigator.pop(context);
-    }on PlatformException catch (e){
+    } on PlatformException catch (e) {
       print("Failed to pick image : $e");
     }
   }
@@ -270,6 +281,4 @@ class _ImageCropperPageState extends State<ImageCropperPage> {
       state = AppState.free;
     });
   }
-
-
 }

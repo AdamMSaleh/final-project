@@ -1,13 +1,12 @@
+// ignore_for_file: prefer_final_fields, sized_box_for_whitespace, prefer_const_constructors
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/test_crop_images.dart';
 
-
-
 import 'profile_for_workers.dart';
-import 'upload_image.dart';
 
 class ProfileEdit extends StatefulWidget {
   static File? imageFileForSh;
@@ -20,10 +19,17 @@ class ProfileEdit extends StatefulWidget {
   static String? age1;
 
   static String? region1;
-  static String? phoneNumber1 ;
+  static String? phoneNumber1;
 
   ProfileEdit(
-      {Key? key, File? imageFile, firstName, lastName, occupation, age, region, phoneNumber})
+      {Key? key,
+      File? imageFile,
+      firstName,
+      lastName,
+      occupation,
+      age,
+      region,
+      phoneNumber})
       : super(key: key) {
     if (imageFile != null) imageFileForSh = imageFile;
     if (firstName != null &&
@@ -38,16 +44,15 @@ class ProfileEdit extends StatefulWidget {
       age1 = age;
       region1 = region;
       phoneNumber1 = phoneNumber;
-    }else{
+    } else {
       firstName1 = 'غير معروف';
-      lastName1 =  'غير معروف';
+      lastName1 = 'غير معروف';
       occupation1 = 'غير معروف';
-      age1 =  'غير معروف';
-      region1 =  'غير معروف';
+      age1 = 'غير معروف';
+      region1 = 'غير معروف';
       phoneNumber1 = '0780808080';
     }
   }
-
 
   @override
   _ProfileEditState createState() => _ProfileEditState();
@@ -72,44 +77,44 @@ class _ProfileEditState extends State<ProfileEdit> {
   var _controllerPhoneNumber1 = TextEditingController();
   final _newPhoneNumber1 = ProfileEdit.phoneNumber1;
 /*-------------------------------------------------------*/
-void getValue(){
-  _controllerFirstName1.value = TextEditingValue(
-    text: _newFirstName1!,
-    selection: TextSelection.fromPosition(
-      TextPosition(offset: _newFirstName1!.length),
-    ),
-  );
-  _controllerLastName1.value = TextEditingValue(
-    text: _newLastName1!,
-    selection: TextSelection.fromPosition(
-      TextPosition(offset: _newLastName1!.length),
-    ),
-  );
-  _controllerOccupation1.value = TextEditingValue(
-    text: _newOccupation1!,
-    selection: TextSelection.fromPosition(
-      TextPosition(offset: _newOccupation1!.length),
-    ),
-  );
-  _controllerAge1.value = TextEditingValue(
-    text: _newAge1!,
-    selection: TextSelection.fromPosition(
-      TextPosition(offset: _newAge1!.length),
-    ),
-  );
-  _controllerRegion1.value = TextEditingValue(
-    text: _newRegion1!,
-    selection: TextSelection.fromPosition(
-      TextPosition(offset: _newRegion1!.length),
-    ),
-  );
-  _controllerPhoneNumber1.value = TextEditingValue(
-    text: _newPhoneNumber1!,
-    selection: TextSelection.fromPosition(
-      TextPosition(offset: _newPhoneNumber1!.length),
-    ),
-  );
-}
+  void getValue() {
+    _controllerFirstName1.value = TextEditingValue(
+      text: _newFirstName1!,
+      selection: TextSelection.fromPosition(
+        TextPosition(offset: _newFirstName1!.length),
+      ),
+    );
+    _controllerLastName1.value = TextEditingValue(
+      text: _newLastName1!,
+      selection: TextSelection.fromPosition(
+        TextPosition(offset: _newLastName1!.length),
+      ),
+    );
+    _controllerOccupation1.value = TextEditingValue(
+      text: _newOccupation1!,
+      selection: TextSelection.fromPosition(
+        TextPosition(offset: _newOccupation1!.length),
+      ),
+    );
+    _controllerAge1.value = TextEditingValue(
+      text: _newAge1!,
+      selection: TextSelection.fromPosition(
+        TextPosition(offset: _newAge1!.length),
+      ),
+    );
+    _controllerRegion1.value = TextEditingValue(
+      text: _newRegion1!,
+      selection: TextSelection.fromPosition(
+        TextPosition(offset: _newRegion1!.length),
+      ),
+    );
+    _controllerPhoneNumber1.value = TextEditingValue(
+      text: _newPhoneNumber1!,
+      selection: TextSelection.fromPosition(
+        TextPosition(offset: _newPhoneNumber1!.length),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -123,7 +128,7 @@ void getValue(){
         child: Column(
           children: [
             Stack(
-        alignment:  AlignmentDirectional.bottomEnd,
+              alignment: AlignmentDirectional.bottomEnd,
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(222.0),
@@ -142,18 +147,25 @@ void getValue(){
                   borderRadius: BorderRadius.circular(150.0),
                   child: Container(
                     // alignment: Alignment.center,
-                    height:55 ,
+                    height: 55,
                     width: 55,
-                    child: ElevatedButton(onPressed: ()=> GoBack.selectScreen(context, const ImageCropperPage(title: 'تعديل صورة الملف الشخصي',)), child: Container(
-                      alignment: Alignment.center,
-                      // padding: EdgeInsets.all(5),
-                      child: Icon(Icons.add_sharp),
-                    ),),
+                    child: ElevatedButton(
+                      onPressed: () => GoBack.selectScreen(
+                          context,
+                          const ImageCropperPage(
+                            title: 'تعديل صورة الملف الشخصي',
+                          )),
+                      child: Container(
+                        alignment: Alignment.center,
+                        // padding: EdgeInsets.all(5),
+                        child: Icon(Icons.add_sharp),
+                      ),
+                    ),
                   ),
                 ),
               ],
             ),
-             TextField(
+            TextField(
               controller: _controllerFirstName1,
               decoration: InputDecoration(
                 labelText: 'الاسم الاول',
@@ -171,7 +183,7 @@ void getValue(){
             const SizedBox(
               height: 35,
             ),
-             TextField(
+            TextField(
               controller: _controllerAge1,
               decoration: InputDecoration(
                 labelText: 'العمر',
@@ -181,7 +193,7 @@ void getValue(){
             const SizedBox(
               height: 35,
             ),
-             TextField(
+            TextField(
               controller: _controllerOccupation1,
               decoration: InputDecoration(
                 labelText: 'المهنه',
@@ -190,8 +202,8 @@ void getValue(){
             const SizedBox(
               height: 35,
             ),
-             TextField(
-               controller: _controllerRegion1,
+            TextField(
+              controller: _controllerRegion1,
               decoration: InputDecoration(
                 labelText: 'المنطقة',
               ),
@@ -199,8 +211,8 @@ void getValue(){
             const SizedBox(
               height: 35,
             ),
-             TextField(
-               controller: _controllerPhoneNumber1,
+            TextField(
+              controller: _controllerPhoneNumber1,
               decoration: InputDecoration(
                 labelText: 'رقم الهاتف',
               ),
@@ -209,17 +221,18 @@ void getValue(){
               height: 35,
             ),
             IconButton(
-                onPressed: () => GoBack.selectScreen(context,
-                  ProfileForWorkers(
-                    firstName: _controllerFirstName1.text,
-                    lastName: _controllerLastName1.text,
-                    occupation: _controllerOccupation1.text,
-                    age: _controllerAge1.text,
-                    region: _controllerRegion1.text,
-                    phoneNumber:_controllerPhoneNumber1.text,
-                    fileImage: ProfileEdit.imageFileForSh,
-                  ),
-                ),
+                onPressed: () => GoBack.selectScreen(
+                      context,
+                      ProfileForWorkers(
+                        firstName: _controllerFirstName1.text,
+                        lastName: _controllerLastName1.text,
+                        occupation: _controllerOccupation1.text,
+                        age: _controllerAge1.text,
+                        region: _controllerRegion1.text,
+                        phoneNumber: _controllerPhoneNumber1.text,
+                        fileImage: ProfileEdit.imageFileForSh,
+                      ),
+                    ),
                 icon: Icon(Icons.save)),
           ],
         ),

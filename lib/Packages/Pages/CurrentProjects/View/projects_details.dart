@@ -1,10 +1,10 @@
+// ignore_for_file: must_be_immutable, avoid_unnecessary_containers, prefer_const_constructors, prefer_adjacent_string_concatenation
+
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/view/body.dart';
 
 import 'current_project_main1.dart';
-
-
 
 class ProjectsDetails extends StatefulWidget {
   String str;
@@ -46,43 +46,45 @@ class _ProjectsDetailsState extends State<ProjectsDetails> {
                 "اظهار المخطاطات",
                 context,
                 card1: 'اضافة',
-                pageCard1:  CurrentProjectMain("اظهار المخطاطات"+"تعديل"),
+                pageCard1: CurrentProjectMain("اظهار المخطاطات" + "تعديل"),
                 card2: "تعديل",
-                pageCard2:  CurrentProjectMain(" اظهار المخطاطات"+"تعديل"),
+                pageCard2: CurrentProjectMain(" اظهار المخطاطات" + "تعديل"),
                 card3: "مشاهده",
-                pageCard3:  CurrentProjectMain(" اظهار المخطاطات"+"مشاهده"),
+                pageCard3: CurrentProjectMain(" اظهار المخطاطات" + "مشاهده"),
               ),
               GoBack.btn(
                 "الفواتير",
                 context,
                 card1: 'اضافة',
-                pageCard1:  CurrentProjectMain("الفواتير "+'اضافة'),
+                pageCard1: CurrentProjectMain("الفواتير " + 'اضافة'),
                 card2: "مشاهده",
-                pageCard2:  CurrentProjectMain("الفواتير "+"مشاهده"),
+                pageCard2: CurrentProjectMain("الفواتير " + "مشاهده"),
               ),
               GoBack.btn(
                 "اضافة اصحاب المهن/ عمال",
                 context,
                 card1: 'اضافة',
-                pageCard1:  CurrentProjectMain("اضافة اصحاب المهن/ عمال "+'اضافة'),
+                pageCard1:
+                    CurrentProjectMain("اضافة اصحاب المهن/ عمال " + 'اضافة'),
                 card2: "بحث ",
-                pageCard2:   Research(),//IconButton(onPressed: ()=>GoBack.selectScreen(context, SearchHomePage()), icon: Icon(Icons.arrow_forward_ios_sharp , color: Colors.black,)),
+                pageCard2:
+                    Research(), //IconButton(onPressed: ()=>GoBack.selectScreen(context, SearchHomePage()), icon: Icon(Icons.arrow_forward_ios_sharp , color: Colors.black,)),
                 // card3: card3,
               ),
               GoBack.btn(
                 "الدفعات",
                 context,
-                page:  CurrentProjectMain("الدفعات"),
+                page: CurrentProjectMain("الدفعات"),
               ),
               GoBack.btn(
                 "المخطط الزمني",
                 context,
-                page:  CurrentProjectMain("المخطط الزمني"),
+                page: CurrentProjectMain("المخطط الزمني"),
               ),
               GoBack.btn(
                 "سجل العمال",
                 context,
-                page:  CurrentProjectMain( "سجل العمال"),
+                page: CurrentProjectMain("سجل العمال"),
               ),
             ],
           ),

@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 
@@ -7,12 +9,19 @@ class ListOfPaymentsToWorkers extends StatefulWidget {
   const ListOfPaymentsToWorkers({Key? key}) : super(key: key);
 
   @override
-  _ListOfPaymentsToWorkersState createState() => _ListOfPaymentsToWorkersState();
+  _ListOfPaymentsToWorkersState createState() =>
+      _ListOfPaymentsToWorkersState();
 }
+
 /*                   قائمة الدفعات للعمال           */
 class _ListOfPaymentsToWorkersState extends State<ListOfPaymentsToWorkers> {
-  List <String> invoice_Information_Print=["امجد ماجد", DateFormat('yy/MM/dd').format(DateTime.now()),"بناء مدرسة","1500 د.أ"];
-  List <String> general_form_Print=[];
+  List<String> invoice_Information_Print = [
+    "امجد ماجد",
+    DateFormat('yy/MM/dd').format(DateTime.now()),
+    "بناء مدرسة",
+    "1500 د.أ"
+  ];
+  List<String> general_form_Print = [];
   @override
   Widget build(BuildContext context) {
     double sizeBoxValue = 8;
@@ -51,7 +60,6 @@ class _ListOfPaymentsToWorkersState extends State<ListOfPaymentsToWorkers> {
                                   SizedBox(
                                     height: sizeBoxValue,
                                   ),
-
                                   GoBack.tx("اسم المشروع :"),
                                   SizedBox(
                                     height: sizeBoxValue,
@@ -68,7 +76,6 @@ class _ListOfPaymentsToWorkersState extends State<ListOfPaymentsToWorkers> {
                                   ),
                                   GoBack.tx(DateFormat('yy/MM/dd')
                                       .format(DateTime.now())),
-
                                   SizedBox(
                                     height: sizeBoxValue,
                                   ),
@@ -81,29 +88,26 @@ class _ListOfPaymentsToWorkersState extends State<ListOfPaymentsToWorkers> {
                               ),
                             ],
                           ),
-
-                              SizedBox(
-                                width: (MediaQuery.of(context).size.width),
-                                child: ElevatedButton(
-                                  style: ButtonStyle(
-                                    backgroundColor:
+                          SizedBox(
+                            width: (MediaQuery.of(context).size.width),
+                            child: ElevatedButton(
+                              style: ButtonStyle(
+                                backgroundColor:
                                     MaterialStateProperty.all<Color>(
                                         Colors.white38),
-                                  ),
-                                  onPressed: () {},//=>GoBack.selectScreen(context, pdfFile()),
-                                  child: Padding(
-                                    padding: EdgeInsets.all(sizeBoxValue),
-                                    child:  Icon(
-                                      Icons.download,
-                                      size: sizeBoxValue*4,
-                                      color: Colors.blueAccent,
-                                    ),
-                                  ),
+                              ),
+                              onPressed:
+                                  () {}, //=>GoBack.selectScreen(context, pdfFile()),
+                              child: Padding(
+                                padding: EdgeInsets.all(sizeBoxValue),
+                                child: Icon(
+                                  Icons.download,
+                                  size: sizeBoxValue * 4,
+                                  color: Colors.blueAccent,
                                 ),
                               ),
-
-
-
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -140,7 +144,6 @@ class _ListOfPaymentsToWorkersState extends State<ListOfPaymentsToWorkers> {
                             SizedBox(
                               height: sizeBoxValue,
                             ),
-
                             GoBack.tx("اسم المشروع :"),
                             SizedBox(
                               height: sizeBoxValue,
@@ -174,15 +177,15 @@ class _ListOfPaymentsToWorkersState extends State<ListOfPaymentsToWorkers> {
                       child: ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor:
-                          MaterialStateProperty.all<Color>(
-                              Colors.white38),
+                              MaterialStateProperty.all<Color>(Colors.white38),
                         ),
-                        onPressed: () {},//=>GoBack.selectScreen(context, pdfFile()),
+                        onPressed:
+                            () {}, //=>GoBack.selectScreen(context, pdfFile()),
                         child: Padding(
                           padding: EdgeInsets.all(sizeBoxValue),
-                          child:  Icon(
+                          child: Icon(
                             Icons.download,
-                            size: sizeBoxValue*4,
+                            size: sizeBoxValue * 4,
                             color: Colors.blueAccent,
                           ),
                         ),
@@ -204,5 +207,3 @@ class _ListOfPaymentsToWorkersState extends State<ListOfPaymentsToWorkers> {
     );
   }
 }
-
-

@@ -1,17 +1,13 @@
-// ignore_for_file: prefer_const_constructors, implementation_imports, duplicate_ignore
+// ignore_for_file: prefer_const_constructors, implementation_imports, duplicate_ignore, must_be_immutable, prefer_typing_uninitialized_variables, non_constant_identifier_names, avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:flutter_finalproject/Packages/Components/Common_traits/Drawer/drawer.dart';
-import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar.dart';
 import 'dart:io';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile_edit.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile_for_workers.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/workerRequirements/laborManagementForProfessionals/labor_management_for_professionals.dart';
 
-
 class Profile extends StatefulWidget {
-
   static const String id = 'Profile';
 
   static var imageDuf = Image.network(
@@ -28,16 +24,19 @@ class Profile extends StatefulWidget {
 
   Profile(
       {Key? key,
-        firstName,
-        lastName,
-        occupation,
-        age,
-        region,
-        phoneNumber,
-        fileImage})
+      firstName,
+      lastName,
+      occupation,
+      age,
+      region,
+      phoneNumber,
+      fileImage})
       : super(key: key) {
     if (fileImage != null) {
-      imageNew1 = Image.file(fileImage,height:222,);
+      imageNew1 = Image.file(
+        fileImage,
+        height: 222,
+      );
     }
     if (firstName != null &&
         lastName != null &&
@@ -53,7 +52,6 @@ class Profile extends StatefulWidget {
       phoneNumber1 = phoneNumber;
     }
   }
-
 
   @override
   State<Profile> createState() => _ProfileState();
@@ -83,14 +81,15 @@ class _ProfileState extends State<Profile> {
         break;
 
       case 5:
-      // print("User Logged out");
+        // print("User Logged out");
 
-      // Navigator.of(context).pushAndRemoveUntil(
-      //     MaterialPageRoute(builder: (context) => LoginPage()),
-      //         (route) => false);
+        // Navigator.of(context).pushAndRemoveUntil(
+        //     MaterialPageRoute(builder: (context) => LoginPage()),
+        //         (route) => false);
         break;
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -153,11 +152,11 @@ class _ProfileState extends State<Profile> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(222.0),
                 // padding: const EdgeInsets.all(20),
-                child: ProfileForWorkers.imageNew1 ?? Image.network(
-                  'https://i2.wp.com/alghad.com/wp-content/uploads/2021/10/Squid-Game-Games-Ranked.jpg?resize=1024%2C512&ssl=1'
-                  ,height:220,
-                ),
-
+                child: ProfileForWorkers.imageNew1 ??
+                    Image.network(
+                      'https://i2.wp.com/alghad.com/wp-content/uploads/2021/10/Squid-Game-Games-Ranked.jpg?resize=1024%2C512&ssl=1',
+                      height: 220,
+                    ),
               ),
               Container(
                 margin: const EdgeInsets.all(11),
@@ -207,7 +206,7 @@ class _ProfileState extends State<Profile> {
         age1 = age;
         region1 = region;*/
               SingleChildScrollView(
-                scrollDirection:Axis.horizontal,
+                scrollDirection: Axis.horizontal,
                 child: Card(
                   color: Colors.white30,
                   child: Row(
