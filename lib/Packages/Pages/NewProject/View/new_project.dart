@@ -9,6 +9,7 @@ import 'package:flutter_finalproject/Packages/Components/Btn/simple_btn.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Toast/simple_toast.dart';
+import 'package:flutter_finalproject/Packages/Components/location/addres.dart';
 import 'package:flutter_finalproject/Packages/Components/text_filed/simple_filed.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/components/Button/but_up.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
@@ -117,18 +118,7 @@ class _NewProjectState extends State<NewProject> {
                       ),
                       SizedBox(height: 15.h),
                       //*Address
-                      SimpleFiled(
-                        keyboardType: TextInputType.name,
-                        onValidator: (value) => AppValidators.isEmpty(value),
-                        hint: KeyLang.address.tr(),
-                        pIcon: IconButton(
-                          icon: Icon(
-                            Icons.add_location_alt_rounded,
-                            color: AppColors.blue,
-                          ),
-                          onPressed: () {},
-                        ),
-                      ),
+                      Address(),
                       SizedBox(height: 15.h),
                       //* Starting Date
                       SimpleFiled(
