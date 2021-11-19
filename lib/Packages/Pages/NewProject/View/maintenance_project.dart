@@ -1,9 +1,9 @@
-// ignore_for_file: prefer_const_constructors, implementation_imports, duplicate_ignore, sized_box_for_whitespace, prefer_final_fields, avoid_unnecessary_containers, unused_import, unused_field
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, implementation_imports
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dropdown/flutter_dropdown.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Btn/simple_btn.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
@@ -11,31 +11,20 @@ import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.da
 import 'package:flutter_finalproject/Packages/Components/Toast/simple_toast.dart';
 import 'package:flutter_finalproject/Packages/Components/location/addres.dart';
 import 'package:flutter_finalproject/Packages/Components/text_filed/simple_filed.dart';
-import 'package:flutter_finalproject/Packages/Pages/NewProject/components/Button/but_up.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
-import 'package:flutter_finalproject/Theme/style.dart';
 import 'package:flutter_finalproject/Theme/theme_status.dart';
 import 'package:flutter_finalproject/Utils/path_images.dart';
 import 'package:flutter_finalproject/validators/app_validators.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class NewProject extends StatefulWidget {
-  const NewProject({Key? key}) : super(key: key);
-  static const String id = 'NewProject';
-
+class MainteneanceProject extends StatefulWidget {
+  static const String id = 'MainteneanceProject';
   @override
-  State<NewProject> createState() => _NewProjectState();
+  State<MainteneanceProject> createState() => _MainteneanceProjectState();
 }
 
-class _NewProjectState extends State<NewProject> {
-  //*form key
+class _MainteneanceProjectState extends State<MainteneanceProject> {
   final GlobalKey<FormState> _keyFoem = GlobalKey<FormState>();
-  var _items = <String>[
-    KeyLang.maintenance,
-    KeyLang.building,
-  ];
-  var z = 0;
-  var b = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,6 +105,16 @@ class _NewProjectState extends State<NewProject> {
                           color: AppColors.blue,
                         ),
                       ),
+                      SizedBox(height: 20.h),
+                      //* administrator's name
+                      SimpleFiled(
+                        keyboardType: TextInputType.name,
+                        hint: KeyLang.administratoName.tr(),
+                        pIcon: Icon(
+                          Icons.person,
+                          color: AppColors.blue,
+                        ),
+                      ),
                       SizedBox(height: 15.h),
                       //*Address
                       Address(),
@@ -157,31 +156,6 @@ class _NewProjectState extends State<NewProject> {
                           Icons.person,
                           color: AppColors.blue,
                         ),
-                      ),
-                      SizedBox(height: 15.h),
-                      //*construction license
-                      Container(
-                        margin: EdgeInsets.symmetric(horizontal: 25.h),
-                        child: Center(
-                            child: SimpleBtnUp(
-                          btnText: KeyLang.constructionLicense.tr(),
-                          onTap: () {
-                            b = 1;
-                          },
-                        )),
-                      ),
-
-                      SizedBox(height: 15.h),
-                      //* schemes
-                      Container(
-                        margin: EdgeInsets.symmetric(horizontal: 25.h),
-                        child: Center(
-                            child: SimpleBtnUp(
-                          btnText: KeyLang.schemes.tr(),
-                          onTap: () {
-                            b = 2;
-                          },
-                        )),
                       ),
                       SizedBox(height: 15.h),
 

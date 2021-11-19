@@ -12,6 +12,7 @@ import 'package:flutter_finalproject/Packages/Pages/Archive/View/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/body.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/View/new_project.dart';
+import 'package:flutter_finalproject/Packages/Pages/NewProject/components/BoxDialog/dialog.dart';
 
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/view/body.dart';
@@ -52,9 +53,12 @@ class _PageHomeState extends State<PageHome> {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                Navigator.pushNamed(
-                                  context,
-                                  NewProject.id,
+                                showDialog(
+                                  barrierDismissible: false,
+                                  context: context,
+                                  builder: (context) {
+                                    return BoxDialog();
+                                  },
                                 );
                               },
                               child: Image(
