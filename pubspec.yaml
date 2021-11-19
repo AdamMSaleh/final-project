@@ -46,7 +46,7 @@ dependencies:
   menu_button: ^1.4.2+1
   flutter_dropdown: ^1.0.0+hotfix.1
 
-  image_picker: ^0.8.4+3
+  image_picker: ^0.8.4
 
 
 
@@ -72,6 +72,9 @@ dependencies:
   # open pdf document
   open_file: ^3.1.0
   flutter_launcher_icons: ^0.9.2
+  #location
+ # geolocator: ^7.7.1
+  
 
 
 
