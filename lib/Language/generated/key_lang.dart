@@ -70,4 +70,5 @@ class KeyLang {
   static String massegRegister = "massegRegister";
   static String massTypeProj = "massTypeProj";
   static String massNewProject = "massNewProject";
+  static String administratoName = "administratoName";
 }

@@ -3,6 +3,7 @@
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
+import 'package:flutter_finalproject/Packages/Pages/NewProject/View/maintenance_project.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/View/new_project.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
 import 'package:flutter_finalproject/Theme/style.dart';
@@ -39,7 +40,7 @@ class BoxDialog extends StatelessWidget {
                   onTap: () {
                     Navigator.pushNamed(
                       context,
-                      NewProject.id,
+                      MainteneanceProject.id,
                     );
                   },
                   child: Column(
