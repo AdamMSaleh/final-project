@@ -64,10 +64,10 @@ class _ProjectsDetailsState extends State<ProjectsDetails> {
                 context,
                 card1: 'اضافة',
                 pageCard1:
-                    CurrentProjectMain("اضافة اصحاب المهن/ عمال " + 'اضافة'),
+                CurrentProjectMain("اضافة اصحاب المهن/ عمال " + 'اضافة'),
                 card2: "بحث ",
                 pageCard2:
-                    Research(), //IconButton(onPressed: ()=>GoBack.selectScreen(context, SearchHomePage()), icon: Icon(Icons.arrow_forward_ios_sharp , color: Colors.black,)),
+                Research(), //IconButton(onPressed: ()=>GoBack.selectScreen(context, SearchHomePage()), icon: Icon(Icons.arrow_forward_ios_sharp , color: Colors.black,)),
                 // card3: card3,
               ),
               GoBack.btn(
