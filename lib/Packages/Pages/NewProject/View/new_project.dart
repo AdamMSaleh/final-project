@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, implementation_imports, duplicate_ignore, sized_box_for_whitespace, prefer_final_fields, avoid_unnecessary_containers
+// ignore_for_file: prefer_const_constructors, implementation_imports, duplicate_ignore, sized_box_for_whitespace, prefer_final_fields, avoid_unnecessary_containers, unused_import, unused_field
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
@@ -9,6 +9,7 @@ import 'package:flutter_finalproject/Packages/Components/Btn/simple_btn.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Toast/simple_toast.dart';
+import 'package:flutter_finalproject/Packages/Components/location/addres.dart';
 import 'package:flutter_finalproject/Packages/Components/text_filed/simple_filed.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/components/Button/but_up.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
@@ -117,18 +118,7 @@ class _NewProjectState extends State<NewProject> {
                       ),
                       SizedBox(height: 15.h),
                       //*Address
-                      SimpleFiled(
-                        keyboardType: TextInputType.name,
-                        onValidator: (value) => AppValidators.isEmpty(value),
-                        hint: KeyLang.address.tr(),
-                        pIcon: IconButton(
-                          icon: Icon(
-                            Icons.add_location_alt_rounded,
-                            color: AppColors.blue,
-                          ),
-                          onPressed: () {},
-                        ),
-                      ),
+                      Address(),
                       SizedBox(height: 15.h),
                       //* Starting Date
                       SimpleFiled(
@@ -193,53 +183,7 @@ class _NewProjectState extends State<NewProject> {
                           },
                         )),
                       ),
-                      //*Drop Down
-                      Container(
-                        child: DropDown<String>(
-                          showUnderline: false,
-                          dropDownType: DropDownType.Button,
-                          items: _items,
-                          icon: Icon(
-                            Icons.expand_more,
-                            color: Colors.blue,
-                          ),
-                          customWidgets: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Text(KeyLang.maintenance,
-                                    style:
-                                        AppStyles.styleHeadline1Light.copyWith(
-                                      color: AppColors.blue,
-                                      fontSize: 15.sp,
-                                    )).tr()
-                              ],
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Text(KeyLang.building,
-                                    style:
-                                        AppStyles.styleHeadline1Light.copyWith(
-                                      color: AppColors.blue,
-                                      fontSize: 15.sp,
-                                    )).tr(),
-                              ],
-                            ),
-                          ],
-                          hint: Text(KeyLang.projectType.tr(),
-                              style: AppStyles.styleHeadline1Light.copyWith(
-                                  color: AppColors.blue, fontSize: 15.sp)),
-                          onChanged: (value) => {
-                            if (value == KeyLang.maintenance)
-                              {
-                                z = 1,
-                              }
-                            else if (value == KeyLang.building)
-                              {
-                                z = 2,
-                              }
-                          },
-                        ),
-                      ),
+                      SizedBox(height: 15.h),
 
                       //*button
                       SizedBox(height: 5.h),
@@ -250,19 +194,7 @@ class _NewProjectState extends State<NewProject> {
                                 btnText: KeyLang.add.toUpperCase().tr(),
                                 onTap: () async {
                                   if (_keyFoem.currentState!.validate()) {
-                                    if (z == 0) {
-                                      simpleToast(
-                                          message: KeyLang.massTypeProj.tr());
-                                    } else {
-                                      if (b == 0) {
-                                        simpleToast(
-                                            message:
-                                                KeyLang.massNewProject.tr());
-                                      }
-                                    }
-                                    {
-                                      simpleToast(message: 'ok');
-                                    }
+                                    simpleToast(message: 'ok');
                                   }
                                 })),
                       ),

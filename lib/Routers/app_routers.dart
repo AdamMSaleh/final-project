@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, avoid_web_libraries_in_flutter, unused_import
+// ignore_for_file: prefer_const_constructors, avoid_web_libraries_in_flutter, unused_impor
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Pages/Archive/View/body.dart';
@@ -14,6 +14,7 @@ import 'package:flutter_finalproject/Packages/Pages/Auth/Views/login.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/register.dart';
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/Home/View/body.dart';
+import 'package:flutter_finalproject/Packages/Pages/NewProject/View/maintenance_project.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/View/new_project.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/view/body.dart';
@@ -37,5 +38,6 @@ class AppRoutes {
     NewProject.id: (context) => NewProject(),
     CurrentProjects.id: (context) => CurrentProjects(),
     Archive.id: (context) => Archive(),
+    MainteneanceProject.id: (context) => MainteneanceProject(),
   };
 }

@@ -70,4 +70,6 @@ class PathIcons {
   static final String theme = 'assets/icons/paint.svg';
   static final String logout = 'assets/icons/logout.svg';
   static final String portfolio = 'assets/icons/portfolio.svg';
+  static final String maintenance = 'assets/icons/maintenance-icon.png';
+  static final String building = 'assets/icons/building2-icon.png';
 }
