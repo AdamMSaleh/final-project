@@ -1,14 +1,20 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import
 
 import 'package:easy_dynamic_theme/easy_dynamic_theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Language/config/config_lang.dart';
 import 'package:flutter_finalproject/Packages/Pages/Home/View/body.dart';
+import 'package:flutter_finalproject/Packages/Pages/Splash/View/body.dart';
 
 import 'package:flutter_finalproject/Routers/app_routers.dart';
 import 'package:flutter_finalproject/Theme/custom_theme.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'Packages/Pages/Auth/Views/login.dart';
+import 'Packages/Pages/Invoice/View/body.dart';
+import 'Packages/Pages/Payment_History/View/body.dart';
+import 'Packages/Pages/Plan/View/body.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,7 +45,7 @@ class MyApp extends StatelessWidget {
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,
-            initialRoute: PageHome.id, // PageSplash.id,
+            initialRoute: PageLogin.id, // PageHome.id,
             routes: AppRoutes.routes);
       },
     );

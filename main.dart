@@ -11,11 +11,6 @@ import 'package:flutter_finalproject/Routers/app_routers.dart';
 import 'package:flutter_finalproject/Theme/custom_theme.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'Packages/Pages/Auth/Views/login.dart';
-import 'Packages/Pages/Invoice/View/body.dart';
-import 'Packages/Pages/Payment_History/View/body.dart';
-import 'Packages/Pages/Plan/View/body.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
@@ -40,13 +35,12 @@ class MyApp extends StatelessWidget {
             title: 'one Click Home',
             debugShowCheckedModeBanner: false,
             theme: CustomTheme.lightTheme,
-
             darkTheme: CustomTheme.darkTheme,
             themeMode: EasyDynamicTheme.of(context).themeMode,
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,
-            initialRoute: PageLogin.id, // PageHome.id,
+            initialRoute: PageSplash.id, // PageHome.id,
             routes: AppRoutes.routes);
       },
     );
