@@ -91,7 +91,7 @@ class _PageHomeState extends State<PageHome> {
                               },
                               child: Image(
                                 image:
-                                    AssetImage('assets/icons/search-icon.png'),
+                                AssetImage('assets/icons/search-icon.png'),
                               ),
                             ),
                           ],
@@ -153,7 +153,7 @@ class _PageHomeState extends State<PageHome> {
                               },
                               child: Image(
                                 image:
-                                    AssetImage('assets/icons/Profile-icon.png'),
+                                AssetImage('assets/icons/Profile-icon.png'),
                               ),
                             ),
                           ],
@@ -192,7 +192,7 @@ class _PageHomeState extends State<PageHome> {
                               },
                               child: Image(
                                 image:
-                                    AssetImage('assets/icons/archive-icon.png'),
+                                AssetImage('assets/icons/archive-icon.png'),
                               ),
                             ),
                           ],

@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/view/body.dart';
 
+import '../../Invoice/View/body.dart';
+import '../../Payment_History/View/body.dart';
+import '../../Plan/View/body.dart';
 import 'current_project_main1.dart';
 
 class ProjectsDetails extends StatefulWidget {
@@ -45,20 +48,14 @@ class _ProjectsDetailsState extends State<ProjectsDetails> {
               GoBack.btn(
                 "اظهار المخطاطات",
                 context,
-                card1: 'اضافة',
-                pageCard1: CurrentProjectMain("اظهار المخطاطات" + "تعديل"),
-                card2: "تعديل",
-                pageCard2: CurrentProjectMain(" اظهار المخطاطات" + "تعديل"),
-                card3: "مشاهده",
-                pageCard3: CurrentProjectMain(" اظهار المخطاطات" + "مشاهده"),
+                card1: 'اضافة / تعديل',
+                pageCard1: PlanUpload(),
               ),
               GoBack.btn(
                 "الفواتير",
                 context,
-                card1: 'اضافة',
-                pageCard1: CurrentProjectMain("الفواتير " + 'اضافة'),
-                card2: "مشاهده",
-                pageCard2: CurrentProjectMain("الفواتير " + "مشاهده"),
+                card1: 'اضافة / تعديل',
+                pageCard1: Invoice(),
               ),
               GoBack.btn(
                 "اضافة اصحاب المهن/ عمال",
@@ -74,7 +71,7 @@ class _ProjectsDetailsState extends State<ProjectsDetails> {
               GoBack.btn(
                 "الدفعات",
                 context,
-                page: CurrentProjectMain("الدفعات"),
+                page: PaymentHistory(),
               ),
               GoBack.btn(
                 "المخطط الزمني",
