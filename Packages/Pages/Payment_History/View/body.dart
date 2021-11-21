@@ -8,15 +8,12 @@ import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/Drawer/drawer.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.dart';
-import 'package:flutter_finalproject/Packages/Components/Select_Screen/select_screen.dart';
 import 'package:flutter_finalproject/Packages/Components/cach_image/image_user.dart';
 import 'package:flutter_finalproject/Packages/Pages/Archive/View/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/body.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar.dart';
-import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/invoice.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/View/new_project.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/components/BoxDialog/dialog.dart';
-import 'package:flutter_finalproject/Packages/Pages/Payment_History/Components/infoo.dart';
 
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/upload_image.dart';
@@ -27,7 +24,6 @@ import 'package:flutter_finalproject/Utils/path_images.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 
-
 class PaymentHistory extends StatefulWidget {
   static const String id = 'PaymentHistory';
 
@@ -35,10 +31,10 @@ class PaymentHistory extends StatefulWidget {
   State<PaymentHistory> createState() => _PaymentHistoryState();
 }
 
-class _PaymentHistoryState extends State<PaymentHistory> with TickerProviderStateMixin {
+class _PaymentHistoryState extends State<PaymentHistory>
+    with TickerProviderStateMixin {
   var myControllerName = TextEditingController();
   var myControllerValue = TextEditingController();
-
 
   String? setDate;
   List<Infoo> yy = [
@@ -90,8 +86,6 @@ class _PaymentHistoryState extends State<PaymentHistory> with TickerProviderStat
   //   )..repeat();
   //   animation = Tween(begin: 0,end: 2 * pi).animate(controller);
   // }
-
-
 
   void btnPayment(BuildContext assoom) {
     showModalBottomSheet(
@@ -226,15 +220,15 @@ class _PaymentHistoryState extends State<PaymentHistory> with TickerProviderStat
                 //
                 //
                 //
-          // AnimatedBuilder(
-          //     animation: animation,
-          //     child: FlutterLogo (),
-          //     builder: (context, child) {
-          //       return Transform.rotate(
-          //         angle: animation.value as double,
-          //         child: FlutterLogo(),
-          //       );
-          //     })
+                // AnimatedBuilder(
+                //     animation: animation,
+                //     child: FlutterLogo (),
+                //     builder: (context, child) {
+                //       return Transform.rotate(
+                //         angle: animation.value as double,
+                //         child: FlutterLogo(),
+                //       );
+                //     })
               ],
             ),
           ),
@@ -258,15 +252,14 @@ class _PaymentHistoryState extends State<PaymentHistory> with TickerProviderStat
   String? value;
 
   DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
-    value: item,
-    child: Text(
-      item,
-    ),
-  );
+        value: item,
+        child: Text(
+          item,
+        ),
+      );
 
   @override
   Widget build(BuildContext context) {
-
     /***********************************************************/
     return Scaffold(
       //*Appbar
@@ -420,8 +413,8 @@ class _PaymentHistoryState extends State<PaymentHistory> with TickerProviderStat
                                           child: Container(
                                             alignment: Alignment.center,
                                             width: (MediaQuery.of(context)
-                                                .size
-                                                .width) /
+                                                    .size
+                                                    .width) /
                                                 3.9,
                                             child: Text(
                                               e.name,
@@ -437,8 +430,8 @@ class _PaymentHistoryState extends State<PaymentHistory> with TickerProviderStat
                                           child: Container(
                                             alignment: Alignment.center,
                                             width: (MediaQuery.of(context)
-                                                .size
-                                                .width) /
+                                                    .size
+                                                    .width) /
                                                 6,
                                             child: Text(
                                               "${e.value}",
@@ -454,8 +447,8 @@ class _PaymentHistoryState extends State<PaymentHistory> with TickerProviderStat
                                           child: Container(
                                             alignment: Alignment.center,
                                             width: (MediaQuery.of(context)
-                                                .size
-                                                .width) /
+                                                    .size
+                                                    .width) /
                                                 4.2,
                                             child: Text(
                                               e.date,
@@ -472,8 +465,8 @@ class _PaymentHistoryState extends State<PaymentHistory> with TickerProviderStat
                                             margin: EdgeInsets.only(left: 8),
                                             alignment: Alignment.center,
                                             width: (MediaQuery.of(context)
-                                                .size
-                                                .width) /
+                                                    .size
+                                                    .width) /
                                                 7,
                                             child: e.ico,
                                           ),
@@ -510,39 +503,38 @@ class _PaymentHistoryState extends State<PaymentHistory> with TickerProviderStat
       ),
     );
   }
+
   ElevatedButtonAddValue(BuildContext context) {
     showDialog<String>(
       context: context,
       builder: (
-          BuildContext context,
-          ) =>
+        BuildContext context,
+      ) =>
           AlertDialog(
-            title: const Text(' : إضافة دفعة '),
-            content: const Text('  للإضافة او الغاء ok اضغط  '),
-            actions: <Widget>[
-              TextButton(
-                onPressed: () => Navigator.pop(context, 'Cancel'),
-                child: const Text('Cancel'),
-              ),
-              TextButton(
-                onPressed: () {
-                  ElevatedButtonAddValue1(
-                      context);
-                  Navigator.pop(context, 'OK');
-                },
-                child: const Text('OK'),
-              ),
-            ],
+        title: const Text(' : إضافة دفعة '),
+        content: const Text('  للإضافة او الغاء ok اضغط  '),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Navigator.pop(context, 'Cancel'),
+            child: const Text('Cancel'),
           ),
+          TextButton(
+            onPressed: () {
+              ElevatedButtonAddValue1(context);
+              Navigator.pop(context, 'OK');
+            },
+            child: const Text('OK'),
+          ),
+        ],
+      ),
     );
   }
 
   ElevatedButtonAddValue1(
-      //هي الميثود اللي بتعمل اوبجكت وبتعطيه قيم من المنيو يلي بنعبيها اللي هي كبسة الاضافة
-      //يعني لما عبي الاسم بتحطه عند الاسم بجدول الفاتورة  ولما اعبي التاريخ والقيمة نفس الشي
-      BuildContext context,
-
-      ) {
+    //هي الميثود اللي بتعمل اوبجكت وبتعطيه قيم من المنيو يلي بنعبيها اللي هي كبسة الاضافة
+    //يعني لما عبي الاسم بتحطه عند الاسم بجدول الفاتورة  ولما اعبي التاريخ والقيمة نفس الشي
+    BuildContext context,
+  ) {
     setState(() {
       var ff = Infoo(
         name: myControllerName.text,
@@ -554,7 +546,7 @@ class _PaymentHistoryState extends State<PaymentHistory> with TickerProviderStat
       yy.add(ff);
       myControllerName.clear();
       myControllerValue.clear();
-      setDate='تاريخ الدفعة';
+      setDate = 'تاريخ الدفعة';
       Navigator.of(context).pop();
     });
   }
