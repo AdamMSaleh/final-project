@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, implementation_imports, unused_import, must_be_immutable, sized_box_for_whitespace, duplicate_ignore
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, implementation_imports, unused_import, must_be_immutable, sized_box_for_whitespace, duplicate_ignore, deprecated_member_use, avoid_unnecessary_containers, non_constant_identifier_names
 import 'dart:math';
 import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -23,6 +23,8 @@ import 'package:flutter_finalproject/Theme/style.dart';
 import 'package:flutter_finalproject/Utils/path_images.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+
+import '../Components/infoo.dart';
 
 class PaymentHistory extends StatefulWidget {
   static const String id = 'PaymentHistory';
@@ -548,6 +550,7 @@ class _PaymentHistoryState extends State<PaymentHistory>
       myControllerValue.clear();
       setDate = 'تاريخ الدفعة';
       Navigator.of(context).pop();
+      print('aaa');
     });
   }
 }
