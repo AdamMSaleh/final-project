@@ -8,6 +8,7 @@ import 'package:flutter_finalproject/Packages/Pages/NewProject/View/new_project.
 import 'package:flutter_finalproject/Theme/app_color.dart';
 import 'package:flutter_finalproject/Theme/style.dart';
 import 'package:flutter_finalproject/Utils/path_icons.dart';
+import 'package:flutter_finalproject/Utils/path_images.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BoxDialog extends StatelessWidget {
@@ -46,7 +47,7 @@ class BoxDialog extends StatelessWidget {
                   child: Column(
                     children: [
                       Image.asset(
-                        PathIcons.maintenance,
+                        PathImages.maintenance,
                       ),
                       SizedBox(height: 10.h),
                       Text(
@@ -72,7 +73,7 @@ class BoxDialog extends StatelessWidget {
                     child: Column(
                       children: [
                         Image.asset(
-                          PathIcons.building,
+                          PathImages.building,
                         ),
                         SizedBox(height: 10.h),
                         Text(
