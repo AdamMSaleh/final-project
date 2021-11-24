@@ -5,7 +5,8 @@ import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/Drawer/drawer.dart';
-import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar.dart';
+import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/appbar.dart';
+import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/sup_appbar.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/Components/support/support_class.dart';
@@ -36,9 +37,10 @@ class _ResearchState extends State<Research> {
   Widget build(BuildContext context) {
     return Scaffold(
       //*Appbar
-      appBar: AppBHome(),
-      //*drawer
-      drawer: DrawerHome(),
+      appBar: AppBSup(
+        txt: KeyLang.research,
+      ),
+
       body: ListView.builder(
         itemCount: people.length,
         itemBuilder: (context, index) {

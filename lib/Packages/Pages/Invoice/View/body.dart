@@ -12,7 +12,7 @@ import 'package:flutter_finalproject/Packages/Components/cach_image/image_user.d
 
 import 'package:flutter_finalproject/Packages/Pages/Archive/View/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/body.dart';
-import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar.dart';
+import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/appbar.dart';
 
 import 'package:flutter_finalproject/Packages/Pages/NewProject/View/new_project.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/components/BoxDialog/dialog.dart';

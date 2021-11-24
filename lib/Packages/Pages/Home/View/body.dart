@@ -10,7 +10,7 @@ import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.da
 import 'package:flutter_finalproject/Packages/Components/cach_image/image_user.dart';
 import 'package:flutter_finalproject/Packages/Pages/Archive/View/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/body.dart';
-import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar.dart';
+import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/appbar.dart';
 import 'package:flutter_finalproject/Packages/Pages/Home/Components/btnIcon/iconbhom.dart';
 import 'package:flutter_finalproject/Packages/Pages/Home/Components/mnuBox/icon_box.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/View/new_project.dart';
@@ -18,6 +18,7 @@ import 'package:flutter_finalproject/Packages/Pages/NewProject/components/BoxDia
 
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/view/body.dart';
+import 'package:flutter_finalproject/Packages/Pages/ask_us/body.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
 import 'package:flutter_finalproject/Theme/style.dart';
 import 'package:flutter_finalproject/Utils/path_images.dart';
@@ -149,7 +150,7 @@ class _PageHomeState extends State<PageHome> {
                         onTap: () {
                           Navigator.pushNamed(
                             context,
-                            Archive.id,
+                            AskUs.id,
                           );
                         },
                         imag: PathImages.ask,

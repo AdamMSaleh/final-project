@@ -1,7 +1,8 @@
-// ignore_for_file: must_be_immutable, avoid_unnecessary_containers, prefer_const_constructors, prefer_adjacent_string_concatenation
+// ignore_for_file: must_be_immutable, avoid_unnecessary_containers, prefer_const_constructors, prefer_adjacent_string_concatenation, implementation_imports
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
+import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/sup_appbar.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/view/body.dart';
 
 import '../../Invoice/View/body.dart';
@@ -22,11 +23,9 @@ class _ProjectsDetailsState extends State<ProjectsDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('تفاصيل المشروع '),
-        leading: GoBack.back(context),
-        centerTitle: true,
-      ),
+      //* AppBar
+      appBar: AppBSup(txt: 'تفاصيل المشروع'),
+
       body: Container(
         // padding: const EdgeInsets.only(top:10,),//fromLTRB(15,10,10,0),
         child: ClipRRect(

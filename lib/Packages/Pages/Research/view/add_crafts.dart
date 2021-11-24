@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
+import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/sup_appbar.dart';
 
 class AddCrafts extends StatefulWidget {
   String name;
@@ -33,9 +34,9 @@ class _AddCraftsState extends State<AddCrafts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: GoBack.tx('صفحة صنايعي'),
-        centerTitle: true,
+      //* App Bar
+      appBar: AppBSup(
+        txt: 'صفحة صنايعي',
       ),
       body: Column(
         children: [
