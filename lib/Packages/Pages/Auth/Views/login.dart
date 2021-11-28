@@ -179,7 +179,7 @@ class _PageLoginState extends State<PageLogin> {
                                   child: SimpleBtn(
                                 onTap: () {
                                   if (_keyFoem.currentState!.validate()) {
-                                    Navigator.pushNamed(
+                                    Navigator.pushReplacementNamed(
                                       context,
                                       PageHome.id,
                                     );
