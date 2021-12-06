@@ -22,6 +22,7 @@ import 'package:flutter_finalproject/Packages/Pages/Plan/View/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/view/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/Splash/View/body.dart';
+import 'package:flutter_finalproject/Packages/Pages/ask_us/body.dart';
 
 class AppRoutes {
   static Map<String, WidgetBuilder> routes = {
@@ -34,13 +35,14 @@ class AppRoutes {
     PageInfoEng.id: (context) => PageInfoEng(),
     PageInfoPr.id: (context) => PageInfoPr(),
     PageInfoworker.id: (context) => PageInfoworker(),
-    PageInfowner.id: (context) => PageInfowner(),
+    PageInfowner.id: (context) => PageInfowner(email: '',),
     PageInfoMech.id: (context) => PageInfoMech(),
     Research.id: (context) => Research(),
     Profile.id: (context) => Profile(),
     NewProject.id: (context) => NewProject(),
     CurrentProjects.id: (context) => CurrentProjects(),
     Archive.id: (context) => Archive(),
+    AskUs.id: (context) => AskUs(),
     MainteneanceProject.id: (context) => MainteneanceProject(),
     Invoice.id: (context) => Invoice(),
     PaymentHistory.id: (context) => PaymentHistory(),

@@ -68,4 +68,5 @@ class InfoImage extends StatelessWidget {
       ),
     );
   }
+
 }

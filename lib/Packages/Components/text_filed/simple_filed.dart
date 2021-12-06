@@ -5,6 +5,7 @@ import 'package:flutter_finalproject/Theme/app_color.dart';
 class SimpleFiled extends StatelessWidget {
   const SimpleFiled(
       {Key? key,
+      TextEditingController? controller,
       String? initValue,
       TextInputType? keyboardType,
       bool? isObscureText,
@@ -25,6 +26,7 @@ class SimpleFiled extends StatelessWidget {
         _pIcon = pIcon,
         _sIcon = sIcon,
         _onSIcon = onSIcon,
+        _controler = controller,
         super(key: key);
 
   final String? _initValue;
@@ -32,16 +34,19 @@ class SimpleFiled extends StatelessWidget {
   final bool? _isObscureText;
   final void Function(String)? _onChanged;
   final String? Function(String?)? _onValidator;
+
   // decoration
   final String? _hint;
   final Widget? _pIcon;
   final Widget? _sIcon;
   final void Function()? _onSIcon;
   final void Function(String?)? _onSaved;
+  final TextEditingController? _controler;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: _controler,
       initialValue: _initValue,
       cursorColor: AppColors.blue,
       keyboardType: _keyboardType,

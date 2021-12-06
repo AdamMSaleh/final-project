@@ -1,12 +1,13 @@
-// ignore_for_file: must_be_immutable, avoid_unnecessary_containers, prefer_const_constructors, prefer_adjacent_string_concatenation
+// ignore_for_file: must_be_immutable, avoid_unnecessary_containers, prefer_const_constructors, prefer_adjacent_string_concatenation, implementation_imports
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
-import 'package:flutter_finalproject/Packages/Pages/Invoice/View/body.dart';
-import 'package:flutter_finalproject/Packages/Pages/Payment_History/View/body.dart';
-import 'package:flutter_finalproject/Packages/Pages/Plan/View/body.dart';
+import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/sup_appbar.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/view/body.dart';
 
+import '../../Invoice/View/body.dart';
+import '../../Payment_History/View/body.dart';
+import '../../Plan/View/body.dart';
 import 'current_project_main1.dart';
 
 class ProjectsDetails extends StatefulWidget {
@@ -22,11 +23,9 @@ class _ProjectsDetailsState extends State<ProjectsDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('تفاصيل المشروع '),
-        leading: GoBack.back(context),
-        centerTitle: true,
-      ),
+      //* AppBar
+      appBar: AppBSup(txt: 'تفاصيل المشروع'),
+
       body: Container(
         // padding: const EdgeInsets.only(top:10,),//fromLTRB(15,10,10,0),
         child: ClipRRect(
@@ -48,15 +47,13 @@ class _ProjectsDetailsState extends State<ProjectsDetails> {
               GoBack.btn(
                 "اظهار المخطاطات",
                 context,
-                card1:'اضافة / تعديل',
+                card1: 'اضافة / تعديل',
                 pageCard1: PlanUpload(),
-
-
               ),
               GoBack.btn(
                 "الفواتير",
                 context,
-                card1:'اضافة / تعديل',
+                card1: 'اضافة / تعديل',
                 pageCard1: Invoice(),
               ),
               GoBack.btn(

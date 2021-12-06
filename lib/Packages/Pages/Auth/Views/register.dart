@@ -394,22 +394,22 @@ class _PageRegister extends State<PageRegister> {
                                                   .toUpperCase()
                                                   .tr(),
                                               onTap: () async {
+
                                                 if (_keyFoem.currentState!
                                                     .validate()) {
                                                   Register().postData(
-                                                    first_name: controllerValue[
-                                                        'first_name']!,
+                                                    first_name: controllerValue['first_name']!,
                                                     last_name: controllerValue[
-                                                        'last_name']!,
+                                                    'last_name']!,
                                                     email: controllerValue[
-                                                        'email']!,
+                                                    'email']!,
                                                     password: controllerValue[
-                                                        'password']!,
-                                                    phone_number:
-                                                        controllerValue[
-                                                            'phone_number']!,
+                                                    'password']!,
+                                                    phone_number: controllerValue[
+                                                    'phone_number']!,
+
                                                   );
-                                                  /* if (s == 1) {
+                                                 /* if (s == 1) {
                                                     Navigator.pushNamed(
                                                       context,
                                                       PageInfoEng.id,

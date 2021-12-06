@@ -52,24 +52,4 @@ class PathIcons {
     FontAwesomeIcons.trash,
     color: AppColors.blue,
   );
-
-  static const String iconShare = 'assets/icons/share.svg';
-  static const String iconHeartUnActive = 'assets/icons/unactive-heart.svg';
-  static const String iconHeartActive = 'assets/icons/active-heart.svg';
-  static const String iconStoriesUnActive = 'assets/icons/unactive-stories.svg';
-  static const String iconStoriesActive = 'assets/icons/active-stories.svg';
-  static const String iconAddPostUnActive = 'assets/icons/unactive-add.svg';
-  static const String iconAddPostActive = 'assets/icons/active-add.svg';
-  static const String iconPostUnActive = 'assets/icons/unactive-post.svg';
-  static const String iconPostActive = 'assets/icons/active-post.svg';
-
-  static const String iconMenu = 'assets/icons/menu.svg';
-  static const String iconCamera = 'assets/icons/camera.svg';
-  static const String setting = 'assets/icons/settings.svg';
-  static final String language = 'assets/icons/language.svg';
-  static final String theme = 'assets/icons/paint.svg';
-  static final String logout = 'assets/icons/logout.svg';
-  static final String portfolio = 'assets/icons/portfolio.svg';
-  static final String maintenance = 'assets/icons/maintenance-icon.png';
-  static final String building = 'assets/icons/building2-icon.png';
 }

@@ -8,7 +8,7 @@ class CustomTheme {
   // * * * * * * * * * * * * *** Light *** * * * * * * * * * * * *
   static final ThemeData lightTheme = ThemeData.light().copyWith(
     appBarTheme: AppBarTheme(
-      color: AppColors.blue,
+      color: Colors.white,
       iconTheme: IconThemeData(color: AppColors.white, size: 35),
       centerTitle: true,
     ),

@@ -6,6 +6,7 @@ import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart'
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile_edit.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile_for_workers.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/workerRequirements/laborManagementForProfessionals/labor_management_for_professionals.dart';
+import 'package:flutter_finalproject/Theme/app_color.dart';
 
 class Profile extends StatefulWidget {
   static const String id = 'Profile';
@@ -94,6 +95,7 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColors.blue,
         title: GoBack.tx(' الملف الشخصي'),
         leading: GoBack.back(context),
         actions: [

@@ -16,7 +16,8 @@ import 'package:flutter_finalproject/validators/app_validators.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PageInfowner extends StatefulWidget {
-  const PageInfowner({Key? key}) : super(key: key);
+  String email;
+   PageInfowner({Key? key,required this.email }) : super(key: key);
   static const String id = 'PageInfowner';
 
   @override
@@ -98,6 +99,7 @@ class _PageInfownerState extends State<PageInfowner> {
                       SimpleFiled(
                         keyboardType: TextInputType.name,
                         onValidator: (value) => AppValidators.isEmpty(value),
+                        // controller: ,
                         hint: KeyLang.address.tr(),
                         pIcon: Icon(
                           Icons.add_location_alt_rounded,

@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, implementation_imports, unused_import, must_be_immutable, sized_box_for_whitespace, duplicate_ignore
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, implementation_imports, unused_import, must_be_immutable, sized_box_for_whitespace, duplicate_ignore, avoid_unnecessary_containers
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
@@ -10,12 +10,15 @@ import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.da
 import 'package:flutter_finalproject/Packages/Components/cach_image/image_user.dart';
 import 'package:flutter_finalproject/Packages/Pages/Archive/View/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/body.dart';
-import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar.dart';
+import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/appbar.dart';
+import 'package:flutter_finalproject/Packages/Pages/Home/Components/btnIcon/iconbhom.dart';
+import 'package:flutter_finalproject/Packages/Pages/Home/Components/mnuBox/icon_box.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/View/new_project.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/components/BoxDialog/dialog.dart';
 
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/view/body.dart';
+import 'package:flutter_finalproject/Packages/Pages/ask_us/body.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
 import 'package:flutter_finalproject/Theme/style.dart';
 import 'package:flutter_finalproject/Utils/path_images.dart';
@@ -40,207 +43,123 @@ class _PageHomeState extends State<PageHome> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Row(
-                children: [
-                  SizedBox(width: 35.w),
-                  Column(
+              //* row 1
+              SizedBox(height: 35.h),
+              IconBox(
+                chldrn: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      SizedBox(height: 35.h),
                       //*new project
-                      CircleAvatar(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                showDialog(
-                                  barrierDismissible: false,
-                                  context: context,
-                                  builder: (context) {
-                                    return BoxDialog();
-                                  },
-                                );
-                              },
-                              child: Image(
-                                image: AssetImage(
-                                    'assets/icons/Project-icon (1).png'),
-                              ),
-                            ),
-                          ],
-                        ),
-                        radius: 50.r,
+                      IconBHome(
+                        onTap: () {
+                          showDialog(
+                            barrierDismissible: false,
+                            context: context,
+                            builder: (context) {
+                              return BoxDialog();
+                            },
+                          );
+                        },
+                        imag: PathImages.newProject,
+                        btnName: KeyLang.newProject,
                       ),
-                      SizedBox(height: 7.h),
-                      Text(KeyLang.newProject,
-                          style: AppStyles.styleHeadline3Light.copyWith(
-                            color: AppColors.blue,
-                            fontSize: 20.sp,
-                          )).tr(),
-                      //*Search
-                      SizedBox(height: 30.h),
-                      CircleAvatar(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.pushNamed(
-                                  context,
-                                  Research.id,
-                                );
-                              },
-                              child: Image(
-                                image:
-                                    AssetImage('assets/icons/search-icon.png'),
-                              ),
-                            ),
-                          ],
-                        ),
-                        radius: 50.r,
-                      ),
-                      SizedBox(height: 7.h),
-                      Text(KeyLang.research,
-                          style: AppStyles.styleHeadline3Light.copyWith(
-                            color: AppColors.blue,
-                            fontSize: 20.sp,
-                          )).tr(),
                     ],
                   ),
-                  //* right side
-                  SizedBox(width: 115.w),
-                  Column(
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      SizedBox(height: 35.h),
                       //*Current projects
-                      CircleAvatar(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.pushNamed(
-                                  context,
-                                  CurrentProjects.id,
-                                );
-                              },
-                              child: Image(
-                                image: AssetImage(
-                                    'assets/icons/Current projects-icon.png'),
-                              ),
-                            ),
-                          ],
-                        ),
-                        radius: 50.r,
+                      IconBHome(
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            CurrentProjects.id,
+                          );
+                        },
+                        imag: PathImages.currentProjects,
+                        btnName: KeyLang.currentProjects,
                       ),
-                      SizedBox(height: 7.h),
-                      Text(KeyLang.currentProjects,
-                          style: AppStyles.styleHeadline3Light.copyWith(
-                            color: AppColors.blue,
-                            fontSize: 20.sp,
-                          )).tr(),
-                      //*Profile
-                      SizedBox(height: 30.h),
-                      CircleAvatar(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.pushNamed(
-                                  context,
-                                  Profile.id,
-                                );
-                              },
-                              child: Image(
-                                image:
-                                    AssetImage('assets/icons/Profile-icon.png'),
-                              ),
-                            ),
-                          ],
-                        ),
-                        radius: 50.r,
-                      ),
-                      SizedBox(height: 7.h),
-                      Text(KeyLang.profile,
-                          style: AppStyles.styleHeadline3Light.copyWith(
-                            color: AppColors.blue,
-                            fontSize: 20.sp,
-                          )).tr(),
                     ],
                   )
                 ],
               ),
-              SizedBox(height: 30.h),
-              Row(
-                // mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(width: 35.w),
-                  //*Work Archive
-
-                  Column(
+              //* row 2
+              SizedBox(height: 35.h),
+              IconBox(
+                chldrn: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      CircleAvatar(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.pushNamed(
-                                  context,
-                                  Archive.id,
-                                );
-                              },
-                              child: Image(
-                                image:
-                                    AssetImage('assets/icons/archive-icon.png'),
-                              ),
-                            ),
-                          ],
-                        ),
-                        radius: 50.r,
+                      //*Search
+                      IconBHome(
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            Research.id,
+                          );
+                        },
+                        imag: PathImages.search,
+                        btnName: KeyLang.research,
                       ),
-                      SizedBox(height: 7.h),
-                      Text(KeyLang.archive,
-                          style: AppStyles.styleHeadline3Light.copyWith(
-                            color: AppColors.blue,
-                            fontSize: 20.sp,
-                          )).tr(),
                     ],
                   ),
-                  //*ask us
-                  SizedBox(width: 120.w),
-                  Column(
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      CircleAvatar(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.pushNamed(
-                                  context,
-                                  Archive.id,
-                                );
-                              },
-                              child: Image(
-                                image: AssetImage(PathImages.ask),
-                              ),
-                            ),
-                          ],
-                        ),
-                        radius: 50.r,
+                      //*Profile
+                      IconBHome(
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            Profile.id,
+                          );
+                        },
+                        imag: PathImages.profileicon,
+                        btnName: KeyLang.profile,
                       ),
-                      SizedBox(height: 7.h),
-                      Text(KeyLang.ask,
-                          style: AppStyles.styleHeadline3Light.copyWith(
-                            color: AppColors.blue,
-                            fontSize: 20.sp,
-                          )).tr(),
                     ],
-                  ),
-                  //* end ask us
+                  )
                 ],
-              )
+              ),
+              //* row 3
+              SizedBox(height: 35.h),
+              IconBox(
+                chldrn: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      //* Work Archive
+                      IconBHome(
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            Archive.id,
+                          );
+                        },
+                        imag: PathImages.archive,
+                        btnName: KeyLang.archive,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      //* ask us
+                      IconBHome(
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            AskUs.id,
+                          );
+                        },
+                        imag: PathImages.ask,
+                        btnName: KeyLang.ask,
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ],
           ),
         ),

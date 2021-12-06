@@ -40,28 +40,7 @@ class _UploadImageState extends State<UploadImage> {
                   ProfileEdit(
                     imageFile: imageFile,
                   ));
-              // imageFile == imageFile1? showDialog(
-              //   context: context,
-              //   builder: (context) => AlertDialog(
-              //     title: GoBack.tx('Please choose a picture'),
-              //     content: SingleChildScrollView(
-              //       child: Column(
-              //         children: [
-              //           ListTile(
-              //             // leading: const Icon(Icons.image),
-              //             title: GoBack.tx('Ok'),
-              //             onTap: () => Navigator.pop(context),
-              //           ),
-              //           // ListTile(
-              //           //   leading: const Icon(Icons.camera),
-              //           //   title: GoBack.tx('Camera'),
-              //           //   onTap: () => _imageFromCamera(context),
-              //           // ),
-              //         ],
-              //       ),
-              //     ),
-              //   ),
-              // ):print('');
+
             },
           ),
         ],
