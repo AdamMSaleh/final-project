@@ -22,8 +22,9 @@ import 'package:flutter_finalproject/Packages/Pages/Plan/View/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/view/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/Splash/View/body.dart';
-import 'package:flutter_finalproject/Packages/Pages/add_tem_members/body.dart';
+
 import 'package:flutter_finalproject/Packages/Pages/ask_us/body.dart';
+import 'package:flutter_finalproject/Packages/Pages/project_%20parts/body.dart';
 
 class AppRoutes {
   static Map<String, WidgetBuilder> routes = {
@@ -48,6 +49,6 @@ class AppRoutes {
     Invoice.id: (context) => Invoice(),
     PaymentHistory.id: (context) => PaymentHistory(),
     PlanUpload.id: (context) => PlanUpload(),
-    AddWorkers.id: (context) => AddWorkers(),
+    WorkersDetection.id: (context) => WorkersDetection(),
   };
 }

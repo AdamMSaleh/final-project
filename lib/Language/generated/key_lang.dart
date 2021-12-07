@@ -71,5 +71,5 @@ class KeyLang {
   static String massTypeProj = "massTypeProj";
   static String massNewProject = "massNewProject";
   static String administratoName = "administratoName";
-  static String addMembers = "Add Members";
+  static String workersDetection = "Workers Detection";
 }

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/sup_appbar.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/view/body.dart';
-import 'package:flutter_finalproject/Packages/Pages/add_tem_members/body.dart';
+import 'package:flutter_finalproject/Packages/Pages/project_%20parts/body.dart';
 
 import '../../Invoice/View/body.dart';
 import '../../Payment_History/View/body.dart';
@@ -61,7 +61,7 @@ class _ProjectsDetailsState extends State<ProjectsDetails> {
                 "اضافة اصحاب المهن/ عمال",
                 context,
                 card1: 'اضافة',
-                pageCard1: AddWorkers(),
+                pageCard1: CurrentProjectMain("hhh"),
                 card2: "بحث ",
                 pageCard2:
                     Research(), //IconButton(onPressed: ()=>GoBack.selectScreen(context, SearchHomePage()), icon: Icon(Icons.arrow_forward_ios_sharp , color: Colors.black,)),
@@ -80,7 +80,7 @@ class _ProjectsDetailsState extends State<ProjectsDetails> {
               GoBack.btn(
                 "سجل العمال",
                 context,
-                page: CurrentProjectMain("سجل العمال"),
+                page: WorkersDetection(),
               ),
             ],
           ),
