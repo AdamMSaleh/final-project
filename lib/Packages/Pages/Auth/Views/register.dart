@@ -31,6 +31,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class PageRegister extends StatefulWidget {
   static const String id = 'PageRegister';
+
   const PageRegister({Key? key}) : super(key: key);
 
   @override
