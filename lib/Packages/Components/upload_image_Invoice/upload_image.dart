@@ -26,6 +26,7 @@ import 'view_image.dart';
 
 class UploadImageInvoice extends StatefulWidget {
   const UploadImageInvoice({Key? key}) : super(key: key);
+  static const String id = 'UploadImageInvoice';
 
   @override
   _UploadImageInvoiceState createState() => _UploadImageInvoiceState();

@@ -24,11 +24,12 @@ class _AppBHomeState extends State<AppBHome> {
     return AppBar(
       backgroundColor: AppColors.blue,
       toolbarHeight: 65.h,
-      title: Text(KeyLang.oneclickhome,
-          style: AppStyles.styleHeadline3Light.copyWith(
-            color: AppColors.white,
-            fontSize: 25.sp,
-          )).tr(),
+      title: Text('Relax'),
+      // Text(KeyLang.oneclickhome,
+      //     style: AppStyles.styleHeadline3Light.copyWith(
+      //       color: AppColors.white,
+      //       fontSize: 25.sp,
+      //     )).tr(),
       actions: [
         Padding(
           padding: EdgeInsets.all(3.w),

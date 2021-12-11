@@ -14,9 +14,9 @@ class RowThreBot extends StatelessWidget {
       required String btnName1,
       required String btnName2,
       required String btnName3,
-      required Function onTap1,
-      required Function onTap2,
-      required Function onTap3})
+      required Function() onTap1,
+      required Function() onTap2,
+      required Function() onTap3})
       : _imag1 = imag1,
         _imag2 = imag2,
         _imag3 = imag3,
@@ -30,7 +30,7 @@ class RowThreBot extends StatelessWidget {
   final String _imag1, _imag2, _imag3;
 
   final String _btnName1, _btnName2, _btnName3;
-  final Function _onTap1, _onTap2, _onTap3;
+  final Function()? _onTap1, _onTap2, _onTap3;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class RowThreBot extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             IconBHome(
-              onTap: () {},
+              onTap: _onTap1,
               imag: _imag1,
               btnName: _btnName1,
             ),
@@ -51,7 +51,7 @@ class RowThreBot extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconBHome(
-              onTap: () {},
+              onTap: _onTap2,
               imag: _imag2,
               btnName: _btnName2,
             ),
@@ -61,7 +61,7 @@ class RowThreBot extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             IconBHome(
-              onTap: () {},
+              onTap: _onTap3,
               imag: _imag3,
               btnName: _btnName3,
             ),

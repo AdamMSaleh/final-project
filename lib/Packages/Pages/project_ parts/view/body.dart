@@ -1,10 +1,11 @@
-// ignore_for_file: implementation_imports
+// ignore_for_file: implementation_imports, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/sup_appbar.dart';
 import 'package:flutter_finalproject/Packages/Pages/project_%20parts/components/name_row.dart';
 import 'package:flutter_finalproject/Packages/Pages/project_%20parts/components/row.dart';
+import 'package:flutter_finalproject/Packages/Pages/project_%20parts/view/work_record.dart';
 import 'package:flutter_finalproject/Utils/path_images.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -30,7 +31,12 @@ class WorkersDetection extends StatelessWidget {
               RowThreBot(
                 btnName1: KeyLang.readyMixedConcrete,
                 imag1: PathImages.transitMixer,
-                onTap1: () {},
+                onTap1: () {
+                  Navigator.pushNamed(
+                    context,
+                    WorkRecond.id,
+                  );
+                },
                 imag2: PathImages.shop,
                 btnName2: KeyLang.shopkeeper,
                 onTap2: () {},

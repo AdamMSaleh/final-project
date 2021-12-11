@@ -83,4 +83,5 @@ class KeyLang {
   static String tilesetter = "Tile Setter";
   static String electrical = "Electrical";
   static String fat = "Fat";
+  static String workRecond = "Work Recond";
 }

@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dropdown/flutter_dropdown.dart';
+import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Btn/simple_btn.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
@@ -18,7 +19,6 @@ import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_ow
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_shop.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_user_Eng.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_workers.dart';
-
 import 'package:flutter_finalproject/Packages/Pages/Home/View/body.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
 import 'package:flutter_finalproject/Theme/style.dart';
@@ -41,16 +41,31 @@ class PageRegister extends StatefulWidget {
 class _PageRegister extends State<PageRegister> {
   //*form key
   final GlobalKey<FormState> _keyFoem = GlobalKey<FormState>();
+
   //* icon
   bool _obscureText = true;
   FaIcon _iconSuffix = PathIcons.eyeIcon;
 
+  // controller of smpel Taxt
+  Map<String, TextEditingController> controllerValue = {
+    'first_name': TextEditingController(),
+    'last_name': TextEditingController(),
+    // 'age': TextEditingController(),
+    'email': TextEditingController(),
+    'password': TextEditingController(),
+    'phone_number': TextEditingController(),
+    // "city_user": TextEditingController(),
+    // 'account_type': TextEditingController(),
+  };
+
   // * pass
   String _pass = " ";
+
   //* RadioValue
   int _radiovalue = 0;
 
   int _pontar = 0;
+
   //* method
 
   //*Dropdown Menu
@@ -115,6 +130,7 @@ class _PageRegister extends State<PageRegister> {
                         ),
                         child: Column(
                           children: [
+
                             //*tital box
                             Container(
                               margin: EdgeInsets.symmetric(horizontal: 15.h),
@@ -138,6 +154,7 @@ class _PageRegister extends State<PageRegister> {
                                     //* first name
                                     SimpleFiled(
                                       keyboardType: TextInputType.name,
+                                      controller: controllerValue['first_name'],
                                       onValidator: (value) =>
                                           AppValidators.isname(value),
                                       hint: KeyLang.firstName.tr(),
@@ -150,6 +167,7 @@ class _PageRegister extends State<PageRegister> {
                                     //* last name
                                     SimpleFiled(
                                       keyboardType: TextInputType.name,
+                                      controller: controllerValue['last_name'],
                                       onValidator: (value) =>
                                           AppValidators.isname(value),
                                       hint: KeyLang.lastName.tr(),
@@ -162,6 +180,7 @@ class _PageRegister extends State<PageRegister> {
                                     //*email
                                     SimpleFiled(
                                       keyboardType: TextInputType.emailAddress,
+                                      controller: controllerValue['email'],
                                       onValidator: (value) =>
                                           AppValidators.isEmail(value),
                                       hint: KeyLang.email.tr(),
@@ -210,6 +229,7 @@ class _PageRegister extends State<PageRegister> {
                                         onValidator: (value) =>
                                             AppValidators.isEqualPass(
                                                 value, _pass),
+                                        controller: controllerValue['password'],
                                         hint: KeyLang.cpass.tr(),
                                         isObscureText: _obscureText,
                                         pIcon: Icon(
@@ -236,6 +256,8 @@ class _PageRegister extends State<PageRegister> {
                                     //*phone
                                     SimpleFiled(
                                       keyboardType: TextInputType.phone,
+                                      controller:
+                                          controllerValue['phone_number'],
                                       onValidator: (value) =>
                                           AppValidators.isPhoneNumber(value),
                                       hint: KeyLang.phoneNumber.tr(),
@@ -373,9 +395,22 @@ class _PageRegister extends State<PageRegister> {
                                                   .toUpperCase()
                                                   .tr(),
                                               onTap: () async {
+
                                                 if (_keyFoem.currentState!
                                                     .validate()) {
-                                                  if (s == 1) {
+                                                  Register().postData(
+                                                    first_name: controllerValue['first_name']!,
+                                                    last_name: controllerValue[
+                                                    'last_name']!,
+                                                    email: controllerValue[
+                                                    'email']!,
+                                                    password: controllerValue[
+                                                    'password']!,
+                                                    phone_number: controllerValue[
+                                                    'phone_number']!,
+
+                                                  );
+                                                 /* if (s == 1) {
                                                     Navigator.pushNamed(
                                                       context,
                                                       PageInfoEng.id,
@@ -392,9 +427,14 @@ class _PageRegister extends State<PageRegister> {
                                                       PageInfoworker.id,
                                                     );
                                                   } else if (s == 6) {
-                                                    Navigator.pushNamed(
+                                                    Navigator.push(
                                                       context,
-                                                      PageInfowner.id,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              PageInfowner(
+                                                                email: '',
+                                                              )),
+
                                                     );
                                                   } else if (s == 4) {
                                                     Navigator.pushNamed(
@@ -410,7 +450,7 @@ class _PageRegister extends State<PageRegister> {
                                                           .massegRegister
                                                           .tr(),
                                                     );
-                                                  }
+                                                  }*/
                                                 }
                                               })),
                                     ),

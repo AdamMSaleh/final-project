@@ -14,7 +14,8 @@ import 'package:flutter_finalproject/Packages/Pages/Auth/Views/login.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/register.dart';
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/Home/View/body.dart';
-import 'package:flutter_finalproject/Packages/Pages/Invoice/View/body.dart';
+import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/view_invoices.dart';
+
 import 'package:flutter_finalproject/Packages/Pages/NewProject/View/maintenance_project.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/View/new_project.dart';
 import 'package:flutter_finalproject/Packages/Pages/Payment_History/View/body.dart';
@@ -24,7 +25,8 @@ import 'package:flutter_finalproject/Packages/Pages/Research/view/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/Splash/View/body.dart';
 
 import 'package:flutter_finalproject/Packages/Pages/ask_us/body.dart';
-import 'package:flutter_finalproject/Packages/Pages/project_%20parts/body.dart';
+import 'package:flutter_finalproject/Packages/Pages/project_%20parts/view/body.dart';
+import 'package:flutter_finalproject/Packages/Pages/project_%20parts/view/work_record.dart';
 
 class AppRoutes {
   static Map<String, WidgetBuilder> routes = {
@@ -46,9 +48,10 @@ class AppRoutes {
     Archive.id: (context) => Archive(),
     AskUs.id: (context) => AskUs(),
     MainteneanceProject.id: (context) => MainteneanceProject(),
-    Invoice.id: (context) => Invoice(),
+    view_invoices.id: (context) => view_invoices(),
     PaymentHistory.id: (context) => PaymentHistory(),
     PlanUpload.id: (context) => PlanUpload(),
     WorkersDetection.id: (context) => WorkersDetection(),
+    WorkRecond.id: (context) => WorkRecond(),
   };
 }

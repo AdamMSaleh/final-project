@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, implementation_imports, duplicate_ignore
+// ignore_for_file: prefer_const_constructors, implementation_imports, duplicate_ignore, camel_case_types
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
@@ -8,15 +8,15 @@ import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/su
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/projects_details.dart';
 import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/design.dart';
 
-class CurrentProjects extends StatefulWidget {
-  const CurrentProjects({Key? key}) : super(key: key);
-  static const String id = 'CurrentProjects';
+class CurrentProjects_up extends StatefulWidget {
+  const CurrentProjects_up({Key? key}) : super(key: key);
+  static const String id = 'CurrentProjects_up';
 
   @override
-  State<CurrentProjects> createState() => _CurrentProjectsState();
+  State<CurrentProjects_up> createState() => _CurrentProjectsState();
 }
 
-class _CurrentProjectsState extends State<CurrentProjects> {
+class _CurrentProjectsState extends State<CurrentProjects_up> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

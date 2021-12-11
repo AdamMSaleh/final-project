@@ -26,6 +26,7 @@ class IconBHome extends StatelessWidget {
       child: Column(
         children: [
           CircleAvatar(
+            backgroundColor: AppColors.blue,
             radius: 45.r,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
