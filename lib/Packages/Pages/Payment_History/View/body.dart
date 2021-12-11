@@ -12,6 +12,7 @@ import 'package:flutter_finalproject/Packages/Components/cach_image/image_user.d
 import 'package:flutter_finalproject/Packages/Pages/Archive/View/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/body.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/appbar.dart';
+import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/design.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/View/new_project.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/components/BoxDialog/dialog.dart';
 
@@ -98,7 +99,7 @@ class _PaymentHistoryState extends State<PaymentHistory>
         return Container(
           height: double.infinity,
           padding: const EdgeInsets.all(20),
-          color: Theme.of(assoom).accentColor,
+          color: project_color('76b5c5'),
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -107,20 +108,20 @@ class _PaymentHistoryState extends State<PaymentHistory>
                 Container(
                   margin: const EdgeInsets.all(12.0),
                   child: TextField(
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       labelText: 'الاسم',
                       labelStyle: TextStyle(
                         fontSize: 20,
                         color: Colors.white,
                       ),
-                      hintText: 'Enter Name',
+                      hintText: 'ادخل اسم العامل',
                       hintStyle: TextStyle(
                         fontSize: 15,
                         color: Colors.black,
                       ),
                       prefixIcon: Icon(
                         Icons.person_outline_outlined,
-                        color: Colors.orange,
+                        color: project_color('efcba7'),
                       ),
                     ),
                     controller: myControllerName,
@@ -142,20 +143,20 @@ class _PaymentHistoryState extends State<PaymentHistory>
                 Container(
                   margin: const EdgeInsets.all(12.0),
                   child: TextField(
-                    decoration: const InputDecoration(
-                      labelText: 'القيمه',
+                    decoration: InputDecoration(
+                      labelText: 'قيمة الدفعة ',
                       labelStyle: TextStyle(
                         fontSize: 20,
                         color: Colors.white,
                       ),
-                      hintText: 'Enter Value',
+                      hintText: 'ادخل قيمة الدفعة',
                       hintStyle: TextStyle(
                         fontSize: 15,
                         color: Colors.black,
                       ),
                       prefixIcon: Icon(
                         Icons.payment,
-                        color: Colors.orange,
+                        color: project_color('efcba7'),
                       ),
                     ),
                     controller: myControllerValue,
@@ -176,7 +177,8 @@ class _PaymentHistoryState extends State<PaymentHistory>
                   width: (MediaQuery.of(context).size.width),
                   child: ElevatedButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.orange),
+                      backgroundColor:
+                          MaterialStateProperty.all(project_color('efcba7')),
                     ),
                     onPressed: () {
                       setState(() {
@@ -203,7 +205,7 @@ class _PaymentHistoryState extends State<PaymentHistory>
                     });
                   },
                   child: const Text(
-                    'اضافة',
+                    'تأكيد',
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.white,
@@ -250,7 +252,7 @@ class _PaymentHistoryState extends State<PaymentHistory>
   Color r = Colors.red;
   Color p = Colors.pink;
   Color bl = Colors.blue;
-  final items = ['دهان', 'حداد', 'نجار', 'بليط', 'المنيوم', 'كهربجي'];
+  final items = ['الكل', 'حداد', 'نجار', 'بليط', 'المنيوم', 'كهربجي', 'دهان'];
   String? value;
 
   DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
@@ -268,238 +270,198 @@ class _PaymentHistoryState extends State<PaymentHistory>
       appBar: AppBHome(),
       //*drawer
       drawer: DrawerHome(),
-      body: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                //drop down menu :
-                /*هون الليست تاع المهن */
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/Images/4545.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  //drop down menu :
+                  /*هون الليست تاع المهن */
 
-                child: SingleChildScrollView(
-                  child: Row(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(20.0),
-                        decoration: BoxDecoration(
-                          border: Border.all(),
-                        ),
-                        alignment: Alignment.center,
-                        margin: EdgeInsets.all(20),
-                        /*-------------------------------------------------------*/
-                        child: Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: b,
-                              width: 2,
-                            ),
-                          ),
-                          child: DropdownButton<String>(
-                            // isExpanded: true,
-                            iconSize: 36,
-                            icon: Icon(
-                              Icons.arrow_drop_down,
-                              color: b,
-                            ),
-                            hint: Text("  فرز الدفعات حسب أصحاب المهن    "),
-                            value: value,
-                            items: items.map(buildMenuItem).toList(),
-                            onChanged: (value) =>
-                                setState(() => this.value = value),
-                          ),
-                        ),
-                      ),
-                      //-------------------------------------------
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Row(
-            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Expanded(
-                child: Container(
-                  child: Text(
-                    'اسم المستفيد',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: b,
-                    ),
-                  ),
-                  // alignment: Alignment.center,
-                  // width: (MediaQuery.of(context).size.width) / 3.5,
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  child: Text(
-                    'قيمة الدفعة',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: b,
-                    ),
-                  ),
-                  // alignment: Alignment.center,
-                  // width: (MediaQuery.of(context).size.width) / 4,
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  child: Text(
-                    'تاريخ الدفعة',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: b,
-                    ),
-                  ),
-                  // alignment: Alignment.center,
-                  // width: (MediaQuery.of(context).size.width) / 4,
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  child: Text(
-                    'حالة الدفعة',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: b,
-                    ),
-                  ),
-                  // alignment: Alignment.center,
-                  // width: (MediaQuery.of(context).size.width) / 6,
-                ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              //----------------------------------------------------------
-              //عرض القيم للفواتير
-              //cards
-              Expanded(
-                flex: 1,
-                child: Container(
-                  height: (MediaQuery.of(context).size.height) / 2,
-                  width: (MediaQuery.of(context).size.width),
                   child: SingleChildScrollView(
-                    child: Column(
+                    child: Row(
                       children: [
-                        ...yy.map((e) {
-                          return Container(
-                            padding: EdgeInsets.all(10.0),
-                            //ببعد الكروت كلها اللي جوا نفس هاد الكونتينر عن بعض مقدار 10
-
-                            color: t,
-                            child: Card(
-                              // padding: EdgeInsets.all(10.0),
-                              margin: EdgeInsets.all(10.0), //خصائص الكرت
-                              elevation: 10, //ارتفاع الكرت عن الصفحة
-                              //بنحط ارتفاع كرمال يبين معنا الشادو للكرت
-                              shadowColor: o,
-                              color: o,
-                              child: Padding(
-                                padding: const EdgeInsets.all(
-                                    10), //ابعاد محتوى الكرت عن اطار الكرت نفسه
-
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      // mainAxisAlignment:
-                                      // MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Expanded(
-                                          flex: 1,
-                                          child: Container(
-                                            alignment: Alignment.center,
-                                            width: (MediaQuery.of(context)
-                                                    .size
-                                                    .width) /
-                                                3.9,
-                                            child: Text(
-                                              e.name,
-                                              style: TextStyle(
-                                                fontSize: 14,
-                                                color: w,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          flex: 1,
-                                          child: Container(
-                                            alignment: Alignment.center,
-                                            width: (MediaQuery.of(context)
-                                                    .size
-                                                    .width) /
-                                                6,
-                                            child: Text(
-                                              "${e.value}",
-                                              style: TextStyle(
-                                                fontSize: 14,
-                                                color: w,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          flex: 1,
-                                          child: Container(
-                                            alignment: Alignment.center,
-                                            width: (MediaQuery.of(context)
-                                                    .size
-                                                    .width) /
-                                                4.2,
-                                            child: Text(
-                                              e.date,
-                                              style: TextStyle(
-                                                fontSize: 12,
-                                                color: w,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          flex: 1,
-                                          child: Container(
-                                            margin: EdgeInsets.only(left: 8),
-                                            alignment: Alignment.center,
-                                            width: (MediaQuery.of(context)
-                                                    .size
-                                                    .width) /
-                                                7,
-                                            child: e.ico,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                        Container(
+                          padding: EdgeInsets.all(10.0),
+                          // decoration: BoxDecoration(
+                          //   border: Border.all(),
+                          // ),
+                          alignment: Alignment.center,
+                          margin: EdgeInsets.all(20),
+                          /*-------------------------------------------------------*/
+                          child: Container(
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: project_color('efcba7'),
+                                  width: 2,
                                 ),
+                                borderRadius: BorderRadius.circular(10)),
+                            child: DropdownButton<String>(
+                              dropdownColor: project_color('efcba7'),
+
+                              // isExpanded: true,
+                              iconSize: 36,
+                              alignment: Alignment.center,
+
+                              icon: Icon(
+                                Icons.arrow_drop_down,
+                                color: b,
                               ),
+
+                              hint: Text("  فرز الدفعات حسب أصحاب المهن    "),
+                              value: value,
+                              items: items.map(buildMenuItem).toList(),
+                              onChanged: (value) =>
+                                  setState(() => this.value = value),
                             ),
-                          );
-                        }).toList(),
+                          ),
+                        ),
+                        //-------------------------------------------
                       ],
                     ),
                   ),
                 ),
+              ],
+            ),
+            //===========================================
+            //===========================================
+            //هاد الصف للعناوين للجدول
+            Container(
+              width: (MediaQuery.of(context).size.width) * 2,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+                children: [
+                  //اسم صاحب الدفعة
+                  Column(
+                    children: [
+                      Container(
+                        child: Text(
+                          'اسم المستفيد',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: b,
+                          ),
+                        ),
+                        // alignment: Alignment.center,
+                        // width: (MediaQuery.of(context).size.width) / 3.5,
+                      ),
+                    ],
+                  ),
+                  //قيمة الدفعة
+                  Column(
+                    children: [
+                      Column(
+                        children: [
+                          Container(
+                            child: Text(
+                              'قيمة الدفعة',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: b,
+                              ),
+                            ),
+                            // alignment: Alignment.center,
+                            // width: (MediaQuery.of(context).size.width) / 3.5,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  //تاريخ الدفعة
+                  Column(
+                    children: [
+                      Column(
+                        children: [
+                          Container(
+                            child: Text(
+                              'تاريخ الدفعة',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: b,
+                              ),
+                            ),
+                            // alignment: Alignment.center,
+                            // width: (MediaQuery.of(context).size.width) / 3.5,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  //حالة الدفعة
+                  Column(
+                    children: [
+                      Column(
+                        children: [
+                          Container(
+                            child: Text(
+                              'حالة الدفعة',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: b,
+                              ),
+                            ),
+                            // alignment: Alignment.center,
+                            // width: (MediaQuery.of(context).size.width) / 3.5,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               ),
-            ],
-          ),
-        ],
+            ),
+            //-------------------------------------------------
+            // هاد صف الجدول تبع القيم الي بعبيها يعني عرض الدفعات
+            Container(
+              height: (MediaQuery.of(context).size.height) * 0.56,
+              padding: EdgeInsets.all(5),
+              child: SingleChildScrollView(
+                child: Table(
+                  // defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+                  border: TableBorder.all(color: Colors.black),
+                  children: [
+                    ...yy.map(
+                      (e) {
+                        return TableRow(
+                          children: [
+                            Text(e.name),
+                            Text("${e.value}"),
+                            Text(e.date),
+                            e.ico,
+                          ],
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            )
+
+//================================================
+          ],
+        ),
       ),
       //الزر العائم لاضافة دفعة
 
       floatingActionButton: FloatingActionButton(
+        backgroundColor: project_color('76b5c5'),
         onPressed: () => setState(() {
           btnPayment(context);
         }),
         child: Icon(
           // Icons.verified_sharp,
           Icons.add,
-          color: b,
+          color: w,
           size: 40,
         ),
       ),
@@ -550,7 +512,6 @@ class _PaymentHistoryState extends State<PaymentHistory>
       myControllerValue.clear();
       setDate = 'تاريخ الدفعة';
       Navigator.of(context).pop();
-      print('aaa');
     });
   }
 }

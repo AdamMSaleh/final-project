@@ -9,7 +9,7 @@ class AppColors {
   }
 
   // background   Color
-  static Color blue = _colorFromHex('#2253e6');
+  static Color blue = _colorFromHex('#76b5c5');
   static Color black = _colorFromHex('#141313');
 
   // fonte Color
