@@ -70,5 +70,16 @@
     "massTypeProj":"You must choose the type of project",
     "massNewProject" :"You must upload files for plans and building permits",
     "administratoName":"administrator's name",
-    "Workers Detection" :"Workers Detection"
+    "Workers Detection" :"Workers Detection",
+    "Contractors" : "Contractors",
+    "Ready Mixed Concrete":"Mixed Concrete",
+    "Merchants" : "Merchants",
+    "Founding":"Founding",
+    "Finishes":"Finishes",
+    "Blacksmiths":"Blacksmiths",
+    "Carpenters" : "Carpenters",
+    "Plumber" : "Plumber",
+    "Tile Setter" :"Tile Setter",
+    "Electrical" :"Electrical",
+    "Fat" :"Fat"
 }

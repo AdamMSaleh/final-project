@@ -1,8 +1,10 @@
+// ignore_for_file: implementation_imports
+
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/sup_appbar.dart';
-import 'package:flutter_finalproject/Packages/Pages/Home/Components/btnIcon/iconbhom.dart';
-import 'package:flutter_finalproject/Packages/Pages/Home/Components/mnuBox/icon_box.dart';
+import 'package:flutter_finalproject/Packages/Pages/project_%20parts/components/name_row.dart';
+import 'package:flutter_finalproject/Packages/Pages/project_%20parts/components/row.dart';
 import 'package:flutter_finalproject/Utils/path_images.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,41 +20,70 @@ class WorkersDetection extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 35.h),
-              IconBox(
-                hrizntl: 5,
-                chldrn: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      IconBHome(
-                        onTap: () {},
-                        imag: PathImages.currentProjects,
-                        btnName: KeyLang.currentProjects,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconBHome(
-                        onTap: () {},
-                        imag: PathImages.currentProjects,
-                        btnName: KeyLang.currentProjects,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      IconBHome(
-                        onTap: () {},
-                        imag: PathImages.currentProjects,
-                        btnName: KeyLang.currentProjects,
-                      ),
-                    ],
-                  ),
-                ],
+              SizedBox(height: 20.h),
+              //* row name
+              NameRow(
+                name: KeyLang.merchants,
+              ),
+
+              //* first row
+              RowThreBot(
+                btnName1: KeyLang.readyMixedConcrete,
+                imag1: PathImages.transitMixer,
+                onTap1: () {},
+                imag2: PathImages.shop,
+                btnName2: KeyLang.shopkeeper,
+                onTap2: () {},
+                imag3: PathImages.machineowners,
+                btnName3: KeyLang.machineowners,
+                onTap3: () {},
+              ),
+
+              SizedBox(height: 20.h),
+              //* row name
+              NameRow(
+                name: KeyLang.founding,
+              ),
+
+              //* 2 row
+              RowThreBot(
+                imag1: PathImages.engineers,
+                btnName1: KeyLang.engineer,
+                onTap1: () {},
+                imag2: PathImages.contractors,
+                btnName2: KeyLang.contractors,
+                onTap2: () {},
+                imag3: PathImages.worker,
+                btnName3: KeyLang.worker,
+                onTap3: () {},
+              ),
+              SizedBox(height: 20.h),
+              //*name 3 row
+              NameRow(name: KeyLang.finishes),
+              //* 3row
+
+              RowThreBot(
+                imag1: PathImages.smith,
+                btnName1: KeyLang.blacksmiths,
+                onTap1: () {},
+                imag2: PathImages.carpentry,
+                btnName2: KeyLang.carpenters,
+                onTap2: () {},
+                imag3: PathImages.plumbing,
+                btnName3: KeyLang.plumber,
+                onTap3: () {},
+              ),
+              SizedBox(height: 10.h),
+              RowThreBot(
+                imag1: PathImages.tiles,
+                btnName1: KeyLang.tilesetter,
+                onTap1: () {},
+                imag2: PathImages.electrical,
+                btnName2: KeyLang.electrical,
+                onTap2: () {},
+                imag3: PathImages.fat,
+                btnName3: KeyLang.fat,
+                onTap3: () {},
               ),
             ],
           ),

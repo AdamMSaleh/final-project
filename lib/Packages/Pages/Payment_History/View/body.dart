@@ -1,6 +1,6 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, implementation_imports, unused_import, must_be_immutable, sized_box_for_whitespace, duplicate_ignore, deprecated_member_use, avoid_unnecessary_containers, non_constant_identifier_names, avoid_print
 import 'dart:math';
-import 'dart:ui';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
