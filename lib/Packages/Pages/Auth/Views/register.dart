@@ -57,6 +57,7 @@ class _PageRegister extends State<PageRegister> {
     // "city_user": TextEditingController(),
     // 'account_type': TextEditingController(),
   };
+  var account_type = "";
 
   // * pass
   String _pass = " ";
@@ -130,7 +131,6 @@ class _PageRegister extends State<PageRegister> {
                         ),
                         child: Column(
                           children: [
-
                             //*tital box
                             Container(
                               margin: EdgeInsets.symmetric(horizontal: 15.h),
@@ -395,62 +395,67 @@ class _PageRegister extends State<PageRegister> {
                                                   .toUpperCase()
                                                   .tr(),
                                               onTap: () async {
+                                                if (s == 1) {
+                                                  // المهندس
+                                                  Navigator.pushNamed(
+                                                    context,
+                                                    PageInfoEng.id,
+                                                  );
+                                                } else if (s == 2) {
+                                                  //صاحب مهنه
+                                                  Navigator.pushNamed(
+                                                    context,
+                                                    PageInfoPr.id,
+                                                  );
+                                                } else if (s == 3) {
+                                                  //العمال
+                                                  //PageInfoworker
+                                                  Navigator.pushNamed(
+                                                    context,
+                                                    PageInfoworker.id,
+                                                  );
+                                                } else if (s == 6) {
+                                                  //المالك العقار
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            PageInfowner()),
+                                                  );
+                                                } else if (s == 4) {
+                                                  //صاحب المتجر
+                                                  Navigator.pushNamed(
+                                                    context,
+                                                    PageInfoShope.id,
+                                                  );
+                                                } else if (s == 5) {
+                                                  //اصحاب الالات
+                                                  Navigator.pushNamed(
+                                                      context, PageInfoMech.id);
+                                                } else if (s == 0) {
+                                                  simpleToast(
+                                                    message: KeyLang
+                                                        .massegRegister
+                                                        .tr(),
+                                                  );
+                                                }
 
                                                 if (_keyFoem.currentState!
                                                     .validate()) {
                                                   Register().postData(
-                                                    first_name: controllerValue['first_name']!,
+                                                    first_name: controllerValue[
+                                                        'first_name']!,
                                                     last_name: controllerValue[
-                                                    'last_name']!,
+                                                        'last_name']!,
                                                     email: controllerValue[
-                                                    'email']!,
+                                                        'email']!,
                                                     password: controllerValue[
-                                                    'password']!,
-                                                    phone_number: controllerValue[
-                                                    'phone_number']!,
-
+                                                        'password']!,
+                                                    phone_number:
+                                                        controllerValue[
+                                                            'phone_number']!,
+                                                    account_type: s.toString(),
                                                   );
-                                                 /* if (s == 1) {
-                                                    Navigator.pushNamed(
-                                                      context,
-                                                      PageInfoEng.id,
-                                                    );
-                                                  } else if (s == 2) {
-                                                    Navigator.pushNamed(
-                                                      context,
-                                                      PageInfoPr.id,
-                                                    );
-                                                  } else if (s == 3) {
-                                                    //PageInfoworker
-                                                    Navigator.pushNamed(
-                                                      context,
-                                                      PageInfoworker.id,
-                                                    );
-                                                  } else if (s == 6) {
-                                                    Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              PageInfowner(
-                                                                email: '',
-                                                              )),
-
-                                                    );
-                                                  } else if (s == 4) {
-                                                    Navigator.pushNamed(
-                                                      context,
-                                                      PageInfoShope.id,
-                                                    );
-                                                  } else if (s == 5) {
-                                                    Navigator.pushNamed(context,
-                                                        PageInfoMech.id);
-                                                  } else if (s == 0) {
-                                                    simpleToast(
-                                                      message: KeyLang
-                                                          .massegRegister
-                                                          .tr(),
-                                                    );
-                                                  }*/
                                                 }
                                               })),
                                     ),

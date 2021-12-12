@@ -3,6 +3,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Btn/simple_btn.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
@@ -12,7 +13,6 @@ import 'package:flutter_finalproject/Packages/Components/text_filed/simple_filed
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/forgot.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/register.dart';
 import 'package:flutter_finalproject/Packages/Pages/Home/View/body.dart';
-
 import 'package:flutter_finalproject/Theme/app_color.dart';
 import 'package:flutter_finalproject/Theme/style.dart';
 import 'package:flutter_finalproject/Theme/theme_status.dart';
@@ -32,9 +32,14 @@ class PageLogin extends StatefulWidget {
 class _PageLoginState extends State<PageLogin> {
   //*form key
   final GlobalKey<FormState> _keyFoem = GlobalKey<FormState>();
+
   //*icon
   bool _obscureText = true;
   FaIcon _iconSuffix = PathIcons.eyeIcon;
+  Map<String, TextEditingController> controllerValue = {
+    'email': TextEditingController(),
+    'password': TextEditingController(),
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -111,6 +116,7 @@ class _PageLoginState extends State<PageLogin> {
                                   children: [
                                     //*email
                                     SimpleFiled(
+                                    controller:controllerValue['email'],
                                       onValidator: (value) =>
                                           AppValidators.isEmail(value),
                                       keyboardType: TextInputType.emailAddress,
@@ -124,6 +130,7 @@ class _PageLoginState extends State<PageLogin> {
                                     SizedBox(height: 20.h),
                                     //*password
                                     SimpleFiled(
+                                        controller:controllerValue['password'],
                                         onValidator: (value) =>
                                             AppValidators.isPass(value),
                                         keyboardType:
@@ -179,10 +186,11 @@ class _PageLoginState extends State<PageLogin> {
                                   child: SimpleBtn(
                                 onTap: () {
                                   if (_keyFoem.currentState!.validate()) {
-                                    Navigator.pushReplacementNamed(
-                                      context,
-                                      PageHome.id,
-                                    );
+                                    Register().postLogin(email: controllerValue['email']!, password: controllerValue['password']!,);
+                                    // Navigator.pushReplacementNamed(
+                                    //   context,
+                                    //   PageHome.id,
+                                    // );
                                   }
                                 },
                                 btnText: KeyLang.login,
