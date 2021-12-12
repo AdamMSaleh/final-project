@@ -40,6 +40,7 @@ class RowThreBot extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            //* Methode represents her location in home/components/btnicon
             IconBHome(
               onTap: _onTap1,
               imag: _imag1,

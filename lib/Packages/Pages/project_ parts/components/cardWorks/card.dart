@@ -1,13 +1,18 @@
-// ignore_for_file: prefer_const_constructors, unused_field, prefer_final_fields, use_key_in_widget_constructors, must_be_immutable
+// ignore_for_file: prefer_const_constructors, unused_field, prefer_final_fields, use_key_in_widget_constructors, must_be_immutable, implementation_imports
 
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
 import 'package:flutter_finalproject/Theme/style.dart';
-import 'package:flutter_finalproject/Utils/path_images.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Cardwork extends StatelessWidget {
+  const Cardwork({required String typ, required String imge})
+      : _typ = typ,
+        _imge = imge;
+  //* values
+  final String _imge;
+  final String _typ;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -29,7 +34,7 @@ class Cardwork extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(2.w),
                 child: Image(
-                  image: AssetImage(PathImages.engineers),
+                  image: AssetImage(_imge),
                 ),
               ),
               SizedBox(width: 10.w),
@@ -40,15 +45,16 @@ class Cardwork extends StatelessWidget {
                   children: [
                     //* name
                     Expanded(
-                        child: Text(
-                      'adam',
-                      style: AppStyles.styleHeadline1Light
-                          .copyWith(color: AppColors.blue, fontSize: 15.h),
-                    )),
+                      child: Text(
+                        'adam',
+                        style: AppStyles.styleHeadline1Light
+                            .copyWith(color: AppColors.blue, fontSize: 15.h),
+                      ),
+                    ),
                     //* typ
                     Expanded(
                       child: Text(
-                        KeyLang.electrical,
+                        _typ.tr(),
                         style: AppStyles.styleHeadline1Light
                             .copyWith(color: AppColors.blue, fontSize: 15.h),
                       ),
