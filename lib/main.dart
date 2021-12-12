@@ -40,7 +40,11 @@ class MyApp extends StatelessWidget {
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,
+<<<<<<< HEAD
             initialRoute:  PageSplash.id, //PageHome.id,
+=======
+            initialRoute: PageSplash.id,
+>>>>>>> 303960829826ea65d7e6a152273a461dd2becf8a
             routes: AppRoutes.routes);
       },
     );

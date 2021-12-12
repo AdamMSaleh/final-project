@@ -6,7 +6,7 @@ import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/su
 import 'package:flutter_finalproject/Packages/Components/upload_image_Invoice/upload_image.dart';
 import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/creat_invoices.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/view/body.dart';
-import 'package:flutter_finalproject/Packages/Pages/project_%20parts/body.dart';
+import 'package:flutter_finalproject/Packages/Pages/project_%20parts/view/body.dart';
 
 import '../../Payment_History/View/body.dart';
 import '../../Plan/View/body.dart';

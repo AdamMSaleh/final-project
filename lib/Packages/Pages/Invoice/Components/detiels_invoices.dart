@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, camel_case_types
+
 class Detiels_Invoices {
   String name_item;
   double price;

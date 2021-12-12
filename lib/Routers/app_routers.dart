@@ -25,7 +25,8 @@ import 'package:flutter_finalproject/Packages/Pages/Research/view/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/Splash/View/body.dart';
 
 import 'package:flutter_finalproject/Packages/Pages/ask_us/body.dart';
-import 'package:flutter_finalproject/Packages/Pages/project_%20parts/body.dart';
+import 'package:flutter_finalproject/Packages/Pages/project_%20parts/view/body.dart';
+import 'package:flutter_finalproject/Packages/Pages/project_%20parts/view/work_record.dart';
 
 class AppRoutes {
   static Map<String, WidgetBuilder> routes = {
@@ -51,5 +52,6 @@ class AppRoutes {
     PaymentHistory.id: (context) => PaymentHistory(),
     PlanUpload.id: (context) => PlanUpload(),
     WorkersDetection.id: (context) => WorkersDetection(),
+    WorkRecond.id: (context) => WorkRecond(),
   };
 }

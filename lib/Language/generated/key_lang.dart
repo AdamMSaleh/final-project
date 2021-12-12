@@ -72,4 +72,16 @@ class KeyLang {
   static String massNewProject = "massNewProject";
   static String administratoName = "administratoName";
   static String workersDetection = "Workers Detection";
+  static String contractors = "Contractors";
+  static String readyMixedConcrete = "Ready Mixed Concrete";
+  static String merchants = "Merchants";
+  static String founding = "Founding";
+  static String finishes = "Finishes";
+  static String blacksmiths = "Blacksmiths";
+  static String carpenters = "Carpenters";
+  static String plumber = "Plumber";
+  static String tilesetter = "Tile Setter";
+  static String electrical = "Electrical";
+  static String fat = "Fat";
+  static String workRecond = "Work Recond";
 }

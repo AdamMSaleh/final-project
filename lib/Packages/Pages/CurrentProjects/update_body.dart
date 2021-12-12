@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, implementation_imports, duplicate_ignore
+// ignore_for_file: prefer_const_constructors, implementation_imports, duplicate_ignore, camel_case_types
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
@@ -7,7 +7,6 @@ import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/su
 
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/projects_details.dart';
 import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/design.dart';
-import 'package:flutter_finalproject/Packages/Pages/Plan/View/body.dart';
 
 class CurrentProjects_up extends StatefulWidget {
   const CurrentProjects_up({Key? key}) : super(key: key);

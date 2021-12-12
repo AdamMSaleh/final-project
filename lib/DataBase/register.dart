@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable, non_constant_identifier_names, avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
@@ -45,36 +47,46 @@ class Register {
     required String account_type,
   }) async {
     //200--success ,400,404,
+<<<<<<< HEAD
 
+=======
+    String msg = "";
+>>>>>>> 303960829826ea65d7e6a152273a461dd2becf8a
     try {
       var response = await http.post(
         Uri.parse("https://zuporjict1.000webhostapp.com/register.php"),
         body: {
           'first_name': first_name.text,
           'last_name': last_name.text,
-          'age': '25',//age.text,
+          'age': '25', //age.text,
           'email': email.text,
           'password': password.text,
           'phone_number': phone_number.text,
           'picture_user': '2iuh64832svsv',
+<<<<<<< HEAD
           "city_user": 'amman',//city_user.text,
           'account_type': account_type,//account_type.text,
+=======
+          "city_user": 'amman', //city_user.text,
+          'account_type': '01', //account_type.text,
+>>>>>>> 303960829826ea65d7e6a152273a461dd2becf8a
           'Account_Status': 'yes',
           'Activity': 'yes',
         },
       );
-      msg=response.body;
+      msg = response.body;
       print(response.body);
       // print('\n\n\n\n\n\n');
       // print(response)
 
     } catch (e) {
-      msg=e.toString();
+      msg = e.toString();
       print(e);
     }
     tostforRegsetr(msg);
   }
 
+<<<<<<< HEAD
   //*******************************************************************************
 
   postDataEngineer({
@@ -259,6 +271,9 @@ class Register {
 
 
   tostforRegsetr(String mss){
+=======
+  tostforRegsetr(String mss) {
+>>>>>>> 303960829826ea65d7e6a152273a461dd2becf8a
     return Fluttertoast.showToast(
         // child: Text(
         //   'Login Successful',

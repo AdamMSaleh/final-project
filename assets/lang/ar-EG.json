@@ -70,8 +70,19 @@
   "massTypeProj":"يجب ان تختار نوع المشروع",
   "massNewProject" :"يجب ان تقوم برفع ملفات للمخططات و رخصة البناء",
   "administratoName":"اسم المسؤل",
-  "Workers Detection" :  "كشف العمال "
-
+  "Workers Detection" :  "كشف العمال ",
+  "Contractors" :"مقاولين",
+  "Ready Mixed Concrete" : "باطون جاهز",
+  "Merchants" :"تجار",
+  "Founding" : "التاسيس",
+  "Finishes":"التشطيبات",
+  "Blacksmiths":"حدادون",
+  "Carpenters" : "النجارين",
+  "Plumber" :"الموسرجي",
+  "Tile Setter" :"بليط",
+  "Electrical" : "كهربجي",
+  "Fat" :"دهين",
+  "Work Recond":"سجل العمال"
  
   
 }

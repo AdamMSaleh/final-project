@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names, sized_box_for_whitespace
+
 import 'package:flutter/material.dart';
 
 project_color(String x) {

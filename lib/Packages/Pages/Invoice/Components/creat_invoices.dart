@@ -1,3 +1,5 @@
+// ignore_for_file: no_logic_in_create_state, unnecessary_this, non_constant_identifier_names, camel_case_types, must_be_immutable, prefer_const_constructors, avoid_print
+
 import 'package:flutter/material.dart';
 
 import 'design.dart';

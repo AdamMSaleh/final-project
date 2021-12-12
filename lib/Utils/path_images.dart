@@ -24,4 +24,18 @@ class PathImages {
   static String search = 'assets/icons/search-icon.png';
   static String profileicon = 'assets/icons/Profile-icon.png';
   static String archive = 'assets/icons/archive-icon.png';
+
+  //* Workers Detection
+  static String engineers = 'assets/icons/engineers.png';
+  static String contractors = 'assets/icons/Contractors.png';
+  static String worker = 'assets/icons/worker.png';
+  static String machineowners = 'assets/icons/bulldozer-icon.png';
+  static String shop = 'assets/icons/shop-icon.png';
+  static String transitMixer = 'assets/icons/transit-mixer-icon.png';
+  static String smith = 'assets/icons/Smith.png';
+  static String carpentry = 'assets/icons/Carpentry-icon.png';
+  static String plumbing = 'assets/icons/Plumbing-icon.png';
+  static String tiles = 'assets/icons/building tools.png';
+  static String electrical = 'assets/icons/Electrical-icon.png';
+  static String fat = 'assets/icons/paint-bucket-icon.png';
 }

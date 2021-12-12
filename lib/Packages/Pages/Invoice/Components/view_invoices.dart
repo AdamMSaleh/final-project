@@ -1,12 +1,15 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: unnecessary_this, camel_case_types, non_constant_identifier_names, no_logic_in_create_state
+
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/Select_Screen/select_screen.dart';
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/projects_details.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'creat_invoices.dart';
 import 'design.dart';
 import 'detiels_invoices.dart';
 
+// ignore: must_be_immutable
 class view_invoices extends StatefulWidget {
   static const String id = 'view_invoices';
   List<Detiels_Invoices>? invoice_info;
@@ -37,6 +40,7 @@ class _view_invoicesState extends State<view_invoices> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: project_color('76b5c5'),
+        // ignore: prefer_const_constructors
         title: Text("الفواتير"),
         // centerTitle: true,
         leading: IconButton(
@@ -110,19 +114,20 @@ class _view_invoicesState extends State<view_invoices> {
                                               CrossAxisAlignment.center,
                                           children: <Widget>[
                                             Padding(
-                                              padding: EdgeInsets.all(23),
+                                              padding: EdgeInsets.all(23.w),
                                               child: Text(e.name_item),
                                             ),
                                             Padding(
-                                              padding: EdgeInsets.all(23),
+                                              padding: EdgeInsets.all(23.w),
                                               child: Text('${e.price}'),
                                             ),
                                             Padding(
+                                              // ignore: prefer_const_constructors
                                               padding: EdgeInsets.all(23),
                                               child: Text('${e.count_item}'),
                                             ),
                                             Padding(
-                                              padding: EdgeInsets.all(23),
+                                              padding: const EdgeInsets.all(23),
                                               child: Text('${e.total}'),
                                             ),
 
@@ -157,13 +162,14 @@ class _view_invoicesState extends State<view_invoices> {
                                             // ),
                                             //--------------------------
                                             Padding(
+                                              // ignore: prefer_const_constructors
                                               padding: EdgeInsets.all(5),
                                               child: ElevatedButton(
                                                 style: ButtonStyle(
                                                     backgroundColor:
                                                         MaterialStateProperty
                                                             .all(Colors.blue)),
-                                                child: Icon(Icons.edit),
+                                                child: const Icon(Icons.edit),
                                                 onPressed: () {
                                                   setState(() {
                                                     // int vul = invoice_info1.;
@@ -230,13 +236,13 @@ class _view_invoicesState extends State<view_invoices> {
                                             ),
                                             //--------------------------------
                                             Padding(
-                                              padding: EdgeInsets.all(5),
+                                              padding: const EdgeInsets.all(5),
                                               child: ElevatedButton(
                                                 style: ButtonStyle(
                                                     backgroundColor:
                                                         MaterialStateProperty
                                                             .all(Colors.red)),
-                                                child: Icon(Icons.delete),
+                                                child: const Icon(Icons.delete),
                                                 onPressed: () {
                                                   setState(() {
                                                     // int vul = invoice_info1.;
