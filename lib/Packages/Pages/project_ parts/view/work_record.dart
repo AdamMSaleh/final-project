@@ -4,7 +4,7 @@ import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/sup_appbar.dart';
-import 'package:flutter_finalproject/Packages/Pages/project_%20parts/components/c/card.dart';
+import 'package:flutter_finalproject/Packages/Pages/project_%20parts/components/cardWorks/card.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WorkRecond extends StatelessWidget {

@@ -6,14 +6,16 @@ import 'package:http/http.dart' as http;
 
 class Register {
   String url = "https://zuporjict1.000webhostapp.com/register.php";
-  String msg="";
+  String msg = "";
   registerUser() async {
     var data = {};
     var res = await http.post(Uri.parse(url), body: null);
   }
 
-  postLogin({  required TextEditingController email,
-    required TextEditingController password,})async {
+  postLogin({
+    required TextEditingController email,
+    required TextEditingController password,
+  }) async {
     //200--success ,400,404,
     String msg = "";
     try {
@@ -22,7 +24,6 @@ class Register {
         body: {
           'email': email.text,
           'password': password.text,
-
         },
       );
       msg = response.body;
@@ -36,6 +37,7 @@ class Register {
     }
     tostforRegsetr(msg);
   }
+
   postData({
     required TextEditingController first_name,
     required TextEditingController last_name,
@@ -47,11 +49,6 @@ class Register {
     required String account_type,
   }) async {
     //200--success ,400,404,
-<<<<<<< HEAD
-
-=======
-    String msg = "";
->>>>>>> 303960829826ea65d7e6a152273a461dd2becf8a
     try {
       var response = await http.post(
         Uri.parse("https://zuporjict1.000webhostapp.com/register.php"),
@@ -63,13 +60,8 @@ class Register {
           'password': password.text,
           'phone_number': phone_number.text,
           'picture_user': '2iuh64832svsv',
-<<<<<<< HEAD
-          "city_user": 'amman',//city_user.text,
-          'account_type': account_type,//account_type.text,
-=======
           "city_user": 'amman', //city_user.text,
-          'account_type': '01', //account_type.text,
->>>>>>> 303960829826ea65d7e6a152273a461dd2becf8a
+          'account_type': account_type, //account_type.text,
           'Account_Status': 'yes',
           'Activity': 'yes',
         },
@@ -86,23 +78,21 @@ class Register {
     tostforRegsetr(msg);
   }
 
-<<<<<<< HEAD
   //*******************************************************************************
 
   postDataEngineer({
     required TextEditingController picture_user,
     required TextEditingController city_user,
-
     required TextEditingController Guild_number,
     required TextEditingController Guild_picture,
     required TextEditingController office_name,
-
   }) async {
     //200--success ,400,404,
 
     try {
       var response = await http.post(
-        Uri.parse("https://zuporjict1.000webhostapp.com/extra%20registration/register_Engineer.php"),
+        Uri.parse(
+            "https://zuporjict1.000webhostapp.com/extra%20registration/register_Engineer.php"),
         body: {
           'picture_user': picture_user.text,
           'city_user': city_user.text,
@@ -111,13 +101,13 @@ class Register {
           'office_name': office_name.text,
         },
       );
-      msg=response.body;
+      msg = response.body;
       print(response.body);
       // print('\n\n\n\n\n\n');
       // print(response)
 
     } catch (e) {
-      msg=e.toString();
+      msg = e.toString();
       print(e);
     }
     tostforRegsetr(msg);
@@ -130,17 +120,16 @@ class Register {
   postDataDrivers({
     required TextEditingController picture_user,
     required TextEditingController city_user,
-
     required TextEditingController license_image,
     required TextEditingController license_no,
     required TextEditingController Type,
-
   }) async {
     //200--success ,400,404,
 
     try {
       var response = await http.post(
-        Uri.parse("https://zuporjict1.000webhostapp.com/extra%20registration/register_Drivers.php"),
+        Uri.parse(
+            "https://zuporjict1.000webhostapp.com/extra%20registration/register_Drivers.php"),
         body: {
           'picture_user': picture_user.text,
           'city_user': city_user.text,
@@ -149,13 +138,13 @@ class Register {
           'Type': Type.text,
         },
       );
-      msg=response.body;
+      msg = response.body;
       print(response.body);
       // print('\n\n\n\n\n\n');
       // print(response)
 
     } catch (e) {
-      msg=e.toString();
+      msg = e.toString();
       print(e);
     }
     tostforRegsetr(msg);
@@ -168,32 +157,29 @@ class Register {
   postDataProfessional({
     required TextEditingController picture_user,
     required TextEditingController city_user,
-
     required TextEditingController Profession_name,
     required TextEditingController profssion_certficate_no,
-
-
   }) async {
     //200--success ,400,404,
 
     try {
       var response = await http.post(
-        Uri.parse("https://zuporjict1.000webhostapp.com/extra%20registration/register_professional.php"),
+        Uri.parse(
+            "https://zuporjict1.000webhostapp.com/extra%20registration/register_professional.php"),
         body: {
           'picture_user': picture_user.text,
           'city_user': city_user.text,
           'Profession_name': Profession_name.text,
           'profssion_certficate_no': profssion_certficate_no.text,
-
         },
       );
-      msg=response.body;
+      msg = response.body;
       print(response.body);
       // print('\n\n\n\n\n\n');
       // print(response)
 
     } catch (e) {
-      msg=e.toString();
+      msg = e.toString();
       print(e);
     }
     tostforRegsetr(msg);
@@ -206,25 +192,25 @@ class Register {
   postDataUpdateOwner({
     required TextEditingController picture_user,
     required TextEditingController city_user,
-
   }) async {
     //200--success ,400,404,
 
     try {
       var response = await http.post(
-        Uri.parse("https://zuporjict1.000webhostapp.com/extra%20registration/register_professional.php"),
+        Uri.parse(
+            "https://zuporjict1.000webhostapp.com/extra%20registration/register_professional.php"),
         body: {
           'picture_user': picture_user.text,
           'city_user': city_user.text,
         },
       );
-      msg=response.body;
+      msg = response.body;
       print(response.body);
       // print('\n\n\n\n\n\n');
       // print(response)
 
     } catch (e) {
-      msg=e.toString();
+      msg = e.toString();
       print(e);
     }
     tostforRegsetr(msg);
@@ -237,29 +223,27 @@ class Register {
   postDataWorkers({
     required TextEditingController picture_user,
     required TextEditingController city_user,
-
     required TextEditingController work_name,
-
-
   }) async {
     //200--success ,400,404,
 
     try {
       var response = await http.post(
-        Uri.parse("https://zuporjict1.000webhostapp.com/extra%20registration/register_professional.php"),
+        Uri.parse(
+            "https://zuporjict1.000webhostapp.com/extra%20registration/register_professional.php"),
         body: {
           'picture_user': picture_user.text,
           'city_user': city_user.text,
           'work_name': work_name.text,
         },
       );
-      msg=response.body;
+      msg = response.body;
       print(response.body);
       // print('\n\n\n\n\n\n');
       // print(response)
 
     } catch (e) {
-      msg=e.toString();
+      msg = e.toString();
       print(e);
     }
     tostforRegsetr(msg);
@@ -267,13 +251,7 @@ class Register {
 
   //*******************************************************************************
 
-
-
-
-  tostforRegsetr(String mss){
-=======
   tostforRegsetr(String mss) {
->>>>>>> 303960829826ea65d7e6a152273a461dd2becf8a
     return Fluttertoast.showToast(
         // child: Text(
         //   'Login Successful',
