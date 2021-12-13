@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_web_libraries_in_flutter, unused_impor
 
 import 'package:flutter/material.dart';
+import 'package:flutter_finalproject/Packages/Components/upload_image_php/img_upload.dart';
 import 'package:flutter_finalproject/Packages/Pages/Archive/View/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/Info_User_Eng.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/infi_professionals.dart';
@@ -51,5 +52,7 @@ class AppRoutes {
     PaymentHistory.id: (context) => PaymentHistory(),
     PlanUpload.id: (context) => PlanUpload(),
     WorkersDetection.id: (context) => WorkersDetection(),
+    Upload_Image.id: (context) => Upload_Image(),
+
   };
 }

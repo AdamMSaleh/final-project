@@ -53,10 +53,13 @@ class _PageRegister extends State<PageRegister> {
     // 'age': TextEditingController(),
     'email': TextEditingController(),
     'password': TextEditingController(),
+    //test gui not importint
+    'passwordAgin': TextEditingController(),
     'phone_number': TextEditingController(),
     // "city_user": TextEditingController(),
     // 'account_type': TextEditingController(),
   };
+
   var account_type = "";
 
   // * pass
@@ -82,6 +85,13 @@ class _PageRegister extends State<PageRegister> {
 
   @override
   Widget build(BuildContext context) {
+    controllerValue['first_name']!.text = 'dssa' ;
+    controllerValue['last_name']!.text = 'yuyuyuy' ;
+    controllerValue['email']!.text = 'ututtu@zu.com' ;
+    controllerValue['password']!.text = '123456789' ;
+    controllerValue['phone_number']!.text = '5786428197' ;
+    controllerValue['passwordAgin']!.text = '123456789' ;
+
     return Scaffold(
         backgroundColor: AppColors.blue,
         body: SafeArea(
@@ -193,6 +203,7 @@ class _PageRegister extends State<PageRegister> {
                                     SizedBox(height: 20.h),
                                     //*password
                                     SimpleFiled(
+                                      controller: controllerValue['passwordAgin'],
                                         keyboardType:
                                             TextInputType.emailAddress,
                                         onValidator: (value) =>
@@ -224,6 +235,7 @@ class _PageRegister extends State<PageRegister> {
                                     SizedBox(height: 20.h),
                                     //* Confirem Password
                                     SimpleFiled(
+
                                         keyboardType:
                                             TextInputType.emailAddress,
                                         onValidator: (value) =>
@@ -397,6 +409,7 @@ class _PageRegister extends State<PageRegister> {
                                               onTap: () async {
                                                 if (s == 1) {
                                                   // المهندس
+
                                                   Navigator.pushNamed(
                                                     context,
                                                     PageInfoEng.id,
@@ -440,23 +453,23 @@ class _PageRegister extends State<PageRegister> {
                                                   );
                                                 }
 
-                                                if (_keyFoem.currentState!
-                                                    .validate()) {
-                                                  Register().postData(
-                                                    first_name: controllerValue[
-                                                        'first_name']!,
-                                                    last_name: controllerValue[
-                                                        'last_name']!,
-                                                    email: controllerValue[
-                                                        'email']!,
-                                                    password: controllerValue[
-                                                        'password']!,
-                                                    phone_number:
-                                                        controllerValue[
-                                                            'phone_number']!,
-                                                    account_type: s.toString(),
-                                                  );
-                                                }
+                                                // if (_keyFoem.currentState!
+                                                //     .validate()) {
+                                                //   Register().postData(
+                                                //     first_name: controllerValue[
+                                                //         'first_name']!,
+                                                //     last_name: controllerValue[
+                                                //         'last_name']!,
+                                                //     email: controllerValue[
+                                                //         'email']!,
+                                                //     password: controllerValue[
+                                                //         'password']!,
+                                                //     phone_number:
+                                                //         controllerValue[
+                                                //             'phone_number']!,
+                                                //     account_type: s.toString(),
+                                                //   );
+                                                // }
                                               })),
                                     ),
 
