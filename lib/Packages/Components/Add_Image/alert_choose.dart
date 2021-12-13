@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
+import 'package:flutter_finalproject/Packages/Components/upload_image_php/img_upload.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
 import 'package:flutter_finalproject/Theme/theme_status.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -56,9 +57,17 @@ class _AlertChooseImageState extends State<AlertChooseImage> {
                   FontAwesomeIcons.camera,
                   color: AppColors.blue,
                 ),
-                onTap: () async {
-                  await _getImage(isCamera: true);
-                  Navigator.pop(context);
+                onTap: ()  {
+                  // await _getImage(isCamera: true);
+                  // Navigator.pop(context);
+                  // Upload_ImageState().btnplane(context ,false);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute (
+                      builder: (BuildContext context) => Upload_Image(galleryOrCamera: false,bathImage:'profile' ),
+                    ),
+
+                  );
                 },
               ),
             ),
@@ -69,9 +78,18 @@ class _AlertChooseImageState extends State<AlertChooseImage> {
                   FontAwesomeIcons.fileImage,
                   color: AppColors.blue,
                 ),
-                onTap: () async {
-                  await _getImage();
-                  Navigator.pop(context);
+                onTap: ()  {
+                  // await _getImage();
+                  // Navigator.pop(context);
+                  // Upload_ImageState().btnplane(context ,true);
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute (
+                      builder: (BuildContext context) => Upload_Image(galleryOrCamera: true,bathImage:'profile'),
+                    ),
+
+                  );
+
                 },
               ),
             ),
