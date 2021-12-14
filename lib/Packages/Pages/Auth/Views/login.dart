@@ -12,6 +12,7 @@ import 'package:flutter_finalproject/Packages/Components/richText/rich_text.dart
 import 'package:flutter_finalproject/Packages/Components/text_filed/simple_filed.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/forgot.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/register.dart';
+import 'package:flutter_finalproject/Packages/Pages/Home/View/body.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
 import 'package:flutter_finalproject/Theme/style.dart';
 import 'package:flutter_finalproject/Theme/theme_status.dart';
@@ -185,14 +186,14 @@ class _PageLoginState extends State<PageLogin> {
                                   child: SimpleBtn(
                                 onTap: () {
                                   if (_keyFoem.currentState!.validate()) {
-                                    Register().postLogin(
+                                    /* Register().postLogin(
                                       email: controllerValue['email']!,
                                       password: controllerValue['password']!,
+                                    );*/
+                                    Navigator.pushReplacementNamed(
+                                      context,
+                                      PageHome.id,
                                     );
-                                    // Navigator.pushReplacementNamed(
-                                    //   context,
-                                    //   PageHome.id,
-                                    // );
                                   }
                                 },
                                 btnText: KeyLang.login,

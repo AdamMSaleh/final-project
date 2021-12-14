@@ -27,9 +27,9 @@ class _PageSplashState extends State<PageSplash> {
   void initState() {
     super.initState();
     // ignore: prefer_const_constructors
-    /* Timer(Duration(seconds: 7), () {
+    Timer(Duration(seconds: 7), () {
       Navigator.pushReplacementNamed(context, PageLogin.id);
-    });*/
+    });
   }
 
   @override
@@ -62,7 +62,7 @@ class _PageSplashState extends State<PageSplash> {
               SizedBox(
                 height: 20,
               ),
-              Text(KeyLang.welcome.tr(),
+              Text(KeyLang.welcome,
                   style: AppStyles.welcome.copyWith(
                     color: AppColors.white,
                     fontSize: 35.h,

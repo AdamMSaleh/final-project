@@ -19,7 +19,7 @@ class AppStyles {
   //
 
   static TextStyle _fontwelcome({TextStyle? style}) {
-    return GoogleFonts.lora(textStyle: style);
+    return GoogleFonts.playfairDisplay(textStyle: style);
   }
 
   // ?----------------------------- style Ligth ----------------------
