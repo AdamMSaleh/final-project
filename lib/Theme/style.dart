@@ -15,7 +15,11 @@ class AppStyles {
 
   static TextStyle _fontT({TextStyle? style}) {
     return GoogleFonts.aladin(textStyle: style);
-    //
+  }
+  //
+
+  static TextStyle _fontwelcome({TextStyle? style}) {
+    return GoogleFonts.lora(textStyle: style);
   }
 
   // ?----------------------------- style Ligth ----------------------
@@ -52,4 +56,6 @@ class AppStyles {
   static TextStyle styleBodyText2Dark = _fontType();
   // *********************** Button ********************************
   static TextStyle styleButtonDark = _fontType();
+  // *********************** wolcomSplash ***************************
+  static TextStyle welcome = _fontwelcome();
 }

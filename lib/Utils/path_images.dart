@@ -38,4 +38,5 @@ class PathImages {
   static String tiles = 'assets/icons/building tools.png';
   static String electrical = 'assets/icons/Electrical-icon.png';
   static String fat = 'assets/icons/paint-bucket-icon.png';
+  static String projectIcon = 'assets/icons/projectIcon.jpeg';
 }

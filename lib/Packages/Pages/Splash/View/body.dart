@@ -1,8 +1,9 @@
-// ignore_for_file: use_key_in_widget_constructors, sized_box_for_whitespace, prefer_const_constructors, duplicate_ignore, unused_import
+// ignore_for_file: use_key_in_widget_constructors, sized_box_for_whitespace, prefer_const_constructors, duplicate_ignore, unused_import, implementation_imports
 
 import 'dart:async';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
@@ -43,25 +44,28 @@ class _PageSplashState extends State<PageSplash> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CachedNetworkImage(
-                imageUrl: PathImages.logo,
-                //لتعديل ع صورة
-                imageBuilder: (context, jjjjj) {
-                  return CircleAvatar(
-                    backgroundImage: jjjjj,
-                    radius: 100.r, //لتكبير
-                  );
-                },
-                placeholder: (context, url) =>
-                    AppLoading(chooseLoading: ChooseLoading.IMAGE),
-
-                errorWidget: (context, url, error) => Icon(Icons.error),
+              Center(
+                child: Container(
+                  height: 175.w,
+                  width: 175.w,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      width: 2,
+                      color: Colors.white,
+                    ),
+                    image: DecorationImage(
+                      image: AssetImage(PathImages.projectIcon),
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                ), //لتكبير
               ),
               SizedBox(
-                height: 10,
+                height: 20,
               ),
-              Text(KeyLang.oneclickhome,
-                  style: AppStyles.styleHeadline1Light.copyWith(
+              Text(KeyLang.welcome.tr(),
+                  style: AppStyles.welcome.copyWith(
                     color: AppColors.white,
                     fontSize: 35.h,
                   ))

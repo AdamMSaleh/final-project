@@ -27,6 +27,11 @@ class WorkRecond extends StatelessWidget {
           children: [
             SizedBox(height: 15.h),
             //* Methode represents her location in project_part/components/caedworks
+
+            Cardwork(
+              typ: _typ,
+              imge: _imge,
+            ),
             Cardwork(
               typ: _typ,
               imge: _imge,

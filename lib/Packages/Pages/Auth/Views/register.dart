@@ -1,4 +1,4 @@
-// ignore_for_file: unused_element, sized_box_for_whitespace, prefer_const_constructors, implementation_imports, unused_field, prefer_final_fields, prefer_const_literals_to_create_immutables, unused_import, avoid_print, avoid_unnecessary_containers
+// ignore_for_file: unused_element, sized_box_for_whitespace, prefer_const_constructors, implementation_imports, unused_field, prefer_final_fields, prefer_const_literals_to_create_immutables, unused_import, avoid_print, avoid_unnecessary_containers, non_constant_identifier_names
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';

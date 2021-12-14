@@ -26,7 +26,6 @@ class Upload_ImageState extends State<Upload_Image> {
   late File? file = null;
   String status = '';
   late String base64Image = '';
-
   // late File? tmpFile =null;
   final ImagePicker _picker = ImagePicker();
   String errMessage = 'Error Uploading Image';
@@ -183,6 +182,7 @@ class Upload_ImageState extends State<Upload_Image> {
     });
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -190,38 +190,40 @@ class Upload_ImageState extends State<Upload_Image> {
         title: Text("Upload Image Demo"),
       ),
       body: Container(
-        padding: EdgeInsets.all(30.0),
+        padding: const EdgeInsets.all(30.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+            // ignore: deprecated_member_use
             OutlineButton(
               onPressed: () => chooseImage(widget.galleryOrCamera!),
               child: Text('Choose Image'),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20.0,
             ),
             showImage(),
-            SizedBox(
+            const SizedBox(
               height: 20.0,
             ),
+            // ignore: deprecated_member_use
             OutlineButton(
               onPressed: startUpload,
-              child: Text('Upload Image'),
+              child: const Text('Upload Image'),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20.0,
             ),
             Text(
               status,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.green,
                 fontWeight: FontWeight.w500,
                 fontSize: 20.0,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20.0,
             ),
           ],
