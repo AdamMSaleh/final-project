@@ -1,6 +1,9 @@
 // ignore_for_file: unused_local_variable, non_constant_identifier_names, avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:flutter_finalproject/Packages/Pages/Auth/Views/login.dart';
+import 'package:flutter_finalproject/Packages/Pages/Home/View/body.dart';
+import 'package:flutter_finalproject/Packages/Pages/Splash/View/body.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 
@@ -16,6 +19,7 @@ class Register {
   postLogin({
     required TextEditingController email,
     required TextEditingController password,
+    required BuildContext context,
   }) async {
     //200--success ,400,404,
     String msg = "";
@@ -29,8 +33,9 @@ class Register {
       );
       msg = response.body;
       print(response.body);
-      // print('\n\n\n\n\n\n');
-      // print(response)
+      if (msg == 'Login succeeded') {
+        Navigator.pushReplacementNamed(context, PageHome.id);
+      }
 
     } catch (e) {
       msg = e.toString();
@@ -111,6 +116,7 @@ class Register {
 
   postDataUpdateOwner({
     required TextEditingController city_user,
+    BuildContext? context,
   }) async {
     //200--success ,400,404,
 
@@ -123,13 +129,14 @@ class Register {
         },
       );
       msg = response.body;
-      print(response.body);
-      // print('\n\n\n\n\n\n');
-      // print(response)
-
+      print(msg);
+      if (context != null) {
+        if (msg == "New record created successfully") {
+          Navigator.pushReplacementNamed(context, PageHome.id);
+        }
+      }
     } catch (e) {
       msg = e.toString();
-      print(e);
     }
     tostforRegsetr(msg);
   }
@@ -141,8 +148,9 @@ class Register {
   postDataEngineer({
     required TextEditingController city_user,
     required TextEditingController Guild_number,
-    required TextEditingController Guild_picture,
+    // required TextEditingController Guild_picture,
     required TextEditingController office_name,
+    required BuildContext context,
   }) async {
     //200--success ,400,404,
 
@@ -156,12 +164,15 @@ class Register {
         body: {
           'city_user': city_user.text,
           'Guild_number': Guild_number.text,
-          'Guild_picture': Guild_picture.text,
+          'Guild_picture': office_name.text + 'smsm',
           'office_name': office_name.text,
         },
       );
       msg = response.body;
-      print(response.body);
+
+      if (msg == "New record created successfully") {
+        Navigator.pushReplacementNamed(context, PageHome.id);
+      }
       // print('\n\n\n\n\n\n');
       // print(response)
 
@@ -178,9 +189,10 @@ class Register {
 
   postDataDrivers({
     required TextEditingController city_user,
-    required TextEditingController license_image,
+    // required TextEditingController license_image,
     required TextEditingController license_no,
     required TextEditingController Type,
+    required BuildContext context,
   }) async {
     //200--success ,400,404,
 
@@ -193,15 +205,16 @@ class Register {
             "https://zuporjict1.000webhostapp.com/extra%20registration/register_Drivers.php"),
         body: {
           'city_user': city_user.text,
-          'license_image': license_image.text,
+          // 'license_image': license_image.text,
           'license_no': license_no.text,
           'Type': Type.text,
         },
       );
       msg = response.body;
       print(response.body);
-      // print('\n\n\n\n\n\n');
-      // print(response)
+      if (msg == "New record created successfully") {
+        Navigator.pushReplacementNamed(context, PageHome.id);
+      }
 
     } catch (e) {
       msg = e.toString();
@@ -218,6 +231,7 @@ class Register {
     required TextEditingController city_user,
     required TextEditingController Profession_name,
     required TextEditingController profssion_certficate_no,
+    required BuildContext context,
   }) async {
     //200--success ,400,404,
 
@@ -235,10 +249,9 @@ class Register {
         },
       );
       msg = response.body;
-      print(response.body);
-      // print('\n\n\n\n\n\n');
-      // print(response)
-
+      if (msg == "New record created successfully") {
+        Navigator.pushReplacementNamed(context, PageHome.id);
+      }
     } catch (e) {
       msg = e.toString();
       print(e);
@@ -247,25 +260,18 @@ class Register {
   }
 
   //*******************************************************************************
-
-  //*******************************************************************************
-
-  postDataWorkers({
-    required TextEditingController city_user,
-    required TextEditingController work_name,
+  postImageDirvers({
+    required String license_image,
   }) async {
     //200--success ,400,404,
 
     try {
-      postDataUpdateOwner(
-        city_user: city_user,
-      );
       var response = await http.post(
         Uri.parse(
-            "https://zuporjict1.000webhostapp.com/extra%20registration/register_professional.php"),
+            "https://zuporjict1.000webhostapp.com/extra%20registration/updateRigster/uplod_image_Dirvers.php"),
         body: {
-          'city_user': city_user.text,
-          'work_name': work_name.text,
+          'license_image': "https://zuporjict1.000webhostapp.com/upload_image/" +
+              license_image,
         },
       );
       msg = response.body;
@@ -279,7 +285,66 @@ class Register {
     }
     tostforRegsetr(msg);
   }
+  //*******************************************************************************
 
+  postDataWorkers({
+    required TextEditingController city_user,
+    required TextEditingController work_name,
+    required BuildContext context,
+  }) async {
+    //200--success ,400,404,
+
+    try {
+      postDataUpdateOwner(
+        city_user: city_user,
+      );
+      var response = await http.post(
+        Uri.parse(
+            "https://zuporjict1.000webhostapp.com/extra%20registration/register_Workers.php"),
+        body: {
+          'city_user': city_user.text,
+          'work_name': work_name.text,
+        },
+      );
+      msg = response.body;
+      print(response.body);
+      if (msg == "New record created successfully") {
+        Navigator.pushReplacementNamed(context, PageHome.id);
+      }
+    } catch (e) {
+      msg = e.toString();
+      print(e);
+    }
+    tostforRegsetr(msg);
+  }
+
+  //*******************************************************************************
+  splashLogin( BuildContext context)async{
+    try {
+      var response = await http.post(
+        Uri.parse(
+            "https://zuporjict1.000webhostapp.com/splash%20For%20login/splashLogin.php"),
+        body: { },
+      );
+      msg = response.body;
+      print(response.body);
+      if (msg == "yse") {
+        Navigator.pushReplacementNamed(context, PageHome.id);
+      }else{
+        Navigator.pushReplacementNamed(context, PageLogin.id);
+      }
+    } catch (e) {
+      msg = e.toString();
+      print(e);
+    }
+    tostforRegsetr(msg);
+  }
+//*******************************************************************************
+  //*******************************************************************************
+  //*******************************************************************************
+  //*******************************************************************************
+  //*******************************************************************************
+  //*******************************************************************************
   //*******************************************************************************
 
   tostforRegsetr(String mss) {

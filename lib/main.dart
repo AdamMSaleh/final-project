@@ -4,6 +4,7 @@ import 'package:easy_dynamic_theme/easy_dynamic_theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Language/config/config_lang.dart';
+import 'package:flutter_finalproject/Packages/Pages/Auth/Views/register.dart';
 import 'package:flutter_finalproject/Packages/Pages/Home/View/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/Splash/View/body.dart';
 
@@ -12,6 +13,7 @@ import 'package:flutter_finalproject/Theme/custom_theme.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'Packages/Components/upload_image_php/img_upload.dart';
+import 'Packages/Pages/Auth/Views/Info_User/info_owner.dart';
 import 'Packages/Pages/Auth/Views/Info_User/info_user_Eng.dart';
 
 void main() async {
@@ -43,7 +45,7 @@ class MyApp extends StatelessWidget {
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,
-            initialRoute:  PageInfoEng.id,//Upload_Image.id,//PageSplash.id, //PageHome.id,
+            initialRoute: PageSplash.id,//PageRegister.id,// //PageInfoEng.id,//Upload_Image.id,//PageSplash.id, //PageHome.id,
             routes: AppRoutes.routes);
       },
     );

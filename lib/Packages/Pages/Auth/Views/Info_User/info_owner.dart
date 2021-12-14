@@ -3,6 +3,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Add_Image/info_imeg.dart';
 import 'package:flutter_finalproject/Packages/Components/Btn/simple_btn.dart';
@@ -26,6 +27,9 @@ class PageInfowner extends StatefulWidget {
 class _PageInfownerState extends State<PageInfowner> {
   //*form key
   final GlobalKey<FormState> _keyFoem = GlobalKey<FormState>();
+
+  TextEditingController? city_user = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,11 +44,11 @@ class _PageInfownerState extends State<PageInfowner> {
                 decoration: BoxDecoration(
                   color: AppColors.blue,
                   borderRadius:
-                      BorderRadius.only(bottomLeft: Radius.circular(100.r)),
+                  BorderRadius.only(bottomLeft: Radius.circular(100.r)),
                 ),
                 child:
-                    //* header elements
-                    Stack(
+                //* header elements
+                Stack(
                   children: [
                     Column(
                       children: [
@@ -96,6 +100,7 @@ class _PageInfownerState extends State<PageInfowner> {
 
                       //*Address
                       SimpleFiled(
+                        controller: city_user,
                         keyboardType: TextInputType.name,
                         onValidator: (value) => AppValidators.isEmpty(value),
                         hint: KeyLang.address.tr(),
@@ -114,7 +119,12 @@ class _PageInfownerState extends State<PageInfowner> {
                             child: SimpleBtn(
                                 btnText: KeyLang.register.toUpperCase().tr(),
                                 onTap: () async {
-                                  if (_keyFoem.currentState!.validate()) {}
+                                  if (_keyFoem.currentState!.validate()) {
+                                    print("oeoeoeoeooeeooeoeoeoeoeoeoeoooeo3oo3o3o3");
+                                    Register().postDataUpdateOwner(
+                                        city_user: city_user! ,context: context);
+                                    print(context);
+                                  }
                                 })),
                       ),
                     ],

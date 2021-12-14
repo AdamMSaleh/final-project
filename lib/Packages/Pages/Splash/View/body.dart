@@ -4,6 +4,7 @@ import 'dart:async';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.dart';
@@ -26,8 +27,9 @@ class _PageSplashState extends State<PageSplash> {
   void initState() {
     super.initState();
     // ignore: prefer_const_constructors
-    Timer(Duration(seconds: 7), () {
-      Navigator.pushReplacementNamed(context, PageLogin.id);
+    Timer(Duration(seconds: 5), () {
+      // Navigator.pushReplacementNamed(context, PageLogin.id);
+      Register().splashLogin(context);
     });
   }
 

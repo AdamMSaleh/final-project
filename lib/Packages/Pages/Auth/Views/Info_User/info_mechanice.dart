@@ -3,7 +3,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
+import 'package:flutter_finalproject/Packages/Components/Add_Image/alert_choose.dart';
 import 'package:flutter_finalproject/Packages/Components/Add_Image/info_imeg.dart';
 import 'package:flutter_finalproject/Packages/Components/Btn/simple_btn.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
@@ -26,6 +28,12 @@ class PageInfoMech extends StatefulWidget {
 class _PageInfoMechState extends State<PageInfoMech> {
   //*form key
   final GlobalKey<FormState> _keyFoem = GlobalKey<FormState>();
+  Map<String, TextEditingController> controllerValue = {
+    'license_no': TextEditingController(),
+    'Type': TextEditingController(),
+    'city_user': TextEditingController(),
+  };
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,6 +103,7 @@ class _PageInfoMechState extends State<PageInfoMech> {
                       SizedBox(height: 20.h),
                       //*type mechanice.dart
                       SimpleFiled(
+                        controller: controllerValue['Type'],
                         keyboardType: TextInputType.name,
                         onValidator: (value) => AppValidators.isEmpty(value),
                         hint: KeyLang.typeMechanice.tr(),
@@ -106,6 +115,7 @@ class _PageInfoMechState extends State<PageInfoMech> {
                       SizedBox(height: 15.h),
                       //*license Number
                       SimpleFiled(
+                        controller: controllerValue['license_no'],
                         keyboardType: TextInputType.name,
                         onValidator: (value) => AppValidators.isEmpty(value),
                         hint: KeyLang.licenseNumber.tr(),
@@ -141,7 +151,15 @@ class _PageInfoMechState extends State<PageInfoMech> {
                             child: IconButton(
                               padding: EdgeInsets.zero,
                               alignment: Alignment.center,
-                              onPressed: () {},
+                              onPressed: () {
+                                showDialog(
+                                  barrierDismissible: false,
+                                  context: context,
+                                  builder: (context) => AlertChooseImage(
+                                    bathImage: 'Driver_license',
+                                  ),
+                                );
+                              },
                               icon: Icon(
                                 Icons.backup_rounded,
                                 color: AppColors.white,
@@ -155,6 +173,7 @@ class _PageInfoMechState extends State<PageInfoMech> {
 
                       //*Address
                       SimpleFiled(
+                        controller: controllerValue['city_user'],
                         keyboardType: TextInputType.name,
                         onValidator: (value) => AppValidators.isEmpty(value),
                         hint: KeyLang.address.tr(),
@@ -173,7 +192,15 @@ class _PageInfoMechState extends State<PageInfoMech> {
                             child: SimpleBtn(
                                 btnText: KeyLang.register.toUpperCase().tr(),
                                 onTap: () async {
-                                  if (_keyFoem.currentState!.validate()) {}
+                                  if (_keyFoem.currentState!.validate()) {
+                                    Register().postDataDrivers(
+                                        city_user:
+                                            controllerValue['city_user']!,
+                                        Type: controllerValue['Type']!,
+                                        license_no:
+                                            controllerValue['license_no']!,
+                                        context: context);
+                                  }
                                 })),
                       ),
                     ],

@@ -13,7 +13,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AlertChooseImage extends StatefulWidget {
-  const AlertChooseImage({Key? key}) : super(key: key);
+  String? bathImage='profile' ;
+   AlertChooseImage({Key? key,this.bathImage='profile' }) : super(key: key);
 
   @override
   State<AlertChooseImage> createState() => _AlertChooseImageState();
@@ -64,7 +65,7 @@ class _AlertChooseImageState extends State<AlertChooseImage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute (
-                      builder: (BuildContext context) => Upload_Image(galleryOrCamera: false,bathImage:'profile' ),
+                      builder: (BuildContext context) => Upload_Image(galleryOrCamera: false,bathImage:widget.bathImage ),
                     ),
 
                   );
@@ -85,7 +86,7 @@ class _AlertChooseImageState extends State<AlertChooseImage> {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute (
-                      builder: (BuildContext context) => Upload_Image(galleryOrCamera: true,bathImage:'profile'),
+                      builder: (BuildContext context) => Upload_Image(galleryOrCamera: true,bathImage:widget.bathImage),
                     ),
 
                   );

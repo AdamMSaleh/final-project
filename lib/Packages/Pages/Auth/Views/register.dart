@@ -19,6 +19,7 @@ import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_ow
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_shop.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_user_Eng.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_workers.dart';
+import 'package:flutter_finalproject/Packages/Pages/Auth/Views/login.dart';
 import 'package:flutter_finalproject/Packages/Pages/Home/View/body.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
 import 'package:flutter_finalproject/Theme/style.dart';
@@ -478,7 +479,7 @@ class _PageRegister extends State<PageRegister> {
                                     RichTextAuth(
                                         fword: KeyLang.haveAccount,
                                         sword: KeyLang.login,
-                                        onTap: () => Navigator.pop(context)),
+                                        onTap: () =>  Navigator.pushReplacementNamed(context, PageLogin.id) ),
                                     SizedBox(height: 20.h),
                                   ],
                                 ),
