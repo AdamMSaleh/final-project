@@ -79,7 +79,7 @@ class AppValidators {
     if (value?.isEmpty ?? true) {
       return _messageEnterValue;
     } else if (!validators.isLength(value!.trim(), 6, 6)) {
-      return __messageCorrectname;
+      return __messageengNumber;
     }
     return null;
   }

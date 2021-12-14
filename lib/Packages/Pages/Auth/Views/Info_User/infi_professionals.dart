@@ -3,6 +3,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Add_Image/info_imeg.dart';
 import 'package:flutter_finalproject/Packages/Components/Btn/simple_btn.dart';
@@ -26,6 +27,12 @@ class PageInfoPr extends StatefulWidget {
 class _PageInfoPrState extends State<PageInfoPr> {
   //*form key
   final GlobalKey<FormState> _keyFoem = GlobalKey<FormState>();
+  Map<String, TextEditingController> controllerValue = {
+    'Profession_name': TextEditingController(),
+    'profssion_certficate_no': TextEditingController(),
+    'city_user': TextEditingController(),
+  };
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,6 +102,7 @@ class _PageInfoPrState extends State<PageInfoPr> {
                       SizedBox(height: 20.h),
                       //* Profession name
                       SimpleFiled(
+                        controller: controllerValue['Profession_name'],
                         keyboardType: TextInputType.name,
                         onValidator: (value) => AppValidators.isname(value),
                         hint: KeyLang.professionName.tr(),
@@ -106,6 +114,7 @@ class _PageInfoPrState extends State<PageInfoPr> {
                       SizedBox(height: 15.h),
                       //* Profession Certificate No.
                       SimpleFiled(
+                        controller: controllerValue['profssion_certficate_no'],
                         keyboardType: TextInputType.name,
                         onValidator: (value) => AppValidators.isEmpty(value),
                         hint: KeyLang.professionCertificateNo.tr(),
@@ -117,6 +126,7 @@ class _PageInfoPrState extends State<PageInfoPr> {
                       SizedBox(height: 15.h),
                       //*Address
                       SimpleFiled(
+                        controller: controllerValue['city_user'],
                         keyboardType: TextInputType.name,
                         onValidator: (value) => AppValidators.isEmpty(value),
                         hint: KeyLang.address.tr(),
@@ -134,7 +144,16 @@ class _PageInfoPrState extends State<PageInfoPr> {
                             child: SimpleBtn(
                                 btnText: KeyLang.register.toUpperCase().tr(),
                                 onTap: () async {
-                                  if (_keyFoem.currentState!.validate()) {}
+                                  if (_keyFoem.currentState!.validate()) {
+                                    Register().postDataProfessional(
+                                      context: context,
+                                      profssion_certficate_no: controllerValue[
+                                          'profssion_certficate_no']!,
+                                      city_user: controllerValue['city_user']!,
+                                      Profession_name:
+                                          controllerValue['Profession_name']!,
+                                    );
+                                  }
                                 })),
                       ),
                     ],

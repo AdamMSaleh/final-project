@@ -186,10 +186,6 @@ class _PageLoginState extends State<PageLogin> {
                                   child: SimpleBtn(
                                 onTap: () {
                                   if (_keyFoem.currentState!.validate()) {
-                                    /* Register().postLogin(
-                                      email: controllerValue['email']!,
-                                      password: controllerValue['password']!,
-                                    );*/
                                     Navigator.pushReplacementNamed(
                                       context,
                                       PageHome.id,
@@ -233,3 +229,5 @@ class _PageLoginState extends State<PageLogin> {
     );
   }
 }
+
+mixin HEAD {}

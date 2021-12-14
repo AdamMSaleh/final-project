@@ -1,18 +1,20 @@
-// ignore_for_file: camel_case_types, must_be_immutable, avoid_init_to_null, override_on_non_overriding_member, unnecessary_null_comparison, sized_box_for_whitespace, avoid_unnecessary_containers, avoid_print, unused_local_variable
-
-import 'dart:io';
 import 'dart:convert';
+import 'dart:io';
+
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
-import 'package:flutter/material.dart';
 
 class Upload_Image extends StatefulWidget {
   static const String id = 'Upload_Image';
   bool? galleryOrCamera;
-  String? bathImage = 'profile';
-  Upload_Image({Key? key, this.galleryOrCamera = true, bathImage = 'profile'})
+
+  String? bathImage = '';
+
+  Upload_Image(
+      {Key? key, this.galleryOrCamera = true, this.bathImage = 'profile'})
       : super(key: key);
 
   @override
@@ -111,7 +113,7 @@ class Upload_ImageState extends State<Upload_Image> {
       //   builder: (BuildContext context, AsyncSnapshot<File> snapshot) {
       //     if (snapshot.connectionState == ConnectionState.done &&
       //         snapshot.data! != null  ) {
-      //       print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+      // //       print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
       //       tmpFile = snapshot.data!;
       //       base64Image = base64Encode(snapshot.data!.readAsBytesSync());
       //       return Flexible(
@@ -121,13 +123,13 @@ class Upload_ImageState extends State<Upload_Image> {
       //         ),
       //       );
       //     } else if (null != snapshot.error) {
-      //       print('Error Picking Image');
+      // //       print('Error Picking Image');
       //       return const Text(
       //         'Error Picking Image',
       //         textAlign: TextAlign.center,
       //       );
       //     } else {
-      //       print('No Image Selected');
+      // //       print('No Image Selected');
       //       return const Text(
       //         'No Image Selected',
       //         textAlign: TextAlign.center,
@@ -148,9 +150,9 @@ class Upload_ImageState extends State<Upload_Image> {
     // "data:image/png;base64,"+
     final bytes = File(file!.path).readAsBytesSync();
     base64Image = base64Encode(bytes);
-    print(base64Image);
+    // // print(base64Image);
     String fileName = file!.path.split('/').last;
-    print(fileName);
+    // // print(fileName);
     upload(fileName);
   }
 
@@ -164,9 +166,16 @@ class Upload_ImageState extends State<Upload_Image> {
           "image": base64Image,
           "name": widget.bathImage! + '@' + fileName,
         }).then((result) {
+      // print(widget.bathImage!);
       setStatus(result.statusCode == 200 ? result.body : errMessage);
-      Register().postDataUpdateImage(
-          picture_user: 'image/' + widget.bathImage! + '/' + fileName);
+      if (widget.bathImage == 'Driver_license') {
+        Register().postImageDirvers(
+            license_image: 'image/' + widget.bathImage! + '/' + fileName);
+        // print('z,xcn,xmznc,mxznc,mzxncnm');
+      } else {
+        Register().postDataUpdateImage(
+            picture_user: 'image/' + widget.bathImage! + '/' + fileName);
+      }
       Navigator.pop(context);
     }).catchError((error) {
       setStatus(error);
@@ -178,7 +187,7 @@ class Upload_ImageState extends State<Upload_Image> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.purple,
-        title: const Text("Upload Image Demo"),
+        title: Text("Upload Image Demo"),
       ),
       body: Container(
         padding: const EdgeInsets.all(30.0),
@@ -188,7 +197,7 @@ class Upload_ImageState extends State<Upload_Image> {
             // ignore: deprecated_member_use
             OutlineButton(
               onPressed: () => chooseImage(widget.galleryOrCamera!),
-              child: const Text('Choose Image'),
+              child: Text('Choose Image'),
             ),
             const SizedBox(
               height: 20.0,
