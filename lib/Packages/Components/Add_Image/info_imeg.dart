@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/Add_Image/alert_choose.dart';
-import 'package:flutter_finalproject/Packages/Components/upload_image_php/img_upload.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
 import 'package:flutter_finalproject/Utils/path_images.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

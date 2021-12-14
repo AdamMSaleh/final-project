@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types, must_be_immutable, avoid_init_to_null, override_on_non_overriding_member, unnecessary_null_comparison, sized_box_for_whitespace, avoid_unnecessary_containers, avoid_print, unused_local_variable
+
 import 'dart:io';
 import 'dart:convert';
 import 'package:flutter/services.dart';
@@ -5,13 +7,13 @@ import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class Upload_Image extends StatefulWidget {
   static const String id = 'Upload_Image';
-  bool? galleryOrCamera ;
-  String? bathImage='profile' ;
-  Upload_Image({Key? key,this.galleryOrCamera=true ,bathImage='profile' }) : super(key: key);
+  bool? galleryOrCamera;
+  String? bathImage = 'profile';
+  Upload_Image({Key? key, this.galleryOrCamera = true, bathImage = 'profile'})
+      : super(key: key);
 
   @override
   Upload_ImageState createState() => Upload_ImageState();
@@ -19,9 +21,9 @@ class Upload_Image extends StatefulWidget {
 
 class Upload_ImageState extends State<Upload_Image> {
   @override
-  late File? file =null;
+  late File? file = null;
   String status = '';
-  late String base64Image ='';
+  late String base64Image = '';
   // late File? tmpFile =null;
   final ImagePicker _picker = ImagePicker();
   String errMessage = 'Error Uploading Image';
@@ -33,7 +35,8 @@ class Upload_ImageState extends State<Upload_Image> {
     // });
     try {
       // Pick an image
-      final XFile? image = await _picker.pickImage(source: galleryOrCamera?ImageSource.gallery:ImageSource.camera );
+      final XFile? image = await _picker.pickImage(
+          source: galleryOrCamera ? ImageSource.gallery : ImageSource.camera);
       final imageTemorary = File(image!.path);
       if (image == null) {
         return;
@@ -41,11 +44,9 @@ class Upload_ImageState extends State<Upload_Image> {
       setState(() {
         file = imageTemorary;
       });
-
     } on PlatformException catch (e) {
       setStatus("Failed to pick image : $e");
     }
-
   }
 
   //  btnplane(BuildContext ctx, bool galleryOrCamera) {
@@ -100,7 +101,11 @@ class Upload_ImageState extends State<Upload_Image> {
   Widget showImage() {
     return Container(
       height: 255,
-      child: file!=null?Image.file(file!):Container(child: const Text('no image'),),
+      child: file != null
+          ? Image.file(file!)
+          : Container(
+              child: const Text('no image'),
+            ),
       // FutureBuilder<File>(
       //   // future: file,
       //   builder: (BuildContext context, AsyncSnapshot<File> snapshot) {
@@ -142,72 +147,74 @@ class Upload_ImageState extends State<Upload_Image> {
     }
     // "data:image/png;base64,"+
     final bytes = File(file!.path).readAsBytesSync();
-     base64Image =  base64Encode(bytes);
+    base64Image = base64Encode(bytes);
     print(base64Image);
-    String fileName = file!.path
-        .split('/')
-        .last;
+    String fileName = file!.path.split('/').last;
     print(fileName);
     upload(fileName);
-
   }
 
   upload(String fileName) {
     var now = DateTime.now();
-    http.post(Uri.parse(
-        "https://zuporjict1.000webhostapp.com/upload_image/uploadEndPoint.php"
-    ), body: {//now.toString()+
-      "image": base64Image,
-      "name": widget.bathImage!+'@'+fileName,
-    }).then((result) {
+    http.post(
+        Uri.parse(
+            "https://zuporjict1.000webhostapp.com/upload_image/uploadEndPoint.php"),
+        body: {
+          //now.toString()+
+          "image": base64Image,
+          "name": widget.bathImage! + '@' + fileName,
+        }).then((result) {
       setStatus(result.statusCode == 200 ? result.body : errMessage);
-      Register().postDataUpdateImage( picture_user: 'image/'+widget.bathImage!+'/'+fileName);
+      Register().postDataUpdateImage(
+          picture_user: 'image/' + widget.bathImage! + '/' + fileName);
       Navigator.pop(context);
     }).catchError((error) {
       setStatus(error);
     });
-
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor:Colors.purple,
-        title: Text("Upload Image Demo"),
+        backgroundColor: Colors.purple,
+        title: const Text("Upload Image Demo"),
       ),
       body: Container(
-        padding: EdgeInsets.all(30.0),
+        padding: const EdgeInsets.all(30.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+            // ignore: deprecated_member_use
             OutlineButton(
-              onPressed: ()=>chooseImage(widget.galleryOrCamera!),
-              child: Text('Choose Image'),
+              onPressed: () => chooseImage(widget.galleryOrCamera!),
+              child: const Text('Choose Image'),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20.0,
             ),
             showImage(),
-            SizedBox(
+            const SizedBox(
               height: 20.0,
             ),
+            // ignore: deprecated_member_use
             OutlineButton(
               onPressed: startUpload,
-              child: Text('Upload Image'),
+              child: const Text('Upload Image'),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20.0,
             ),
             Text(
               status,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.green,
                 fontWeight: FontWeight.w500,
                 fontSize: 20.0,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20.0,
             ),
           ],
@@ -216,9 +223,7 @@ class Upload_ImageState extends State<Upload_Image> {
     );
   }
 
-
-
-void setStatus(String str) {
- Register().tostforRegsetr(str);
-}
+  void setStatus(String str) {
+    Register().tostforRegsetr(str);
+  }
 }

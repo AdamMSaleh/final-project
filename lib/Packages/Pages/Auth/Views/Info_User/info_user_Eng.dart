@@ -9,7 +9,6 @@ import 'package:flutter_finalproject/Packages/Components/Btn/simple_btn.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/text_filed/simple_filed.dart';
-import 'package:flutter_finalproject/Packages/Components/upload_image_php/img_upload.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
 import 'package:flutter_finalproject/Theme/theme_status.dart';
 import 'package:flutter_finalproject/Utils/path_images.dart';
@@ -63,23 +62,22 @@ class _PageInfoEngState extends State<PageInfoEng> {
                           alignment: Alignment.center,
                           //*Image
 
-                            // onPressed: () { Upload_ImageState().btnplane(context); },
-                            child: CachedNetworkImage(
-                              imageUrl: PathImages.logo,
-                              //لتعديل ع صورة
-                              imageBuilder: (context, jjjjj) {
-                                return CircleAvatar(
-                                  backgroundImage: jjjjj,
-                                  radius: 50.r, //لتكبير
-                                );
-                              },
-                              placeholder: (context, url) =>
-                                  AppLoading(chooseLoading: ChooseLoading.IMAGE),
+                          // onPressed: () { Upload_ImageState().btnplane(context); },
+                          child: CachedNetworkImage(
+                            imageUrl: PathImages.logo,
+                            //لتعديل ع صورة
+                            imageBuilder: (context, jjjjj) {
+                              return CircleAvatar(
+                                backgroundImage: jjjjj,
+                                radius: 50.r, //لتكبير
+                              );
+                            },
+                            placeholder: (context, url) =>
+                                AppLoading(chooseLoading: ChooseLoading.IMAGE),
 
-                              errorWidget: (context, url, error) =>
-                                  Icon(Icons.error),
-                            ),
-
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
+                          ),
                         ),
                         SizedBox(height: 10.h),
                         //* tital
