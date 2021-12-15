@@ -16,8 +16,8 @@ class Register {
 
 
   void gggg() async {
-    emailSaved= UserPreferences.getUsername()! ?? '';
-    passwordSaved= UserPreferences.getPassword()! ?? '';
+    emailSaved= UserPreferences.getUsername() ?? '';
+    passwordSaved= UserPreferences.getPassword() ?? '';
 
   }
 

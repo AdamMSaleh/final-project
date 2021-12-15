@@ -43,8 +43,8 @@ class _PageLoginState extends State<PageLogin> {
   };
 
   void gggg() async {
-    controllerValue['email']!.text= UserPreferences.getUsername()! ?? '';
-    controllerValue['password']!.text= UserPreferences.getPassword()! ?? '';
+    controllerValue['email']!.text= UserPreferences.getUsername() ?? '';
+    controllerValue['password']!.text= UserPreferences.getPassword() ?? '';
     // if (UserSecureStorage.getUsername().toString() ==
     //     "Instance of 'Future<String?>'") {
     //
