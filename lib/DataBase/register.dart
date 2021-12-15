@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable, non_constant_identifier_names, avoid_print
+// ignore_for_file: unused_local_variable, non_constant_identifier_names, avoid_print, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/login.dart';
@@ -36,7 +36,6 @@ class Register {
       if (msg == 'Login succeeded') {
         Navigator.pushReplacementNamed(context, PageHome.id);
       }
-
     } catch (e) {
       msg = e.toString();
       print(e);
@@ -215,7 +214,6 @@ class Register {
       if (msg == "New record created successfully") {
         Navigator.pushReplacementNamed(context, PageHome.id);
       }
-
     } catch (e) {
       msg = e.toString();
       print(e);
@@ -270,8 +268,9 @@ class Register {
         Uri.parse(
             "https://zuporjict1.000webhostapp.com/extra%20registration/updateRigster/uplod_image_Dirvers.php"),
         body: {
-          'license_image': "https://zuporjict1.000webhostapp.com/upload_image/" +
-              license_image,
+          'license_image':
+              "https://zuporjict1.000webhostapp.com/upload_image/" +
+                  license_image,
         },
       );
       msg = response.body;
@@ -319,18 +318,18 @@ class Register {
   }
 
   //*******************************************************************************
-  splashLogin( BuildContext context)async{
+  splashLogin(BuildContext context) async {
     try {
       var response = await http.post(
         Uri.parse(
             "https://zuporjict1.000webhostapp.com/splash%20For%20login/splashLogin.php"),
-        body: { },
+        body: {},
       );
       msg = response.body;
       print(response.body);
       if (msg == "yse") {
         Navigator.pushReplacementNamed(context, PageHome.id);
-      }else{
+      } else {
         Navigator.pushReplacementNamed(context, PageLogin.id);
       }
     } catch (e) {

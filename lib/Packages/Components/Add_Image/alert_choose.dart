@@ -1,4 +1,4 @@
-// ignore_for_file: sized_box_for_whitespace, prefer_const_constructors, duplicate_ignore, implementation_imports, unused_element, unused_field, avoid_print
+// ignore_for_file: sized_box_for_whitespace, prefer_const_constructors, duplicate_ignore, implementation_imports, unused_element, unused_field, avoid_print, must_be_immutable
 
 import 'dart:io';
 
@@ -13,8 +13,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AlertChooseImage extends StatefulWidget {
-  String? bathImage='profile' ;
-   AlertChooseImage({Key? key,this.bathImage='profile' }) : super(key: key);
+  String? bathImage = 'profile';
+  AlertChooseImage({Key? key, this.bathImage = 'profile'}) : super(key: key);
 
   @override
   State<AlertChooseImage> createState() => _AlertChooseImageState();
@@ -58,16 +58,16 @@ class _AlertChooseImageState extends State<AlertChooseImage> {
                   FontAwesomeIcons.camera,
                   color: AppColors.blue,
                 ),
-                onTap: ()  {
+                onTap: () {
                   // await _getImage(isCamera: true);
                   // Navigator.pop(context);
                   // Upload_ImageState().btnplane(context ,false);
                   Navigator.push(
                     context,
-                    MaterialPageRoute (
-                      builder: (BuildContext context) => Upload_Image(galleryOrCamera: false,bathImage:widget.bathImage ),
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => Upload_Image(
+                          galleryOrCamera: false, bathImage: widget.bathImage),
                     ),
-
                   );
                 },
               ),
@@ -79,18 +79,17 @@ class _AlertChooseImageState extends State<AlertChooseImage> {
                   FontAwesomeIcons.fileImage,
                   color: AppColors.blue,
                 ),
-                onTap: ()  {
+                onTap: () {
                   // await _getImage();
                   // Navigator.pop(context);
                   // Upload_ImageState().btnplane(context ,true);
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute (
-                      builder: (BuildContext context) => Upload_Image(galleryOrCamera: true,bathImage:widget.bathImage),
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => Upload_Image(
+                          galleryOrCamera: true, bathImage: widget.bathImage),
                     ),
-
                   );
-
                 },
               ),
             ),

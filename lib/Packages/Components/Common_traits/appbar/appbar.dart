@@ -24,17 +24,16 @@ class _AppBHomeState extends State<AppBHome> {
     return AppBar(
       backgroundColor: AppColors.blue,
       toolbarHeight: 65.h,
-      title: Text('Relax'),
-      // Text(KeyLang.oneclickhome,
-      //     style: AppStyles.styleHeadline3Light.copyWith(
-      //       color: AppColors.white,
-      //       fontSize: 25.sp,
-      //     )).tr(),
+      title: Text(KeyLang.oneclickhome,
+          style: AppStyles.styleHeadline3Light.copyWith(
+            color: AppColors.white,
+            fontSize: 25.sp,
+          )).tr(),
       actions: [
         Padding(
-          padding: EdgeInsets.all(3.w),
+          padding: EdgeInsets.all(2.w),
           child: ImageUser(
-              image: PathImages.profile, radius: 25.r, sizeLoading: 25.r),
+              image: PathImages.logo, radius: 20.r, sizeLoading: 20.r),
         ),
         SizedBox(
           width: 7.w,

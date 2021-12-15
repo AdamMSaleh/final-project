@@ -39,10 +39,12 @@ class WorkRecond extends StatelessWidget {
               Cardwork(
                 typ: _typ,
                 imge: _imge,
+                onTap: () {},
               ),
               Cardwork(
                 typ: _typ,
                 imge: _imge,
+                onTap: () {},
               ),
             ],
           ),

@@ -28,10 +28,10 @@ class _PageSplashState extends State<PageSplash> {
   void initState() {
     super.initState();
     // ignore: prefer_const_constructors
-
+/*
     Timer(Duration(seconds: 7), () {
       Navigator.pushReplacementNamed(context, PageLogin.id);
-    });
+    });*/
   }
 
   @override
@@ -44,22 +44,20 @@ class _PageSplashState extends State<PageSplash> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Center(
-                child: Container(
-                  height: 175.w,
-                  width: 175.w,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      width: 2,
-                      color: Colors.white,
-                    ),
-                    image: DecorationImage(
-                      image: AssetImage(PathImages.projectIcon),
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                ), //لتكبير
+              CachedNetworkImage(
+                imageUrl: PathImages.logo,
+                //لتعديل ع صورة
+                imageBuilder: (context, jjjjj) {
+                  return CircleAvatar(
+                    backgroundImage: jjjjj,
+                    radius: 100.r, //لتكبير
+                  );
+                },
+                placeholder: (context, url) =>
+                    AppLoading(chooseLoading: ChooseLoading.IMAGE),
+                // في حال خطاء بالاتصال بشبكة
+
+                errorWidget: (context, url, error) => Icon(Icons.error),
               ),
               SizedBox(
                 height: 20,

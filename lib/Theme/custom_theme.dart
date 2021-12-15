@@ -32,6 +32,11 @@ class CustomTheme {
 
   // * * * * * * * * * * * * *** Dark *** * * * * * * * * * * * *
   static final ThemeData darkTheme = ThemeData.dark().copyWith(
+    appBarTheme: AppBarTheme(
+      color: Colors.white,
+      iconTheme: IconThemeData(color: AppColors.white, size: 35),
+      centerTitle: true,
+    ),
     textTheme: TextTheme(
       headline1: AppStyles.styleHeadline1Dark,
       headline2: AppStyles.styleHeadline2Dark,

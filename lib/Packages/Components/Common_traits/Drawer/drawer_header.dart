@@ -22,19 +22,23 @@ class HeaderDrawer extends StatelessWidget {
         ),
         child: Column(
           children: [
-            ImageUser(
-              image: PathImages.profile,
-              radius: 45.r,
-              sizeLoading: 40.r,
-            ),
-            /* SizedBox(height: 10.h),
-            Text(
-              KeyLang.name.tr(),
-              style: AppStyles.styleHeadline3Light.copyWith(
-                color: AppColors.blue,
-                fontSize: 20.sp,
+            SizedBox(height: 7.h),
+            Container(
+              height: 105.w,
+              width: 105.w,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                  width: 3,
+                  color: AppColors.blue,
+                ),
               ),
-            ),*/
+              child: ImageUser(
+                image: PathImages.profile,
+                radius: 15.r,
+                sizeLoading: 20.r,
+              ),
+            ),
           ],
         ),
       ),

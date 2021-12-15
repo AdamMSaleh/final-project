@@ -4,7 +4,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.dart';
-import 'package:flutter_finalproject/Utils/path_images.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ImageUser extends StatelessWidget {
@@ -32,12 +31,7 @@ class ImageUser extends StatelessWidget {
         chooseLoading: ChooseLoading.PROFILE,
         size: _sizeLoading.sp,
       ),
-      errorWidget: (context, url, error) {
-        return CircleAvatar(
-          radius: _radius.r,
-          backgroundImage: AssetImage(PathImages.profileNew),
-        );
-      },
+      errorWidget: (context, url, error) => const Icon(Icons.error),
     );
   }
 }

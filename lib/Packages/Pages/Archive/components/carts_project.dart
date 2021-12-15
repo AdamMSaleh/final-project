@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unused_field, prefer_final_fields, use_key_in_widget_constructors, must_be_immutable, implementation_imports
+// ignore_for_file: unused_field, implementation_imports
 
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
@@ -6,16 +6,15 @@ import 'package:flutter_finalproject/Theme/app_color.dart';
 import 'package:flutter_finalproject/Theme/style.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class Cardwork extends StatelessWidget {
-  const Cardwork(
-      {required String typ, required String imge, required Function()? onTap})
-      : _typ = typ,
-        _imge = imge,
-        _onTap = onTap;
-  //* values
-  final String _imge;
-  final String _typ;
+class CartFProject extends StatelessWidget {
+  const CartFProject({Key? key, required Function()? onTap, required String id})
+      : _onTap = onTap,
+        _id = id,
+        super(key: key);
+
   final Function()? _onTap;
+  final String _id;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -33,14 +32,18 @@ class Cardwork extends StatelessWidget {
                   // * id App
                   Padding(
                     padding: EdgeInsets.all(8.w),
-                    child: Text('1'),
+                    child: Text(
+                      _id,
+                      style: AppStyles.styleHeadline1Light
+                          .copyWith(color: AppColors.blue, fontSize: 15.h),
+                    ),
                   ),
                   SizedBox(width: 10.w),
                   //* imeg
                   Padding(
                     padding: EdgeInsets.all(2.w),
-                    child: Image(
-                      image: AssetImage(_imge),
+                    child: const Image(
+                      image: AssetImage(""),
                     ),
                   ),
                   SizedBox(width: 10.w),
@@ -60,7 +63,7 @@ class Cardwork extends StatelessWidget {
                         //* typ
                         Expanded(
                           child: Text(
-                            _typ.tr(),
+                            "".tr(),
                             style: AppStyles.styleHeadline1Light.copyWith(
                                 color: AppColors.blue, fontSize: 15.h),
                           ),
