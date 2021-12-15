@@ -56,10 +56,15 @@ class _PageLoginState extends State<PageLogin> {
     // }
     // super.initState();
   }
-
+  void initState() {
+    super.initState();
+    // WidgetsBinding.instance.
+    gggg();
+  }
+  // gggg();
   @override
   Widget build(BuildContext context) {
-    gggg();
+
     return Scaffold(
         backgroundColor: AppColors.blue,
         body: SafeArea(

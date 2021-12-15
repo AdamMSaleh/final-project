@@ -18,6 +18,10 @@ class UserPreferences {
       await _preferences.setString(_keyPassword, Password);
 
   static String? getPassword()=> _preferences.getString(_keyPassword);
+  static Future removePassword() async =>
+      await _preferences.remove(_keyPassword);
+  static Future removeUsername() async =>
+      await _preferences.remove(_keyUsername);
 
 }
 

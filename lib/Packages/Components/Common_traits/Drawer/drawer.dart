@@ -2,10 +2,12 @@
 
 import 'package:easy_dynamic_theme/easy_dynamic_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/Drawer/alert_dialog.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/Drawer/custom_tile.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/Drawer/drawer_header.dart';
+import 'package:flutter_finalproject/Packages/Components/user_info_secure_storage/user_save_login.dart';
 import 'package:flutter_finalproject/Utils/path_images.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -59,6 +61,19 @@ class DrawerHome extends StatelessWidget {
                 title: KeyLang.darkMode,
                 iconTrailing: EasyDynamicThemeSwitch(),
                 onPress: () {},
+              ),
+              SizedBox(
+                height: 30.h,
+              ),
+              ListTileDrawer(
+                icon: 'assets/Images/exit.png',
+                title: 'Logout',
+                onPress: () {
+
+                  UserPreferences.removeUsername();
+                  UserPreferences.removePassword();
+                  Register().RemovingSessionData(context);
+                },
               ),
             ],
           ),

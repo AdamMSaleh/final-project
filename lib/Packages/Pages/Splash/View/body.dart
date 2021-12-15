@@ -28,11 +28,11 @@ class _PageSplashState extends State<PageSplash> {
 
   @override
   void initState() {
-    Register().postDataImage_user().then((String result){
-      setState(() {
-        PathImages.profile = result;
-      });
-    });
+    // Register().getDataImage_user().then((String result){
+    //   setState(() {
+    //     PathImages.profile = result;
+    //   });
+    // });
     super.initState();
     // ignore: prefer_const_constructors
     Timer(Duration(seconds: 3), () {

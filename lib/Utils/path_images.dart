@@ -2,9 +2,6 @@ import 'package:flutter_finalproject/DataBase/register.dart';
 
 class PathImages {
 
-  // void initstate(){
-  //   profile = Register().postDataImage_user().toString();
-  // }
   static String logo =
       'https://png.pngtree.com/png-clipart/20200224/original/pngtree-building-icon-for-your-project-png-image_5211295.jpg';
   static String infoimage = 'assets/Images/userpng.png';

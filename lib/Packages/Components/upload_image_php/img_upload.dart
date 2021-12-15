@@ -174,9 +174,12 @@ class Upload_ImageState extends State<Upload_Image> {
         Register().postImageDirvers(
             license_image: 'image/' + widget.bathImage! + '/' + fileName);
         // print('z,xcn,xmznc,mxznc,mzxncnm');
-      } else {
-        Register().postDataUpdateImage(
-            picture_user: 'image/' + widget.bathImage! + '/' + fileName);
+      } else if(widget.bathImage == 'syndicate_card'){
+        Register().postImageSyndicateCard(
+            Guild_picture: 'image/' + widget.bathImage! + '/' + fileName);
+      }else {
+      Register().postDataUpdateImage(
+      picture_user: 'image/' + widget.bathImage! + '/' + fileName);
       }
       Navigator.pop(context);
     }).catchError((error) {
