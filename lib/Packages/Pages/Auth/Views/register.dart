@@ -454,23 +454,25 @@ class _PageRegister extends State<PageRegister> {
                                                   );
                                                 }
 
-                                                // if (_keyFoem.currentState!
-                                                //     .validate()) {
-                                                //   Register().postData(
-                                                //     first_name: controllerValue[
-                                                //         'first_name']!,
-                                                //     last_name: controllerValue[
-                                                //         'last_name']!,
-                                                //     email: controllerValue[
-                                                //         'email']!,
-                                                //     password: controllerValue[
-                                                //         'password']!,
-                                                //     phone_number:
-                                                //         controllerValue[
-                                                //             'phone_number']!,
-                                                //     account_type: s.toString(),
-                                                //   );
-                                                // }
+                                                if (_keyFoem.currentState!
+                                                    .validate()) {
+                                                  print('under buttton in register');
+                                                  Register().postData(
+                                                    first_name: controllerValue[
+                                                        'first_name']!,
+                                                    last_name: controllerValue[
+                                                        'last_name']!,
+                                                    email: controllerValue[
+                                                        'email']!,
+                                                    password: controllerValue[
+                                                        'password']!,
+                                                    phone_number:
+                                                        controllerValue[
+                                                            'phone_number']!,
+                                                    account_type: s.toString(),
+                                                  );
+
+                                                }
                                               })),
                                     ),
 

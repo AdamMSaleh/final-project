@@ -1,15 +1,25 @@
 // ignore_for_file: unused_local_variable, non_constant_identifier_names, avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:flutter_finalproject/Packages/Components/user_info_secure_storage/user_save_login.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/login.dart';
 import 'package:flutter_finalproject/Packages/Pages/Home/View/body.dart';
-import 'package:flutter_finalproject/Packages/Pages/Splash/View/body.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 
 class Register {
+  Register(){gggg();}
   String url = "https://zuporjict1.000webhostapp.com/register.php";
   String msg = "";
+  String? emailSaved='';
+  String? passwordSaved='';
+
+
+  void gggg() async {
+    emailSaved= UserPreferences.getUsername()! ?? '';
+    passwordSaved= UserPreferences.getPassword()! ?? '';
+
+  }
 
   registerUser() async {
     var data = {};
@@ -32,11 +42,12 @@ class Register {
         },
       );
       msg = response.body;
+      UserPreferences.setUsername(email.text);
+      UserPreferences.setPassword(password.text);
       print(response.body);
       if (msg == 'Login succeeded') {
         Navigator.pushReplacementNamed(context, PageHome.id);
       }
-
     } catch (e) {
       msg = e.toString();
       print(e);
@@ -72,6 +83,8 @@ class Register {
           'Activity': 'yes',
         },
       );
+      UserPreferences.setUsername(email.text);
+      UserPreferences.setPassword(password.text);
       msg = response.body;
       print(response.body);
       // print('\n\n\n\n\n\n');
@@ -96,8 +109,11 @@ class Register {
         Uri.parse(
             "https://zuporjict1.000webhostapp.com/extra%20registration/updateRigster/register_update_image.php"),
         body: {
+          'email': emailSaved,
+          'password': passwordSaved,
           'picture_user': "https://zuporjict1.000webhostapp.com/upload_image/" +
               picture_user,
+
         },
       );
       msg = response.body;
@@ -125,6 +141,8 @@ class Register {
         Uri.parse(
             "https://zuporjict1.000webhostapp.com/extra%20registration/updateRigster/register_update_Owner.php"),
         body: {
+          'email': emailSaved,
+          'password': passwordSaved,
           'city_user': city_user.text,
         },
       );
@@ -162,9 +180,11 @@ class Register {
         Uri.parse(
             "https://zuporjict1.000webhostapp.com/extra%20registration/register_Engineer.php"),
         body: {
+          'email': emailSaved,
+          'password': passwordSaved,
           'city_user': city_user.text,
           'Guild_number': Guild_number.text,
-          'Guild_picture': office_name.text + 'smsm',
+          'Guild_picture': office_name.text +Guild_number.text +'smsm',
           'office_name': office_name.text,
         },
       );
@@ -204,6 +224,8 @@ class Register {
         Uri.parse(
             "https://zuporjict1.000webhostapp.com/extra%20registration/register_Drivers.php"),
         body: {
+          'email': emailSaved,
+          'password': passwordSaved,
           'city_user': city_user.text,
           // 'license_image': license_image.text,
           'license_no': license_no.text,
@@ -215,7 +237,6 @@ class Register {
       if (msg == "New record created successfully") {
         Navigator.pushReplacementNamed(context, PageHome.id);
       }
-
     } catch (e) {
       msg = e.toString();
       print(e);
@@ -270,8 +291,9 @@ class Register {
         Uri.parse(
             "https://zuporjict1.000webhostapp.com/extra%20registration/updateRigster/uplod_image_Dirvers.php"),
         body: {
-          'license_image': "https://zuporjict1.000webhostapp.com/upload_image/" +
-              license_image,
+          'license_image':
+              "https://zuporjict1.000webhostapp.com/upload_image/" +
+                  license_image,
         },
       );
       msg = response.body;
@@ -285,6 +307,7 @@ class Register {
     }
     tostforRegsetr(msg);
   }
+
   //*******************************************************************************
 
   postDataWorkers({
@@ -319,29 +342,64 @@ class Register {
   }
 
   //*******************************************************************************
-  splashLogin( BuildContext context)async{
+  splashLogin(BuildContext context) async {
     try {
       var response = await http.post(
         Uri.parse(
             "https://zuporjict1.000webhostapp.com/splash%20For%20login/splashLogin.php"),
-        body: { },
+        body: {},
       );
       msg = response.body;
       print(response.body);
-      if (msg == "yse") {
+      if (msg == "Login succeededyes") {
         Navigator.pushReplacementNamed(context, PageHome.id);
-      }else{
+      } else {
         Navigator.pushReplacementNamed(context, PageLogin.id);
       }
     } catch (e) {
       msg = e.toString();
       print(e);
     }
+    // print('e'+msg);
     tostforRegsetr(msg);
   }
+
 //*******************************************************************************
   //*******************************************************************************
+  Future<String> postDataImage_user() async {
+    try {
+      var response = await http.post(
+        Uri.parse(
+            "https://zuporjict1.000webhostapp.com/splash%20For%20login/image_user.php"),
+        body: {},
+      );
+      msg = response.body;
+      print('postDataImage_user    '+msg);
+    } catch (e) {
+      msg =
+          'https://zuporjict1.000webhostapp.com/WhatsApp%20Image%202021-12-10%20at%2010.40.18%20PM.jpeg';
+
+      print(e);
+    }
+
+    tostforRegsetr(cutHttps(msg));
+    return cutHttps(msg);
+  }
+
   //*******************************************************************************
+  cutHttps(String url){
+    String ur='';
+    bool isHttp=false;
+    for(int i=0;i<url.length;i++){
+      if(url[i]=='h' || isHttp) {
+        isHttp=true;
+        ur += url[i];
+
+      }
+    }
+
+    return ur;
+  }
   //*******************************************************************************
   //*******************************************************************************
   //*******************************************************************************

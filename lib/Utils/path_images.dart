@@ -1,10 +1,16 @@
+import 'package:flutter_finalproject/DataBase/register.dart';
+
 class PathImages {
+
+  // void initstate(){
+  //   profile = Register().postDataImage_user().toString();
+  // }
   static String logo =
       'https://png.pngtree.com/png-clipart/20200224/original/pngtree-building-icon-for-your-project-png-image_5211295.jpg';
   static String infoimage = 'assets/Images/userpng.png';
   static String profileNew = 'assets/Images/account.png';
-  static String profile =
-      'https://zuporjict1.000webhostapp.com/WhatsApp%20Image%202021-12-10%20at%2010.40.18%20PM.jpeg';
+
+  static String profile = 'https://zuporjict1.000webhostapp.com/WhatsApp%20Image%202021-12-10%20at%2010.40.18%20PM.jpeg';
   // 'https://upload.wikimedia.org/wikipedia/ar/7/71/%D8%B3%D9%84%D8%A7%D9%85_%D8%AF%D8%A7%D9%86%D9%83_%D9%83%D8%B1%D8%AA%D9%88%D9%86.jpg';
   //* Drawer
   static String notif = 'assets/icons/Notifications-icon.png';
