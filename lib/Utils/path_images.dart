@@ -45,4 +45,5 @@ class PathImages {
   static String electrical = 'assets/icons/Electrical-icon.png';
   static String fat = 'assets/icons/paint-bucket-icon.png';
   static String projectIcon = 'assets/icons/projectIcon.jpeg';
+  static String background = 'assets/Images/4545.jpg';
 }

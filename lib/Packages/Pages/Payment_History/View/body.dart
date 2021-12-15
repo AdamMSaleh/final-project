@@ -271,9 +271,9 @@ class _PaymentHistoryState extends State<PaymentHistory>
       //*drawer
       drawer: DrawerHome(),
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/Images/4545.jpg'),
+            image: AssetImage(PathImages.background),
             fit: BoxFit.cover,
           ),
         ),

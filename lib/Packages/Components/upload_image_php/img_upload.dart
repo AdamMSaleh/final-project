@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable, avoid_unnecessary_containers, unnecessary_null_comparison, avoid_init_to_null, override_on_non_overriding_member, camel_case_types, sized_box_for_whitespace, must_be_immutable
+
 import 'dart:convert';
 import 'dart:io';
 
@@ -187,7 +189,7 @@ class Upload_ImageState extends State<Upload_Image> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.purple,
-        title: Text("Upload Image Demo"),
+        title: const Text("Upload Image Demo"),
       ),
       body: Container(
         padding: const EdgeInsets.all(30.0),
@@ -197,7 +199,7 @@ class Upload_ImageState extends State<Upload_Image> {
             // ignore: deprecated_member_use
             OutlineButton(
               onPressed: () => chooseImage(widget.galleryOrCamera!),
-              child: Text('Choose Image'),
+              child: const Text('Choose Image'),
             ),
             const SizedBox(
               height: 20.0,

@@ -13,6 +13,7 @@ import 'package:flutter_finalproject/Packages/Components/text_filed/simple_filed
 import 'package:flutter_finalproject/Packages/Components/user_info_secure_storage/user_save_login.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/forgot.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/register.dart';
+import 'package:flutter_finalproject/Packages/Pages/Home/View/body.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
 import 'package:flutter_finalproject/Theme/style.dart';
 import 'package:flutter_finalproject/Theme/theme_status.dart';
@@ -268,3 +269,5 @@ class _PageLoginState extends State<PageLogin> {
     );
   }
 }
+
+mixin HEAD {}
