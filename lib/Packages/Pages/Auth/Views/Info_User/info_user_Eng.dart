@@ -5,6 +5,7 @@ import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
+import 'package:flutter_finalproject/Packages/Components/Add_Image/alert_choose.dart';
 import 'package:flutter_finalproject/Packages/Components/Add_Image/info_imeg.dart';
 import 'package:flutter_finalproject/Packages/Components/Btn/simple_btn.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
@@ -118,6 +119,61 @@ class _PageInfoEngState extends State<PageInfoEng> {
                         ),
                       ),
                       SizedBox(height: 15.h),
+                      //*button up data Image
+                      // syndicate_card
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                child: Text(
+                                  'upload Syndicate Card',
+                                  style: AppTheme.h5(context: context)?.copyWith(
+                                      color: AppColors.blue, fontSize: 20.sp),
+                                ).tr(),
+                              ),
+                            ],
+                          ),
+                          SizedBox(width: 10.w),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: 50.w,
+                                height: 30.h,
+                                // height: 100.w,
+                                decoration: BoxDecoration(
+                                  color: AppColors.blue,
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(100.r),
+                                  ),
+                                ),
+                                child: IconButton(
+                                  padding: EdgeInsets.zero,
+                                  alignment: Alignment.center,
+                                  onPressed: () {
+                                    showDialog(
+                                      barrierDismissible: false,
+                                      context: context,
+                                      builder: (context) => AlertChooseImage(
+                                        bathImage: 'syndicate_card',
+                                      ),
+                                    );
+                                  },
+                                  icon: Icon(
+                                    Icons.backup_rounded,
+                                    color: AppColors.white,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+
+                      SizedBox(height: 10.h),
                       //* eng office name
                       SimpleFiled(
                         controller: controllerValue["office_name"],
@@ -129,6 +185,7 @@ class _PageInfoEngState extends State<PageInfoEng> {
                           color: AppColors.blue,
                         ),
                       ),
+
                       SizedBox(height: 15.h),
                       //*Address
                       SimpleFiled(

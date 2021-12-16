@@ -14,12 +14,14 @@ import 'package:flutter_finalproject/Theme/custom_theme.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'Packages/Components/upload_image_php/img_upload.dart';
+import 'Packages/Components/user_info_secure_storage/user_save_login.dart';
 import 'Packages/Pages/Auth/Views/Info_User/info_owner.dart';
 import 'Packages/Pages/Auth/Views/Info_User/info_user_Eng.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  await UserPreferences.init();
   runApp(EasyDynamicThemeWidget(
     child: EasyLocalization(
       child: MyApp(),
@@ -47,7 +49,7 @@ class MyApp extends StatelessWidget {
             supportedLocales: context.supportedLocales,
             locale: context.locale,
             initialRoute: PageHome
-                .id, //PageRegister.id,// //PageInfoEng.id,//Upload_Image.id,//PageSplash.id, //PageHome.id,
+                .id, //PageRegister.id,// //PageInfoEng.id,//Upload_Image.id,//PageSplash.id, //PageHome.id
             routes: AppRoutes.routes);
       },
     );

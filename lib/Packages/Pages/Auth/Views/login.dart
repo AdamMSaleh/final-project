@@ -10,6 +10,7 @@ import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dar
 import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/richText/rich_text.dart';
 import 'package:flutter_finalproject/Packages/Components/text_filed/simple_filed.dart';
+import 'package:flutter_finalproject/Packages/Components/user_info_secure_storage/user_save_login.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/forgot.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/register.dart';
 import 'package:flutter_finalproject/Packages/Pages/Home/View/body.dart';
@@ -41,6 +42,29 @@ class _PageLoginState extends State<PageLogin> {
     'password': TextEditingController(),
   };
 
+  void gggg() async {
+    controllerValue['email']!.text = UserPreferences.getUsername() ?? '';
+    controllerValue['password']!.text = UserPreferences.getPassword() ?? '';
+    // if (UserSecureStorage.getUsername().toString() ==
+    //     "Instance of 'Future<String?>'") {
+    //
+    // } else {
+    //   controllerValue['email']!.text =
+    //   await UserSecureStorage.getUsername().toString();
+    //   controllerValue['password']!.text =
+    //   await UserSecureStorage.getPassword().toString();
+    // }
+    // super.initState();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // WidgetsBinding.instance.
+    gggg();
+  }
+
+  // gggg();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -184,16 +208,39 @@ class _PageLoginState extends State<PageLogin> {
                               margin: EdgeInsets.symmetric(horizontal: 25.h),
                               child: Center(
                                   child: SimpleBtn(
-                                onTap: () {
-                                  if (_keyFoem.currentState!.validate()) {
-                                    Navigator.pushReplacementNamed(
-                                      context,
-                                      PageHome.id,
-                                    );
-                                  }
-                                },
-                                btnText: KeyLang.login,
-                              )),
+                                      btnText: KeyLang.login,
+                                      onTap: () {
+                                        // if(UserSecureStorage.getUsername().toString()=="Instance of 'Future<String?>'"){
+                                        if (_keyFoem.currentState!.validate()) {
+                                          Register().postLogin(
+                                            email: controllerValue['email']!,
+                                            password:
+                                                controllerValue['password']!,
+                                            context: context,
+                                          );
+                                          // UserPreferences.setUsername(
+                                          //     controllerValue['email']!.text);
+                                          // UserPreferences.setPassword(
+                                          //     controllerValue['password']!
+                                          //         .text);
+                                          // Navigator.pushReplacementNamed(
+                                          //   context,
+                                          //   PageHome.id,
+                                          // );
+                                          //    await UserSecureStorage.setUsername(controllerValue['email']!.text);
+                                          //     await UserSecureStorage.setPassword(controllerValue['password']!.text);
+                                          //   }
+                                          // }else{
+                                          //   // controllerValue['email']!.text=await UserSecureStorage().getUsername().toString();
+                                          //   //     controllerValue['password']!.text=await UserSecureStorage().getPassword().toString();
+                                          //       print('samisamsismaismaismsimasiamsiamsasimsaimsaimasm');
+                                          // }
+                                          // print(await UserSecureStorage.getUsername());
+                                          // UserSecureStorage.setUsername(controllerValue['email']!.text);
+                                          // UserSecureStorage.setUsername(controllerValue['password']!.text);
+
+                                        }
+                                      })),
                             ),
 
                             SizedBox(height: 25.h),

@@ -1,15 +1,35 @@
-// ignore_for_file: unused_local_variable, non_constant_identifier_names, avoid_print, unused_import
+// ignore_for_file: unused_local_variable, non_constant_identifier_names, avoid_print, unused_import, implementation_imports
 
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_finalproject/Language/generated/key_lang.dart';
+import 'package:flutter_finalproject/Packages/Components/Toast/simple_toast.dart';
+import 'package:flutter_finalproject/Packages/Components/user_info_secure_storage/user_save_login.dart';
+import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/infi_professionals.dart';
+import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_mechanice.dart';
+import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_owner.dart';
+import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_shop.dart';
+import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_user_Eng.dart';
+import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_workers.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/login.dart';
 import 'package:flutter_finalproject/Packages/Pages/Home/View/body.dart';
-import 'package:flutter_finalproject/Packages/Pages/Splash/View/body.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 
 class Register {
+  Register() {
+    gggg();
+  }
+
   String url = "https://zuporjict1.000webhostapp.com/register.php";
   String msg = "";
+  String? emailSaved = '';
+  String? passwordSaved = '';
+
+  void gggg() async {
+    emailSaved = UserPreferences.getUsername() ?? '';
+    passwordSaved = UserPreferences.getPassword() ?? '';
+  }
 
   registerUser() async {
     var data = {};
@@ -22,7 +42,7 @@ class Register {
     required BuildContext context,
   }) async {
     //200--success ,400,404,
-    String msg = "";
+    String ms = '';
     try {
       var response = await http.post(
         Uri.parse("https://zuporjict1.000webhostapp.com/login.php"),
@@ -31,16 +51,18 @@ class Register {
           'password': password.text,
         },
       );
-      msg = response.body;
+      ms = response.body;
+      UserPreferences.setUsername(email.text);
+      UserPreferences.setPassword(password.text);
       print(response.body);
-      if (msg == 'Login succeeded') {
+      if (ms == 'Login succeeded') {
         Navigator.pushReplacementNamed(context, PageHome.id);
       }
     } catch (e) {
-      msg = e.toString();
+      ms = e.toString();
       print(e);
     }
-    tostforRegsetr(msg);
+    tostforRegsetr(ms);
   }
 
   postData({
@@ -51,28 +73,68 @@ class Register {
     required TextEditingController password,
     required TextEditingController phone_number,
     // required TextEditingController city_user,
+    required BuildContext context,
     required String account_type,
   }) async {
     //200--success ,400,404,
+    msg = '';
     try {
-      var response = await http.post(
-        Uri.parse("https://zuporjict1.000webhostapp.com/register.php"),
-        body: {
-          'first_name': first_name.text,
-          'last_name': last_name.text,
-          'age': '25', //age.text,
-          'email': email.text,
-          'password': password.text,
-          'phone_number': phone_number.text,
-          'picture_user': '2iuh64832svsv',
-          "city_user": 'amman', //city_user.text,
-          'account_type': account_type, //account_type.text,
-          'Account_Status': 'yes',
-          'Activity': 'yes',
-        },
-      );
-      msg = response.body;
-      print(response.body);
+      // var response = await http.post(
+      //   Uri.parse("https://zuporjict1.000webhostapp.com/register.php"),
+      //   body: {
+      //     'first_name': first_name.text,
+      //     'last_name': last_name.text,
+      //     'age': '25', //age.text,
+      //     'email': email.text,
+      //     'password': password.text,
+      //     'phone_number': phone_number.text,
+      //     'picture_user': '2iuh64832svsv',
+      //     "city_user": 'amman', //city_user.text,
+      //     'account_type': account_type, //account_type.text,
+      //     'Account_Status': 'yes',
+      //     'Activity': 'yes',
+      //   },
+      // );
+      UserPreferences.setUsername(email.text);
+      UserPreferences.setPassword(password.text);
+      if (account_type == '1') {
+        // المهندس
+
+        Navigator.pushNamed(
+          context,
+          PageInfoEng.id,
+        );
+      } else if (account_type == '2') {
+        //صاحب مهنه
+        Navigator.pushNamed(
+          context,
+          PageInfoPr.id,
+        );
+      } else if (account_type == '3') {
+        //العمال
+        //PageInfoworker
+        Navigator.pushNamed(
+          context,
+          PageInfoworker.id,
+        );
+      } else if (account_type == '6') {
+        //المالك العقار
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const PageInfowner()),
+        );
+      } else if (account_type == '4') {
+        //صاحب المتجر
+        Navigator.pushNamed(
+          context,
+          PageInfoShope.id,
+        );
+      } else if (account_type == '5') {
+        //اصحاب الالات
+        Navigator.pushNamed(context, PageInfoMech.id);
+      }
+      // msg = response.body;
+      // print(response.body);
       // print('\n\n\n\n\n\n');
       // print(response)
 
@@ -95,6 +157,8 @@ class Register {
         Uri.parse(
             "https://zuporjict1.000webhostapp.com/extra%20registration/updateRigster/register_update_image.php"),
         body: {
+          'email': emailSaved,
+          'password': passwordSaved,
           'picture_user': "https://zuporjict1.000webhostapp.com/upload_image/" +
               picture_user,
         },
@@ -124,6 +188,8 @@ class Register {
         Uri.parse(
             "https://zuporjict1.000webhostapp.com/extra%20registration/updateRigster/register_update_Owner.php"),
         body: {
+          'email': emailSaved,
+          'password': passwordSaved,
           'city_user': city_user.text,
         },
       );
@@ -152,7 +218,7 @@ class Register {
     required BuildContext context,
   }) async {
     //200--success ,400,404,
-
+    msg = '';
     try {
       postDataUpdateOwner(
         city_user: city_user,
@@ -161,9 +227,11 @@ class Register {
         Uri.parse(
             "https://zuporjict1.000webhostapp.com/extra%20registration/register_Engineer.php"),
         body: {
+          'email': emailSaved,
+          'password': passwordSaved,
           'city_user': city_user.text,
           'Guild_number': Guild_number.text,
-          'Guild_picture': office_name.text + 'smsm',
+          'Guild_picture': office_name.text + Guild_number.text + 'smsm',
           'office_name': office_name.text,
         },
       );
@@ -194,7 +262,7 @@ class Register {
     required BuildContext context,
   }) async {
     //200--success ,400,404,
-
+    msg = '';
     try {
       postDataUpdateOwner(
         city_user: city_user,
@@ -203,6 +271,8 @@ class Register {
         Uri.parse(
             "https://zuporjict1.000webhostapp.com/extra%20registration/register_Drivers.php"),
         body: {
+          'email': emailSaved,
+          'password': passwordSaved,
           'city_user': city_user.text,
           // 'license_image': license_image.text,
           'license_no': license_no.text,
@@ -241,6 +311,8 @@ class Register {
         Uri.parse(
             "https://zuporjict1.000webhostapp.com/extra%20registration/register_professional.php"),
         body: {
+          'email': emailSaved,
+          'password': passwordSaved,
           'city_user': city_user.text,
           'Profession_name': Profession_name.text,
           'profssion_certficate_no': profssion_certficate_no.text,
@@ -274,7 +346,7 @@ class Register {
         },
       );
       msg = response.body;
-      print(response.body);
+      // print(response.body);
       // print('\n\n\n\n\n\n');
       // print(response)
 
@@ -284,6 +356,54 @@ class Register {
     }
     tostforRegsetr(msg);
   }
+
+  //*******************************************************************************
+  RemovingSessionData(BuildContext context) async {
+    //200--success ,400,404,
+
+    try {
+      var response = await http.post(
+          Uri.parse(
+              "https://zuporjict1.000webhostapp.com/Removing_session_data.php"),
+          body: {});
+      Navigator.pushReplacementNamed(context, PageLogin.id);
+    } catch (e) {
+      msg = e.toString();
+      print(e);
+    }
+    tostforRegsetr(msg);
+  }
+
+  //*******************************************************************************
+  postImageSyndicateCard({
+    required String Guild_picture,
+  }) async {
+    //200--success ,400,404,
+
+    try {
+      var response = await http.post(
+        Uri.parse(
+            "https://zuporjict1.000webhostapp.com/extra%20registration/updateRigster/Upload_syndicate_card.php"),
+        body: {
+          'email': emailSaved,
+          'password': passwordSaved,
+          'Guild_picture':
+              "https://zuporjict1.000webhostapp.com/upload_image/" +
+                  Guild_picture,
+        },
+      );
+      msg = response.body;
+      // print(response.body);
+      // print('\n\n\n\n\n\n');
+      // print(response)
+
+    } catch (e) {
+      msg = e.toString();
+      print(e);
+    }
+    tostforRegsetr(msg);
+  }
+
   //*******************************************************************************
 
   postDataWorkers({
@@ -301,6 +421,8 @@ class Register {
         Uri.parse(
             "https://zuporjict1.000webhostapp.com/extra%20registration/register_Workers.php"),
         body: {
+          'email': emailSaved,
+          'password': passwordSaved,
           'city_user': city_user.text,
           'work_name': work_name.text,
         },
@@ -326,8 +448,8 @@ class Register {
         body: {},
       );
       msg = response.body;
-      print(response.body);
-      if (msg == "yse") {
+      // print(response.body);
+      if (msg == "Login succeeded") {
         Navigator.pushReplacementNamed(context, PageHome.id);
       } else {
         Navigator.pushReplacementNamed(context, PageLogin.id);
@@ -336,11 +458,47 @@ class Register {
       msg = e.toString();
       print(e);
     }
+    // print('e'+msg);
     tostforRegsetr(msg);
   }
+
 //*******************************************************************************
   //*******************************************************************************
+  Future<String> getDataImage_user() async {
+    String tx = '';
+    try {
+      var response = await http.post(
+        Uri.parse(
+            "https://zuporjict1.000webhostapp.com/splash%20For%20login/image_user.php"),
+        body: {},
+      );
+      tx = response.body;
+      // print('postDataImage_user    ' + msg);
+    } catch (e) {
+      tx =
+          'https://zuporjict1.000webhostapp.com/WhatsApp%20Image%202021-12-10%20at%2010.40.18%20PM.jpeg';
+
+      print(e);
+    }
+
+    // tostforRegsetr(cutHttps(msg));
+    return cutHttps(tx);
+  }
+
   //*******************************************************************************
+  cutHttps(String url) {
+    String ur = '';
+    bool isHttp = false;
+    for (int i = 0; i < url.length; i++) {
+      if (url[i] == 'h' || isHttp) {
+        isHttp = true;
+        ur += url[i];
+      }
+    }
+
+    return ur;
+  }
+
   //*******************************************************************************
   //*******************************************************************************
   //*******************************************************************************

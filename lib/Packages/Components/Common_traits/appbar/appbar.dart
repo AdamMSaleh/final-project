@@ -1,8 +1,9 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, implementation_imports, unused_import
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, implementation_imports, unused_import, duplicate_ignore
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/cach_image/image_user.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
@@ -19,6 +20,17 @@ class AppBHome extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _AppBHomeState extends State<AppBHome> {
+  @override
+  void initState() {
+    Register().getDataImage_user().then((String result) {
+      setState(() {
+        PathImages.profile = result;
+      });
+    });
+    super.initState();
+    // ignore: prefer_const_constructors
+  }
+
   @override
   Widget build(BuildContext context) {
     return AppBar(

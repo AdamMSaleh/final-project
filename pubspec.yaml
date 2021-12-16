@@ -72,6 +72,8 @@ dependencies:
   # open pdf document
   open_file: ^3.1.0
   flutter_launcher_icons: ^0.9.2
+  flutter_secure_storage: ^5.0.2
+  shared_preferences: ^2.0.11
   #location
  # geolocator: ^7.7.1
   
@@ -101,6 +103,7 @@ flutter:
   - assets/Images/4545.jpg
   - assets/Images/11.jpg
   - assets/Images/back.jpg
+  - assets/Images/exit.png
  
 
     

@@ -9,6 +9,7 @@ import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.dart';
+import 'package:flutter_finalproject/Packages/Components/user_info_secure_storage/user_save_login.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/login.dart';
 import 'package:flutter_finalproject/Packages/Pages/Home/View/body.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
@@ -24,18 +25,26 @@ class PageSplash extends StatefulWidget {
 }
 
 class _PageSplashState extends State<PageSplash> {
+
   @override
   void initState() {
+    // Register().getDataImage_user().then((String result){
+    //   setState(() {
+    //     PathImages.profile = result;
+    //   });
+    // });
     super.initState();
     // ignore: prefer_const_constructors
+    Timer(Duration(seconds: 3), () {
+      // Navigator.pushReplacementNamed(context, PageLogin.id);
+      Register().splashLogin(context);
 
-    Timer(Duration(seconds: 7), () {
-      Navigator.pushReplacementNamed(context, PageLogin.id);
     });
   }
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: AppColors.blue,
       body: SafeArea(

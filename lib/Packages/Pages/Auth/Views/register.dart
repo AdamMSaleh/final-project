@@ -86,12 +86,12 @@ class _PageRegister extends State<PageRegister> {
 
   @override
   Widget build(BuildContext context) {
-    controllerValue['first_name']!.text = 'dssa' ;
-    controllerValue['last_name']!.text = 'yuyuyuy' ;
-    controllerValue['email']!.text = 'ututtu@zu.com' ;
-    controllerValue['password']!.text = '123456789' ;
-    controllerValue['phone_number']!.text = '5786428197' ;
-    controllerValue['passwordAgin']!.text = '123456789' ;
+    controllerValue['first_name']!.text = 'dssa';
+    controllerValue['last_name']!.text = 'yuyuyuy';
+    controllerValue['email']!.text = 'ututtu@zu.com';
+    // controllerValue['password']!.text = 'gfgjk,sdeyhj';
+    controllerValue['phone_number']!.text = '5786428197';
+    // controllerValue['passwordAgin']!.text = 'gfgjk,sdeyhj';
 
     return Scaffold(
         backgroundColor: AppColors.blue,
@@ -204,7 +204,8 @@ class _PageRegister extends State<PageRegister> {
                                     SizedBox(height: 20.h),
                                     //*password
                                     SimpleFiled(
-                                      controller: controllerValue['passwordAgin'],
+                                        controller:
+                                            controllerValue['passwordAgin'],
                                         keyboardType:
                                             TextInputType.emailAddress,
                                         onValidator: (value) =>
@@ -236,7 +237,6 @@ class _PageRegister extends State<PageRegister> {
                                     SizedBox(height: 20.h),
                                     //* Confirem Password
                                     SimpleFiled(
-
                                         keyboardType:
                                             TextInputType.emailAddress,
                                         onValidator: (value) =>
@@ -408,69 +408,80 @@ class _PageRegister extends State<PageRegister> {
                                                   .toUpperCase()
                                                   .tr(),
                                               onTap: () async {
-                                                if (s == 1) {
-                                                  // المهندس
-
-                                                  Navigator.pushNamed(
-                                                    context,
-                                                    PageInfoEng.id,
-                                                  );
-                                                } else if (s == 2) {
-                                                  //صاحب مهنه
-                                                  Navigator.pushNamed(
-                                                    context,
-                                                    PageInfoPr.id,
-                                                  );
-                                                } else if (s == 3) {
-                                                  //العمال
-                                                  //PageInfoworker
-                                                  Navigator.pushNamed(
-                                                    context,
-                                                    PageInfoworker.id,
-                                                  );
-                                                } else if (s == 6) {
-                                                  //المالك العقار
-                                                  Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            PageInfowner()),
-                                                  );
-                                                } else if (s == 4) {
-                                                  //صاحب المتجر
-                                                  Navigator.pushNamed(
-                                                    context,
-                                                    PageInfoShope.id,
-                                                  );
-                                                } else if (s == 5) {
-                                                  //اصحاب الالات
-                                                  Navigator.pushNamed(
-                                                      context, PageInfoMech.id);
-                                                } else if (s == 0) {
-                                                  simpleToast(
-                                                    message: KeyLang
-                                                        .massegRegister
-                                                        .tr(),
-                                                  );
-                                                }
-
-                                                // if (_keyFoem.currentState!
-                                                //     .validate()) {
-                                                //   Register().postData(
-                                                //     first_name: controllerValue[
-                                                //         'first_name']!,
-                                                //     last_name: controllerValue[
-                                                //         'last_name']!,
-                                                //     email: controllerValue[
-                                                //         'email']!,
-                                                //     password: controllerValue[
-                                                //         'password']!,
-                                                //     phone_number:
-                                                //         controllerValue[
-                                                //             'phone_number']!,
-                                                //     account_type: s.toString(),
+                                                // if (s == 1) {
+                                                //   // المهندس
+                                                //
+                                                //   Navigator.pushNamed(
+                                                //     context,
+                                                //     PageInfoEng.id,
+                                                //   );
+                                                // } else if (s == 2) {
+                                                //   //صاحب مهنه
+                                                //   Navigator.pushNamed(
+                                                //     context,
+                                                //     PageInfoPr.id,
+                                                //   );
+                                                // } else if (s == 3) {
+                                                //   //العمال
+                                                //   //PageInfoworker
+                                                //   Navigator.pushNamed(
+                                                //     context,
+                                                //     PageInfoworker.id,
+                                                //   );
+                                                // } else if (s == 6) {
+                                                //   //المالك العقار
+                                                //   Navigator.push(
+                                                //     context,
+                                                //     MaterialPageRoute(
+                                                //         builder: (context) =>
+                                                //             PageInfowner()),
+                                                //   );
+                                                // } else if (s == 4) {
+                                                //   //صاحب المتجر
+                                                //   Navigator.pushNamed(
+                                                //     context,
+                                                //     PageInfoShope.id,
+                                                //   );
+                                                // } else if (s == 5) {
+                                                //   //اصحاب الالات
+                                                //   Navigator.pushNamed(
+                                                //       context, PageInfoMech.id);
+                                                // } else if (s == 0) {
+                                                //   simpleToast(
+                                                //     message: KeyLang
+                                                //         .massegRegister
+                                                //         .tr(),
                                                 //   );
                                                 // }
+                                                if (account_type == '0') {
+                                                  simpleToast(
+                                                    message: KeyLang.massegRegister.tr(),
+                                                  );
+                                                }else {
+                                                  if (_keyFoem.currentState!
+                                                      .validate()) {
+                                                    print(
+                                                        'under buttton in register');
+                                                    Register().postData(
+                                                      first_name:
+                                                          controllerValue[
+                                                              'first_name']!,
+                                                      last_name:
+                                                          controllerValue[
+                                                              'last_name']!,
+                                                      email: controllerValue[
+                                                          'email']!,
+                                                      password: controllerValue[
+                                                          'password']!,
+                                                      phone_number:
+                                                          controllerValue[
+                                                              'phone_number']!,
+                                                      account_type:
+                                                          s.toString(),
+                                                      context: context,
+                                                    );
+                                                  }
+                                                }
                                               })),
                                     ),
 
@@ -479,7 +490,9 @@ class _PageRegister extends State<PageRegister> {
                                     RichTextAuth(
                                         fword: KeyLang.haveAccount,
                                         sword: KeyLang.login,
-                                        onTap: () =>  Navigator.pushReplacementNamed(context, PageLogin.id) ),
+                                        onTap: () =>
+                                            Navigator.pushReplacementNamed(
+                                                context, PageLogin.id)),
                                     SizedBox(height: 20.h),
                                   ],
                                 ),

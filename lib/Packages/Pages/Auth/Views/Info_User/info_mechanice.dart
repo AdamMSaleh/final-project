@@ -125,7 +125,7 @@ class _PageInfoMechState extends State<PageInfoMech> {
                         ),
                       ),
                       SizedBox(height: 10.h),
-                      //*boutton updata
+                      //*button up data Image
 
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
