@@ -28,10 +28,10 @@ class _PageSplashState extends State<PageSplash> {
   void initState() {
     super.initState();
     // ignore: prefer_const_constructors
-/*
+
     Timer(Duration(seconds: 7), () {
       Navigator.pushReplacementNamed(context, PageLogin.id);
-    });*/
+    });
   }
 
   @override
