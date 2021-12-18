@@ -2,7 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
+import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/sup_appbar.dart';
+import 'package:flutter_finalproject/Packages/Pages/Archive/components/carts_project.dart';
+import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/projects_details.dart';
 
 class Archive extends StatefulWidget {
   const Archive({Key? key}) : super(key: key);
@@ -22,8 +25,18 @@ class _ArchiveState extends State<Archive> {
       ),
 
       body: SafeArea(
-        child: Center(child: Text('Archive')),
-      ),
+          child: Column(
+        children: [
+          CartFProject(
+            id: '1',
+            num_project: 'zarqa unverste',
+            onTap: () =>
+                GoBack.selectScreen(context, ProjectsDetails("المشروع 41")),
+            date_receipt: '3/8/2021',
+            owner_name: 'adam',
+          ),
+        ],
+      )),
     );
   }
 }

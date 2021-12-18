@@ -25,26 +25,23 @@ class PageSplash extends StatefulWidget {
 }
 
 class _PageSplashState extends State<PageSplash> {
-
   @override
   void initState() {
-    // Register().getDataImage_user().then((String result){
-    //   setState(() {
-    //     PathImages.profile = result;
-    //   });
-    // });
+    Register().getDataImage_user().then((String result) {
+      setState(() {
+        PathImages.profile = result;
+      });
+    });
     super.initState();
     // ignore: prefer_const_constructors
     Timer(Duration(seconds: 3), () {
-      // Navigator.pushReplacementNamed(context, PageLogin.id);
+      Navigator.pushReplacementNamed(context, PageLogin.id);
       Register().splashLogin(context);
-
     });
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: AppColors.blue,
       body: SafeArea(

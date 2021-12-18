@@ -408,56 +408,13 @@ class _PageRegister extends State<PageRegister> {
                                                   .toUpperCase()
                                                   .tr(),
                                               onTap: () async {
-                                                // if (s == 1) {
-                                                //   // المهندس
-                                                //
-                                                //   Navigator.pushNamed(
-                                                //     context,
-                                                //     PageInfoEng.id,
-                                                //   );
-                                                // } else if (s == 2) {
-                                                //   //صاحب مهنه
-                                                //   Navigator.pushNamed(
-                                                //     context,
-                                                //     PageInfoPr.id,
-                                                //   );
-                                                // } else if (s == 3) {
-                                                //   //العمال
-                                                //   //PageInfoworker
-                                                //   Navigator.pushNamed(
-                                                //     context,
-                                                //     PageInfoworker.id,
-                                                //   );
-                                                // } else if (s == 6) {
-                                                //   //المالك العقار
-                                                //   Navigator.push(
-                                                //     context,
-                                                //     MaterialPageRoute(
-                                                //         builder: (context) =>
-                                                //             PageInfowner()),
-                                                //   );
-                                                // } else if (s == 4) {
-                                                //   //صاحب المتجر
-                                                //   Navigator.pushNamed(
-                                                //     context,
-                                                //     PageInfoShope.id,
-                                                //   );
-                                                // } else if (s == 5) {
-                                                //   //اصحاب الالات
-                                                //   Navigator.pushNamed(
-                                                //       context, PageInfoMech.id);
-                                                // } else if (s == 0) {
-                                                //   simpleToast(
-                                                //     message: KeyLang
-                                                //         .massegRegister
-                                                //         .tr(),
-                                                //   );
-                                                // }
                                                 if (account_type == '0') {
                                                   simpleToast(
-                                                    message: KeyLang.massegRegister.tr(),
+                                                    message: KeyLang
+                                                        .massegRegister
+                                                        .tr(),
                                                   );
-                                                }else {
+                                                } else {
                                                   if (_keyFoem.currentState!
                                                       .validate()) {
                                                     print(

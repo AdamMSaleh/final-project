@@ -69,7 +69,6 @@ class DrawerHome extends StatelessWidget {
                 icon: 'assets/Images/exit.png',
                 title: 'Logout',
                 onPress: () {
-
                   UserPreferences.removeUsername();
                   UserPreferences.removePassword();
                   Register().RemovingSessionData(context);
