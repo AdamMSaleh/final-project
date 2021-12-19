@@ -33,7 +33,7 @@ class CartFProject extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 20.h),
+        SizedBox(height: 10.h),
         GestureDetector(
           onTap: _onTap,
           child: Container(
