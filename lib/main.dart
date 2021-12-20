@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,
-            initialRoute: PageHome
+            initialRoute: PageSplash
                 .id, //PageRegister.id,// //PageInfoEng.id,//Upload_Image.id,//PageSplash.id, //PageHome.id
             routes: AppRoutes.routes);
       },

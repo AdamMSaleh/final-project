@@ -64,7 +64,7 @@ class _ArchiveState extends State<Archive> {
                         errorWidget: (context, url, error) => Icon(Icons.error),
                       ),
                     ),
-                    SizedBox(height: 10.h),
+                    // SizedBox(height: 10.h),
                     //* tital
                     Text(
                       KeyLang.oneclickhome,
