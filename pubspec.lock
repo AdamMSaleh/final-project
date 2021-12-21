@@ -241,7 +241,7 @@ packages:
       name: flutter_screenutil
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.0.1"
+    version: "5.0.1+2"
   flutter_secure_storage:
     dependency: "direct main"
     description:
@@ -337,7 +337,7 @@ packages:
     source: hosted
     version: "0.15.0"
   http:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: http
       url: "https://pub.dartlang.org"
@@ -690,14 +690,14 @@ packages:
       name: syncfusion_flutter_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "19.3.59"
+    version: "19.4.38"
   syncfusion_flutter_pdf:
     dependency: "direct main"
     description:
       name: syncfusion_flutter_pdf
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "19.3.59-beta"
+    version: "19.4.38-beta"
   synchronized:
     dependency: transitive
     description:
@@ -713,7 +713,7 @@ packages:
     source: hosted
     version: "1.2.0"
   test_api:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: test_api
       url: "https://pub.dartlang.org"
@@ -741,7 +741,7 @@ packages:
     source: hosted
     version: "3.0.0"
   vector_math:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: vector_math
       url: "https://pub.dartlang.org"

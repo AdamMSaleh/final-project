@@ -23,9 +23,9 @@ import 'package:flutter_finalproject/validators/app_validators.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+
 class PageLogin extends StatefulWidget {
   static const String id = 'PageLogin';
-
   @override
   State<PageLogin> createState() => _PageLoginState();
 }
@@ -33,8 +33,13 @@ class PageLogin extends StatefulWidget {
 class _PageLoginState extends State<PageLogin> {
   //*form key
   final GlobalKey<FormState> _keyFoem = GlobalKey<FormState>();
+  // firebase
+  //  FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance ;
+
+
 
   //*icon
+
   bool _obscureText = true;
   FaIcon _iconSuffix = PathIcons.eyeIcon;
   Map<String, TextEditingController> controllerValue = {
@@ -43,8 +48,8 @@ class _PageLoginState extends State<PageLogin> {
   };
 
   void gggg() async {
-    controllerValue['email']!.text= UserPreferences.getUsername() ?? '';
-    controllerValue['password']!.text= UserPreferences.getPassword() ?? '';
+    controllerValue['email']!.text = UserPreferences.getUsername() ?? '';
+    controllerValue['password']!.text = UserPreferences.getPassword() ?? '';
     // if (UserSecureStorage.getUsername().toString() ==
     //     "Instance of 'Future<String?>'") {
     //
@@ -56,14 +61,29 @@ class _PageLoginState extends State<PageLogin> {
     // }
     // super.initState();
   }
+late String token1;
   void initState() {
+    // _firebaseMessaging.getToken().then((token) {
+    //   print("Token is "+token!);
+    //   token1=token;
+    //   setState(() {
+    //
+    //   });
+    // });
     super.initState();
     // WidgetsBinding.instance.
     gggg();
+
   }
+
   // gggg();
   @override
   Widget build(BuildContext context) {
+    bool processing =false;
+    setState(() {
+      processing  = Register.cicul;
+      print('processing'+processing.toString());
+    });
 
     return Scaffold(
         backgroundColor: AppColors.blue,
@@ -204,41 +224,67 @@ class _PageLoginState extends State<PageLogin> {
                             SizedBox(height: 5.h),
                             Container(
                               margin: EdgeInsets.symmetric(horizontal: 25.h),
-                              child: Center(
-                                  child: SimpleBtn(
-                                      btnText: KeyLang.login,
-                                      onTap: () {
-                                        // if(UserSecureStorage.getUsername().toString()=="Instance of 'Future<String?>'"){
-                                        if (_keyFoem.currentState!.validate()) {
-                                          Register().postLogin(
-                                            email: controllerValue['email']!,
-                                            password:
-                                                controllerValue['password']!,
-                                            context: context,
-                                          );
-                                          // UserPreferences.setUsername(
-                                          //     controllerValue['email']!.text);
-                                          // UserPreferences.setPassword(
-                                          //     controllerValue['password']!
-                                          //         .text);
-                                          // Navigator.pushReplacementNamed(
-                                          //   context,
-                                          //   PageHome.id,
-                                          // );
-                                          //    await UserSecureStorage.setUsername(controllerValue['email']!.text);
-                                          //     await UserSecureStorage.setPassword(controllerValue['password']!.text);
-                                          //   }
-                                          // }else{
-                                          //   // controllerValue['email']!.text=await UserSecureStorage().getUsername().toString();
-                                          //   //     controllerValue['password']!.text=await UserSecureStorage().getPassword().toString();
-                                          //       print('samisamsismaismaismsimasiamsiamsasimsaimsaimasm');
-                                          // }
-                                          // print(await UserSecureStorage.getUsername());
-                                          // UserSecureStorage.setUsername(controllerValue['email']!.text);
-                                          // UserSecureStorage.setUsername(controllerValue['password']!.text);
+                              child: !processing
+                                  ? Center(
+                                      child: SimpleBtn(
+                                          btnText: KeyLang.login,
+                                          onTap: () async {
+                                            setState(() {
+                                              processing  = Register.cicul;
+                                              print('processing'+processing.toString());
+                                            });
+                                            // await Register().notification(token1);
+                                            // print(
+                                            //     controllerValue['email']!.text +
+                                            //         '5s5sa5sas');
+                                            // print(controllerValue['password']!
+                                            //         .text +
+                                            //     '5s5sa5sas');
+                                            // if(UserSecureStorage.getUsername().toString()=="Instance of 'Future<String?>'"){
+                                            // setState( () { processing = !processing ; } ) ;
+                                            if (_keyFoem.currentState!
+                                                .validate()) {
+                                              // processing = !processing;
+                                              await Register().postLogin(
+                                                email:
+                                                    controllerValue['email']!,
+                                                password: controllerValue[
+                                                    'password']!,
+                                                context: context,
+                                              );
+                                              setState(() {
+                                                processing  = Register.cicul;
+                                                print('processing'+processing.toString());
+                                              });
+                                              // await UserPreferences.setUsername(
+                                              //     controllerValue['email']!.text);
+                                              // await UserPreferences.setPassword(
+                                              //     controllerValue['password']!
+                                              //         .text);
+                                              // Navigator.pushReplacementNamed(
+                                              //   context,
+                                              //   PageHome.id,
+                                              // );
+                                                 // await UserSecureStorage.setUsername(controllerValue['email']!.text);
+                                                 //  await UserSecureStorage.setPassword(controllerValue['password']!.text);
+                                                }
+                                            //   }else{
+                                            //     // controllerValue['email']!.text=await UserSecureStorage().getUsername().toString();
+                                            //     //     controllerValue['password']!.text=await UserSecureStorage().getPassword().toString();
+                                            //         print('samisamsismaismaismsimasiamsiamsasimsaimsaimasm');
+                                            //   }
+                                            //   print(await UserSecureStorage.getUsername());
+                                            //   UserSecureStorage.setUsername(controllerValue['email']!.text);
+                                            //   UserSecureStorage.setUsername(controllerValue['password']!.text);
+                                            //
+                                            // }
 
-                                        }
-                                      })),
+                                          }))
+                                  : CircularProgressIndicator(
+                                      backgroundColor: Colors.black38,
+                                  color:Colors.black45
+
+                                    ),
                             ),
 
                             SizedBox(height: 25.h),
@@ -256,6 +302,7 @@ class _PageLoginState extends State<PageLogin> {
             ),
           ),
         ));
+
   }
 
   // * Navigator Register

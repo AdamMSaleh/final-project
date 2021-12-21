@@ -27,19 +27,20 @@ class PageSplash extends StatefulWidget {
 class _PageSplashState extends State<PageSplash> {
 
   @override
-  void initState() {
+  void initState()  {
     // Register().getDataImage_user().then((String result){
     //   setState(() {
     //     PathImages.profile = result;
     //   });
     // });
-    super.initState();
+
     // ignore: prefer_const_constructors
-    Timer(Duration(seconds: 3), () {
+     Timer(Duration(seconds: 3), ()  {
       // Navigator.pushReplacementNamed(context, PageLogin.id);
-      Register().splashLogin(context);
+       Register().splashLogin(context);
 
     });
+    super.initState();
   }
 
   @override
@@ -83,5 +84,6 @@ class _PageSplashState extends State<PageSplash> {
         ),
       ),
     );
+
   }
 }

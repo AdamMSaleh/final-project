@@ -1,9 +1,6 @@
 // ignore_for_file: unused_local_variable, non_constant_identifier_names, avoid_print
 
-import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_finalproject/Language/generated/key_lang.dart';
-import 'package:flutter_finalproject/Packages/Components/Toast/simple_toast.dart';
 import 'package:flutter_finalproject/Packages/Components/user_info_secure_storage/user_save_login.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/infi_professionals.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_mechanice.dart';
@@ -25,7 +22,7 @@ class Register {
   String msg = "";
   String? emailSaved = '';
   String? passwordSaved = '';
-
+  static bool cicul = false;
   void gggg() async {
     emailSaved = UserPreferences.getUsername() ?? '';
     passwordSaved = UserPreferences.getPassword() ?? '';
@@ -41,27 +38,39 @@ class Register {
     required TextEditingController password,
     required BuildContext context,
   }) async {
+
     //200--success ,400,404,
-    String ms='';
+    String ms = '';
     try {
+      cicul=!cicul;
       var response = await http.post(
         Uri.parse("https://zuporjict1.000webhostapp.com/login.php"),
         body: {
           'email': email.text,
           'password': password.text,
+          'print': "print sami 9 mrat",
         },
       );
+      print(response);
       ms = response.body;
-      UserPreferences.setUsername(email.text);
-      UserPreferences.setPassword(password.text);
+
       print(response.body);
       if (ms == 'Login succeeded') {
+        cicul=!cicul;
         Navigator.pushReplacementNamed(context, PageHome.id);
+        UserPreferences.setUsername(email.text);
+        UserPreferences.setPassword(password.text);
+      }else{
+        cicul=!cicul;
       }
     } catch (e) {
+      cicul=!cicul;
       ms = e.toString();
       print(e);
+
     }
+    // cicul=!cicul;
+    // cicul=!cicul;
     tostforRegsetr(ms);
   }
 
@@ -77,7 +86,7 @@ class Register {
     required String account_type,
   }) async {
     //200--success ,400,404,
-    msg='';
+    msg = '';
     try {
       // var response = await http.post(
       //   Uri.parse("https://zuporjict1.000webhostapp.com/register.php"),
@@ -218,7 +227,7 @@ class Register {
     required BuildContext context,
   }) async {
     //200--success ,400,404,
-    msg='';
+    msg = '';
     try {
       postDataUpdateOwner(
         city_user: city_user,
@@ -262,7 +271,7 @@ class Register {
     required BuildContext context,
   }) async {
     //200--success ,400,404,
-    msg='';
+    msg = '';
     try {
       postDataUpdateOwner(
         city_user: city_user,
@@ -360,16 +369,15 @@ class Register {
   }
 
   //*******************************************************************************
-  RemovingSessionData( BuildContext context) async {
+  RemovingSessionData(BuildContext context) async {
     //200--success ,400,404,
 
     try {
       var response = await http.post(
-        Uri.parse(
-            "https://zuporjict1.000webhostapp.com/Removing_session_data.php"),
-        body: {});
+          Uri.parse(
+              "https://zuporjict1.000webhostapp.com/Removing_session_data.php"),
+          body: {});
       Navigator.pushReplacementNamed(context, PageLogin.id);
-
     } catch (e) {
       msg = e.toString();
       print(e);
@@ -391,8 +399,8 @@ class Register {
           'email': emailSaved,
           'password': passwordSaved,
           'Guild_picture':
-          "https://zuporjict1.000webhostapp.com/upload_image/" +
-              Guild_picture,
+              "https://zuporjict1.000webhostapp.com/upload_image/" +
+                  Guild_picture,
         },
       );
       msg = response.body;
@@ -408,7 +416,6 @@ class Register {
   }
 
   //*******************************************************************************
-
 
   postDataWorkers({
     required TextEditingController city_user,
@@ -445,7 +452,7 @@ class Register {
 
   //*******************************************************************************
   splashLogin(BuildContext context) async {
-    msg='';
+    String msg = '';
     try {
       var response = await http.post(
         Uri.parse("https://zuporjict1.000webhostapp.com/login.php"),
@@ -455,6 +462,7 @@ class Register {
         },
       );
       msg = response.body;
+
       // print(response.body);
       if (msg == "Login succeeded") {
         Navigator.pushReplacementNamed(context, PageHome.id);
@@ -466,20 +474,28 @@ class Register {
       print(e);
     }
     // print('e'+msg);
+
     tostforRegsetr(msg);
   }
 
 //*******************************************************************************
   //*******************************************************************************
   Future<String> getDataImage_user() async {
-    String tx='';
+    String tx = '';
     try {
       var response = await http.post(
         Uri.parse(
             "https://zuporjict1.000webhostapp.com/splash%20For%20login/image_user.php"),
-        body: {},
+        body: {
+          'email': emailSaved,
+          'password': passwordSaved,
+        },
       );
       tx = response.body;
+      if(!tx.contains('https://zuporjict1.000webhostapp.com/')){
+        tx =
+        'https://zuporjict1.000webhostapp.com/WhatsApp%20Image%202021-12-10%20at%2010.40.18%20PM.jpeg';
+      }
       // print('postDataImage_user    ' + msg);
     } catch (e) {
       tx =
@@ -487,8 +503,9 @@ class Register {
 
       print(e);
     }
-
+// print ('cutHttps(tx)'+tx);
     // tostforRegsetr(cutHttps(msg));
+    // tostforRegsetr(tx);
     return cutHttps(tx);
   }
 
@@ -507,6 +524,27 @@ class Register {
   }
 
   //*******************************************************************************
+  // notification(String token1) async {
+  //   String msg = '';
+  //   try {
+  //     var response = await http.post(
+  //       Uri.parse("https://zuporjict1.000webhostapp.com/notificationNew.php"),
+  //       body: {
+  //         'token': token1,//emailSaved,
+  //
+  //       },
+  //     );
+  //     msg = response.body;
+  //
+  //
+  //   } catch (e) {
+  //     msg = e.toString();
+  //     print(e);
+  //   }
+  //   print(msg);
+  //
+  //   tostforRegsetr(msg);
+  // }
   //*******************************************************************************
   //*******************************************************************************
   //*******************************************************************************

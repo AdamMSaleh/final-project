@@ -20,6 +20,7 @@ class AppBHome extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _AppBHomeState extends State<AppBHome> {
+  @override
   void initState() {
     Register().getDataImage_user().then((String result){
       setState(() {

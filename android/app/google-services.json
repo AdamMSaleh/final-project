@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "994327373505",
+    "firebase_url": "https://relax-building-default-rtdb.firebaseio.com",
     "project_id": "relax-building",
     "storage_bucket": "relax-building.appspot.com"
   },
