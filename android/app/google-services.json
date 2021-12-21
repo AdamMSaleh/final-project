@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "994327373505",
+    "project_id": "relax-building",
+    "storage_bucket": "relax-building.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:994327373505:android:68e131db604f737495d640",
+        "android_client_info": {
+          "package_name": "com.example.flutter_finalproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "994327373505-udjrh9p5n7qpb9kdvg21lpnupht74lp3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXO-iAUp2CblbyPyOibzgxXCRS4l9T_28"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "994327373505-udjrh9p5n7qpb9kdvg21lpnupht74lp3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
