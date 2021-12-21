@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/sup_appbar.dart';
-import 'package:flutter_finalproject/Packages/Components/backgrondImage/back_image.dart';
 import 'package:flutter_finalproject/Packages/Pages/project_%20parts/components/name_row.dart';
 import 'package:flutter_finalproject/Packages/Pages/project_%20parts/components/row.dart';
 import 'package:flutter_finalproject/Packages/Pages/project_%20parts/view/work_record.dart';

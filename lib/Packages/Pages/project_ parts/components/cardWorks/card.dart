@@ -7,19 +7,22 @@ import 'package:flutter_finalproject/Theme/style.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Cardwork extends StatelessWidget {
-  const Cardwork({required String typ, required String imge})
+  const Cardwork(
+      {required String typ, required String imge, required Function()? onTap})
       : _typ = typ,
-        _imge = imge;
+        _imge = imge,
+        _onTap = onTap;
   //* values
   final String _imge;
   final String _typ;
+  final Function()? _onTap;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         SizedBox(height: 20.h),
         GestureDetector(
-          onTap: () {},
+          onTap: _onTap,
           child: Container(
             height: 90.h,
             margin: EdgeInsets.symmetric(horizontal: 5.w),

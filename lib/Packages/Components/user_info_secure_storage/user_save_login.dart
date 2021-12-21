@@ -1,28 +1,28 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserPreferences {
   static late SharedPreferences _preferences;
   static const String _keyUsername = 'username';
-  static const String _keyPassword ='password';
-
+  static const String _keyPassword = 'password';
 
   static Future init() async =>
       _preferences = await SharedPreferences.getInstance();
 
   static Future setUsername(String username) async =>
-  await _preferences.setString(_keyUsername, username);
+      await _preferences.setString(_keyUsername, username);
 
-  static String? getUsername()=> _preferences.getString(_keyUsername);
+  static String? getUsername() => _preferences.getString(_keyUsername);
 
   static Future setPassword(String Password) async =>
       await _preferences.setString(_keyPassword, Password);
 
-  static String? getPassword()=> _preferences.getString(_keyPassword);
+  static String? getPassword() => _preferences.getString(_keyPassword);
   static Future removePassword() async =>
       await _preferences.remove(_keyPassword);
   static Future removeUsername() async =>
       await _preferences.remove(_keyUsername);
-
 }
 
 

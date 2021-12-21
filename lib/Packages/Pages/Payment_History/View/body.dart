@@ -6,6 +6,7 @@ import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/Drawer/drawer.dart';
+import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/sup_appbar.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/cach_image/image_user.dart';
@@ -267,9 +268,10 @@ class _PaymentHistoryState extends State<PaymentHistory>
     /***********************************************************/
     return Scaffold(
       //*Appbar
-      appBar: AppBHome(),
-      //*drawer
-      drawer: DrawerHome(),
+      appBar: AppBSup(
+        txt: "Payments",
+      ),
+
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(

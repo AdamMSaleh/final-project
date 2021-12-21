@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable, non_constant_identifier_names, avoid_print
+// ignore_for_file: unused_local_variable, non_constant_identifier_names, avoid_print, unused_import, implementation_imports
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/user_info_secure_storage/user_save_login.dart';
@@ -38,11 +38,10 @@ class Register {
     required TextEditingController password,
     required BuildContext context,
   }) async {
-
     //200--success ,400,404,
     String ms = '';
     try {
-      cicul=!cicul;
+      cicul = !cicul;
       var response = await http.post(
         Uri.parse("https://zuporjict1.000webhostapp.com/login.php"),
         body: {
@@ -56,18 +55,17 @@ class Register {
 
       print(response.body);
       if (ms == 'Login succeeded') {
-        cicul=!cicul;
+        cicul = !cicul;
         Navigator.pushReplacementNamed(context, PageHome.id);
         UserPreferences.setUsername(email.text);
         UserPreferences.setPassword(password.text);
-      }else{
-        cicul=!cicul;
+      } else {
+        cicul = !cicul;
       }
     } catch (e) {
-      cicul=!cicul;
+      cicul = !cicul;
       ms = e.toString();
       print(e);
-
     }
     // cicul=!cicul;
     // cicul=!cicul;
@@ -130,7 +128,7 @@ class Register {
         //المالك العقار
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => PageInfowner()),
+          MaterialPageRoute(builder: (context) => const PageInfowner()),
         );
       } else if (account_type == '4') {
         //صاحب المتجر
@@ -349,8 +347,6 @@ class Register {
         Uri.parse(
             "https://zuporjict1.000webhostapp.com/extra%20registration/updateRigster/uplod_image_Dirvers.php"),
         body: {
-          'email': emailSaved,
-          'password': passwordSaved,
           'license_image':
               "https://zuporjict1.000webhostapp.com/upload_image/" +
                   license_image,
@@ -455,11 +451,9 @@ class Register {
     String msg = '';
     try {
       var response = await http.post(
-        Uri.parse("https://zuporjict1.000webhostapp.com/login.php"),
-        body: {
-          'email': emailSaved,
-          'password': passwordSaved,
-        },
+        Uri.parse(
+            "https://zuporjict1.000webhostapp.com/splash%20For%20login/splashLogin.php"),
+        body: {},
       );
       msg = response.body;
 
@@ -492,9 +486,9 @@ class Register {
         },
       );
       tx = response.body;
-      if(!tx.contains('https://zuporjict1.000webhostapp.com/')){
+      if (!tx.contains('https://zuporjict1.000webhostapp.com/')) {
         tx =
-        'https://zuporjict1.000webhostapp.com/WhatsApp%20Image%202021-12-10%20at%2010.40.18%20PM.jpeg';
+            'https://zuporjict1.000webhostapp.com/WhatsApp%20Image%202021-12-10%20at%2010.40.18%20PM.jpeg';
       }
       // print('postDataImage_user    ' + msg);
     } catch (e) {

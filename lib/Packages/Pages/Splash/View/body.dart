@@ -25,9 +25,8 @@ class PageSplash extends StatefulWidget {
 }
 
 class _PageSplashState extends State<PageSplash> {
-
   @override
-  void initState()  {
+  void initState() {
     // Register().getDataImage_user().then((String result){
     //   setState(() {
     //     PathImages.profile = result;
@@ -35,17 +34,15 @@ class _PageSplashState extends State<PageSplash> {
     // });
 
     // ignore: prefer_const_constructors
-     Timer(Duration(seconds: 3), ()  {
+    Timer(Duration(seconds: 3), () {
       // Navigator.pushReplacementNamed(context, PageLogin.id);
-       Register().splashLogin(context);
-
+      Register().splashLogin(context);
     });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: AppColors.blue,
       body: SafeArea(
@@ -54,22 +51,20 @@ class _PageSplashState extends State<PageSplash> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Center(
-                child: Container(
-                  height: 175.w,
-                  width: 175.w,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      width: 2,
-                      color: Colors.white,
-                    ),
-                    image: DecorationImage(
-                      image: AssetImage(PathImages.projectIcon),
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                ), //لتكبير
+              CachedNetworkImage(
+                imageUrl: PathImages.logo,
+                //لتعديل ع صورة
+                imageBuilder: (context, jjjjj) {
+                  return CircleAvatar(
+                    backgroundImage: jjjjj,
+                    radius: 100.r, //لتكبير
+                  );
+                },
+                placeholder: (context, url) =>
+                    AppLoading(chooseLoading: ChooseLoading.IMAGE),
+                // في حال خطاء بالاتصال بشبكة
+
+                errorWidget: (context, url, error) => Icon(Icons.error),
               ),
               SizedBox(
                 height: 20,
@@ -84,6 +79,5 @@ class _PageSplashState extends State<PageSplash> {
         ),
       ),
     );
-
   }
 }

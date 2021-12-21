@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, implementation_imports, unused_import
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, implementation_imports, unused_import, duplicate_ignore
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
@@ -22,31 +22,30 @@ class AppBHome extends StatefulWidget implements PreferredSizeWidget {
 class _AppBHomeState extends State<AppBHome> {
   @override
   void initState() {
-    Register().getDataImage_user().then((String result){
+    Register().getDataImage_user().then((String result) {
       setState(() {
         PathImages.profile = result;
       });
     });
     super.initState();
     // ignore: prefer_const_constructors
-
   }
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: AppColors.blue,
       toolbarHeight: 65.h,
-      title: Text('Relax'),
-      // Text(KeyLang.oneclickhome,
-      //     style: AppStyles.styleHeadline3Light.copyWith(
-      //       color: AppColors.white,
-      //       fontSize: 25.sp,
-      //     )).tr(),
+      title: Text(KeyLang.oneclickhome,
+          style: AppStyles.styleHeadline3Light.copyWith(
+            color: AppColors.white,
+            fontSize: 25.sp,
+          )).tr(),
       actions: [
         Padding(
-          padding: EdgeInsets.all(3.w),
+          padding: EdgeInsets.all(2.w),
           child: ImageUser(
-              image: PathImages.profile, radius: 25.r, sizeLoading: 25.r),
+              image: PathImages.logo, radius: 20.r, sizeLoading: 20.r),
         ),
         SizedBox(
           width: 7.w,

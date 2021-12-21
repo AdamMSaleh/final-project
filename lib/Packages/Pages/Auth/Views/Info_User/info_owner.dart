@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, implementation_imports
+// ignore_for_file: prefer_const_constructors, implementation_imports, non_constant_identifier_names, avoid_print
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
@@ -44,11 +44,11 @@ class _PageInfownerState extends State<PageInfowner> {
                 decoration: BoxDecoration(
                   color: AppColors.blue,
                   borderRadius:
-                  BorderRadius.only(bottomLeft: Radius.circular(100.r)),
+                      BorderRadius.only(bottomLeft: Radius.circular(100.r)),
                 ),
                 child:
-                //* header elements
-                Stack(
+                    //* header elements
+                    Stack(
                   children: [
                     Column(
                       children: [
@@ -120,9 +120,11 @@ class _PageInfownerState extends State<PageInfowner> {
                                 btnText: KeyLang.register.toUpperCase().tr(),
                                 onTap: () async {
                                   if (_keyFoem.currentState!.validate()) {
-                                    print("oeoeoeoeooeeooeoeoeoeoeoeoeoooeo3oo3o3o3");
+                                    print(
+                                        "oeoeoeoeooeeooeoeoeoeoeoeoeoooeo3oo3o3o3");
                                     Register().postDataUpdateOwner(
-                                        city_user: city_user! ,context: context);
+                                        city_user: city_user!,
+                                        context: context);
                                     print(context);
                                   }
                                 })),

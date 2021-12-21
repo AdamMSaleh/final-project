@@ -4,6 +4,7 @@ import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/sup_appbar.dart';
+import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile.dart';
 import 'package:flutter_finalproject/Packages/Pages/project_%20parts/components/cardWorks/card.dart';
 import 'package:flutter_finalproject/Utils/path_images.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,10 +40,22 @@ class WorkRecond extends StatelessWidget {
               Cardwork(
                 typ: _typ,
                 imge: _imge,
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    Profile.id,
+                  );
+                },
               ),
               Cardwork(
                 typ: _typ,
                 imge: _imge,
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    Profile.id,
+                  );
+                },
               ),
             ],
           ),

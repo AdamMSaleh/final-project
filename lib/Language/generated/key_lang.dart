@@ -85,4 +85,5 @@ class KeyLang {
   static String fat = "Fat";
   static String workRecond = "Work Recond";
   static String welcome = "Welcome";
+  static String payments = "Payments";
 }

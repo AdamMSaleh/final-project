@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, sized_box_for_whitespace, unused_element, implementation_imports, prefer_const_constructors
+// ignore_for_file: use_key_in_widget_constructors, sized_box_for_whitespace, unused_element, implementation_imports, prefer_const_constructors, unused_import
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
@@ -23,7 +23,6 @@ import 'package:flutter_finalproject/validators/app_validators.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-
 class PageLogin extends StatefulWidget {
   static const String id = 'PageLogin';
   @override
@@ -35,8 +34,6 @@ class _PageLoginState extends State<PageLogin> {
   final GlobalKey<FormState> _keyFoem = GlobalKey<FormState>();
   // firebase
   //  FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance ;
-
-
 
   //*icon
 
@@ -61,7 +58,8 @@ class _PageLoginState extends State<PageLogin> {
     // }
     // super.initState();
   }
-late String token1;
+
+  @override
   void initState() {
     // _firebaseMessaging.getToken().then((token) {
     //   print("Token is "+token!);
@@ -73,16 +71,15 @@ late String token1;
     super.initState();
     // WidgetsBinding.instance.
     gggg();
-
   }
 
   // gggg();
   @override
   Widget build(BuildContext context) {
-    bool processing =false;
+    bool processing = false;
     setState(() {
-      processing  = Register.cicul;
-      print('processing'+processing.toString());
+      processing = Register.cicul;
+      print('processing' + processing.toString());
     });
 
     return Scaffold(
@@ -230,8 +227,9 @@ late String token1;
                                           btnText: KeyLang.login,
                                           onTap: () async {
                                             setState(() {
-                                              processing  = Register.cicul;
-                                              print('processing'+processing.toString());
+                                              processing = Register.cicul;
+                                              print('processing' +
+                                                  processing.toString());
                                             });
                                             // await Register().notification(token1);
                                             // print(
@@ -253,8 +251,9 @@ late String token1;
                                                 context: context,
                                               );
                                               setState(() {
-                                                processing  = Register.cicul;
-                                                print('processing'+processing.toString());
+                                                processing = Register.cicul;
+                                                print('processing' +
+                                                    processing.toString());
                                               });
                                               // await UserPreferences.setUsername(
                                               //     controllerValue['email']!.text);
@@ -265,9 +264,9 @@ late String token1;
                                               //   context,
                                               //   PageHome.id,
                                               // );
-                                                 // await UserSecureStorage.setUsername(controllerValue['email']!.text);
-                                                 //  await UserSecureStorage.setPassword(controllerValue['password']!.text);
-                                                }
+                                              // await UserSecureStorage.setUsername(controllerValue['email']!.text);
+                                              //  await UserSecureStorage.setPassword(controllerValue['password']!.text);
+                                            }
                                             //   }else{
                                             //     // controllerValue['email']!.text=await UserSecureStorage().getUsername().toString();
                                             //     //     controllerValue['password']!.text=await UserSecureStorage().getPassword().toString();
@@ -278,13 +277,10 @@ late String token1;
                                             //   UserSecureStorage.setUsername(controllerValue['password']!.text);
                                             //
                                             // }
-
                                           }))
                                   : CircularProgressIndicator(
                                       backgroundColor: Colors.black38,
-                                  color:Colors.black45
-
-                                    ),
+                                      color: Colors.black45),
                             ),
 
                             SizedBox(height: 25.h),
@@ -302,7 +298,6 @@ late String token1;
             ),
           ),
         ));
-
   }
 
   // * Navigator Register
