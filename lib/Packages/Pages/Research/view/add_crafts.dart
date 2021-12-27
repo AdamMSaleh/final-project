@@ -5,10 +5,20 @@ import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart'
 import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/sup_appbar.dart';
 
 class AddCrafts extends StatefulWidget {
-  String name;
+  String name, craftsmanship
+  /*براعة
+
+  راح جيبها من سب تيبل الي
+  فيهم التخصوصات و المهن
+  واذا كان مثلا سائق
+  راح اكتب سائق
+  وجنبها او تحتها
+  اسم الالة
+  */
+  , image = 'assets/image/35844.jpg';
+
   int age;
-  String craftsmanship;
-  String image = 'assets/image/35844.jpg';
+  // String lName, fName, location, phoneNumber, userNo;
 
   AddCrafts(
       {Key? key,

@@ -3,6 +3,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/Drawer/drawer.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/appbar.dart';
@@ -26,15 +27,40 @@ class Research extends StatefulWidget {
 }
 
 class _ResearchState extends State<Research> {
-  static List<Person> people = [
-    Person('محموداحمد ', 'حداد', 64),
-    Person(' يوسف بسام', 'نجار', 30),
-    Person(' ليث جيم', 'جهربجي', 55),
-    Person('مخلد كرم', 'بليط', 67),
-    Person('غليص فلاح', 'حداد', 39),
-  ];
+
+  List<Person> people = [];
+
+  x() async {
+    Person.people=[];
+    await Person.getDataPerson();
+    setState(() {
+
+
+      print('allanlananlalnlna');
+      print(people.length);
+    });
+  }
+
+  @override
+  initState() {
+
+    x();
+    people = Person.people;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    print('samisamisasmaismasimsi');
+    // print(people[1].craftsmanship);
+    setState(() {
+      // getDataPerson();
+      // tate();
+      // (() =>   Person.getDataPerson())();
+
+      print('allanlananlalnlna');
+      print(people.length);
+    });
     return Scaffold(
       //*Appbar
       appBar: AppBSup(
@@ -45,15 +71,18 @@ class _ResearchState extends State<Research> {
         itemCount: people.length,
         itemBuilder: (context, index) {
           final Person person = people[index];
+          if (people == null || people.length == 0) {
+            return CircularProgressIndicator(); //you should see loading animation if list is empty
+          }
           return ListTile(
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: (_) => AddCrafts(
-                      name: person.name,
-                      age: person.age,
-                      craftsmanship: person.occupation,
+                      name: person.name!,
+                      age: person.age!,
+                      craftsmanship: person.craftsmanship!,
                     ))),
-            title: Text(person.name),
-            subtitle: Text(person.occupation),
+            title: Text(person.name!),
+            subtitle: Text(person.craftsmanship!),
             trailing: Text('العمر :  ${person.age}'),
           );
         },
@@ -74,18 +103,18 @@ class _ResearchState extends State<Research> {
             ),
             filter: (person) => [
               person.name,
-              person.occupation,
+              person.craftsmanship,
               person.age.toString(),
             ],
             builder: (person) => ListTile(
               onTap: () => Navigator.of(context).push(MaterialPageRoute(
                   builder: (_) => AddCrafts(
-                        name: person.name,
-                        age: person.age,
-                        craftsmanship: person.occupation,
+                        name: person.name!,
+                        age: person.age!,
+                        craftsmanship: person.craftsmanship!,
                       ))),
-              title: Text(person.name),
-              subtitle: Text(person.occupation),
+              title: Text(person.name!),
+              subtitle: Text(person.craftsmanship!),
               trailing: Text('العمر :${person.age}'),
             ),
           ),
@@ -93,5 +122,7 @@ class _ResearchState extends State<Research> {
         child: Icon(Icons.search),
       ),
     );
+
   }
+
 }

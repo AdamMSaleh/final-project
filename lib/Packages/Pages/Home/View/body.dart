@@ -3,6 +3,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/Drawer/drawer.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
@@ -17,6 +18,7 @@ import 'package:flutter_finalproject/Packages/Pages/NewProject/View/new_project.
 import 'package:flutter_finalproject/Packages/Pages/NewProject/components/BoxDialog/dialog.dart';
 
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile.dart';
+import 'package:flutter_finalproject/Packages/Pages/Research/Components/support/support_class.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/view/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/ask_us/body.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
@@ -147,7 +149,9 @@ class _PageHomeState extends State<PageHome> {
                     children: [
                       //* ask us
                       IconBHome(
-                        onTap: () {
+                        onTap: () async {
+
+
                           Navigator.pushNamed(
                             context,
                             AskUs.id,

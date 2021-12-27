@@ -1,5 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors, sized_box_for_whitespace, unused_element, implementation_imports, prefer_const_constructors, unused_import
 
+import 'dart:async';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +16,7 @@ import 'package:flutter_finalproject/Packages/Components/user_info_secure_storag
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/forgot.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/register.dart';
 import 'package:flutter_finalproject/Packages/Pages/Home/View/body.dart';
+import 'package:flutter_finalproject/Packages/Pages/Profile/Components/profile_information.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
 import 'package:flutter_finalproject/Theme/style.dart';
 import 'package:flutter_finalproject/Theme/theme_status.dart';
@@ -25,7 +28,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class PageLogin extends StatefulWidget {
   static const String id = 'PageLogin';
-
+  DateTime startTime= DateTime.now();
   @override
   State<PageLogin> createState() => _PageLoginState();
 }
@@ -33,8 +36,11 @@ class PageLogin extends StatefulWidget {
 class _PageLoginState extends State<PageLogin> {
   //*form key
   final GlobalKey<FormState> _keyFoem = GlobalKey<FormState>();
+  // firebase
+  //  FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance ;
 
   //*icon
+
   bool _obscureText = true;
   FaIcon _iconSuffix = PathIcons.eyeIcon;
   Map<String, TextEditingController> controllerValue = {
@@ -59,14 +65,35 @@ class _PageLoginState extends State<PageLogin> {
 
   @override
   void initState() {
+    // _firebaseMessaging.getToken().then((token) {
+    //   print("Token is "+token!);
+    //   token1=token;
+    //   setState(() {
+    //
+    //   });
+    // });
     super.initState();
     // WidgetsBinding.instance.
     gggg();
   }
-
+  bool processing = false;
   // gggg();
   @override
   Widget build(BuildContext context) {
+
+
+    // setState(() {
+    //   processing = Register.cicul;
+    //   // ignore: avoid_print
+    //   print('processing' + processing.toString());
+    // });
+
+    // if(widget.startTime.second-DateTime.now().second>5){
+    //   print('startTime.second-DateTime.now().second');
+    //   print(widget.startTime.second-DateTime.now().second);
+    //     processing = false;
+    //
+    // }
     return Scaffold(
         backgroundColor: AppColors.blue,
         body: SafeArea(
@@ -206,41 +233,9 @@ class _PageLoginState extends State<PageLogin> {
                             SizedBox(height: 5.h),
                             Container(
                               margin: EdgeInsets.symmetric(horizontal: 25.h),
-                              child: Center(
-                                  child: SimpleBtn(
-                                      btnText: KeyLang.login,
-                                      onTap: () {
-                                        // if(UserSecureStorage.getUsername().toString()=="Instance of 'Future<String?>'"){
-                                        if (_keyFoem.currentState!.validate()) {
-                                          Register().postLogin(
-                                            email: controllerValue['email']!,
-                                            password:
-                                                controllerValue['password']!,
-                                            context: context,
-                                          );
-                                          // UserPreferences.setUsername(
-                                          //     controllerValue['email']!.text);
-                                          // UserPreferences.setPassword(
-                                          //     controllerValue['password']!
-                                          //         .text);
-                                          // Navigator.pushReplacementNamed(
-                                          //   context,
-                                          //   PageHome.id,
-                                          // );
-                                          //    await UserSecureStorage.setUsername(controllerValue['email']!.text);
-                                          //     await UserSecureStorage.setPassword(controllerValue['password']!.text);
-                                          //   }
-                                          // }else{
-                                          //   // controllerValue['email']!.text=await UserSecureStorage().getUsername().toString();
-                                          //   //     controllerValue['password']!.text=await UserSecureStorage().getPassword().toString();
-                                          //       print('samisamsismaismaismsimasiamsiamsasimsaimsaimasm');
-                                          // }
-                                          // print(await UserSecureStorage.getUsername());
-                                          // UserSecureStorage.setUsername(controllerValue['email']!.text);
-                                          // UserSecureStorage.setUsername(controllerValue['password']!.text);
+                              child: witcicullogin(),
+                              // !processing ?
 
-                                        }
-                                      })),
                             ),
 
                             SizedBox(height: 25.h),
@@ -275,6 +270,94 @@ class _PageLoginState extends State<PageLogin> {
       PageForgetPass.id,
     );
   }
+
+  witcicullogin(){
+    var wigt;
+    if(!processing){
+      wigt= Center(
+          child: SimpleBtn(
+              btnText: KeyLang.login,
+              onTap: () async {
+                // setState(() {
+                //   processing = Register.cicul;
+                //   // ignore: avoid_print
+                //   print('processing' +
+                //       processing.toString());
+                // });
+
+                // await Register().notification(token1);
+                // print(
+                //     controllerValue['email']!.text +
+                //         '5s5sa5sas');
+                // print(controllerValue['password']!
+                //         .text +
+                //     '5s5sa5sas');
+                // if(UserSecureStorage.getUsername().toString()=="Instance of 'Future<String?>'"){
+                // setState( () { processing = !processing ; } ) ;
+                if (_keyFoem.currentState!
+                    .validate()) {
+
+                  // await Register().loadData();
+                  setState(() {
+                    processing=true;
+                  });
+
+                  // print("msaidjasoidjfoasif oijfodijfopsdijf d[ifj[asdifj[sdjfj[ijffj ");
+                  // print(ProfileInformation.first_name);
+                  // processing = !processing;
+                  Register().postLogin(
+                    email:
+                    controllerValue['email']!.text,
+                    password: controllerValue[
+                    'password']!.text,
+                    context: context,
+                  );
+
+                  // setState(() {
+                  //   processing = Register.cicul;
+                  //   // ignore: avoid_print
+                  //   print('processing' +
+                  //       processing.toString());
+                  // });
+
+                  // await UserPreferences.setUsername(
+                  //     controllerValue['email']!.text);
+                  // await UserPreferences.setPassword(
+                  //     controllerValue['password']!
+                  //         .text);
+                  // Navigator.pushReplacementNamed(
+                  //   context,
+                  //   PageHome.id,
+                  // );
+                  // await UserSecureStorage.setUsername(controllerValue['email']!.text);
+                  //  await UserSecureStorage.setPassword(controllerValue['password']!.text);
+                }
+                //   }else{
+                //     // controllerValue['email']!.text=await UserSecureStorage().getUsername().toString();
+                //     //     controllerValue['password']!.text=await UserSecureStorage().getPassword().toString();
+                //         print('samisamsismaismaismsimasiamsiamsasimsaimsaimasm');
+                //   }
+                //   print(await UserSecureStorage.getUsername());
+                //   UserSecureStorage.setUsername(controllerValue['email']!.text);
+                //   UserSecureStorage.setUsername(controllerValue['password']!.text);
+                //
+                // }
+              }));
+    }else{
+      wigt= CircularProgressIndicator(
+        backgroundColor: Colors.black38,
+        color: Colors.black45);
+      Timer(Duration(seconds: 3), () {
+
+        setState(() {
+          processing=false;
+        });
+      });
+
+    }
+    return wigt;
+  }
+
 }
 
 mixin HEAD {}

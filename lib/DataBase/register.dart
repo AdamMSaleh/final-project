@@ -1,9 +1,8 @@
 // ignore_for_file: unused_local_variable, non_constant_identifier_names, avoid_print, unused_import, implementation_imports
 
-import 'package:easy_localization/src/public_ext.dart';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_finalproject/Language/generated/key_lang.dart';
-import 'package:flutter_finalproject/Packages/Components/Toast/simple_toast.dart';
 import 'package:flutter_finalproject/Packages/Components/user_info_secure_storage/user_save_login.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/infi_professionals.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_mechanice.dart';
@@ -13,18 +12,28 @@ import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_us
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_workers.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/login.dart';
 import 'package:flutter_finalproject/Packages/Pages/Home/View/body.dart';
+import 'package:flutter_finalproject/Packages/Pages/Profile/Components/profile_information.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 
-class Register {
+// import 'package:json_serializable/json_serializable.dart' as Genre;
+class RegisterState extends StatefulWidget {
+  @override
+  Register createState() => Register();
+}
+
+class Register extends State<RegisterState> {
   Register() {
     gggg();
   }
 
-  String url = "https://zuporjict1.000webhostapp.com/register.php";
+  String url =
+      'http://10.0.2.2:80/v2/'; //"https://zuporjict1.000webhostapp.com/";
   String msg = "";
   String? emailSaved = '';
   String? passwordSaved = '';
+  static bool cicul = false;
+  late List<ProfileInformation> profileData;
 
   void gggg() async {
     emailSaved = UserPreferences.getUsername() ?? '';
@@ -37,32 +46,47 @@ class Register {
   }
 
   postLogin({
-    required TextEditingController email,
-    required TextEditingController password,
+    required String email,
+    required String password,
     required BuildContext context,
   }) async {
     //200--success ,400,404,
-    String ms = '';
+    msg = '';
     try {
+      cicul = !cicul;
+      PageLogin().startTime = DateTime.now();
       var response = await http.post(
-        Uri.parse("https://zuporjict1.000webhostapp.com/login.php"),
+        Uri.parse(url + "login.php"),
         body: {
-          'email': email.text,
-          'password': password.text,
+          'email': email,
+          'password': password,
+          // 'print': "print sami 9 mrat",
         },
       );
-      ms = response.body;
-      UserPreferences.setUsername(email.text);
-      UserPreferences.setPassword(password.text);
+      print(response);
+      msg = response.body;
+
       print(response.body);
-      if (ms == 'Login succeeded') {
+      if (msg == '\"Login succeeded\"') {
+        cicul = !cicul;
+
+        UserPreferences.setUsername(email);
+        UserPreferences.setPassword(password);
+        await Register().loadData();
         Navigator.pushReplacementNamed(context, PageHome.id);
+      } else {
+        Navigator.pushReplacementNamed(context, PageLogin.id);
+
+        cicul = !cicul;
       }
     } catch (e) {
-      ms = e.toString();
+      cicul = !cicul;
+      msg = e.toString();
       print(e);
     }
-    tostforRegsetr(ms);
+    // cicul=!cicul;
+    // cicul=!cicul;
+    tostforRegsetr(msg);
   }
 
   postData({
@@ -80,7 +104,7 @@ class Register {
     msg = '';
     try {
       // var response = await http.post(
-      //   Uri.parse("https://zuporjict1.000webhostapp.com/register.php"),
+      //   Uri.parse(url+"register.php"),
       //   body: {
       //     'first_name': first_name.text,
       //     'last_name': last_name.text,
@@ -154,13 +178,12 @@ class Register {
 
     try {
       var response = await http.post(
-        Uri.parse(
-            "https://zuporjict1.000webhostapp.com/extra%20registration/updateRigster/register_update_image.php"),
+        Uri.parse(url +
+            "extra%20registration/updateRigster/register_update_image.php"),
         body: {
           'email': emailSaved,
           'password': passwordSaved,
-          'picture_user': "https://zuporjict1.000webhostapp.com/upload_image/" +
-              picture_user,
+          'picture_user': url + "upload_image/" + picture_user,
         },
       );
       msg = response.body;
@@ -185,8 +208,8 @@ class Register {
 
     try {
       var response = await http.post(
-        Uri.parse(
-            "https://zuporjict1.000webhostapp.com/extra%20registration/updateRigster/register_update_Owner.php"),
+        Uri.parse(url +
+            "extra%20registration/updateRigster/register_update_Owner.php"),
         body: {
           'email': emailSaved,
           'password': passwordSaved,
@@ -224,8 +247,7 @@ class Register {
         city_user: city_user,
       );
       var response = await http.post(
-        Uri.parse(
-            "https://zuporjict1.000webhostapp.com/extra%20registration/register_Engineer.php"),
+        Uri.parse(url + "extra%20registration/register_Engineer.php"),
         body: {
           'email': emailSaved,
           'password': passwordSaved,
@@ -268,8 +290,7 @@ class Register {
         city_user: city_user,
       );
       var response = await http.post(
-        Uri.parse(
-            "https://zuporjict1.000webhostapp.com/extra%20registration/register_Drivers.php"),
+        Uri.parse(url + "extra%20registration/register_Drivers.php"),
         body: {
           'email': emailSaved,
           'password': passwordSaved,
@@ -308,8 +329,7 @@ class Register {
         city_user: city_user,
       );
       var response = await http.post(
-        Uri.parse(
-            "https://zuporjict1.000webhostapp.com/extra%20registration/register_professional.php"),
+        Uri.parse(url + "extra%20registration/register_professional.php"),
         body: {
           'email': emailSaved,
           'password': passwordSaved,
@@ -338,11 +358,9 @@ class Register {
     try {
       var response = await http.post(
         Uri.parse(
-            "https://zuporjict1.000webhostapp.com/extra%20registration/updateRigster/uplod_image_Dirvers.php"),
+            url + "extra%20registration/updateRigster/uplod_image_Dirvers.php"),
         body: {
-          'license_image':
-              "https://zuporjict1.000webhostapp.com/upload_image/" +
-                  license_image,
+          'license_image': url + "upload_image/" + license_image,
         },
       );
       msg = response.body;
@@ -362,10 +380,8 @@ class Register {
     //200--success ,400,404,
 
     try {
-      var response = await http.post(
-          Uri.parse(
-              "https://zuporjict1.000webhostapp.com/Removing_session_data.php"),
-          body: {});
+      var response = await http
+          .post(Uri.parse(url + "Removing_session_data.php"), body: {});
       Navigator.pushReplacementNamed(context, PageLogin.id);
     } catch (e) {
       msg = e.toString();
@@ -382,14 +398,12 @@ class Register {
 
     try {
       var response = await http.post(
-        Uri.parse(
-            "https://zuporjict1.000webhostapp.com/extra%20registration/updateRigster/Upload_syndicate_card.php"),
+        Uri.parse(url +
+            "extra%20registration/updateRigster/Upload_syndicate_card.php"),
         body: {
           'email': emailSaved,
           'password': passwordSaved,
-          'Guild_picture':
-              "https://zuporjict1.000webhostapp.com/upload_image/" +
-                  Guild_picture,
+          'Guild_picture': url + "upload_image/" + Guild_picture,
         },
       );
       msg = response.body;
@@ -418,8 +432,7 @@ class Register {
         city_user: city_user,
       );
       var response = await http.post(
-        Uri.parse(
-            "https://zuporjict1.000webhostapp.com/extra%20registration/register_Workers.php"),
+        Uri.parse(url + "extra%20registration/register_Workers.php"),
         body: {
           'email': emailSaved,
           'password': passwordSaved,
@@ -441,24 +454,34 @@ class Register {
 
   //*******************************************************************************
   splashLogin(BuildContext context) async {
+    // String msg = '';
     try {
-      var response = await http.post(
-        Uri.parse(
-            "https://zuporjict1.000webhostapp.com/splash%20For%20login/splashLogin.php"),
-        body: {},
+      await postLogin(
+        context: context,
+        email: emailSaved!,
+        password: passwordSaved!,
       );
-      msg = response.body;
+      // var response = await http.post(
+      //   Uri.parse(url + "splash%20For%20login/splashLogin/splashLogin.php"),
+      //   body: {
+      //     'email': emailSaved,
+      //     'password': passwordSaved,
+      //   },
+      // );
+      // msg = response.body;
+
       // print(response.body);
-      if (msg == "Login succeeded") {
-        Navigator.pushReplacementNamed(context, PageHome.id);
-      } else {
-        Navigator.pushReplacementNamed(context, PageLogin.id);
-      }
+      // if (msg == '/"Login succeeded/"') {
+      //   Navigator.pushReplacementNamed(context, PageHome.id);
+      // } else {
+      //   Navigator.pushReplacementNamed(context, PageLogin.id);
+      // }
     } catch (e) {
       msg = e.toString();
       print(e);
     }
     // print('e'+msg);
+
     tostforRegsetr(msg);
   }
 
@@ -468,20 +491,25 @@ class Register {
     String tx = '';
     try {
       var response = await http.post(
-        Uri.parse(
-            "https://zuporjict1.000webhostapp.com/splash%20For%20login/image_user.php"),
-        body: {},
+        Uri.parse(url + "splash%20For%20login/image_user.php"),
+        body: {
+          'email': emailSaved,
+          'password': passwordSaved,
+        },
       );
       tx = response.body;
+      if (!tx.contains(url + "")) {
+        tx = url + 'WhatsApp%20Image%202021-12-10%20at%2010.40.18%20PM.jpeg';
+      }
       // print('postDataImage_user    ' + msg);
     } catch (e) {
-      tx =
-          'https://zuporjict1.000webhostapp.com/WhatsApp%20Image%202021-12-10%20at%2010.40.18%20PM.jpeg';
+      tx = url + 'WhatsApp%20Image%202021-12-10%20at%2010.40.18%20PM.jpeg';
 
       print(e);
     }
-
+// print ('cutHttps(tx)'+tx);
     // tostforRegsetr(cutHttps(msg));
+    // tostforRegsetr(tx);
     return cutHttps(tx);
   }
 
@@ -499,10 +527,109 @@ class Register {
     return ur;
   }
 
-  //*******************************************************************************
-  //*******************************************************************************
-  //*******************************************************************************
-  //*******************************************************************************
+//*******************************************************************************
+// notification(String token1) async {
+//   String msg = '';
+//   try {
+//     var response = await http.post(
+//       Uri.parse(url+"notificationNew.php"),
+//       body: {
+//         'token': token1,//emailSaved,
+//
+//       },
+//     );
+//     msg = response.body;
+//
+//
+//   } catch (e) {
+//     msg = e.toString();
+//     print(e);
+//   }
+//   print(msg);
+//
+//   tostforRegsetr(msg);
+// }
+
+  /*********************************************************************************/
+  loadData() {
+    var data;
+    // bool dataLoaded = false;
+    bool error = false;
+    return Future.delayed(Duration.zero, () async {
+      var res = await http.post(
+        Uri.parse(url + 'personal%20information/Profile_information.php'),
+        body: {
+          'email': emailSaved,
+          'password': passwordSaved,
+        },
+      );
+      if (res.statusCode == 200) {
+        data = json.decode(res.body);
+
+        // print('sami msai kmsia mias mkkmsdi kkmdjmspa');
+        // print(data);
+
+        ProfileInformation.email = data["email"];
+        ProfileInformation.city_user = data["city_user"];
+        ProfileInformation.age = data["age"];
+        ProfileInformation.picture_user = data["picture_user"];
+        ProfileInformation.phoneage = data["phoneage"];
+        ProfileInformation.first_name = data["first_name"];
+        ProfileInformation.last_name = data["last_name"];
+        ProfileInformation.account_type = data["account_type"];
+        ProfileInformation.phone_number = data["phone_number"];
+
+        //  profileData = List<ProfileInformation>.from(data["data"].map((i){
+        //   return ProfileInformation.fromJSON(i);
+        // }));
+        // print('sami msai kmsia mias mkkmsdi kkmdjmspa');
+        // print(profileData);
+        error = false;
+        // we set dataloaded to true,
+        // so that we can build a list only
+        // on data load
+
+      } else {
+        //there is error
+        print('osam soas moasm oasma omsa sooas omsas osamsas omsamsa osmams');
+        error = true;
+      }
+    });
+    // we use Future.delayed becuase there is
+    // async function inside it.
+  }
+
+  /********************************************************************************/
+  getSerchePage() async {
+    var tx;
+    try {
+      var response = await http.get(
+        Uri.parse(url + "search_page/add_craftsmanship.php"),
+      );
+      tx = jsonDecode(response.body) as List<dynamic>;
+
+      print(url);
+      // print(tx[3]['email']);
+      // print('postDataImage_user    ' + msg);
+    } catch (e) {
+      tx = e.toString();
+
+      print(e);
+    }
+    return tx;
+  }
+
+  /********************************************************************************/
+  /********************************************************************************/
+  /********************************************************************************/
+  /********************************************************************************/
+  /********************************************************************************/
+  /********************************************************************************/
+  /********************************************************************************/
+  /********************************************************************************/
+  /********************************************************************************/
+  /********************************************************************************/
+  /********************************************************************************/
 
   tostforRegsetr(String mss) {
     return Fluttertoast.showToast(
@@ -526,18 +653,24 @@ class Register {
     return new_name;
   }
 
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
+  }
+
 /*
-  first_name
-  last_name
-  age
-  email
-  password
-  phone_number
-  picture_user
-  city_user
-  account_type
-  Account_Status
-  Activity
-*/
+    first_name
+    last_name
+    age
+    email
+    password
+    phone_number
+    picture_user
+    city_user
+    account_type
+    Account_Status
+    Activity
+    */
 
 }

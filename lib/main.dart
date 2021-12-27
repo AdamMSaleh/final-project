@@ -17,6 +17,8 @@ import 'Packages/Components/upload_image_php/img_upload.dart';
 import 'Packages/Components/user_info_secure_storage/user_save_login.dart';
 import 'Packages/Pages/Auth/Views/Info_User/info_owner.dart';
 import 'Packages/Pages/Auth/Views/Info_User/info_user_Eng.dart';
+import 'Packages/Pages/Auth/Views/login.dart';
+import 'Packages/Pages/Research/view/body.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,7 +42,7 @@ class MyApp extends StatelessWidget {
       designSize: Size(360, 690),
       builder: () {
         return MaterialApp(
-            title: 'one Click Home',
+            title: 'Relax building',
             debugShowCheckedModeBanner: false,
             theme: CustomTheme.lightTheme,
             darkTheme: CustomTheme.darkTheme,
@@ -48,8 +50,7 @@ class MyApp extends StatelessWidget {
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,
-            initialRoute: PageSplash
-                .id, //PageRegister.id,// //PageInfoEng.id,//Upload_Image.id,//PageSplash.id, //PageHome.id
+            initialRoute: PageHome.id, //Research.id,//PageSplash.id,//PageLogin.id,//PageRegister.id,// PageInfoEng.id,//Upload_Image.id,//
             routes: AppRoutes.routes);
       },
     );
