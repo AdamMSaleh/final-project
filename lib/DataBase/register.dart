@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable, non_constant_identifier_names, avoid_print, unused_import, implementation_imports
+// ignore_for_file: unused_local_variable, non_constant_identifier_names, avoid_print, unused_import, implementation_imports, slash_for_doc_comments, prefer_typing_uninitialized_variables
 
 import 'dart:convert';
 
@@ -18,6 +18,8 @@ import 'package:http/http.dart' as http;
 
 // import 'package:json_serializable/json_serializable.dart' as Genre;
 class RegisterState extends StatefulWidget {
+  const RegisterState({Key? key}) : super(key: key);
+
   @override
   Register createState() => Register();
 }
@@ -67,6 +69,7 @@ class Register extends State<RegisterState> {
       msg = response.body;
 
       print(response.body);
+      // ignore: unnecessary_string_escapes
       if (msg == '\"Login succeeded\"') {
         cicul = !cicul;
 
@@ -655,6 +658,7 @@ class Register extends State<RegisterState> {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: todo
     // TODO: implement build
     throw UnimplementedError();
   }

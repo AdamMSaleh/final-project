@@ -1,9 +1,11 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter_finalproject/DataBase/register.dart';
 
 class Person {
-  final String? name , location, phoneNumber, userNo, craftsmanship
+  final String? name, location, phoneNumber, userNo, craftsmanship
 
-  /*براعة
+      /*براعة
 
   راح جيبها من سب تيبل الي
   فيهم التخصوصات و المهن
@@ -11,7 +13,8 @@ class Person {
   راح اكتب سائق
   وجنبها او تحتها
   اسم الالة
-  */;
+  */
+      ;
   final int? age;
 // String ;
 
@@ -22,32 +25,29 @@ class Person {
       this.userNo,
       this.craftsmanship,
       this.age});
-   static List<Person> people=[];
-   static  getDataPerson()  async {
-     // people=[];
-    var x =  await Register().getSerchePage();
+  static List<Person> people = [];
+  static getDataPerson() async {
+    // people=[];
+    var x = await Register().getSerchePage();
 
     for (int i = 0; i < x.length; i++) {
-      int q=int.parse(x[i]['account_type']);
-      String? stt='';
-      if(q==10){
-        stt='مهندس';
-
-      }else{
-        stt='سواق';
+      int q = int.parse(x[i]['account_type']);
+      String? stt = '';
+      if (q == 10) {
+        stt = 'مهندس';
+      } else {
+        stt = 'سواق';
       }
       people.add(Person(
         age: int.tryParse(x[i]['user_no']),
-        name: x[i]['first_name'] +' '+x[i]['last_name'],
+        name: x[i]['first_name'] + ' ' + x[i]['last_name'],
 
-        craftsmanship: stt,//x[i]['email'],
+        craftsmanship: stt, //x[i]['email'],
       ));
       print(i);
     }
 
-
     // print(people[2].fName);
     // return people as List<Person> ;
   }
-
 }

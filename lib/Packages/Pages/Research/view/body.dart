@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, duplicate_ignore, implementation_imports, unused_import, avoid_print
+// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, duplicate_ignore, implementation_imports, unused_import, avoid_print, unnecessary_null_comparison, prefer_is_empty
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
@@ -27,15 +27,12 @@ class Research extends StatefulWidget {
 }
 
 class _ResearchState extends State<Research> {
-
   List<Person> people = [];
 
   x() async {
-    Person.people=[];
+    Person.people = [];
     await Person.getDataPerson();
     setState(() {
-
-
       print('allanlananlalnlna');
       print(people.length);
     });
@@ -43,7 +40,6 @@ class _ResearchState extends State<Research> {
 
   @override
   initState() {
-
     x();
     people = Person.people;
     super.initState();
@@ -122,7 +118,5 @@ class _ResearchState extends State<Research> {
         child: Icon(Icons.search),
       ),
     );
-
   }
-
 }
