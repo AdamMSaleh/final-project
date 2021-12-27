@@ -34,7 +34,7 @@ class HeaderDrawer extends StatelessWidget {
                 ),
               ),
               child: ImageUser(
-                image: PathImages.logo,
+                image: PathImages.profile,
                 radius: 15.r,
                 sizeLoading: 20.r,
               ),

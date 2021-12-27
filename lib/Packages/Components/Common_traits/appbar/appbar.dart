@@ -22,11 +22,14 @@ class AppBHome extends StatefulWidget implements PreferredSizeWidget {
 class _AppBHomeState extends State<AppBHome> {
   @override
   void initState() {
-    Register().getDataImage_user().then((String result) {
-      setState(() {
-        PathImages.profile = result;
-      });
-    });
+    // Register().getDataImage_user().then((String result) {
+    //   setState(() {
+    //     PathImages.profile = result;
+    //   });
+    // });
+
+    print('PathImages.profile :  '+PathImages.profile);
+    print(" email:   "+ Register().emailSaved! +"  ,  password:  " +Register().passwordSaved!+"   , ");
     super.initState();
     // ignore: prefer_const_constructors
   }
@@ -45,7 +48,7 @@ class _AppBHomeState extends State<AppBHome> {
         Padding(
           padding: EdgeInsets.all(2.w),
           child: ImageUser(
-              image: PathImages.logo, radius: 20.r, sizeLoading: 20.r),
+              image: PathImages.profile, radius: 20.r, sizeLoading: 20.r),
         ),
         SizedBox(
           width: 7.w,

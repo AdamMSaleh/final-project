@@ -9,7 +9,7 @@ import 'package:flutter_finalproject/Packages/Pages/Profile/View/test_crop_image
 import 'profile_for_workers.dart';
 
 class ProfileEdit extends StatefulWidget {
-  static File? imageFileForSh;
+  static String? image1;
   static String? firstName1;
 
   static String? lastName1;
@@ -21,17 +21,16 @@ class ProfileEdit extends StatefulWidget {
   static String? region1;
   static String? phoneNumber1;
 
-  ProfileEdit(
-      {Key? key,
-      File? imageFile,
-      firstName,
-      lastName,
-      occupation,
-      age,
-      region,
-      phoneNumber})
-      : super(key: key) {
-    if (imageFile != null) imageFileForSh = imageFile;
+  ProfileEdit({
+    Key? key,
+    image,
+    firstName,
+    lastName,
+    occupation,
+    age,
+    region,
+    phoneNumber, File? imageFile,
+  }) : super(key: key) {
     if (firstName != null &&
         lastName != null &&
         occupation != null &&
@@ -44,6 +43,7 @@ class ProfileEdit extends StatefulWidget {
       age1 = age;
       region1 = region;
       phoneNumber1 = phoneNumber;
+      image1 = image;
     } else {
       firstName1 = 'غير معروف';
       lastName1 = 'غير معروف';
@@ -51,6 +51,7 @@ class ProfileEdit extends StatefulWidget {
       age1 = 'غير معروف';
       region1 = 'غير معروف';
       phoneNumber1 = '0780808080';
+      image1 = image;
     }
   }
 
@@ -61,21 +62,27 @@ class ProfileEdit extends StatefulWidget {
 class _ProfileEditState extends State<ProfileEdit> {
   var _controllerFirstName1 = TextEditingController();
   final _newFirstName1 = ProfileEdit.firstName1;
+
 /*-------------------------------------------------------*/
   var _controllerLastName1 = TextEditingController();
   final _newLastName1 = ProfileEdit.lastName1;
+
 /*-------------------------------------------------------*/
   var _controllerOccupation1 = TextEditingController();
   final _newOccupation1 = ProfileEdit.occupation1;
+
 /*-------------------------------------------------------*/
   var _controllerAge1 = TextEditingController();
   final _newAge1 = ProfileEdit.age1;
+
 /*-------------------------------------------------------*/
   var _controllerRegion1 = TextEditingController();
   final _newRegion1 = ProfileEdit.region1;
+
 /*-------------------------------------------------------*/
   var _controllerPhoneNumber1 = TextEditingController();
   final _newPhoneNumber1 = ProfileEdit.phoneNumber1;
+
 /*-------------------------------------------------------*/
   void getValue() {
     _controllerFirstName1.value = TextEditingValue(
@@ -132,16 +139,9 @@ class _ProfileEditState extends State<ProfileEdit> {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(222.0),
-                  child: ProfileEdit.imageFileForSh == null
-                      ? Image.network(
-                          "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-                          height: 220,
-                        )
-                      : Image.file(
-                          ProfileEdit.imageFileForSh!,
-                          width: 200,
-                          height: 200,
-                        ),
+                  child: Image.network(ProfileEdit.image1!,
+                    height: 220
+                  ),
                 ),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(150.0),
@@ -230,7 +230,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                         age: _controllerAge1.text,
                         region: _controllerRegion1.text,
                         phoneNumber: _controllerPhoneNumber1.text,
-                        fileImage: ProfileEdit.imageFileForSh,
+                       
                       ),
                     ),
                 icon: Icon(Icons.save)),

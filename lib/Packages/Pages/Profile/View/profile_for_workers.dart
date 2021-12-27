@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
+import 'package:flutter_finalproject/Packages/Pages/Profile/Components/profile_information.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile_edit.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/workerRequirements/laborManagementForProfessionals/labor_management_for_professionals.dart';
 
@@ -13,12 +14,14 @@ class ProfileForWorkers extends StatefulWidget {
   File? fileImage;
   static var imageNew1;
 
-  static String firstName1 = "ليث";
-  static String lastName1 = "هاني";
-  static String occupation1 = "حداد";
-  static String age1 = "35";
-  static String region1 = "الزرقاء";
-  static String phoneNumber1 = '0780808080';
+  static String firstName1 = ProfileInformation.first_name!;//الاسم الاول
+  static String lastName1 = ProfileInformation.last_name!;//الاسم الاخير
+  static String occupation1 = ProfileInformation.account_type!;//المهنه
+  static String age1 = ProfileInformation.age!;//العمر
+  static String region1 = ProfileInformation.city_user!;//المنطقة
+  static String phoneNumber1 = ProfileInformation.phone_number!;//رقم الموبايل
+  static String image1 = ProfileInformation.picture_user ?? "https://i2.wp.com/alghad.com/wp-content/uploads/2021/10/Squid-Game-Games-Ranked.jpg?resize=1024%2C512&ssl=1";//صورة المستخدم
+
 
   ProfileForWorkers(
       {Key? key,
@@ -28,14 +31,9 @@ class ProfileForWorkers extends StatefulWidget {
       age,
       region,
       phoneNumber,
-      fileImage})
+      image})
       : super(key: key) {
-    if (fileImage != null) {
-      imageNew1 = Image.file(
-        fileImage,
-        height: 222,
-      );
-    }
+
     if (firstName != null &&
         lastName != null &&
         occupation != null &&
@@ -48,6 +46,7 @@ class ProfileForWorkers extends StatefulWidget {
       age1 = age;
       region1 = region;
       phoneNumber1 = phoneNumber;
+      image1 =image;
     }
   }
 
@@ -68,6 +67,7 @@ class _ProfileForWorkersState extends State<ProfileForWorkers> {
             age: ProfileForWorkers.age1,
             region: ProfileForWorkers.region1,
             phoneNumber: ProfileForWorkers.phoneNumber1,
+            image: ProfileForWorkers.image1,
           ),
         );
         break;
@@ -146,9 +146,7 @@ class _ProfileForWorkersState extends State<ProfileForWorkers> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(222.0),
                 // padding: const EdgeInsets.all(20),
-                child: ProfileForWorkers.imageNew1 ??
-                    Image.network(
-                      'https://i2.wp.com/alghad.com/wp-content/uploads/2021/10/Squid-Game-Games-Ranked.jpg?resize=1024%2C512&ssl=1',
+                child: Image.network( ProfileForWorkers.image1,
                       height: 220,
                     ),
               ),

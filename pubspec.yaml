@@ -40,8 +40,9 @@ dependencies:
   # toast
   fluttertoast: ^8.0.8
   # image
+  #json_serializable
+  #json_serializable: ^6.1.3
 
-  
   #drop
   menu_button: ^1.4.2+1
   flutter_dropdown: ^1.0.0+hotfix.1
