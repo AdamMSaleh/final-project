@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, implementation_imports, unused_import, duplicate_ignore
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, implementation_imports, unused_import, duplicate_ignore, avoid_print
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
@@ -28,8 +28,12 @@ class _AppBHomeState extends State<AppBHome> {
     //   });
     // });
 
-    print('PathImages.profile :  '+PathImages.profile);
-    print(" email:   "+ Register().emailSaved! +"  ,  password:  " +Register().passwordSaved!+"   , ");
+    print('PathImages.profile :  ' + PathImages.profile);
+    print(" email:   " +
+        Register().emailSaved! +
+        "  ,  password:  " +
+        Register().passwordSaved! +
+        "   , ");
     super.initState();
     // ignore: prefer_const_constructors
   }

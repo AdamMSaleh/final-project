@@ -1,5 +1,7 @@
+// ignore_for_file: non_constant_identifier_names
+
 class ProfileInformation {
-   static String? first_name,
+  static String? first_name,
       last_name,
       age,
       email,
@@ -8,7 +10,6 @@ class ProfileInformation {
       picture_user,
       city_user,
       account_type;
-
 
   // ProfileInformation(
   //     { this.first_name,
@@ -36,6 +37,5 @@ class ProfileInformation {
   //     phone_number: json["phone_number"],
   //   );
   // }
-
 
 }

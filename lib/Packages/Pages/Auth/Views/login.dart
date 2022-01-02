@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, sized_box_for_whitespace, unused_element, implementation_imports, prefer_const_constructors, unused_import
+// ignore_for_file: use_key_in_widget_constructors, sized_box_for_whitespace, unused_element, implementation_imports, prefer_const_constructors, unused_import, must_be_immutable, prefer_typing_uninitialized_variables
 
 import 'dart:async';
 
@@ -28,7 +28,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class PageLogin extends StatefulWidget {
   static const String id = 'PageLogin';
-  DateTime startTime= DateTime.now();
+  DateTime startTime = DateTime.now();
   @override
   State<PageLogin> createState() => _PageLoginState();
 }
@@ -76,12 +76,11 @@ class _PageLoginState extends State<PageLogin> {
     // WidgetsBinding.instance.
     gggg();
   }
+
   bool processing = false;
   // gggg();
   @override
   Widget build(BuildContext context) {
-
-
     // setState(() {
     //   processing = Register.cicul;
     //   // ignore: avoid_print
@@ -235,7 +234,6 @@ class _PageLoginState extends State<PageLogin> {
                               margin: EdgeInsets.symmetric(horizontal: 25.h),
                               child: witcicullogin(),
                               // !processing ?
-
                             ),
 
                             SizedBox(height: 25.h),
@@ -271,10 +269,10 @@ class _PageLoginState extends State<PageLogin> {
     );
   }
 
-  witcicullogin(){
+  witcicullogin() {
     var wigt;
-    if(!processing){
-      wigt= Center(
+    if (!processing) {
+      wigt = Center(
           child: SimpleBtn(
               btnText: KeyLang.login,
               onTap: () async {
@@ -294,22 +292,18 @@ class _PageLoginState extends State<PageLogin> {
                 //     '5s5sa5sas');
                 // if(UserSecureStorage.getUsername().toString()=="Instance of 'Future<String?>'"){
                 // setState( () { processing = !processing ; } ) ;
-                if (_keyFoem.currentState!
-                    .validate()) {
-
+                if (_keyFoem.currentState!.validate()) {
                   // await Register().loadData();
                   setState(() {
-                    processing=true;
+                    processing = true;
                   });
 
                   // print("msaidjasoidjfoasif oijfodijfopsdijf d[ifj[asdifj[sdjfj[ijffj ");
                   // print(ProfileInformation.first_name);
                   // processing = !processing;
                   Register().postLogin(
-                    email:
-                    controllerValue['email']!.text,
-                    password: controllerValue[
-                    'password']!.text,
+                    email: controllerValue['email']!.text,
+                    password: controllerValue['password']!.text,
                     context: context,
                   );
 
@@ -343,21 +337,17 @@ class _PageLoginState extends State<PageLogin> {
                 //
                 // }
               }));
-    }else{
-      wigt= CircularProgressIndicator(
-        backgroundColor: Colors.black38,
-        color: Colors.black45);
+    } else {
+      wigt = CircularProgressIndicator(
+          backgroundColor: Colors.black38, color: Colors.black45);
       Timer(Duration(seconds: 3), () {
-
         setState(() {
-          processing=false;
+          processing = false;
         });
       });
-
     }
     return wigt;
   }
-
 }
 
 mixin HEAD {}
