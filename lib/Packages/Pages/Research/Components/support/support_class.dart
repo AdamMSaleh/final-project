@@ -30,11 +30,23 @@ class Person {
     for (int i = 0; i < x.length; i++) {
       int q=int.parse(x[i]['account_type']);
       String? stt='';
+      switch(q){
+        case(10):stt='مهندس';
+        break;
+        case(20):stt='سواق';
+        break;
+        case(30):stt='سواق';
+        break;
+        case(40):stt='سواق';
+        break;
+        case(50):stt='سواق';
+        break;
+      }
       if(q==10){
-        stt='مهندس';
+
 
       }else{
-        stt='سواق';
+
       }
       people.add(Person(
         age: int.tryParse(x[i]['user_no']),
