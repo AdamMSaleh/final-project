@@ -50,8 +50,8 @@ class MyApp extends StatelessWidget {
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,
-            initialRoute: PageHome
-                .id, //PageSplash.id,//PageLogin.id,//PageRegister.id,// PageInfoEng.id,//Upload_Image.id,//
+            initialRoute: PageSplash
+                .id, // PageHome.id, //PageSplash.id,//PageLogin.id,//PageRegister.id,// PageInfoEng.id,//Upload_Image.id,//
             routes: AppRoutes.routes);
       },
     );
