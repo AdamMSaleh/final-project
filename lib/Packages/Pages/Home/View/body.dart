@@ -150,8 +150,6 @@ class _PageHomeState extends State<PageHome> {
                       //* ask us
                       IconBHome(
                         onTap: () async {
-
-
                           Navigator.pushNamed(
                             context,
                             AskUs.id,
@@ -159,6 +157,7 @@ class _PageHomeState extends State<PageHome> {
                         },
                         imag: PathImages.ask,
                         btnName: KeyLang.ask,
+                        //hello
                       ),
                     ],
                   )
