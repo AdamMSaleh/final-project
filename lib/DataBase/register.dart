@@ -29,8 +29,8 @@ class Register extends State<RegisterState> {
     gggg();
   }
 
-  String url =
-      'http://10.0.2.2:80/v2/'; //"https://zuporjict1.000webhostapp.com/";
+  String url = "http://relaxbuilding.space/";
+  //'http://10.0.2.2:80/v2/'; //"https://zuporjict1.000webhostapp.com/";
   String msg = "";
   String? emailSaved = '';
   String? passwordSaved = '';
