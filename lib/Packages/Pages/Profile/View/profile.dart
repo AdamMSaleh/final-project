@@ -3,6 +3,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/Components/profile_information.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile_edit.dart';

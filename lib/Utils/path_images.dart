@@ -1,12 +1,12 @@
 import 'package:flutter_finalproject/Packages/Pages/Profile/Components/profile_information.dart';
 
 class PathImages {
-  static String logo =
-      'http://relaxbuilding.space/image/logo5.png';
+  static String logo = 'http://relaxbuilding.space/image/logo5.png';
 
   static String infoimage = 'assets/Images/userpng.png';
   static String profileNew = 'assets/Images/account.png';
-  static String profile =ProfileInformation.picture_user ??'https://zuporjict1.000webhostapp.com/WhatsApp%20Image%202021-12-10%20at%2010.40.18%20PM.jpeg';//'https://zuporjict1.000webhostapp.com/WhatsApp%20Image%202021-12-10%20at%2010.40.18%20PM.jpeg';
+  static String profile = ProfileInformation.picture_user ??
+      'https://zuporjict1.000webhostapp.com/WhatsApp%20Image%202021-12-10%20at%2010.40.18%20PM.jpeg'; //'https://zuporjict1.000webhostapp.com/WhatsApp%20Image%202021-12-10%20at%2010.40.18%20PM.jpeg';
   //* Drawer
   static String notif = 'assets/icons/notifi.png';
   static String langua = 'assets/icons/translate.png';
