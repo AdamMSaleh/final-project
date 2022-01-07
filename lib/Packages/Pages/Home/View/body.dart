@@ -34,6 +34,14 @@ class PageHome extends StatefulWidget {
 }
 
 class _PageHomeState extends State<PageHome> {
+  x() async {
+    await Register().loadData();
+  }
+  @override
+  void initState() {
+    x();
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
