@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable, avoid_unnecessary_containers, prefer_const_constructors, prefer_adjacent_string_concatenation, implementation_imports
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/sup_appbar.dart';
@@ -31,64 +32,155 @@ class _ProjectsDetailsState extends State<ProjectsDetails> {
 
       body: Container(
         // padding: const EdgeInsets.only(top:10,),//fromLTRB(15,10,10,0),
-        child: ClipRRect(
-          child: GridView.count(
-            scrollDirection: Axis.vertical,
-            crossAxisCount: 3,
-            mainAxisSpacing: 15,
-            //نسبت العرض لطول
-            crossAxisSpacing: 15,
-            //الفرافات بين العناصر
+//----------------------------------------
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.all(10),
+              child: Table(
+                  border: TableBorder.all(color: Colors.black, width: 1.5),
+                  children:[
+                    TableRow(
+                      children: [
+                        GoBack.tx(' بناء مدرسة جامعة الزرقاء'),
+                        GoBack.tx(': اسم المشروع'),
 
-            children: [
-              GoBack.tx('اسم المشروع '),
-              GoBack.tx(' بناء مدرسة جامعة الزرقاء'),
-              GoBack.tx(''),
-              GoBack.tx('اسم المالك :\n محمد احمد'),
-              GoBack.tx('اسم المهندس :\n احمد محمد'),
-              GoBack.tx('اسم القاول :\n خالد خالد'),
-              GoBack.btn(
-                "اظهار المخطاطات",
-                context,
-                card1: 'اضافة',
-                pageCard1: PlanUpload(),
+                      ]
+                  ),
+                    TableRow(
+                      children: [
+                        GoBack.tx('عمر خالد'),
+                        GoBack.tx(': اسم المالك'),
+                      ]
+                  ),
+                    TableRow(
+                      children: [
+                        GoBack.tx('خالد'),
+                        GoBack.tx(': اسم المهندس'),
+                      ]
+                  ),
+                    TableRow(
+                      children: [
+                        GoBack.tx(' asmaa hassan'),
+                        GoBack.tx(':  اسم المقاول'),
+                      ]
+                  ),]
               ),
-              GoBack.btn(
-                "الفواتير",
-                context,
-                card1: "إنشاء فاتورة",
-                pageCard1: invoices(),
-                card2: "تحميل فاتورة",
-                pageCard2: UploadImageInvoice(),
-              ),
-              GoBack.btn(
-                "اضافة اصحاب المهن/ عمال",
-                context,
-                card1: 'اضافة',
-                pageCard1: CurrentProjectMain("hhh"),
-                card2: "بحث ",
-                pageCard2:
-                    Research(), //IconButton(onPressed: ()=>GoBack.selectScreen(context, SearchHomePage()), icon: Icon(Icons.arrow_forward_ios_sharp , color: Colors.black,)),
-                // card3: card3,
-              ),
-              GoBack.btn(
-                "الدفعات",
-                context,
-                page: PaymentHistory(),
-              ),
-              GoBack.btn(
-                "المخطط الزمني",
-                context,
-                page: TimeLine(),
-              ),
-              GoBack.btn(
-                "سجل العمال",
-                context,
-                page: WorkersDetection(),
-              ),
-            ],
-          ),
+            ),
+            //----------------------------------------
+            Container(
+              child: Column(
+
+               // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                   children: [
+
+                     GoBack.btn(
+                       "اظهار المخطاطات",
+                       context,
+                       card1: 'اضافة',
+                       pageCard1: PlanUpload(),
+                     ),
+                     GoBack.btn(
+                       "الفواتير",
+                       context,
+                       card1: "إنشاء فاتورة",
+                       pageCard1: invoices(),
+                       card2: "تحميل فاتورة",
+                       pageCard2: UploadImageInvoice(),
+                     ),
+                     GoBack.btn(
+                       "اضافة اصحاب المهن/ عمال",
+                       context,
+                       card1: 'اضافة',
+                       pageCard1: CurrentProjectMain("hhh"),
+                       card2: "بحث ",
+                       pageCard2:
+                       Research(), //IconButton(onPressed: ()=>GoBack.selectScreen(context, SearchHomePage()), icon: Icon(Icons.arrow_forward_ios_sharp , color: Colors.black,)),
+                       // card3: card3,
+                     ),
+                     GoBack.btn(
+                       "الدفعات",
+                       context,
+                       page: PaymentHistory(),
+                     ),
+                     GoBack.btn(
+                       "المخطط الزمني",
+                       context,
+                       page: TimeLine(),
+                     ),
+                     GoBack.btn(
+                       "سجل العمال",
+                       context,
+                       page: WorkersDetection(),
+                     ),
+              ],),),
+          ],
         ),
+      ),
+      //==================================
+      //-----------------------------------
+        // child: ClipRRect(
+        //   child: GridView.count(
+        //     scrollDirection: Axis.vertical,
+        //     crossAxisCount: 3,
+        //     mainAxisSpacing: 15,
+        //     //نسبت العرض لطول
+        //     crossAxisSpacing: 15,
+        //     //الفرافات بين العناصر
+        //
+        //
+        //     children: [
+        //       GoBack.tx('اسم المشروع '),
+        //       GoBack.tx(' بناء مدرسة جامعة الزرقاء'),
+        //       GoBack.tx(''),
+        //       GoBack.tx('اسم المالك :\n محمد احمد'),
+        //       GoBack.tx('اسم المهندس :\n احمد محمد'),
+        //       GoBack.tx('اسم القاول :\n خالد خالد'),
+        //       GoBack.btn(
+        //         "اظهار المخطاطات",
+        //         context,
+        //         card1: 'اضافة',
+        //         pageCard1: PlanUpload(),
+        //       ),
+        //       GoBack.btn(
+        //         "الفواتير",
+        //         context,
+        //         card1: "إنشاء فاتورة",
+        //         pageCard1: invoices(),
+        //         card2: "تحميل فاتورة",
+        //         pageCard2: UploadImageInvoice(),
+        //       ),
+        //       GoBack.btn(
+        //         "اضافة اصحاب المهن/ عمال",
+        //         context,
+        //         card1: 'اضافة',
+        //         pageCard1: CurrentProjectMain("hhh"),
+        //         card2: "بحث ",
+        //         pageCard2:
+        //             Research(), //IconButton(onPressed: ()=>GoBack.selectScreen(context, SearchHomePage()), icon: Icon(Icons.arrow_forward_ios_sharp , color: Colors.black,)),
+        //         // card3: card3,
+        //       ),
+        //       GoBack.btn(
+        //         "الدفعات",
+        //         context,
+        //         page: PaymentHistory(),
+        //       ),
+        //       GoBack.btn(
+        //         "المخطط الزمني",
+        //         context,
+        //         page: TimeLine(),
+        //       ),
+        //       GoBack.btn(
+        //         "سجل العمال",
+        //         context,
+        //         page: WorkersDetection(),
+        //       ),
+        //     ],
+        //   ),
+        // ),
+        //------------------------------------------
+        //-----------------------------------========
       ),
     );
   }

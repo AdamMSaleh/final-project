@@ -29,7 +29,7 @@ class _CurrentProjectsState extends State<CurrentProjects> {
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
-                  color: project_color('efcba7').withOpacity(0.8),
+                  color: project_color('741b47').withOpacity(0.8),
                   spreadRadius: 2,
                   blurRadius: 12,
                   offset: Offset(0, 1), // changes position of shadow
@@ -43,27 +43,27 @@ class _CurrentProjectsState extends State<CurrentProjects> {
               children: [
                 Container(
                   padding: EdgeInsets.all(5),
-                  color: project_color('741b47'),
+                  color: project_color('efcba7'),
                   child: Table(
-                    border: TableBorder.all(color: Colors.white, width: 1.5),
+                    border: TableBorder.all(color: Colors.black, width: 1.5),
                     children: const [
                       TableRow(
                         children: [
                           Text(
                             ' الرقم ',
-                            style: TextStyle(fontSize: 15,color: Colors.white),
+                            style: TextStyle(fontSize: 15,color: Colors.black),
                           ),
                           Text(
                             ' اسم المشروع ',
-                            style: TextStyle(fontSize: 15,color: Colors.white),
+                            style: TextStyle(fontSize: 15,color: Colors.black),
                           ),
                           Text(
                             ' اسم المالك ',
-                            style: TextStyle(fontSize: 15,color: Colors.white),
+                            style: TextStyle(fontSize: 15,color: Colors.black),
                           ),
                           Text(
                             ' حالة المشروع ',
-                            style: TextStyle(fontSize: 15,color: Colors.white),
+                            style: TextStyle(fontSize: 15,color: Colors.black),
                           ),
                         ],
                       ),

@@ -1,6 +1,7 @@
 // ignore_for_file: unused_local_variable, non_constant_identifier_names, deprecated_member_use, avoid_unnecessary_containers, unnecessary_null_comparison
 
 import 'package:flutter/material.dart';
+import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/design.dart';
 
 class GoBack {
   static back(ctx) {
@@ -16,18 +17,18 @@ class GoBack {
     return Row(
       children: [
         Expanded(
-          child: Center(child: Text('${number == -1 ? "الرقم" : number}')),
+          child: Center(child: Text('${number == -1 ? "الرقم" : number}',style: TextStyle(color: Colors.white),)),
 
           flex: 1,
           // height: heig,
         ),
         Expanded(
-          child: Center(child: Text(nameProject)),
+          child: Center(child: Text(nameProject,style: TextStyle(color: Colors.white))),
           flex: 2,
           // height: heig,
         ),
         Expanded(
-          child: Center(child: Text(ownersName)),
+          child: Center(child: Text(ownersName,style: TextStyle(color: Colors.white))),
           flex: 2,
           // height: heig,
         ),
@@ -79,7 +80,7 @@ class GoBack {
               return Container(
                 height: 222,
                 padding: const EdgeInsets.all(20),
-                color: Theme.of(ctx).accentColor,
+                color: project_color('9D5F7E'),
                 child: Container(
                   child: Column(
                     children: [
@@ -121,11 +122,12 @@ class GoBack {
         : selectScreen(ctx, page!);
   }
 
-  static Widget tx(String str, {double sizee = 20}) {
+  static Widget tx(String str, {double sizee = 15}) {
     return Center(
         child: Text(
       str,
       style: TextStyle(fontSize: sizee, color: Colors.black87),
+            textAlign:TextAlign.center
     ));
   }
 
@@ -141,15 +143,19 @@ class GoBack {
     Widget? page,
   }) {
     return Container(
+      margin: EdgeInsets.all(10),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [Colors.greenAccent, Colors.indigoAccent.withOpacity(0.1)],
-          begin: Alignment.topRight,
+          colors: [project_color('741b47') , Colors.white.withOpacity(0.1)],
+          begin: Alignment.centerRight,
           end: Alignment.bottomLeft,
+
         ),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(15),
+        
       ),
-      child: OutlinedButton(
+      child: TextButton(
+        // style: ButtonStyle(alignment: Alignment.center),
         onPressed: () => bottomSheet(
           ctx,
           card1: card1,
@@ -160,7 +166,7 @@ class GoBack {
           pageCard3: pageCard3,
           page: page,
         ),
-        child: tx(title),
+        child: tx(title,sizee:15),
       ),
     );
   }
