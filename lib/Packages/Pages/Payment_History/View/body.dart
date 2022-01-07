@@ -335,7 +335,62 @@ class _PaymentHistoryState extends State<PaymentHistory>
             ),
             //===========================================
             //===========================================
-            Row(),
+            Column(
+             crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Container(
+                  // margin: EdgeInsets.all(10),
+                  child: Table(
+                    children: [
+                      TableRow(
+                         children: [
+                           Row(
+                             mainAxisAlignment: MainAxisAlignment.spaceAround,
+                             children: const[
+                               Text('اسم المستفيد',
+                                 style: TextStyle(
+                                     fontSize: 12,
+                                     color: Colors.black
+                                 ),
+                               ),
+                               //------------------
+                               Text(
+                                 'قيمة الدفعة',
+                                 style: TextStyle(
+                                   fontSize: 12,
+                                   color: Colors.black,
+                                 ),
+                               ),
+                               //--------------------
+                               Text(
+                                 'تاريخ الدفعة',
+                                 style: TextStyle(
+                                   fontSize: 12,
+                                   color: Colors.black,
+                                 ),
+                               ),
+                               //----------------------
+                               Text(
+                                 'حالة الدفعة',
+                                 style: TextStyle(
+                                   fontSize: 12,
+                                   color: Colors.black,
+                                 ),
+                               ),
+                             ],
+                           ),
+                           //---------------------------
+
+                       ],
+                      ),
+                    ],
+                  ),
+              ),
+                Container(
+
+                ),
+             ],
+            ),
             //----------------------------------------------
             //هاد الصف للعناوين للجدول
             // Container(
