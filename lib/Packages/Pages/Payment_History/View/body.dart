@@ -100,7 +100,7 @@ class _PaymentHistoryState extends State<PaymentHistory>
         return Container(
           height: double.infinity,
           padding: const EdgeInsets.all(20),
-          color: project_color('76b5c5'),
+          color: project_color('741b47'),
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -118,11 +118,11 @@ class _PaymentHistoryState extends State<PaymentHistory>
                       hintText: 'ادخل اسم العامل',
                       hintStyle: TextStyle(
                         fontSize: 15,
-                        color: Colors.black,
+                        color: Colors.white54,
                       ),
                       prefixIcon: Icon(
                         Icons.person_outline_outlined,
-                        color: project_color('efcba7'),
+                        color:Colors.white,
                       ),
                     ),
                     controller: myControllerName,
@@ -153,11 +153,11 @@ class _PaymentHistoryState extends State<PaymentHistory>
                       hintText: 'ادخل قيمة الدفعة',
                       hintStyle: TextStyle(
                         fontSize: 15,
-                        color: Colors.black,
+                        color: Colors.white54,
                       ),
                       prefixIcon: Icon(
                         Icons.payment,
-                        color: project_color('efcba7'),
+                        color: Colors.white,
                       ),
                     ),
                     controller: myControllerValue,
@@ -189,7 +189,7 @@ class _PaymentHistoryState extends State<PaymentHistory>
                     },
                     child: Text(
                       setDate ?? 'تاريخ الدفعة',
-                      style: TextStyle(fontSize: 25),
+                      style: TextStyle(fontSize: 25,color: Colors.black),
                     ),
                   ),
                 ),
@@ -209,11 +209,11 @@ class _PaymentHistoryState extends State<PaymentHistory>
                     'تأكيد',
                     style: TextStyle(
                       fontSize: 20,
-                      color: Colors.white,
+                      color: Colors.black,
                     ),
                   ),
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.black),
+                    backgroundColor: MaterialStateProperty.all(project_color('efcba7')),
                   ),
                 ),
                 //
@@ -273,12 +273,12 @@ class _PaymentHistoryState extends State<PaymentHistory>
       ),
 
       body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(PathImages.background),
-            fit: BoxFit.cover,
-          ),
-        ),
+        // decoration: BoxDecoration(
+        //   image: DecorationImage(
+        //     image: AssetImage(PathImages.background),
+        //     fit: BoxFit.cover,
+        //   ),
+        // ),
         child: Column(
           children: [
             Row(
@@ -302,7 +302,7 @@ class _PaymentHistoryState extends State<PaymentHistory>
                           child: Container(
                             decoration: BoxDecoration(
                                 border: Border.all(
-                                  color: project_color('efcba7'),
+                                  color: project_color('741b47'),
                                   width: 2,
                                 ),
                                 borderRadius: BorderRadius.circular(10)),
@@ -335,93 +335,95 @@ class _PaymentHistoryState extends State<PaymentHistory>
             ),
             //===========================================
             //===========================================
+            Row(),
+            //----------------------------------------------
             //هاد الصف للعناوين للجدول
-            Container(
-              width: (MediaQuery.of(context).size.width) * 2,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
-                children: [
-                  //اسم صاحب الدفعة
-                  Column(
-                    children: [
-                      Container(
-                        child: Text(
-                          'اسم المستفيد',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: b,
-                          ),
-                        ),
-                        // alignment: Alignment.center,
-                        // width: (MediaQuery.of(context).size.width) / 3.5,
-                      ),
-                    ],
-                  ),
-                  //قيمة الدفعة
-                  Column(
-                    children: [
-                      Column(
-                        children: [
-                          Container(
-                            child: Text(
-                              'قيمة الدفعة',
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: b,
-                              ),
-                            ),
-                            // alignment: Alignment.center,
-                            // width: (MediaQuery.of(context).size.width) / 3.5,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  //تاريخ الدفعة
-                  Column(
-                    children: [
-                      Column(
-                        children: [
-                          Container(
-                            child: Text(
-                              'تاريخ الدفعة',
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: b,
-                              ),
-                            ),
-                            // alignment: Alignment.center,
-                            // width: (MediaQuery.of(context).size.width) / 3.5,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  //حالة الدفعة
-                  Column(
-                    children: [
-                      Column(
-                        children: [
-                          Container(
-                            child: Text(
-                              'حالة الدفعة',
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: b,
-                              ),
-                            ),
-                            // alignment: Alignment.center,
-                            // width: (MediaQuery.of(context).size.width) / 3.5,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
-                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              ),
-            ),
+            // Container(
+            //   width: (MediaQuery.of(context).size.width) * 2,
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //
+            //     children: [
+            //       //اسم صاحب الدفعة
+            //       Column(
+            //         children: [
+            //           Container(
+            //             child: Text(
+            //               'اسم المستفيد',
+            //               style: TextStyle(
+            //                 fontSize: 12,
+            //                 color: b,
+            //               ),
+            //             ),
+            //             // alignment: Alignment.center,
+            //             // width: (MediaQuery.of(context).size.width) / 3.5,
+            //           ),
+            //         ],
+            //       ),
+            //       //قيمة الدفعة
+            //       Column(
+            //         children: [
+            //           Column(
+            //             children: [
+            //               Container(
+            //                 child: Text(
+            //                   'قيمة الدفعة',
+            //                   style: TextStyle(
+            //                     fontSize: 12,
+            //                     color: b,
+            //                   ),
+            //                 ),
+            //                 // alignment: Alignment.center,
+            //                 // width: (MediaQuery.of(context).size.width) / 3.5,
+            //               ),
+            //             ],
+            //           ),
+            //         ],
+            //       ),
+            //       //تاريخ الدفعة
+            //       Column(
+            //         children: [
+            //           Column(
+            //             children: [
+            //               Container(
+            //                 child: Text(
+            //                   'تاريخ الدفعة',
+            //                   style: TextStyle(
+            //                     fontSize: 12,
+            //                     color: b,
+            //                   ),
+            //                 ),
+            //                 // alignment: Alignment.center,
+            //                 // width: (MediaQuery.of(context).size.width) / 3.5,
+            //               ),
+            //             ],
+            //           ),
+            //         ],
+            //       ),
+            //       //حالة الدفعة
+            //       Column(
+            //         children: [
+            //           Column(
+            //             children: [
+            //               Container(
+            //                 child: Text(
+            //                   'حالة الدفعة',
+            //                   style: TextStyle(
+            //                     fontSize: 12,
+            //                     color: b,
+            //                   ),
+            //                 ),
+            //                 // alignment: Alignment.center,
+            //                 // width: (MediaQuery.of(context).size.width) / 3.5,
+            //               ),
+            //             ],
+            //           ),
+            //         ],
+            //       ),
+            //     ],
+            //     // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //   ),
+            // ),
             //-------------------------------------------------
             // هاد صف الجدول تبع القيم الي بعبيها يعني عرض الدفعات
             Container(
@@ -456,7 +458,7 @@ class _PaymentHistoryState extends State<PaymentHistory>
       //الزر العائم لاضافة دفعة
 
       floatingActionButton: FloatingActionButton(
-        backgroundColor: project_color('76b5c5'),
+        backgroundColor: project_color('741b47'),
         onPressed: () => setState(() {
           btnPayment(context);
         }),

@@ -1,5 +1,5 @@
 class KeyLang {
-  static String oneclickhome = 'Relax';
+  static String oneclickhome = 'Relax Building';
   static String login = 'login';
   static String email = 'email';
   static String password = 'password';

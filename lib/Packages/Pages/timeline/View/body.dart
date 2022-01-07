@@ -15,7 +15,7 @@ class TimeLine extends StatelessWidget {
         child: Column(
           children: [
             CardTime(
-              expiryDate: '10/12/2020',
+              expiryDate: '10/12/2022',
               onTap: () {},
               startDate: '11/20/2020',
             ),

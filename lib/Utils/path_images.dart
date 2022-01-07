@@ -1,16 +1,16 @@
 import 'package:flutter_finalproject/Packages/Pages/Profile/Components/profile_information.dart';
 
 class PathImages {
-  static String logo =
-      // 'https://zuporjict1.000webhostapp.com/WhatsApp%20Image%202021-12-10%20at%2010.40.18%20PM.jpeg';
-  'http://www.relaxbuilding.space/image/WhatsApp%20Image%202021-12-10%20at%2010.40.18%20PM.jpeg';
+  static String logo = 'http://relaxbuilding.space/image/logo5.png';
+
   static String infoimage = 'assets/Images/userpng.png';
   static String profileNew = 'assets/Images/account.png';
-  static String profile =ProfileInformation.picture_user ??'https://zuporjict1.000webhostapp.com/WhatsApp%20Image%202021-12-10%20at%2010.40.18%20PM.jpeg';//'https://zuporjict1.000webhostapp.com/WhatsApp%20Image%202021-12-10%20at%2010.40.18%20PM.jpeg';
+  static String profile = ProfileInformation.picture_user ??
+      'https://zuporjict1.000webhostapp.com/WhatsApp%20Image%202021-12-10%20at%2010.40.18%20PM.jpeg'; //'https://zuporjict1.000webhostapp.com/WhatsApp%20Image%202021-12-10%20at%2010.40.18%20PM.jpeg';
   //* Drawer
-  static String notif = 'assets/icons/Notifications-icon.png';
-  static String langua = 'assets/icons/language-icon.png';
-  static String dark = 'assets/icons/Moon-icon.png';
+  static String notif = 'assets/icons/notifi.png';
+  static String langua = 'assets/icons/translate.png';
+  static String dark = 'assets/icons/darkmod.jpg';
 
   //* Dialog Box
   static String einglish = 'assets/icons/English-icon.png';
@@ -19,12 +19,12 @@ class PathImages {
   static String building = 'assets/icons/building2-icon.png';
 
   //* home icon
-  static String ask = 'assets/icons/ask-icon.png';
-  static String newProject = 'assets/icons/Project-icon (1).png';
-  static String currentProjects = 'assets/icons/Current projects-icon.png';
-  static String search = 'assets/icons/search-icon.png';
-  static String profileicon = 'assets/icons/Profile-icon.png';
-  static String archive = 'assets/icons/archive-icon.png';
+  static String ask = 'assets/Images/ask.png';
+  static String newProject = 'assets/icons/add-newproj.png';
+  static String currentProjects = 'assets/icons/currentproj.png';
+  static String search = 'assets/icons/images_search.png';
+  static String profileicon = 'assets/icons/profile.png';
+  static String archive = 'assets/icons/archive2.png';
 
   //* Workers Detection
   static String engineers = 'assets/icons/engineers.png';
