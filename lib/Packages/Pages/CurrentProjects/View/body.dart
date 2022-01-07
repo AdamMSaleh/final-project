@@ -29,7 +29,7 @@ class _CurrentProjectsState extends State<CurrentProjects> {
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
-                  color: project_color('76b5c5').withOpacity(0.8),
+                  color: project_color('efcba7').withOpacity(0.8),
                   spreadRadius: 2,
                   blurRadius: 12,
                   offset: Offset(0, 1), // changes position of shadow
@@ -43,27 +43,27 @@ class _CurrentProjectsState extends State<CurrentProjects> {
               children: [
                 Container(
                   padding: EdgeInsets.all(5),
-                  color: project_color('efcba7'),
+                  color: project_color('741b47'),
                   child: Table(
-                    border: TableBorder.all(color: Colors.black, width: 1.5),
+                    border: TableBorder.all(color: Colors.white, width: 1.5),
                     children: const [
                       TableRow(
                         children: [
                           Text(
                             ' الرقم ',
-                            style: TextStyle(fontSize: 15),
+                            style: TextStyle(fontSize: 15,color: Colors.white),
                           ),
                           Text(
                             ' اسم المشروع ',
-                            style: TextStyle(fontSize: 15),
+                            style: TextStyle(fontSize: 15,color: Colors.white),
                           ),
                           Text(
                             ' اسم المالك ',
-                            style: TextStyle(fontSize: 15),
+                            style: TextStyle(fontSize: 15,color: Colors.white),
                           ),
                           Text(
                             ' حالة المشروع ',
-                            style: TextStyle(fontSize: 15),
+                            style: TextStyle(fontSize: 15,color: Colors.white),
                           ),
                         ],
                       ),
@@ -86,7 +86,12 @@ class _CurrentProjectsState extends State<CurrentProjects> {
                                 context, ProjectsDetails("المشروع 2")),
                             child: Center(
                               child: GoBack.rowOfProject(
-                                  456, 'اسم المشروع2 ', '2اسم المالك', true),
+                                456,
+                                'اسم المشروع2 ',
+                                '2اسم المالك',
+                                true,
+                              ),
+
                             ),
                           ),
                         ],
