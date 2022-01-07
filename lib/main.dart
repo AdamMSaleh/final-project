@@ -52,14 +52,8 @@ class MyApp extends StatelessWidget {
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,
-<<<<<<< HEAD
-            initialRoute:PageSplash.id,// PageHome.id,//PageHome.id,
+            initialRoute: PageSplash.id, // PageHome.id,//PageHome.id,
             //  PlanUpload.id, // , //PageLogin.id,//PageRegister.id,// PageInfoEng.id,//Upload_Image.id,//
-=======
-            initialRoute: PageSplash.id, //PageLogin.id,
-            // PageHome.id,
-            // PageRegister.id,// PageInfoEng.id,//Upload_Image.id,//
->>>>>>> a874b4db4e9958c778e674d31aceb5d41fcf07d9
             routes: AppRoutes.routes);
       },
     );
