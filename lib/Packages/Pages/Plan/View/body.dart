@@ -7,6 +7,7 @@ import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/Drawer/drawer.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
@@ -15,6 +16,7 @@ import 'package:flutter_finalproject/Packages/Components/cach_image/image_user.d
 import 'package:flutter_finalproject/Packages/Pages/Archive/View/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/body.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/appbar.dart';
+import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/design.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/View/new_project.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/components/BoxDialog/dialog.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile.dart';
@@ -57,13 +59,23 @@ File? imageFile1;
 class _PlanUploadState extends State<PlanUpload> {
   List<PlanInformion> planData = [
     PlanInformion(
-       name_plan: 'univercity',Name_Office: 'Amman',Name_designer: 'Ali',code_number: 202100, image: null),
+        name_plan: 'univercity',
+        Name_Office: 'Amman',
+        Name_designer: 'Ali',
+        code_number: 202100,
+        image: null),
     PlanInformion(
-        name_plan: 'home jarash',Name_Office: 'zarqa',Name_designer: 'mohammad',code_number: 202100, image: null),
+        name_plan: 'home jarash',
+        Name_Office: 'zarqa',
+        Name_designer: 'mohammad',
+        code_number: 202100,
+        image: null),
     PlanInformion(
-        name_plan: 'school',Name_Office: 'ajlon',Name_designer: 'Essa',code_number: 202100, image: null),
-
-
+        name_plan: 'school',
+        Name_Office: 'ajlon',
+        Name_designer: 'Essa',
+        code_number: 202100,
+        image: null),
   ];
 
   void btnPayment(BuildContext assoom) {
@@ -76,9 +88,7 @@ class _PlanUploadState extends State<PlanUpload> {
           height: double.infinity,
           padding: const EdgeInsets.all(20),
           color: Theme.of(assoom).accentColor,
-          child: SingleChildScrollView(
-
-          ),
+          child: SingleChildScrollView(),
         );
 //----------end buttom sheet-----------------------------------------------------
       },
@@ -94,7 +104,7 @@ class _PlanUploadState extends State<PlanUpload> {
         return Container(
           height: double.infinity,
           padding: const EdgeInsets.all(20),
-          color: Theme.of(assoom).accentColor,
+          color: project_color('741b47'), //Theme.of(assoom).accentColor,
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -112,7 +122,7 @@ class _PlanUploadState extends State<PlanUpload> {
                       hintText: 'Enter plan Name',
                       hintStyle: TextStyle(
                         fontSize: 15,
-                        color: b,
+                        color: Colors.white30,
                       ),
                     ),
                     controller: myControllerName_Plan,
@@ -138,10 +148,10 @@ class _PlanUploadState extends State<PlanUpload> {
                       hintText: 'Enter Office Name',
                       hintStyle: TextStyle(
                         fontSize: 15,
-                        color: b,
+                        color: Colors.white30,
                       ),
                     ),
-                   controller: myControllerOffice_name,
+                    controller: myControllerOffice_name,
                     style: TextStyle(
                       fontSize: 18,
                       color: w,
@@ -162,7 +172,7 @@ class _PlanUploadState extends State<PlanUpload> {
                       hintText: 'Enter Designer Name',
                       hintStyle: TextStyle(
                         fontSize: 15,
-                        color: b,
+                        color: Colors.white30,
                       ),
                     ),
                     controller: myControllerDesigner_name,
@@ -186,7 +196,7 @@ class _PlanUploadState extends State<PlanUpload> {
                       hintText: 'Enter Code Number',
                       hintStyle: TextStyle(
                         fontSize: 15,
-                        color: b,
+                        color: Colors.white30,
                       ),
                     ),
                     controller: myControllerCode_number,
@@ -203,7 +213,11 @@ class _PlanUploadState extends State<PlanUpload> {
                     child: Row(
                       children: [
                         IconButton(
-                          icon: Icon(Icons.add_photo_alternate),
+                          icon: Icon(
+                            Icons.add_photo_alternate,
+                            size: 50,
+                            color: Colors.white,
+                          ),
                           onPressed: () => _showOption(context),
                         ),
                       ],
@@ -213,6 +227,7 @@ class _PlanUploadState extends State<PlanUpload> {
                 //
                 //
                 Container(
+                  margin: EdgeInsets.all(10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -220,35 +235,47 @@ class _PlanUploadState extends State<PlanUpload> {
                         onPressed: () {
                           setState(
                             () {
-                              planData.add(
-                                PlanInformion(
-                                    name_plan: myControllerName_Plan.text,
-                                   // type: myControllertype.text,
-                                    code_number: int.parse((myControllerCode_number).text),
-                                    Name_designer: myControllerDesigner_name.text,
-                                    Name_Office: myControllerOffice_name.text,
-                                    image: imageFile),
-                              );
-                              myControllerName_Plan.clear();
-                              //myControllertype.clear();
-                              myControllerOffice_name.clear();
-                              myControllerDesigner_name.clear();
-                              myControllerCode_number.clear();
-                              Navigator.pop(assoom);
+                              if (myControllerName_Plan.text!='' &&
+                                  myControllerCode_number.text!= ''&&
+                                  myControllerDesigner_name.text!= ''&&
+                                  myControllerOffice_name.text!=''
+                              ) {
+                                planData.add(
+                                  PlanInformion(
+                                      name_plan: myControllerName_Plan.text,
+                                      // type: myControllertype.text,
+                                      code_number: int.parse(
+                                          (myControllerCode_number).text),
+                                      Name_designer:
+                                          myControllerDesigner_name.text,
+                                      Name_Office: myControllerOffice_name.text,
+                                      image: imageFile),
+                                );
+                                myControllerName_Plan.clear();
+                                //myControllertype.clear();
+                                myControllerOffice_name.clear();
+                                myControllerDesigner_name.clear();
+                                myControllerCode_number.clear();
+                                imageFile = imageFile1;
+                                Navigator.pop(assoom);
 
-                              //ElevatedButtonAddValue(context);
+                                //ElevatedButtonAddValue(context);
+                              }else{
+                                Register().tostforRegsetr('لطفاً إملأ جميع الحقول');
+                              }
                             },
                           );
                         },
                         child: Text(
                           '+',
                           style: TextStyle(
-                            fontSize: 20,
-                            color: w,
+                            fontSize: 25,
+                            color: Colors.black,
                           ),
                         ),
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(b),
+                          backgroundColor: MaterialStateProperty.all(
+                              project_color('efcba7')),
                         ),
                       ),
                       //
@@ -361,21 +388,30 @@ class _PlanUploadState extends State<PlanUpload> {
                             children: [Text('Plan Name : '), Text(e.name_plan)],
                           ),
                           Row(
-                            children: [Text('Office Name : '), Text(e.Name_Office)],
+                            children: [
+                              Text('Office Name : '),
+                              Text(e.Name_Office)
+                            ],
                           ),
                           Row(
-                            children: [Text('Designer Name : '), Text(e.Name_designer)],
+                            children: [
+                              Text('Designer Name : '),
+                              Text(e.Name_designer)
+                            ],
                           ),
                           Row(
-                            children: [Text('Code Number : '), Text('${e.code_number}')],
+                            children: [
+                              Text('Code Number : '),
+                              Text('${e.code_number}')
+                            ],
                           ),
                           Row(
                             children: [
                               Container(
                                 child: e.image == null
                                     ? Image.network(
-                                       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgaE5uDsb9aBw7dcDlZzcZHk6GlgOYv-a2zb7lEWkQXZlEjFMsGsozB_-r2mhy61GKES0&usqp=CAU'
-                                        ,height: 150,
+                                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgaE5uDsb9aBw7dcDlZzcZHk6GlgOYv-a2zb7lEWkQXZlEjFMsGsozB_-r2mhy61GKES0&usqp=CAU',
+                                        height: 150,
                                       )
                                     : Image.file(
                                         e.image!,
@@ -396,12 +432,13 @@ class _PlanUploadState extends State<PlanUpload> {
       ),
 
       floatingActionButton: FloatingActionButton(
+        backgroundColor: project_color('741b47'),
         onPressed: () => setState(() {
           btnplane(context);
         }),
         child: Icon(
           Icons.add,
-          color: b,
+          color: Colors.white,
           size: 40,
         ),
       ),

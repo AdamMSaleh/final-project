@@ -20,12 +20,12 @@ class WorkersDetection extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(PathImages.background),
-                fit: BoxFit.cover,
-              ),
-            ),
+            // decoration: BoxDecoration(
+            //   image: DecorationImage(
+            //     image: AssetImage(PathImages.background),
+            //     fit: BoxFit.cover,
+            //   ),
+            // ),
             child: Column(
               children: [
                 SizedBox(height: 20.h),
@@ -82,7 +82,7 @@ class WorkersDetection extends StatelessWidget {
                   },
                 ),
 
-                SizedBox(height: 20.h),
+                SizedBox(height: 35.h),
                 //* row name
                 NameRow(
                   name: KeyLang.founding,
@@ -132,7 +132,7 @@ class WorkersDetection extends StatelessWidget {
                     );
                   },
                 ),
-                SizedBox(height: 20.h),
+                SizedBox(height: 35.h),
                 //*name 3 row
                 NameRow(name: KeyLang.finishes),
                 //* 3row
@@ -181,7 +181,7 @@ class WorkersDetection extends StatelessWidget {
                     );
                   },
                 ),
-                SizedBox(height: 10.h),
+                SizedBox(height: 20.h),
                 RowThreBot(
                   imag1: PathImages.tiles,
                   btnName1: KeyLang.tilesetter,
