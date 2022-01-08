@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// ignore_for_file: public_member_api_docs
+// ignore_for_file: public_member_api_docs, use_key_in_widget_constructors, avoid_print
 
 import 'dart:async';
 
@@ -153,8 +153,8 @@ class _MyHomePageState extends State<MyHomePage> {
               ElevatedButton(
                 onPressed: _hasCallSupport
                     ? () => setState(() {
-                  _launched = _makePhoneCall(_phone);
-                })
+                          _launched = _makePhoneCall(_phone);
+                        })
                     : null,
                 child: _hasCallSupport
                     ? const Text('Make phone call')

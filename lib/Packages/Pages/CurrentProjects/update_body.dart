@@ -27,7 +27,7 @@ class _CurrentProjectsState extends State<CurrentProjects_up> {
         child: SingleChildScrollView(
           child: Container(
             decoration: BoxDecoration(
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   color: Colors.red,
                   spreadRadius: 2,

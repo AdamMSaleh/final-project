@@ -1,4 +1,4 @@
-// ignore_for_file: implementation_imports, prefer_const_constructors
+// ignore_for_file: implementation_imports, prefer_const_constructors, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';

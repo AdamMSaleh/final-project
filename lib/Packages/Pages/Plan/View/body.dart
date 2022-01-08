@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, implementation_imports, unused_import, must_be_immutable, sized_box_for_whitespace, duplicate_ignore, deprecated_member_use, avoid_unnecessary_containers, slash_for_doc_comments, unnecessary_null_comparison, avoid_print
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, implementation_imports, unused_import, must_be_immutable, sized_box_for_whitespace, duplicate_ignore, deprecated_member_use, avoid_unnecessary_containers, slash_for_doc_comments, unnecessary_null_comparison, avoid_print, non_constant_identifier_names
 
 import 'dart:io';
 
@@ -235,11 +235,10 @@ class _PlanUploadState extends State<PlanUpload> {
                         onPressed: () {
                           setState(
                             () {
-                              if (myControllerName_Plan.text!='' &&
-                                  myControllerCode_number.text!= ''&&
-                                  myControllerDesigner_name.text!= ''&&
-                                  myControllerOffice_name.text!=''
-                              ) {
+                              if (myControllerName_Plan.text != '' &&
+                                  myControllerCode_number.text != '' &&
+                                  myControllerDesigner_name.text != '' &&
+                                  myControllerOffice_name.text != '') {
                                 planData.add(
                                   PlanInformion(
                                       name_plan: myControllerName_Plan.text,
@@ -260,8 +259,9 @@ class _PlanUploadState extends State<PlanUpload> {
                                 Navigator.pop(assoom);
 
                                 //ElevatedButtonAddValue(context);
-                              }else{
-                                Register().tostforRegsetr('لطفاً إملأ جميع الحقول');
+                              } else {
+                                Register()
+                                    .tostforRegsetr('لطفاً إملأ جميع الحقول');
                               }
                             },
                           );
