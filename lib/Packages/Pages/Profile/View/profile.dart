@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, implementation_imports, duplicate_ignore, must_be_immutable, prefer_typing_uninitialized_variables, non_constant_identifier_names, avoid_print
+// ignore_for_file: prefer_const_constructors, implementation_imports, duplicate_ignore, must_be_immutable, prefer_typing_uninitialized_variables, non_constant_identifier_names, avoid_print, unused_import
 
 import 'dart:io';
 
@@ -25,7 +25,8 @@ class Profile extends StatefulWidget {
   static String age1 = ProfileInformation.age!; //العمر
   static String region1 = ProfileInformation.city_user!; //المنطقة
   static String phoneNumber1 = ProfileInformation.phone_number!; //رقم الموبايل
-  static String image1 = ProfileInformation.picture_user ?? "https://i2.wp.com/alghad.com/wp-content/uploads/2021/10/Squid-Game-Games-Ranked.jpg?resize=1024%2C512&ssl=1";//صورة المستخدم
+  static String image1 = ProfileInformation.picture_user ??
+      "https://i2.wp.com/alghad.com/wp-content/uploads/2021/10/Squid-Game-Games-Ranked.jpg?resize=1024%2C512&ssl=1"; //صورة المستخدم
 
   Profile(
       {Key? key,
@@ -37,7 +38,6 @@ class Profile extends StatefulWidget {
       phoneNumber,
       image})
       : super(key: key) {
-
     if (firstName != null &&
         lastName != null &&
         occupation != null &&
@@ -50,7 +50,7 @@ class Profile extends StatefulWidget {
       age1 = age;
       region1 = region;
       phoneNumber1 = phoneNumber;
-      image1= image;
+      image1 = image;
     }
   }
 
@@ -71,10 +71,9 @@ class _ProfileState extends State<Profile> {
             age: ProfileForWorkers.age1,
             region: ProfileForWorkers.region1,
             phoneNumber: ProfileForWorkers.phoneNumber1,
-            image :    ProfileInformation.picture_user ??
+            image: ProfileInformation.picture_user ??
                 "https://i2.wp.com/alghad.com/wp-content/uploads/2021/10/"
-                    "Squid-Game-Games-Ranked.jpg?resize=1024%2C512&ssl=1",//صورة المستخدم
-
+                    "Squid-Game-Games-Ranked.jpg?resize=1024%2C512&ssl=1", //صورة المستخدم
           ),
         );
         break;
@@ -159,9 +158,9 @@ class _ProfileState extends State<Profile> {
                 borderRadius: BorderRadius.circular(222.0),
                 // padding: const EdgeInsets.all(20),
                 child: Image.network(
-                      ProfileForWorkers.image1,
-                      height: 220,
-                    ),
+                  ProfileForWorkers.image1,
+                  height: 220,
+                ),
               ),
               Container(
                 margin: const EdgeInsets.all(11),

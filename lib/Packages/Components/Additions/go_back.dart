@@ -17,18 +17,26 @@ class GoBack {
     return Row(
       children: [
         Expanded(
-          child: Center(child: Text('${number == -1 ? "الرقم" : number}',style: TextStyle(color: Colors.white),)),
+          child: Center(
+              child: Text(
+            '${number == -1 ? "الرقم" : number}',
+            style: const TextStyle(color: Colors.white),
+          )),
 
           flex: 1,
           // height: heig,
         ),
         Expanded(
-          child: Center(child: Text(nameProject,style: TextStyle(color: Colors.white))),
+          child: Center(
+              child: Text(nameProject,
+                  style: const TextStyle(color: Colors.white))),
           flex: 2,
           // height: heig,
         ),
         Expanded(
-          child: Center(child: Text(ownersName,style: TextStyle(color: Colors.white))),
+          child: Center(
+              child: Text(ownersName,
+                  style: const TextStyle(color: Colors.white))),
           flex: 2,
           // height: heig,
         ),
@@ -124,11 +132,9 @@ class GoBack {
 
   static Widget tx(String str, {double sizee = 15}) {
     return Center(
-        child: Text(
-      str,
-      style: TextStyle(fontSize: sizee, color: Colors.black87),
-            textAlign:TextAlign.center
-    ));
+        child: Text(str,
+            style: TextStyle(fontSize: sizee, color: Colors.black87),
+            textAlign: TextAlign.center));
   }
 
   static btn(
@@ -143,16 +149,14 @@ class GoBack {
     Widget? page,
   }) {
     return Container(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [project_color('741b47') , Colors.white.withOpacity(0.1)],
+          colors: [project_color('741b47'), Colors.white.withOpacity(0.1)],
           begin: Alignment.centerRight,
           end: Alignment.bottomLeft,
-
         ),
         borderRadius: BorderRadius.circular(15),
-        
       ),
       child: TextButton(
         // style: ButtonStyle(alignment: Alignment.center),
@@ -166,7 +170,7 @@ class GoBack {
           pageCard3: pageCard3,
           page: page,
         ),
-        child: tx(title,sizee:15),
+        child: tx(title, sizee: 15),
       ),
     );
   }
