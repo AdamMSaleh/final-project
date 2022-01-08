@@ -16,6 +16,7 @@ import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/ap
 import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/design.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/View/new_project.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/components/BoxDialog/dialog.dart';
+import 'package:flutter_finalproject/Packages/Pages/Payment_History/Components/fill_payment.dart';
 
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/upload_image.dart';
@@ -122,7 +123,7 @@ class _PaymentHistoryState extends State<PaymentHistory>
                       ),
                       prefixIcon: Icon(
                         Icons.person_outline_outlined,
-                        color:Colors.white,
+                        color: Colors.white,
                       ),
                     ),
                     controller: myControllerName,
@@ -189,7 +190,7 @@ class _PaymentHistoryState extends State<PaymentHistory>
                     },
                     child: Text(
                       setDate ?? 'تاريخ الدفعة',
-                      style: TextStyle(fontSize: 25,color: Colors.black),
+                      style: TextStyle(fontSize: 25, color: Colors.black),
                     ),
                   ),
                 ),
@@ -213,7 +214,8 @@ class _PaymentHistoryState extends State<PaymentHistory>
                     ),
                   ),
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(project_color('efcba7')),
+                    backgroundColor:
+                        MaterialStateProperty.all(project_color('efcba7')),
                   ),
                 ),
                 //
@@ -336,60 +338,56 @@ class _PaymentHistoryState extends State<PaymentHistory>
             //===========================================
             //===========================================
             Column(
-             crossAxisAlignment: CrossAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Container(
                   // margin: EdgeInsets.all(10),
                   child: Table(
                     children: [
                       TableRow(
-                         children: [
-                           Row(
-                             mainAxisAlignment: MainAxisAlignment.spaceAround,
-                             children: const[
-                               Text('اسم المستفيد',
-                                 style: TextStyle(
-                                     fontSize: 12,
-                                     color: Colors.black
-                                 ),
-                               ),
-                               //------------------
-                               Text(
-                                 'قيمة الدفعة',
-                                 style: TextStyle(
-                                   fontSize: 12,
-                                   color: Colors.black,
-                                 ),
-                               ),
-                               //--------------------
-                               Text(
-                                 'تاريخ الدفعة',
-                                 style: TextStyle(
-                                   fontSize: 12,
-                                   color: Colors.black,
-                                 ),
-                               ),
-                               //----------------------
-                               Text(
-                                 'حالة الدفعة',
-                                 style: TextStyle(
-                                   fontSize: 12,
-                                   color: Colors.black,
-                                 ),
-                               ),
-                             ],
-                           ),
-                           //---------------------------
-
-                       ],
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: const [
+                              Text(
+                                'اسم المستفيد',
+                                style: TextStyle(
+                                    fontSize: 12, color: Colors.black),
+                              ),
+                              //------------------
+                              Text(
+                                'قيمة الدفعة',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              //--------------------
+                              Text(
+                                'تاريخ الدفعة',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              //----------------------
+                              Text(
+                                'حالة الدفعة',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ],
+                          ),
+                          //---------------------------
+                        ],
                       ),
                     ],
                   ),
-              ),
-                Container(
-
                 ),
-             ],
+                Container(),
+              ],
             ),
             //----------------------------------------------
             //هاد الصف للعناوين للجدول
@@ -515,7 +513,10 @@ class _PaymentHistoryState extends State<PaymentHistory>
       floatingActionButton: FloatingActionButton(
         backgroundColor: project_color('741b47'),
         onPressed: () => setState(() {
-          btnPayment(context);
+          Navigator.pushNamed(
+            context,
+            Fill_payment_page.id,
+          );
         }),
         child: Icon(
           // Icons.verified_sharp,
@@ -527,6 +528,7 @@ class _PaymentHistoryState extends State<PaymentHistory>
     );
   }
 
+//هاي كبسة تاكيد
   ElevatedButtonAddValue(BuildContext context) {
     showDialog<String>(
       context: context,
