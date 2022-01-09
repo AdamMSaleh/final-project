@@ -10,11 +10,17 @@ import 'package:flutter_finalproject/Theme/app_color.dart';
 import 'package:flutter_finalproject/Theme/style.dart';
 import 'package:flutter_finalproject/Utils/path_images.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class AskUs extends StatelessWidget {
+class AskUs extends StatefulWidget {
   const AskUs({Key? key}) : super(key: key);
   static const String id = 'AskUs';
 
+  @override
+  State<AskUs> createState() => _AskUsState();
+}
+
+class _AskUsState extends State<AskUs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,16 +58,19 @@ class AskUs extends StatelessWidget {
             Card(
               elevation: 20,
               margin: EdgeInsets.symmetric(horizontal: 25),
-              child: ListTile(
-                leading: Icon(
-                  Icons.email,
-                  color: AppColors.blue,
+              child: TextButton(
+                child: ListTile(
+                  leading: Icon(
+                    Icons.email,
+                    color: AppColors.blue,
+                  ),
+                  title: Text(
+                    'aseteam@relaxbuilding.space',
+                    style: AppStyles.styleBodyText1Light
+                        .copyWith(color: AppColors.blue, fontSize: 13.h),
+                  ),
                 ),
-                title: Text(
-                  'AdamMusaSaleh@gmail.com',
-                  style: AppStyles.styleBodyText1Light
-                      .copyWith(color: AppColors.blue, fontSize: 13.h),
-                ),
+                onPressed: _launchURLEmail,
               ),
             ),
             SizedBox(
@@ -71,21 +80,48 @@ class AskUs extends StatelessWidget {
             Card(
               elevation: 20,
               margin: EdgeInsets.symmetric(horizontal: 25),
-              child: ListTile(
-                leading: Icon(
-                  Icons.phone,
-                  color: AppColors.blue,
-                ),
-                title: Text(
-                  '00962781149656',
-                  style: AppStyles.styleBodyText1Light
-                      .copyWith(color: AppColors.blue, fontSize: 13.h),
+              child: TextButton(
+                onPressed: _launchInWebViewOrVC,
+                child: ListTile(
+                  leading: Icon(
+                    Icons.web,
+                    color: AppColors.blue,
+                  ),
+                  title: Text(
+                    'http://www.relaxbuilding.space',
+                    style: AppStyles.styleBodyText1Light
+                        .copyWith(color: AppColors.blue, fontSize: 13.h),
+                  ),
                 ),
               ),
             ),
+
           ],
         ),
       ),
+
     );
   }
+  Future<void> _launchInWebViewOrVC() async {
+    const url ='http://relaxbuilding.space/';
+    if (!await launch(
+      url,
+      forceSafariVC: true,
+      forceWebView: true,
+      headers: <String, String>{'my_header_key': 'my_header_value'},
+    )) {
+      throw 'Could not launch $url';
+    }
+  }
+
+  _launchURLEmail() async {
+    final url =
+    Uri.encodeFull('mailto:aseteam@relaxbuilding.space');
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
 }

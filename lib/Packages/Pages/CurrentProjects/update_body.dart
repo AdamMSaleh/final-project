@@ -27,9 +27,9 @@ class _CurrentProjectsState extends State<CurrentProjects_up> {
         child: SingleChildScrollView(
           child: Container(
             decoration: BoxDecoration(
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
-                  color: project_color('76b5c5').withOpacity(0.8),
+                  color: Colors.red,
                   spreadRadius: 2,
                   blurRadius: 12,
                   offset: Offset(0, 1), // changes position of shadow
@@ -43,7 +43,7 @@ class _CurrentProjectsState extends State<CurrentProjects_up> {
               children: [
                 Container(
                   padding: EdgeInsets.all(5),
-                  color: project_color('efcba7'),
+                  color: project_color('741b47'),
                   child: Table(
                     border: TableBorder.all(color: Colors.black, width: 1.5),
                     children: const [

@@ -35,7 +35,7 @@ class _PageSplashState extends State<PageSplash> {
 
     // ignore: prefer_const_constructors
     Timer(Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, PageLogin.id);
+      // Navigator.pushReplacementNamed(context, PageLogin.id);
       Register().postLogin(
         context: context,
         email: UserPreferences.getUsername() ?? '',

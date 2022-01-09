@@ -19,7 +19,9 @@ import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/view_invo
 
 import 'package:flutter_finalproject/Packages/Pages/NewProject/View/maintenance_project.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/View/new_project.dart';
+import 'package:flutter_finalproject/Packages/Pages/Payment_History/Components/fill_payment.dart';
 import 'package:flutter_finalproject/Packages/Pages/Payment_History/View/body.dart';
+
 import 'package:flutter_finalproject/Packages/Pages/Plan/View/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/view/body.dart';
@@ -53,6 +55,6 @@ class AppRoutes {
     PlanUpload.id: (context) => PlanUpload(),
     WorkersDetection.id: (context) => WorkersDetection(),
     Upload_Image.id: (context) => Upload_Image(),
-
+    Fill_payment_page.id: (context) => Fill_payment_page(),
   };
 }

@@ -18,6 +18,8 @@ import 'Packages/Components/user_info_secure_storage/user_save_login.dart';
 import 'Packages/Pages/Auth/Views/Info_User/info_owner.dart';
 import 'Packages/Pages/Auth/Views/Info_User/info_user_Eng.dart';
 import 'Packages/Pages/Auth/Views/login.dart';
+
+import 'Packages/Pages/Plan/View/body.dart';
 import 'Packages/Pages/Research/view/body.dart';
 
 void main() async {
@@ -50,8 +52,8 @@ class MyApp extends StatelessWidget {
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,
-            initialRoute: PageHome
-                .id, //PageSplash.id,//PageLogin.id,//PageRegister.id,// PageInfoEng.id,//Upload_Image.id,//
+            initialRoute: PageSplash.id, // PageHome.id,//PageHome.id,
+            //  PlanUpload.id, // , //PageLogin.id,//PageRegister.id,// PageInfoEng.id,//Upload_Image.id,//
             routes: AppRoutes.routes);
       },
     );
