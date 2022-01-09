@@ -62,7 +62,7 @@ class _PageSplashState extends State<PageSplash> {
                 imageBuilder: (context, jjjjj) {
                   return CircleAvatar(
                     backgroundImage: jjjjj,
-                    radius: 100.r, //لتكبير
+                    radius: 100.r, //للتكبير
                   );
                 },
                 placeholder: (context, url) =>
