@@ -78,7 +78,7 @@ class _ProjectsDetailsState extends State<ProjectsDetails> {
                      GoBack.btn(
                        "اظهار المخططات",
                        context,
-                       card1: 'اضافة',
+                       card1: 'عرض',
                        pageCard1: PlanUpload(),
                      ),
                      GoBack.btn(

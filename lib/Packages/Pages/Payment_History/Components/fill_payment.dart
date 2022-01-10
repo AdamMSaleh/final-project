@@ -21,13 +21,13 @@ class _Fill_payment_pageState extends State<Fill_payment_page> {
       name: "Asmaa1",
       value: 150.9,
       date: "11-9-2021",
-      ico: Icon(Icons.cancel),
+      ico: Icon(Icons.cancel_outlined),
     ),
     Infoo(
       name: "Asmaa1",
       value: 150.9,
       date: "3-12-2021",
-      ico: Icon(Icons.verified),
+      ico: Icon(Icons.verified_outlined),
     ),
     Infoo(
       name: "Asmaa1",
@@ -54,6 +54,15 @@ class _Fill_payment_pageState extends State<Fill_payment_page> {
   }
 
 //--------------------------
+  final items = ['الكل', 'حداد', 'نجار', 'بليط', 'المنيوم', 'كهربجي', 'دهان'];
+  String? value;
+  DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
+        value: item,
+        child: Text(
+          item,
+        ),
+      );
+//--------------------------
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,15 +74,15 @@ class _Fill_payment_pageState extends State<Fill_payment_page> {
             children: [
               //-------------start fill sheet------------------------------------------
               Container(
-                margin: const EdgeInsets.all(12.0),
+                margin: const EdgeInsets.all(10),
                 child: TextField(
                   decoration: const InputDecoration(
-                    labelText: 'الاسم',
+                    labelText: 'اسم المستفيد',
                     labelStyle: TextStyle(
                       fontSize: 20,
                       color: Colors.black,
                     ),
-                    hintText: 'ادخل اسم العامل',
+                    hintText: 'ادخل اسم المستفيد',
                     hintStyle: TextStyle(
                       fontSize: 15,
                       color: Colors.black38,
@@ -92,8 +101,10 @@ class _Fill_payment_pageState extends State<Fill_payment_page> {
                 ),
               ),
               //--------------------------------
+              //هون بدنا نحط نقدا او شيك ورقم الشيك واسم البنك
+              //--------------------------------
               Container(
-                margin: const EdgeInsets.all(12.0),
+                margin: const EdgeInsets.all(10),
                 child: TextField(
                   decoration: const InputDecoration(
                     labelText: 'قيمة الدفعة ',
@@ -121,7 +132,7 @@ class _Fill_payment_pageState extends State<Fill_payment_page> {
               ),
               //---------------------------------------------------
               Container(
-                margin: const EdgeInsets.all(12.0),
+                margin: const EdgeInsets.all(10),
                 width: (MediaQuery.of(context).size.width),
                 child: ElevatedButton(
                   style: ButtonStyle(
@@ -136,27 +147,108 @@ class _Fill_payment_pageState extends State<Fill_payment_page> {
                   },
                   child: Text(
                     setDate ?? 'تاريخ الدفعة',
-                    style: TextStyle(fontSize: 25, color: Colors.black),
+                    style: TextStyle(fontSize: 20, color: Colors.black),
                   ),
                 ),
               ),
               //--------------------------------------------
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    ElevatedButtonAddValue(context);
-                  });
-                },
-                child: const Text(
-                  'تأكيد',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
+              //وذلك عن :
+              Container(
+                //drop down menu :
+                /*هون الليست تاع المهن */
+
+                child: SingleChildScrollView(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(10.0),
+                        // decoration: BoxDecoration(
+                        //   border: Border.all(),
+                        // ),
+                        alignment: Alignment.center,
+                        margin: EdgeInsets.all(10),
+                        /*-------------------------------------------------------*/
+                        child: Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                color: project_color('741b47'),
+                                width: 0.7,
+                              ),
+                              borderRadius: BorderRadius.circular(7)),
+                          child: DropdownButton<String>(
+                            dropdownColor: project_color('efcba7'),
+
+                            // isExpanded: true,
+                            iconSize: 16,
+                            alignment: Alignment.center,
+
+                            icon: const Icon(
+                              Icons.arrow_drop_down,
+                              color: Colors.black,
+                            ),
+
+                            hint: Text("    :  وذلك عن   "),
+                            value: value,
+                            items: items.map(buildMenuItem).toList(),
+                            onChanged: (value) =>
+                                setState(() => this.value = value),
+                          ),
+                        ),
+                      ),
+                      //-------------------------------------------
+                    ],
                   ),
                 ),
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all(project_color('efcba7')),
+              ),
+              //--------------------------------------------
+              //اسم المستلم :
+              Container(
+                margin: const EdgeInsets.all(10),
+                child: TextField(
+                  decoration: const InputDecoration(
+                    labelText: 'اسم المستلم (اختياري)',
+                    labelStyle: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                    ),
+                    hintText: 'ادخل اسم المستلم',
+                    hintStyle: TextStyle(
+                      fontSize: 15,
+                      color: Colors.black38,
+                    ),
+                    prefixIcon: Icon(
+                      Icons.person_outline_outlined,
+                      color: Colors.black,
+                    ),
+                  ),
+                  controller: myControllerName_person,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.black,
+                  ),
+                  keyboardType: TextInputType.name,
+                ),
+              ),
+              //---------------------------------------------
+              Container(
+                child: ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      ElevatedButtonAddValue(context);
+                    });
+                  },
+                  child: const Text(
+                    'تأكيد',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                    ),
+                  ),
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(project_color('efcba7')),
+                  ),
                 ),
               ),
               //-----------------------------------------------
