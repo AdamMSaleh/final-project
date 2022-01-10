@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types, use_key_in_widget_constructors, non_constant_identifier_names
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/design.dart';
@@ -10,8 +12,7 @@ class Fill_payment_page extends StatefulWidget {
 }
 
 class _Fill_payment_pageState extends State<Fill_payment_page> {
-  @override
-//--------------------------
+  //--------------------------
   var myControllerName_person = TextEditingController();
   var myControllerValue_payment = TextEditingController();
 
@@ -33,7 +34,7 @@ class _Fill_payment_pageState extends State<Fill_payment_page> {
       name: "Asmaa1",
       value: 150.9,
       date: "12-12-2021",
-      ico: Icon(Icons.timer_outlined),
+      ico: const Icon(Icons.timer_outlined),
     ),
   ];
   void _datePicker() {
@@ -64,6 +65,7 @@ class _Fill_payment_pageState extends State<Fill_payment_page> {
       );
 //--------------------------
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
@@ -105,6 +107,7 @@ class _Fill_payment_pageState extends State<Fill_payment_page> {
               //--------------------------------
               Container(
                 margin: const EdgeInsets.all(10),
+                // ignore: prefer_const_constructors
                 child: TextField(
                   decoration: const InputDecoration(
                     labelText: 'قيمة الدفعة ',
@@ -122,12 +125,6 @@ class _Fill_payment_pageState extends State<Fill_payment_page> {
                       color: Colors.black,
                     ),
                   ),
-                  controller: myControllerValue_payment,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    color: Colors.black,
-                  ),
-                  keyboardType: TextInputType.number,
                 ),
               ),
               //---------------------------------------------------
@@ -147,7 +144,7 @@ class _Fill_payment_pageState extends State<Fill_payment_page> {
                   },
                   child: Text(
                     setDate ?? 'تاريخ الدفعة',
-                    style: TextStyle(fontSize: 20, color: Colors.black),
+                    style: const TextStyle(fontSize: 20, color: Colors.black),
                   ),
                 ),
               ),
@@ -199,7 +196,17 @@ class _Fill_payment_pageState extends State<Fill_payment_page> {
                       //-------------------------------------------
                     ],
                   ),
+                  // prefixIcon: Icon(
+                  //   Icons.payment,
+                  //   color: Colors.black,
+                  // ),
                 ),
+                // controller: myControllerValue_payment,
+                // style: const TextStyle(
+                //   fontSize: 18,
+                //   color: Colors.black,
+                // ),
+                // keyboardType: TextInputType.number,
               ),
               //--------------------------------------------
               //اسم المستلم :
@@ -251,6 +258,11 @@ class _Fill_payment_pageState extends State<Fill_payment_page> {
                   ),
                 ),
               ),
+              // style: ButtonStyle(
+              //   backgroundColor:
+              //       MaterialStateProperty.all(project_color('efcba7')),
+              // ),
+
               //-----------------------------------------------
             ],
           ),
@@ -298,7 +310,7 @@ class _Fill_payment_pageState extends State<Fill_payment_page> {
         name: myControllerName_person.text,
         value: double.parse(myControllerValue_payment.text),
         date: setDate!,
-        ico: Icon(Icons.check),
+        ico: const Icon(Icons.check),
       );
 
       yy.add(ff);

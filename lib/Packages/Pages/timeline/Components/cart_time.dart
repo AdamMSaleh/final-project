@@ -26,7 +26,6 @@ class CardTime extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 20.h),
         GestureDetector(
           onTap: _onTap,
           child: Container(
