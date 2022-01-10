@@ -94,6 +94,10 @@ class _PlanUploadState extends State<PlanUpload> {
     );
   }
 
+//-----------------------------------------
+  String? selected_plan_type;
+  List plan_type = ['a', 'b', 'c', 'd', 'e'];
+//-------------------------------------------
   void btnplane(BuildContext assoom) {
     showModalBottomSheet(
       // useRootNavigator: true,
@@ -133,7 +137,40 @@ class _PlanUploadState extends State<PlanUpload> {
                   ),
                 ),
 
-                //
+                //-----------------------------------------
+                Container(
+                  color: project_color('efcba7'),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      DropdownButton(
+                        hint: Text(
+                          ': اختار نوع المخطط ',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                          ),
+                        ),
+                        value: selected_plan_type,
+                        items: plan_type.map((item) {
+                          return DropdownMenuItem(
+                            child: Text(
+                              item,
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 15),
+                            ),
+                            value: item,
+                          );
+                        }).toList(),
+                        onChanged: (val) {
+                          setState(() {
+                            selected_plan_type = val.toString();
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                ),
                 //----------------------------------------
                 Container(
                   margin: EdgeInsets.all(12.0),
