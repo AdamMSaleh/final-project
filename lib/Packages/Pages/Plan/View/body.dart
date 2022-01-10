@@ -374,8 +374,10 @@ class _PlanUploadState extends State<PlanUpload> {
           Column(
         children: [
           Container(
-            height: (MediaQuery.of(context).size.height) / 2,
+            height: (MediaQuery.of(context).size.height) * 0.77,
+            color: project_color('efcba7'),
             child: ListView(
+              // padding: EdgeInsets.all(5),
               children: [
                 ...planData.map(
                   (e) => Container(
@@ -383,29 +385,80 @@ class _PlanUploadState extends State<PlanUpload> {
                     child: Card(
                       child: Column(
                         children: [
-                          Row(
-                            children: [Text('Plan Name : '), Text(e.name_plan)],
-                          ),
+                          //space row
                           Row(
                             children: [
-                              Text('Office Name : '),
+                              Container(
+                                margin: EdgeInsets.all(10),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Plan Name : ',
+                                style: TextStyle(
+                                  color: project_color('741b47'),
+                                ),
+                              ),
+                              Text(e.name_plan),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Office Name : ',
+                                style: TextStyle(
+                                  color: project_color('741b47'),
+                                ),
+                              ),
                               Text(e.Name_Office)
                             ],
                           ),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Text('Designer Name : '),
+                              Text(
+                                'Designer Name :',
+                                style: TextStyle(
+                                  color: project_color('741b47'),
+                                ),
+                              ),
                               Text(e.Name_designer)
                             ],
                           ),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Text('Code Number : '),
+                              Text(
+                                'Code Number : ',
+                                style: TextStyle(
+                                  color: project_color('741b47'),
+                                ),
+                              ),
                               Text('${e.code_number}')
                             ],
                           ),
+                          //space row
                           Row(
                             children: [
+                              Container(
+                                margin: EdgeInsets.all(10),
+                              ),
+                            ],
+                          ),
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                'Plan Image :',
+                                style: TextStyle(
+                                  color: project_color('741b47'),
+                                ),
+                              ),
                               Container(
                                 child: e.image == null
                                     ? Image.network(
@@ -416,7 +469,15 @@ class _PlanUploadState extends State<PlanUpload> {
                                         e.image!,
                                         height: 150,
                                       ),
-                              )
+                              ),
+                            ],
+                          ),
+                          //space row
+                          Row(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.all(10),
+                              ),
                             ],
                           ),
                         ],

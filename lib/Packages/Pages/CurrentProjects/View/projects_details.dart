@@ -64,10 +64,9 @@ class _ProjectsDetailsState extends State<ProjectsDetails> {
                     // mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       GoBack.btn(
-                        "اظهار المخططات",
+                        " المخططات",
                         context,
-                        card1: 'عرض',
-                        pageCard1: PlanUpload(),
+                        page: PlanUpload(),
                       ),
                       GoBack.btn(
                         "الفواتير",
