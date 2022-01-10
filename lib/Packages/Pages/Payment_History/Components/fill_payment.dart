@@ -15,6 +15,9 @@ class _Fill_payment_pageState extends State<Fill_payment_page> {
   //--------------------------
   var myControllerName_person = TextEditingController();
   var myControllerValue_payment = TextEditingController();
+  var myControllerName_person_optional = TextEditingController();
+  var myControllerName_Bank = TextEditingController();
+  var myControllerNumber_check_Bank = TextEditingController();
 
   String? setDate;
   List<Infoo> yy = [
@@ -64,11 +67,19 @@ class _Fill_payment_pageState extends State<Fill_payment_page> {
         ),
       );
 //--------------------------
-
+//متغيرات الفنكشن تبع الراديو بوتون
+  int radio_bottun = 0;
+  // String? lbl_text;
+  // String? hint_txt;
+  // int? type_kyboard;
+  int numb = 0;
+  //--------------------------
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text('إضافة دفعة'),
+      ),
       body: Container(
         // decoration: BoxDecoration(),
         child: SingleChildScrollView(
@@ -104,6 +115,18 @@ class _Fill_payment_pageState extends State<Fill_payment_page> {
               ),
               //--------------------------------
               //هون بدنا نحط نقدا او شيك ورقم الشيك واسم البنك
+
+              Container(
+                child: Column(
+                  // mainAxisAlignment: MainAxisAlignment.center,
+                  // crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    buildRadioListTile(0, 'نقداً', 12),
+                    buildRadioListTile(1, 'شيك', 11),
+                    buildTextField(numb),
+                  ],
+                ),
+              ),
               //--------------------------------
               Container(
                 margin: const EdgeInsets.all(10),
@@ -229,7 +252,7 @@ class _Fill_payment_pageState extends State<Fill_payment_page> {
                       color: Colors.black,
                     ),
                   ),
-                  controller: myControllerName_person,
+                  controller: myControllerName_person_optional,
                   style: const TextStyle(
                     fontSize: 18,
                     color: Colors.black,
@@ -270,6 +293,61 @@ class _Fill_payment_pageState extends State<Fill_payment_page> {
       ),
     );
   }
+
+  TextField buildTextField_forRadioButton(String lbl_text, String hint_txt,
+      TextEditingController controler, int type_kyboard) {
+    return TextField(
+      decoration: InputDecoration(
+        labelText: lbl_text,
+        hintText: hint_txt,
+      ),
+      controller: controler,
+      style: const TextStyle(
+        fontSize: 15,
+        color: Colors.black,
+      ),
+      keyboardType:
+          type_kyboard == 0 ? TextInputType.text : TextInputType.number,
+    );
+  }
+//---------------------------------------------------
+  //هون الميثود تاع الراديو بوتون للدفعات
+  //القروب فاليو هي قيمة مشتركة مع كل الراديو بوتون اللي عندي
+
+  RadioListTile<dynamic> buildRadioListTile(val, txt, int numbb) {
+    return RadioListTile(
+      value: val,
+      groupValue: radio_bottun,
+      onChanged: (value_asoom) {
+        setState(() {
+          radio_bottun = value_asoom;
+          numb = numbb;
+        });
+      },
+      title: Text(txt),
+    );
+  }
+
+  buildTextField(int numb) {
+    if (numb == 11) {
+      return Container(
+        child: Column(
+          children: [
+// lbl_text, String hint_txt, TextEditingController controler, int type_kyboard
+            buildTextField_forRadioButton(
+                'Bank Name :', 'Enter Bank Name', myControllerName_Bank, 0),
+            buildTextField_forRadioButton('Check Number:', 'Enter Check Number',
+                myControllerNumber_check_Bank, 1),
+          ],
+        ),
+      );
+    } else {
+      return Container();
+    }
+  }
+  //--------------------------------
+  //هون الحقول اللي رح تظهر بعد ما اكبس ريديو بوتون تبع الشيك
+  //رح يطلعلي حقل اعبي فيه اسم البنك وحقل اعبي فيه رقم الشيك
 
 //------------------------------------
 //هاي كبسة تاكيد
@@ -316,6 +394,7 @@ class _Fill_payment_pageState extends State<Fill_payment_page> {
       yy.add(ff);
       myControllerName_person.clear();
       myControllerValue_payment.clear();
+      myControllerName_person_optional.clear();
       setDate = 'تاريخ الدفعة';
       Navigator.of(context).pop();
     });

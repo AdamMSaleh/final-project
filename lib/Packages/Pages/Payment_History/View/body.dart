@@ -47,19 +47,28 @@ class _PaymentHistoryState extends State<PaymentHistory>
       name: "Asmaa1",
       value: 150.9,
       date: "11-9-2021",
-      ico: Icon(Icons.cancel),
+      ico: Icon(
+        Icons.cancel_outlined,
+        color: Colors.red,
+      ),
     ),
     Infoo(
       name: "Asmaa1",
       value: 150.9,
       date: "3-12-2021",
-      ico: Icon(Icons.verified),
+      ico: Icon(
+        Icons.check,
+        color: Colors.green,
+      ),
     ),
     Infoo(
       name: "Asmaa1",
       value: 150.9,
       date: "12-12-2021",
-      ico: Icon(Icons.timer_outlined),
+      ico: Icon(
+        Icons.timer_outlined,
+        color: Colors.brown,
+      ),
     ),
   ];
 
@@ -271,7 +280,7 @@ class _PaymentHistoryState extends State<PaymentHistory>
     return Scaffold(
       //*Appbar
       appBar: AppBSup(
-        txt: "Payments",
+        txt: "الدفعات",
       ),
 
       body: Container(
