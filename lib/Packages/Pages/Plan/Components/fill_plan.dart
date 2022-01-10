@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_finalproject/DataBase/register.dart';
+import 'package:flutter_finalproject/Packages/Components/Add_Image/alert_choose.dart';
 import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/design.dart';
 import 'package:flutter_finalproject/Packages/Pages/Plan/Components/planInformion.dart';
 import 'package:image_picker/image_picker.dart';
@@ -219,7 +220,13 @@ class _Fill_plane_pageState extends State<Fill_plane_page> {
                           size: 50,
                           color: b,
                         ),
-                        onPressed: () => _showOption(context),
+                        onPressed: () => showDialog(
+                          barrierDismissible: false,
+                          context: context,
+                          builder: (context) => AlertChooseImage(
+                            bathImage: 'Plan Image',
+                          ),
+                        ),
                       ),
                     ],
                   )),
