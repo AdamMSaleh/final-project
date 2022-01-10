@@ -21,6 +21,7 @@ import 'package:flutter_finalproject/Packages/Pages/NewProject/View/maintenance_
 import 'package:flutter_finalproject/Packages/Pages/NewProject/View/new_project.dart';
 import 'package:flutter_finalproject/Packages/Pages/Payment_History/Components/fill_payment.dart';
 import 'package:flutter_finalproject/Packages/Pages/Payment_History/View/body.dart';
+import 'package:flutter_finalproject/Packages/Pages/Plan/Components/fill_plan.dart';
 
 import 'package:flutter_finalproject/Packages/Pages/Plan/View/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile.dart';
@@ -56,5 +57,6 @@ class AppRoutes {
     WorkersDetection.id: (context) => WorkersDetection(),
     Upload_Image.id: (context) => Upload_Image(),
     Fill_payment_page.id: (context) => Fill_payment_page(),
+    Fill_plane_page.id: (context) => Fill_plane_page(),
   };
 }
