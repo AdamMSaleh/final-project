@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/sup_appbar.dart';
-import 'package:flutter_finalproject/Packages/Pages/Archive/components/carts_project.dart';
+import 'package:flutter_finalproject/Packages/Pages/timeline/Components/cart_task.dart';
 import 'package:flutter_finalproject/Packages/Pages/timeline/Components/cart_time.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -23,23 +23,26 @@ class TimeLine extends StatelessWidget {
               onTap: () {},
               startDate: '11/20/2020',
             ),
-            SizedBox(height: 15.h),
-            View11(),
+            SizedBox(height: 20.h),
+            CartTask(
+              id: '1',
+              manager_name: 'adam',
+              onTap: () {},
+              operation: 'llllدهان',
+              starting_date: '10/2/2020',
+              expiry_date: '10/3/2020',
+            ),
+            CartTask(
+              id: '1',
+              manager_name: 'adam',
+              onTap: () {},
+              operation: "دهان",
+              starting_date: '10/2/2020',
+              expiry_date: '10/3/2020',
+            ),
           ],
         ),
       ),
     );
-  }
-
-  static View11() {
-    for (var i = 0; i < 5; i++) {
-      CartFProject(
-        id: '2',
-        num_project: 'Home',
-        onTap: () {},
-        date_receipt: '3/9/1999',
-        owner_name: 'adam',
-      );
-    }
   }
 }
