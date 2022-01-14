@@ -38,14 +38,44 @@ class _NewProjectState extends State<NewProject> {
   ];
   var z = 0;
   var b = 0;
+  Map<String, TextEditingController> controllerValue = {
+    'first_name': TextEditingController(),
+    'last_name': TextEditingController(),
+    'age': TextEditingController(),
+    'email': TextEditingController(),
+    'password': TextEditingController(),
+    //test gui not importint
+    'selectedDateStart': TextEditingController(),
+    'selectedDateEnd': TextEditingController(),
+    // "city_user": TextEditingController(),
+    // 'account_type': TextEditingController(),
+  };
+  late DateTime _selectedDateStart;
+  late DateTime _selectedDateEnd;
+
+
+
   void _datePicker({required bool starOrEndDate}) {
    var dateNow=DateTime.now();
     showDatePicker(
       context: context,
-      initialDate: dateNow,
-      firstDate: starOrEndDate? dateNow.add(Duration(days: 10)):dateNow,
+      initialDate: starOrEndDate? dateNow.add(Duration(days: 10)):dateNow,
+      firstDate: starOrEndDate? dateNow.add(Duration(days: 2)):dateNow,
       lastDate: dateNow.add(Duration(days: 7300)),//365 days * 20 years
-    );
+    ).then((value) {
+      if(value ==null){
+        return;
+      }
+      if(starOrEndDate){
+        _selectedDateEnd=value;
+        controllerValue['selectedDateEnd']!.text =value.toString();
+      }else{
+        _selectedDateStart=value;
+        controllerValue['selectedDateStart']!.text =value.toString();
+
+      }
+    })
+   ;
   }
   @override
   Widget build(BuildContext context) {
@@ -163,6 +193,7 @@ class _NewProjectState extends State<NewProject> {
                         onValidator: (value) => AppValidators.isEmpty(value),
                         hint: KeyLang.startingDate.tr(),
                         readOnly: true,
+                        controller:  controllerValue['selectedDateStart'],
                         pIcon: IconButton(
                           icon: Icon(
                             Icons.date_range_outlined,
@@ -178,6 +209,7 @@ class _NewProjectState extends State<NewProject> {
                         onValidator: (value) => AppValidators.isEmpty(value),
                         hint: KeyLang.expiryDate.tr(),
                         readOnly: true,
+                        controller:  controllerValue['selectedDateEnd'],
                         pIcon: IconButton(
                           icon: Icon(
                             Icons.date_range_sharp,

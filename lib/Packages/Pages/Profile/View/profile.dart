@@ -60,6 +60,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+ Color textColor= Colors.white70;
   void SelectedItem(BuildContext context, item) {
     switch (item) {
       case 0:
@@ -146,7 +147,7 @@ class _ProfileState extends State<Profile> {
       // drawer: DrawerHome(),
       body: SingleChildScrollView(
         child: Container(
-          height: (MediaQuery.of(context).size.height),
+          // height: (MediaQuery.of(context).size.height),
           decoration: BoxDecoration(
             // color: Colors.amber[200],
             // gradient: LinearGradient(
@@ -174,7 +175,7 @@ class _ProfileState extends State<Profile> {
                 child: ElevatedButton(
                   onPressed: () => GoBack.selectScreen(
                       context, const LaborManagementForProfessionals()),
-                  child: GoBack.tx('أدارة العمل'),
+                  child: GoBack.tx('أدارة العمل',textColor: textColor),
                   style: ButtonStyle(
                     backgroundColor:
                         MaterialStateProperty.all(project_color('741b47')),
@@ -202,9 +203,9 @@ class _ProfileState extends State<Profile> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            GoBack.tx('الاسم : '),
-                            GoBack.tx(ProfileForWorkers.firstName1),
-                            GoBack.tx(ProfileForWorkers.lastName1),
+                            GoBack.tx('الاسم : ',textColor: textColor),
+                            GoBack.tx(ProfileForWorkers.firstName1,textColor: textColor),
+                            GoBack.tx(ProfileForWorkers.lastName1,textColor: textColor),
                           ],
                         ),
                       ),
@@ -289,8 +290,8 @@ class _ProfileState extends State<Profile> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            GoBack.tx(' المهنه :'),
-                            GoBack.tx(ProfileForWorkers.occupation1),
+                            GoBack.tx(' المهنه :',textColor: textColor),
+                            GoBack.tx(ProfileForWorkers.occupation1,textColor: textColor),
                           ],
                         ),
                       ),
@@ -314,35 +315,8 @@ class _ProfileState extends State<Profile> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            GoBack.tx(' العمر :'),
-                            GoBack.tx(ProfileForWorkers.age1),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              const SizedBox(
-                height: 50,
-              ),
-
-              Card(
-                //color: project_color('741b47'),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Card(
-                      color: project_color('741b47'),
-                      child: Container(
-                        width: (MediaQuery.of(context).size.width) * 0.90,
-                        padding: EdgeInsets.all(5),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            GoBack.tx(' المنطقة :'),
-                            GoBack.tx(ProfileForWorkers.region1),
+                            GoBack.tx(' العمر :',textColor: textColor),
+                            GoBack.tx(ProfileForWorkers.age1,textColor: textColor),
                           ],
                         ),
                       ),
@@ -368,8 +342,35 @@ class _ProfileState extends State<Profile> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            GoBack.tx('الرقم : '),
-                            GoBack.tx(ProfileForWorkers.phoneNumber1),
+                            GoBack.tx(' المنطقة :',textColor: textColor),
+                            GoBack.tx(ProfileForWorkers.region1,textColor: textColor),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(
+                height: 50,
+              ),
+
+              Card(
+                //color: project_color('741b47'),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Card(
+                      color: project_color('741b47'),
+                      child: Container(
+                        width: (MediaQuery.of(context).size.width) * 0.90,
+                        padding: EdgeInsets.all(5),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            GoBack.tx('الرقم : ',textColor: textColor),
+                            GoBack.tx(ProfileForWorkers.phoneNumber1,textColor: textColor),
                           ],
                         ),
                       ),
