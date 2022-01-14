@@ -5,6 +5,7 @@ import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart'
 import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/sup_appbar.dart';
 import 'package:flutter_finalproject/Packages/Components/upload_image_Invoice/upload_image.dart';
 import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/creat_invoices.dart';
+import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/view_invoices.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/view/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/project_%20parts/view/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/timeline/View/body.dart';
@@ -71,10 +72,12 @@ class _ProjectsDetailsState extends State<ProjectsDetails> {
                       GoBack.btn(
                         "الفواتير",
                         context,
-                        card1: "إنشاء فاتورة",
-                        pageCard1: invoices(),
-                        card2: "تحميل فاتورة",
-                        pageCard2: UploadImageInvoice(),
+                        card1: 'عرض الفواتير',
+                        pageCard1: view_invoices(),
+                        card2: "إنشاء فاتورة",
+                        pageCard2: invoices(),
+                        card3: "تحميل فاتورة",
+                        pageCard3: UploadImageInvoice(),
                       ),
                       GoBack.btn(
                         "اضافة اصحاب المهن/ عمال",

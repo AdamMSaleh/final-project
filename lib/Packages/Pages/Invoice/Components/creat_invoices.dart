@@ -1,6 +1,7 @@
 // ignore_for_file: no_logic_in_create_state, unnecessary_this, non_constant_identifier_names, camel_case_types, must_be_immutable, prefer_const_constructors, avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:flutter_finalproject/DataBase/register.dart';
 
 import 'design.dart';
 import 'detiels_invoices.dart';
@@ -42,7 +43,8 @@ class _invoicesState extends State<invoices> {
     // ];
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: project_color('76b5c5'),
+        backgroundColor: project_color('741b47'),
+        title: Text('إضافة فاتورة جديدة'),
         leading: IconButton(
             onPressed: // Within the `FirstRoute` widget
                 () {
@@ -57,20 +59,22 @@ class _invoicesState extends State<invoices> {
             icon: Icon(Icons.arrow_back_ios_new_outlined)),
       ),
       body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/Images/4545.jpg'),
-            fit: BoxFit.cover,
-          ),
-        ),
+        color: project_color('741b47'),
+        // decoration: const BoxDecoration(
+        //   image: DecorationImage(
+        //     image: AssetImage('assets/Images/4545.jpg'),
+        //     fit: BoxFit.cover,
+        //   ),
+        // ),
         child: Container(
           //هاد الكاتيغيوري لكل فاتورة
           margin: const EdgeInsets.all(30),
-          height: (MediaQuery.of(context).size.height) * 0.40,
+          height: (MediaQuery.of(context).size.height) * 0.70,
+
           decoration: BoxDecoration(
-            image: const DecorationImage(
-              image: AssetImage("assets/Images/4545.jpg"),
-            ),
+            // image: const DecorationImage(
+            //   image: AssetImage("assets/Images/4545.jpg"),
+            // ),
             color: FitnessAppTheme.white,
             borderRadius: const BorderRadius.only(
                 topRight: Radius.circular(8.0),
@@ -79,7 +83,7 @@ class _invoicesState extends State<invoices> {
                 topLeft: Radius.circular(68.0)),
             boxShadow: <BoxShadow>[
               BoxShadow(
-                  color: FitnessAppTheme.grey.withOpacity(0.2),
+                  color: FitnessAppTheme.white.withOpacity(0.2),
                   offset: const Offset(1.1, 1.1),
                   blurRadius: 10.0),
             ],
@@ -240,13 +244,14 @@ class _invoicesState extends State<invoices> {
             myControllerNameItem.clear();
             myControllerPriceItem.clear();
             myControllerCountItem.clear();
+            Register().tostforRegsetr('تمت اضافة الفاتورة في صفحة الفواتير');
           }
         }),
         child: Icon(
           Icons.add,
           size: 40,
         ),
-        backgroundColor: project_color('76b5c5'),
+        backgroundColor: project_color('741b47'),
       ),
     );
   }
