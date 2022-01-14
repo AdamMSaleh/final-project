@@ -212,7 +212,7 @@ class _ProfileState extends State<Profile> {
                   ],
                 ),
               ),
-              
+
               /*
               *
               * ProfileForWorkers
@@ -272,11 +272,9 @@ class _ProfileState extends State<Profile> {
               //   ),
               // ),
 
-
               const SizedBox(
                 height: 50,
               ),
-
 
               Card(
                 //color: project_color('741b47'),

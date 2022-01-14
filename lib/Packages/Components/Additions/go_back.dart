@@ -133,7 +133,7 @@ class GoBack {
   static Widget tx(String str, {double sizee = 15}) {
     return Center(
         child: Text(str,
-            style: TextStyle(fontSize: sizee, color: Colors.white),
+            style: TextStyle(fontSize: sizee, color: Colors.black),
             textAlign: TextAlign.center));
   }
 

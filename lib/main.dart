@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
       designSize: Size(360, 690),
       builder: () {
         return MaterialApp(
-            title: 'Relax building',
+            title: 'Relax Building',
             debugShowCheckedModeBanner: false,
             theme: CustomTheme.lightTheme,
             darkTheme: CustomTheme.darkTheme,
