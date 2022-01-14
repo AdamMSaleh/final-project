@@ -6,7 +6,7 @@ import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/design.da
 class GoBack {
   static back(ctx) {
     return IconButton(
-      icon: const Icon(Icons.arrow_back, color: Colors.black),
+      icon: const Icon(Icons.arrow_back, color: Colors.white),
       onPressed: () => Navigator.of(ctx).pop(),
     );
   }
@@ -133,7 +133,7 @@ class GoBack {
   static Widget tx(String str, {double sizee = 15}) {
     return Center(
         child: Text(str,
-            style: TextStyle(fontSize: sizee, color: Colors.black87),
+            style: TextStyle(fontSize: sizee, color: Colors.white),
             textAlign: TextAlign.center));
   }
 

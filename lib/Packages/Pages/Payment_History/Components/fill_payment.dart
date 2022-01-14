@@ -2,6 +2,7 @@
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/design.dart';
 import 'package:flutter_finalproject/Packages/Pages/Payment_History/Components/infoo.dart';
 
@@ -148,6 +149,8 @@ class _Fill_payment_pageState extends State<Fill_payment_page> {
                       color: Colors.black,
                     ),
                   ),
+                  keyboardType: TextInputType.number,
+                  controller: myControllerValue_payment,
                 ),
               ),
               //---------------------------------------------------
@@ -335,8 +338,8 @@ class _Fill_payment_pageState extends State<Fill_payment_page> {
           children: [
 // lbl_text, String hint_txt, TextEditingController controler, int type_kyboard
             buildTextField_forRadioButton(
-                'Bank Name :', 'Enter Bank Name', myControllerName_Bank, 0),
-            buildTextField_forRadioButton('Check Number:', 'Enter Check Number',
+                'اسم البنك :', 'ادخل اسم البنك', myControllerName_Bank, 0),
+            buildTextField_forRadioButton('رقم الشيك:', 'ادخل رقم الشيك ',
                 myControllerNumber_check_Bank, 1),
           ],
         ),

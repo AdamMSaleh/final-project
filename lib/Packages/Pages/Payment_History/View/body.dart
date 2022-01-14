@@ -501,7 +501,7 @@ class _PaymentHistoryState extends State<PaymentHistory>
                         return TableRow(
                           children: [
                             Text(e.name),
-                            Text("${e.value}"),
+                            Text('${e.value}'),
                             Text(e.date),
                             e.ico,
                           ],
