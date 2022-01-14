@@ -220,7 +220,7 @@ class _Fill_plane_pageState extends State<Fill_plane_page> {
                           size: 50,
                           color: b,
                         ),
-                        onPressed: () =>  showDialog(
+                        onPressed: () => showDialog(
                           barrierDismissible: false,
                           context: context,
                           builder: (context) => AlertChooseImage(
@@ -228,7 +228,7 @@ class _Fill_plane_pageState extends State<Fill_plane_page> {
                           ),
                         ),
 
-                            //_showOption(context),
+                        //_showOption(context),
                       ),
                     ],
                   )),

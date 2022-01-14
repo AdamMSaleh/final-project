@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/design.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'image_list.dart';
@@ -42,46 +43,46 @@ class _UploadImageInvoiceState extends State<UploadImageInvoice> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Upload a image'),
+        title: const Text('تحميل صورة فاتورة'),
         centerTitle: true,
         // leading: GoBack.back(context),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.arrow_forward),
-            tooltip: 'Image Cropper',
-            onPressed: () {
-              // GoBack.selectScreen(context, ProfileEdit(imageFile: imageFile,));
-              imageFile == imageFile1
-                  ? showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                        title: const Text('Please choose a picture'),
-                        content: SingleChildScrollView(
-                          child: Column(
-                            children: [
-                              ListTile(
-                                // leading: const Icon(Icons.image),
-                                title: const Text('Ok'),
-                                onTap: () => Navigator.pop(context),
-                              ),
-                              // ListTile(
-                              //   leading: const Icon(Icons.camera),
-                              //   title: GoBack.tx('Camera'),
-                              //   onTap: () => _imageFromCamera(context),
-                              // ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    )
-                  : print('');
-            },
-          ),
-        ],
+        // actions: [
+        //   // IconButton(
+        //   //   icon: const Icon(Icons.arrow_forward),
+        //   //   tooltip: 'Image Cropper',
+        //   //   onPressed: () {
+        //   //     // GoBack.selectScreen(context, ProfileEdit(imageFile: imageFile,));
+        //   //     imageFile == imageFile1
+        //   //         ? showDialog(
+        //   //             context: context,
+        //   //             builder: (context) => AlertDialog(
+        //   //               title: const Text('اختر صورة'),
+        //   //               content: SingleChildScrollView(
+        //   //                 child: Column(
+        //   //                   children: [
+        //   //                     ListTile(
+        //   //                       // leading: const Icon(Icons.image),
+        //   //                       title: const Text('تم'),
+        //   //                       onTap: () => Navigator.pop(context),
+        //   //                     ),
+        //   //                     // ListTile(
+        //   //                     //   leading: const Icon(Icons.camera),
+        //   //                     //   title: GoBack.tx('Camera'),
+        //   //                     //   onTap: () => _imageFromCamera(context),
+        //   //                     // ),
+        //   //                   ],
+        //   //                 ),
+        //   //               ),
+        //   //             ),
+        //   //           )
+        //   //         : print('');
+        //   //   },
+        //   // ),
+        // ],
       ),
       body: Center(
         child: imageFile == null
-            ? const Text('no image upload yet')
+            ? const Text('لا يوجد صور محملة حالياً')
             : ClipRRect(
                 child: GridView.count(
                   scrollDirection: Axis.vertical,
@@ -123,8 +124,9 @@ class _UploadImageInvoiceState extends State<UploadImageInvoice> {
               ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: project_color('741b47'),
         onPressed: () => _showOption(context),
-        child: const Icon(Icons.add_photo_alternate),
+        child: Icon(Icons.add_photo_alternate),
       ),
     );
   }
@@ -133,18 +135,18 @@ class _UploadImageInvoiceState extends State<UploadImageInvoice> {
     return showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Make a choice'),
+        title: const Text(' : اختر واحدة '),
         content: SingleChildScrollView(
           child: Column(
             children: [
               ListTile(
                 leading: const Icon(Icons.image),
-                title: const Text('Gallery'),
+                title: const Text('المعرض'),
                 onTap: () => _imageFromGallery(context),
               ),
               ListTile(
                 leading: const Icon(Icons.camera),
-                title: const Text('Camera'),
+                title: const Text('التقاط من الكاميرا'),
                 onTap: () => _imageFromCamera(context),
               ),
             ],

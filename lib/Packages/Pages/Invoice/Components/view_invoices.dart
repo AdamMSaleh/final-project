@@ -39,7 +39,7 @@ class _view_invoicesState extends State<view_invoices> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: project_color('76b5c5'),
+        backgroundColor: project_color('741b47'),
         // ignore: prefer_const_constructors
         title: Text("الفواتير"),
         // centerTitle: true,
@@ -50,13 +50,14 @@ class _view_invoicesState extends State<view_invoices> {
             icon: const Icon(Icons.arrow_back)),
       ),
       body: Container(
+        //color: project_color('efcba7'),
         // constraints: const BoxConstraints.expand(),
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/Images/4545.jpg'),
-            fit: BoxFit.cover,
-          ),
-        ),
+        // decoration: const BoxDecoration(
+        //   image: DecorationImage(
+        //     image: AssetImage('assets/Images/4545.jpg'),
+        //     fit: BoxFit.cover,
+        //   ),
+        // ),
         height: (MediaQuery.of(context).size.height) * 0.75,
 
         child: invoice_info1!.isNotEmpty
@@ -64,12 +65,12 @@ class _view_invoicesState extends State<view_invoices> {
                 children: [
                   ...invoice_info1!.map(
                     (e) => Container(
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/Images/4545.jpg'),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+                      // decoration: const BoxDecoration(
+                      //   image: DecorationImage(
+                      //     image: AssetImage('assets/Images/4545.jpg'),
+                      //     fit: BoxFit.cover,
+                      //   ),
+                      // ),
                       // margin: EdgeInsets.all(10),
                       child: Container(
                         //هاد الكاتيغيوري لكل فاتورة
@@ -84,7 +85,7 @@ class _view_invoicesState extends State<view_invoices> {
                               topLeft: Radius.circular(68.0)),
                           boxShadow: <BoxShadow>[
                             BoxShadow(
-                                color: project_color('539ba4'),
+                                color: project_color('741b47'),
                                 offset: const Offset(1.1, 1.1),
                                 blurRadius: 10.0),
                           ],
@@ -141,7 +142,7 @@ class _view_invoicesState extends State<view_invoices> {
                                                   bottom: 8),
                                               child: Container(
                                                 height: 1,
-                                                color: project_color('76b5c5'),
+                                                color: project_color('741b47'),
                                                 margin: const EdgeInsets.only(
                                                     left: 23, bottom: 10),
                                               ),
@@ -162,6 +163,7 @@ class _view_invoicesState extends State<view_invoices> {
                                             // ),
                                             //--------------------------
                                             Padding(
+                                              //ايقونة تعديل الفاتورة  الكبسة
                                               // ignore: prefer_const_constructors
                                               padding: EdgeInsets.all(5),
                                               child: ElevatedButton(
@@ -225,17 +227,18 @@ class _view_invoicesState extends State<view_invoices> {
                                               padding: const EdgeInsets.only(
                                                   left: 4,
                                                   right: 4,
-                                                  top: 8,
+                                                  top: 13,
                                                   bottom: 8),
                                               child: Container(
                                                 height: 1,
-                                                color: project_color('76b5c5'),
+                                                color: project_color('741b47'),
                                                 margin: const EdgeInsets.only(
                                                     right: 23, bottom: 10),
                                               ),
                                             ),
                                             //--------------------------------
                                             Padding(
+                                              //هي ايقونة حذف الفاتورة سلة المهملات الكبسة
                                               padding: const EdgeInsets.all(5),
                                               child: ElevatedButton(
                                                 style: ButtonStyle(
@@ -279,12 +282,14 @@ class _view_invoicesState extends State<view_invoices> {
                 ],
               )
             : Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Center(
                     child: Text(
                       'لا يوجد فواتير حاليا',
                       style: TextStyle(
-                          color: project_color('d09c5f'), fontSize: 18),
+                          color: project_color('741b47'), fontSize: 18),
                     ),
                   ),
                 ],
@@ -305,7 +310,7 @@ class _view_invoicesState extends State<view_invoices> {
           Icons.add,
           size: 40,
         ),
-        backgroundColor: project_color('76b5c5'),
+        backgroundColor: project_color('741b47'),
       ),
     );
 
