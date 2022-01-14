@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
+import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/design.dart';
 import '../current_projects_for_workers.dart';
 import '../list_of_payments_to_workers.dart';
 import '../work_requests_for_workers.dart';
@@ -27,15 +29,18 @@ class _LaborManagementForProfessionalsState
     List<Map<String, Widget>> page = [
       {
         'page': const CurrentProjectsForWorkers().createState().build(context),
-        'title': GoBack.tx('المشاريع الحالية للعمال'),
+        'title': GoBack.tx('المشاريع الحالية للعمال',
+            textColor: Colors.white, sizee: 23),
       },
       {
         'page': const ListOfPaymentsToWorkers().createState().build(context),
-        'title': GoBack.tx('قائمة الدفعات للعمال'),
+        'title': GoBack.tx('قائمة الدفعات للعمال',
+            textColor: Colors.white, sizee: 23),
       },
       {
         'page': const WorkRequestsForWorkers().createState().build(context),
-        'title': GoBack.tx('طلبات العمل للعمال'),
+        'title':
+            GoBack.tx('طلبات العمل للعمال', textColor: Colors.white, sizee: 23),
       },
     ];
 
@@ -48,8 +53,8 @@ class _LaborManagementForProfessionalsState
         ),
         body: page[_selectedPageIndex]['page'],
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.amber,
-          selectedItemColor: Colors.blueAccent,
+          backgroundColor: project_color('efcba7'),
+          selectedItemColor: project_color('741b47'),
           // unselectedItemColor: Colors.black54,
           showUnselectedLabels: true,
           currentIndex: _selectedPageIndex,

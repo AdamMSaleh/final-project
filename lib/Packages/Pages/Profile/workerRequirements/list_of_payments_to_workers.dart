@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
+import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/design.dart';
 
 import 'package:intl/intl.dart';
 
@@ -94,7 +95,7 @@ class _ListOfPaymentsToWorkersState extends State<ListOfPaymentsToWorkers> {
                               style: ButtonStyle(
                                 backgroundColor:
                                     MaterialStateProperty.all<Color>(
-                                        Colors.white38),
+                                        Colors.orange.shade100),
                               ),
                               onPressed:
                                   () {}, //=>GoBack.selectScreen(context, pdfFile()),
@@ -103,7 +104,7 @@ class _ListOfPaymentsToWorkersState extends State<ListOfPaymentsToWorkers> {
                                 child: Icon(
                                   Icons.download,
                                   size: sizeBoxValue * 4,
-                                  color: Colors.blueAccent,
+                                  color: project_color('741b47'),
                                 ),
                               ),
                             ),
@@ -176,8 +177,8 @@ class _ListOfPaymentsToWorkersState extends State<ListOfPaymentsToWorkers> {
                       width: (MediaQuery.of(context).size.width),
                       child: ElevatedButton(
                         style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all<Color>(Colors.white38),
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Colors.orange.shade100),
                         ),
                         onPressed:
                             () {}, //=>GoBack.selectScreen(context, pdfFile()),
@@ -186,7 +187,7 @@ class _ListOfPaymentsToWorkersState extends State<ListOfPaymentsToWorkers> {
                           child: Icon(
                             Icons.download,
                             size: sizeBoxValue * 4,
-                            color: Colors.blueAccent,
+                            color: project_color('741b47'),
                           ),
                         ),
                       ),
@@ -195,12 +196,12 @@ class _ListOfPaymentsToWorkersState extends State<ListOfPaymentsToWorkers> {
                 ),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GoBack.tx('قائمة الدفعات للعمال'),
-              ],
-            ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: [
+            //     GoBack.tx('قائمة الدفعات للعمال'),
+            //   ],
+            // ),
           ],
         ),
       ),
