@@ -130,10 +130,10 @@ class GoBack {
         : selectScreen(ctx, page!);
   }
 
-  static Widget tx(String str, {double sizee = 15}) {
+  static Widget tx(String str, {double sizee = 15,Color textColor=Colors.black}) {
     return Center(
         child: Text(str,
-            style: TextStyle(fontSize: sizee, color: Colors.white),
+            style: TextStyle(fontSize: sizee, color: textColor),
             textAlign: TextAlign.center));
   }
 

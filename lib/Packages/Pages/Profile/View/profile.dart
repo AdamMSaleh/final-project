@@ -146,7 +146,7 @@ class _ProfileState extends State<Profile> {
       // drawer: DrawerHome(),
       body: SingleChildScrollView(
         child: Container(
-          height: (MediaQuery.of(context).size.height),
+          // height: (MediaQuery.of(context).size.height),
           decoration: BoxDecoration(
             // color: Colors.amber[200],
             // gradient: LinearGradient(
@@ -212,7 +212,7 @@ class _ProfileState extends State<Profile> {
                   ],
                 ),
               ),
-              
+
               /*
               *
               * ProfileForWorkers
