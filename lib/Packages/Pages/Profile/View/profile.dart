@@ -212,6 +212,7 @@ class _ProfileState extends State<Profile> {
                   ],
                 ),
               ),
+              
               /*
               *
               * ProfileForWorkers
@@ -220,56 +221,142 @@ class _ProfileState extends State<Profile> {
         occupation1 = occupation;
         age1 = age;
         region1 = region;*/
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Container(
-                  width: (MediaQuery.of(context).size.width) * 0.90,
-                  child: Card(
-                    //color: project_color('741b47'),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Card(
-                          color: project_color('741b47'),
-                          child: Container(
-                            padding: const EdgeInsets.all(5),
-                            child: Row(
-                              children: [
-                                GoBack.tx(' المهنه :'),
-                                GoBack.tx(ProfileForWorkers.occupation1),
-                              ],
-                            ),
-                          ),
+              // SingleChildScrollView(
+              //   scrollDirection: Axis.horizontal,
+              //   child: Container(
+              //     width: (MediaQuery.of(context).size.width) * 0.90,
+              //     child: Card(
+              //       //color: project_color('741b47'),
+              //       child: Row(
+              //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //         children: [
+              //           // Card(
+              //           //   color: project_color('741b47'),
+              //           //   child: Container(
+              //           //     padding: const EdgeInsets.all(5),
+              //           //     child: Row(
+              //           //       children: [
+              //           //         GoBack.tx(' المهنه :'),
+              //           //         GoBack.tx(ProfileForWorkers.occupation1),
+              //           //       ],
+              //           //     ),
+              //           //   ),
+              //           // ),
+              //           // Card(
+              //           //   color: project_color('741b47'),
+              //           //   child: Container(
+              //           //     padding: EdgeInsets.all(5),
+              //           //     child: Row(
+              //           //       children: [
+              //           //         GoBack.tx(' العمر :'),
+              //           //         GoBack.tx(ProfileForWorkers.age1),
+              //           //       ],
+              //           //     ),
+              //           //   ),
+              //           // ),
+              //           // Card(
+              //           //   color: project_color('741b47'),
+              //           //   child: Container(
+              //           //     padding: EdgeInsets.all(5),
+              //           //     child: Row(
+              //           //       children: [
+              //           //         GoBack.tx(' المنطقة :'),
+              //           //         GoBack.tx(ProfileForWorkers.region1),
+              //           //       ],
+              //           //     ),
+              //           //   ),
+              //           // ),
+              //         ],
+              //       ),
+              //     ),
+              //   ),
+              // ),
+
+
+              const SizedBox(
+                height: 50,
+              ),
+
+
+              Card(
+                //color: project_color('741b47'),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Card(
+                      color: project_color('741b47'),
+                      child: Container(
+                        width: (MediaQuery.of(context).size.width) * 0.90,
+                        padding: EdgeInsets.all(5),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            GoBack.tx(' المهنه :'),
+                            GoBack.tx(ProfileForWorkers.occupation1),
+                          ],
                         ),
-                        Card(
-                          color: project_color('741b47'),
-                          child: Container(
-                            padding: EdgeInsets.all(5),
-                            child: Row(
-                              children: [
-                                GoBack.tx(' العمر :'),
-                                GoBack.tx(ProfileForWorkers.age1),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Card(
-                          color: project_color('741b47'),
-                          child: Container(
-                            padding: EdgeInsets.all(5),
-                            child: Row(
-                              children: [
-                                GoBack.tx(' المنطقة :'),
-                                GoBack.tx(ProfileForWorkers.region1),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
+                  ],
                 ),
               ),
+              const SizedBox(
+                height: 50,
+              ),
+              Card(
+                //color: project_color('741b47'),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Card(
+                      color: project_color('741b47'),
+                      child: Container(
+                        width: (MediaQuery.of(context).size.width) * 0.90,
+                        padding: EdgeInsets.all(5),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            GoBack.tx(' العمر :'),
+                            GoBack.tx(ProfileForWorkers.age1),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(
+                height: 50,
+              ),
+
+              Card(
+                //color: project_color('741b47'),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Card(
+                      color: project_color('741b47'),
+                      child: Container(
+                        width: (MediaQuery.of(context).size.width) * 0.90,
+                        padding: EdgeInsets.all(5),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            GoBack.tx(' المنطقة :'),
+                            GoBack.tx(ProfileForWorkers.region1),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(
+                height: 50,
+              ),
+
               Card(
                 //color: project_color('741b47'),
                 child: Row(
