@@ -11,6 +11,26 @@ class ProfileInformation {
       city_user,
       account_type;
 
+
+
+/*
+  10
+  engineer
+
+
+  20
+  owner
+
+  30
+  worker
+
+
+  40
+  drivers
+
+  50
+  professional*/
+
   // ProfileInformation(
   //     { this.first_name,
   //      this.last_name,

@@ -162,7 +162,7 @@ class Upload_ImageState extends State<Upload_Image> {
     var now = DateTime.now();
     http.post(
         Uri.parse(
-            "https://zuporjict1.000webhostapp.com/upload_image/uploadEndPoint.php"),
+            "http://relaxbuilding.space/upload_image/uploadEndPoint.php"),
         body: {
           //now.toString()+
           "image": base64Image,
@@ -181,6 +181,7 @@ class Upload_ImageState extends State<Upload_Image> {
       Register().postDataUpdateImage(
       picture_user: 'image/' + widget.bathImage! + '/' + fileName);
       }
+
       Navigator.pop(context);
     }).catchError((error) {
       setStatus(error);

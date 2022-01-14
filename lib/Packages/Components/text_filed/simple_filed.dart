@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
 
 class SimpleFiled extends StatelessWidget {
+
+
   const SimpleFiled(
       {Key? key,
       TextEditingController? controller,
@@ -15,6 +17,7 @@ class SimpleFiled extends StatelessWidget {
       String? hint,
       Widget? pIcon,
       Widget? sIcon,
+      bool? readOnly=false,
       void Function()? onSIcon})
       : _initValue = initValue,
         _keyboardType = keyboardType,
@@ -27,6 +30,7 @@ class SimpleFiled extends StatelessWidget {
         _sIcon = sIcon,
         _onSIcon = onSIcon,
         _controler = controller,
+        _readOnly= readOnly,
         super(key: key);
 
   final String? _initValue;
@@ -41,6 +45,7 @@ class SimpleFiled extends StatelessWidget {
   final void Function()? _onSIcon;
   final void Function(String?)? _onSaved;
   final TextEditingController? _controler;
+  final bool? _readOnly;
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +58,7 @@ class SimpleFiled extends StatelessWidget {
       onChanged: _onChanged,
       validator: _onValidator,
       onSaved: _onSaved,
+      readOnly:_readOnly!,
       decoration: InputDecoration(
         border: InputBorder.none,
         hintText: _hint?.tr(),

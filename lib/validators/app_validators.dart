@@ -63,7 +63,15 @@ class AppValidators {
     }
     return null;
   }
-
+  //* age
+  static String? isAge(String? value) {
+    if (value?.isEmpty ?? true  )  {
+      return _messageEnterValue;
+    } else if (!validators.isLength(value!.trim(), 2, 2) || int.parse(value)<18) {
+      return "يرجى ادخال العمر بشكل صحيح";
+    }
+    return null;
+  }
   //* Name
   static String? isname(String? value) {
     if (value?.isEmpty ?? true) {

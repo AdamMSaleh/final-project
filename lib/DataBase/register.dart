@@ -571,6 +571,7 @@ class Register extends State<RegisterState> {
 
         // print('sami msai kmsia mias mkkmsdi kkmdjmspa');
         // print(data);
+        var type =data["account_type"];
 
         ProfileInformation.email = data["email"];
         ProfileInformation.city_user = data["city_user"];
@@ -579,7 +580,7 @@ class Register extends State<RegisterState> {
         ProfileInformation.phoneage = data["phoneage"];
         ProfileInformation.first_name = data["first_name"];
         ProfileInformation.last_name = data["last_name"];
-        ProfileInformation.account_type = data["account_type"];
+        ProfileInformation.account_type = setaccount_type(type);
         ProfileInformation.phone_number = data["phone_number"];
 
         //  profileData = List<ProfileInformation>.from(data["data"].map((i){
@@ -601,7 +602,27 @@ class Register extends State<RegisterState> {
     // we use Future.delayed becuase there is
     // async function inside it.
   }
+  /********************************************************************************/
+  /********************************************************************************/
 
+  String setaccount_type(type){
+    String type1="";
+    switch( type){
+      case('10'):type1='   مهندس  ';
+      break;
+      case('20'):type1='  مالك عقار   ';
+      break;
+      case('30'):type1='   عامل   ';
+      break;
+      case('40'):type1='   سائق اليه   ';
+      break;
+      case('50'):type1='      صاحب مهنه   ';
+      break;
+    }
+    return type1;
+  }
+  /********************************************************************************/
+  /********************************************************************************/
   /********************************************************************************/
   getSerchePage() async {
     var tx;

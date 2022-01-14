@@ -5,6 +5,7 @@ import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dropdown/flutter_dropdown.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
+import 'package:flutter_finalproject/Packages/Components/Add_Image/alert_choose.dart';
 import 'package:flutter_finalproject/Packages/Components/Btn/simple_btn.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.dart';
@@ -18,6 +19,7 @@ import 'package:flutter_finalproject/Theme/theme_status.dart';
 import 'package:flutter_finalproject/Utils/path_images.dart';
 import 'package:flutter_finalproject/validators/app_validators.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 
 class NewProject extends StatefulWidget {
   const NewProject({Key? key}) : super(key: key);
@@ -36,6 +38,15 @@ class _NewProjectState extends State<NewProject> {
   ];
   var z = 0;
   var b = 0;
+  void _datePicker({required bool starOrEndDate}) {
+   var dateNow=DateTime.now();
+    showDatePicker(
+      context: context,
+      initialDate: dateNow,
+      firstDate: starOrEndDate? dateNow.add(Duration(days: 10)):dateNow,
+      lastDate: dateNow.add(Duration(days: 7300)),//365 days * 20 years
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -118,19 +129,46 @@ class _NewProjectState extends State<NewProject> {
                       ),
                       SizedBox(height: 15.h),
                       //*Address
-                      Address(),
+                    SimpleFiled(
+                      keyboardType: TextInputType.name,
+                      onValidator: (value) => AppValidators.isEmpty(value),
+                      hint: KeyLang.address.tr(),
+                      pIcon:  Icon(
+                          Icons.add_location_alt_rounded,
+                          color: AppColors.blue,
+                        ),
+
+                    ),
+
+                      /******************************************/
+
+                      SizedBox(height: 15.h),
+
+                    /* Region */
+                    SimpleFiled(
+                      keyboardType: TextInputType.name,
+                      onValidator: (value) => AppValidators.isEmpty(value),
+                      hint: "  منطقة  ",
+                      pIcon:  Icon(
+                          Icons.add_location_alt_rounded,
+                          color: AppColors.blue,
+                        ),
+
+                    ),
+                      /*******************************/
                       SizedBox(height: 15.h),
                       //* Starting Date
                       SimpleFiled(
                         keyboardType: TextInputType.datetime,
                         onValidator: (value) => AppValidators.isEmpty(value),
                         hint: KeyLang.startingDate.tr(),
+                        readOnly: true,
                         pIcon: IconButton(
                           icon: Icon(
                             Icons.date_range_outlined,
                             color: AppColors.blue,
                           ),
-                          onPressed: () {},
+                          onPressed: () {_datePicker(starOrEndDate: false);},
                         ),
                       ),
                       //* Expiry Date
@@ -139,12 +177,13 @@ class _NewProjectState extends State<NewProject> {
                         keyboardType: TextInputType.datetime,
                         onValidator: (value) => AppValidators.isEmpty(value),
                         hint: KeyLang.expiryDate.tr(),
+                        readOnly: true,
                         pIcon: IconButton(
                           icon: Icon(
                             Icons.date_range_sharp,
                             color: AppColors.blue,
                           ),
-                          onPressed: () {},
+                          onPressed: () {_datePicker(starOrEndDate: true);},
                         ),
                       ),
                       SizedBox(height: 15.h),
@@ -166,24 +205,40 @@ class _NewProjectState extends State<NewProject> {
                             child: SimpleBtnUp(
                           btnText: KeyLang.constructionLicense.tr(),
                           onTap: () {
+                            showDialog(
+                              barrierDismissible: false,
+                              context: context,
+                              builder: (context) => AlertChooseImage(
+                                bathImage: 'construction_license',
+                              ),
+                            );
                             b = 1;
                           },
                         )),
                       ),
 
                       SizedBox(height: 15.h),
-                      //* schemes
-                      Container(
-                        margin: EdgeInsets.symmetric(horizontal: 25.h),
-                        child: Center(
-                            child: SimpleBtnUp(
-                          btnText: KeyLang.schemes.tr(),
-                          onTap: () {
-                            b = 2;
-                          },
-                        )),
-                      ),
-                      SizedBox(height: 15.h),
+
+
+                      // //* schemes
+                      // Container(
+                      //   margin: EdgeInsets.symmetric(horizontal: 25.h),
+                      //   child: Center(
+                      //       child: SimpleBtnUp(
+                      //     btnText: KeyLang.schemes.tr(),
+                      //     onTap: () {
+                      //       showDialog(
+                      //         barrierDismissible: false,
+                      //         context: context,
+                      //         builder: (context) => AlertChooseImage(
+                      //           bathImage: 'schemes',
+                      //         ),
+                      //       );
+                      //       b = 2;
+                      //     },
+                      //   )),
+                      // ),
+                      // SizedBox(height: 15.h),
 
                       //*button
                       SizedBox(height: 5.h),
