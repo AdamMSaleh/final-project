@@ -10,6 +10,7 @@ import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/ap
 import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/sup_appbar.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.dart';
+import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/design.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/Components/support/support_class.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/view/search_page.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
@@ -63,34 +64,38 @@ class _ResearchState extends State<Research> {
         txt: KeyLang.research,
       ),
 
-      body: ListView.builder(
-        itemCount: people.length,
-        itemBuilder: (context, index) {
-          final Person person = people[index];
-          if (people == null || people.length == 0) {
-            return CircularProgressIndicator(); //you should see loading animation if list is empty
-          }
-          return ListTile(
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => AddCrafts(
-                      name: person.name!,
-                      age: person.age!,
-                      craftsmanship: person.craftsmanship!,
-                    ))),
-            title: Text(person.name!),
-            subtitle: Text(person.craftsmanship!),
-            trailing: Text('العمر :  ${person.age}'),
-          );
-        },
+      body: Container(
+        height: (MediaQuery.of(context).size.height) * 0.75,
+        child: ListView.builder(
+          itemCount: people.length,
+          itemBuilder: (context, index) {
+            final Person person = people[index];
+            if (people == null || people.length == 0) {
+              return CircularProgressIndicator(); //you should see loading animation if list is empty
+            }
+            return ListTile(
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => AddCrafts(
+                        name: person.name!,
+                        age: person.age!,
+                        craftsmanship: person.craftsmanship!,
+                      ))),
+              title: Text(person.name!),
+              subtitle: Text(person.craftsmanship!),
+              trailing: Text('العمر :  ${person.age}'),
+            );
+          },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: project_color('741b47'),
         tooltip: 'Search people',
         onPressed: () => showSearch(
           context: context,
           delegate: SearchPage<Person>(
             onQueryUpdate: (s) => print(s),
             items: people,
-            searchLabel: 'بحث عن متخصص',
+            searchLabel: 'بحث ',
             suggestion: const Center(
               child: Text('تصفية الناس بالاسم أو المهنة أو العمر'),
             ),

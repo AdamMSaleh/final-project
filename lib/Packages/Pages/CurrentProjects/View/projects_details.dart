@@ -82,11 +82,9 @@ class _ProjectsDetailsState extends State<ProjectsDetails> {
                       GoBack.btn(
                         "اضافة اصحاب المهن/ عمال",
                         context,
-                        card1: 'اضافة',
-                        pageCard1: CurrentProjectMain("hhh"),
-                        card2: "بحث ",
-                        pageCard2:
-                            Research(), //IconButton(onPressed: ()=>GoBack.selectScreen(context, SearchHomePage()), icon: Icon(Icons.arrow_forward_ios_sharp , color: Colors.black,)),
+                        //card1: 'اضافة',
+                        page: Research(),
+                        //IconButton(onPressed: ()=>GoBack.selectScreen(context, SearchHomePage()), icon: Icon(Icons.arrow_forward_ios_sharp , color: Colors.black,)),
                         // card3: card3,
                       ),
                       GoBack.btn(

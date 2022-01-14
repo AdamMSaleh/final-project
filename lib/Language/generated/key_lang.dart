@@ -41,7 +41,7 @@ class KeyLang {
   static const String licenseNumber = "license Number";
   static const String uploadlicense = "upload license";
   static const String newProject = "New project";
-  static const String research = "Research";
+  static const String research = " اضافة اصحاب المهن/ عمال";
   static const String currentProjects = "Current projects";
   static const String profile = "Profile";
   static const String archive = "Archive";

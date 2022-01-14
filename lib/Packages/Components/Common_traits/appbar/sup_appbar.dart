@@ -28,7 +28,7 @@ class _AppBSupState extends State<AppBSup> {
       title: Text(_txt,
           style: AppStyles.styleHeadline3Light.copyWith(
             color: AppColors.white,
-            fontSize: 25.sp,
+            fontSize: 23.sp,
           )).tr(),
     );
   }
