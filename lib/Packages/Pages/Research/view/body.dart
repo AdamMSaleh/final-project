@@ -11,6 +11,7 @@ import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/su
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.dart';
 import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/design.dart';
+import 'package:flutter_finalproject/Packages/Pages/NewProject/View/new_project.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/Components/support/support_class.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/view/search_page.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
@@ -28,6 +29,8 @@ class Research extends StatefulWidget {
 }
 
 class _ResearchState extends State<Research> {
+
+
   List<Person> people = [];
 
   x() async {
@@ -43,11 +46,19 @@ class _ResearchState extends State<Research> {
   initState() {
     x();
     people = Person.people;
+    // setState(() {
+    //   if(NewProject.ownerName!.length>1){
+    //     Navigator.pop (context ,NewProject.id);
+    //   }
+    // });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+
+
+
     print('samisamisasmaismasimsi');
     // print(people[1].craftsmanship);
     setState(() {

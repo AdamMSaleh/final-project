@@ -186,13 +186,16 @@ class _AddCraftsState extends State<AddCrafts> {
                           onPressed: () {
                             //هاي باخذ منها المعلومات لصفحة مشروع جديد
                             if (AddCrafts.isNewProject) {
-                              NewProject.ownerName = name;
-                              NewProject.ownerId = userNo;
+                              NewProject.ownerName = name ;
+                              NewProject.owner_name!.text = name;
+                              print(name);
+                              NewProject.ownerId = '$userNo';
+
+                              Navigator.popUntil (context ,ModalRoute.withName(NewProject.id));
                             }
-                            Navigator.pushNamed(
-                              context,
-                              NewProject.id,
-                            );
+
+                              // (context, MaterialPageRoute(builder: (BuildContext context) => NewProject()));
+                            // Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => NewProject()));
                           },
                           child: Icon(Icons.add_sharp),
                         ),

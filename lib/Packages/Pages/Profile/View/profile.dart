@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, implementation_imports, duplicate_ignore, must_be_immutable, prefer_typing_uninitialized_variables, non_constant_identifier_names, avoid_print, unused_import
 
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -62,7 +63,10 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
- Color textColor= Colors.white70;
+  Color textColor = Colors.white70;
+
+  bool processing = true;
+
   void SelectedItem(BuildContext context, item) {
     switch (item) {
       case 0:
@@ -97,7 +101,15 @@ class _ProfileState extends State<Profile> {
         break;
     }
   }
-
+@override
+  void initState() {
+  Timer(Duration(seconds: 5), () {
+    setState(() {
+      processing = false;
+    });
+  });
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -163,21 +175,33 @@ class _ProfileState extends State<Profile> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                // padding: const EdgeInsets.all(20),
-                child: Image.network(
-                  ProfileForWorkers.image1,
-                  height: 220,
-                ),
+              //image
+
+              Column(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    // padding: const EdgeInsets.all(20),
+                    child: Image.network(
+                      ProfileForWorkers.image1,
+                      height: 220,
+                    ),
+                  ),
+                  processing
+                      ? CircularProgressIndicator(
+                          backgroundColor: Colors.black38,
+                          color: Colors.black45)
+                      : Container(),
+                ],
               ),
+
               Row(
-               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
                     onPressed: () => GoBack.selectScreen(
                         context, const LaborManagementForProfessionals()),
-                    child: GoBack.tx('أدارة العمل',textColor: textColor),
+                    child: GoBack.tx('أدارة العمل', textColor: textColor),
                     style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all(project_color('741b47')),
@@ -185,14 +209,16 @@ class _ProfileState extends State<Profile> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                       Clipboard.setData(ClipboardData(text: ProfileInformation.userNo!));
-                       simpleToast(message: 'The number has been copied');
+                      Clipboard.setData(
+                          ClipboardData(text: ProfileInformation.userNo!));
+                      simpleToast(message: 'The number has been copied');
                     },
-
-                    child: GoBack.tx(ProfileInformation.userNo!+':الرقم التعريفي',textColor: textColor),
+                    child: GoBack.tx(
+                        ProfileInformation.userNo! + ':الرقم التعريفي',
+                        textColor: textColor),
                     style: ButtonStyle(
                       backgroundColor:
-                      MaterialStateProperty.all(project_color('741b47')),
+                          MaterialStateProperty.all(project_color('741b47')),
                     ),
                   ),
                 ],
@@ -218,9 +244,11 @@ class _ProfileState extends State<Profile> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            GoBack.tx('الاسم : ',textColor: textColor),
-                            GoBack.tx(ProfileForWorkers.firstName1,textColor: textColor),
-                            GoBack.tx(ProfileForWorkers.lastName1,textColor: textColor),
+                            GoBack.tx('الاسم : ', textColor: textColor),
+                            GoBack.tx(ProfileForWorkers.firstName1,
+                                textColor: textColor),
+                            GoBack.tx(ProfileForWorkers.lastName1,
+                                textColor: textColor),
                           ],
                         ),
                       ),
@@ -305,8 +333,9 @@ class _ProfileState extends State<Profile> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            GoBack.tx(' المهنه :',textColor: textColor),
-                            GoBack.tx(ProfileForWorkers.occupation1,textColor: textColor),
+                            GoBack.tx(' المهنه :', textColor: textColor),
+                            GoBack.tx(ProfileForWorkers.occupation1,
+                                textColor: textColor),
                           ],
                         ),
                       ),
@@ -330,35 +359,9 @@ class _ProfileState extends State<Profile> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            GoBack.tx(' العمر :',textColor: textColor),
-                            GoBack.tx(ProfileForWorkers.age1,textColor: textColor),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              const SizedBox(
-                height: 50,
-              ),
-
-              Card(
-                //color: project_color('741b47'),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Card(
-                      color: project_color('741b47'),
-                      child: Container(
-                        width: (MediaQuery.of(context).size.width) * 0.90,
-                        padding: EdgeInsets.all(5),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            GoBack.tx(' المنطقة :',textColor: textColor),
-                            GoBack.tx(ProfileForWorkers.region1,textColor: textColor),
+                            GoBack.tx(' العمر :', textColor: textColor),
+                            GoBack.tx(ProfileForWorkers.age1,
+                                textColor: textColor),
                           ],
                         ),
                       ),
@@ -384,8 +387,37 @@ class _ProfileState extends State<Profile> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            GoBack.tx('الرقم : ',textColor: textColor),
-                            GoBack.tx(ProfileForWorkers.phoneNumber1,textColor: textColor),
+                            GoBack.tx(' المنطقة :', textColor: textColor),
+                            GoBack.tx(ProfileForWorkers.region1,
+                                textColor: textColor),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(
+                height: 50,
+              ),
+
+              Card(
+                //color: project_color('741b47'),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Card(
+                      color: project_color('741b47'),
+                      child: Container(
+                        width: (MediaQuery.of(context).size.width) * 0.90,
+                        padding: EdgeInsets.all(5),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            GoBack.tx('الرقم : ', textColor: textColor),
+                            GoBack.tx(ProfileForWorkers.phoneNumber1,
+                                textColor: textColor),
                           ],
                         ),
                       ),
@@ -401,5 +433,34 @@ class _ProfileState extends State<Profile> {
         ),
       ),
     );
+  }
+
+  witcicullogin() {
+    var wigt;
+    if (!processing) {
+      wigt = Column(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            // padding: const EdgeInsets.all(20),
+            child: Image.network(
+              ProfileForWorkers.image1,
+              height: 220,
+            ),
+          ),
+          CircularProgressIndicator(
+              backgroundColor: Colors.black38, color: Colors.black45),
+        ],
+      );
+    } else {
+      wigt = CircularProgressIndicator(
+          backgroundColor: Colors.black38, color: Colors.black45);
+      Timer(Duration(seconds: 3), () {
+        setState(() {
+          processing = false;
+        });
+      });
+    }
+    return wigt;
   }
 }

@@ -71,6 +71,7 @@ class DrawerHome extends StatelessWidget {
                 onPress: () {
                   UserPreferences.removeUsername();
                   UserPreferences.removePassword();
+                  UserPreferences.removeUserId();
                   Register().RemovingSessionData(context);
                 },
               ),

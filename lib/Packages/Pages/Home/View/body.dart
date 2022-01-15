@@ -35,16 +35,16 @@ class PageHome extends StatefulWidget {
 }
 
 class _PageHomeState extends State<PageHome> {
-  x() async {
-    await Register().loadData();
-  }
-
-  @override
-  // ignore: must_call_super
-  void initState() {
-
-    x();
-  }
+  // x() async {
+  //   await Register().loadData();
+  // }
+  //
+  // @override
+  // // ignore: must_call_super
+  // void initState() {
+  //
+  //   x();
+  // }
 
   @override
   Widget build(BuildContext context) {

@@ -41,7 +41,7 @@ class _PageSplashState extends State<PageSplash> {
         email: UserPreferences.getUsername() ?? '',
         password: UserPreferences.getPassword() ?? '',
       );
-      Register().splashLogin(context);
+      // Register().splashLogin(context);
     });
     super.initState();
   }

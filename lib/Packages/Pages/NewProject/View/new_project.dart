@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dropdown/flutter_dropdown.dart';
+import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Add_Image/alert_choose.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
@@ -14,6 +15,7 @@ import 'package:flutter_finalproject/Packages/Components/Toast/simple_toast.dart
 import 'package:flutter_finalproject/Packages/Components/location/addres.dart';
 import 'package:flutter_finalproject/Packages/Components/text_filed/simple_filed.dart';
 import 'package:flutter_finalproject/Packages/Components/upload_image_php/img_upload.dart';
+import 'package:flutter_finalproject/Packages/Components/user_info_secure_storage/user_save_login.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/components/Button/but_up.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/view/add_crafts.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/view/body.dart';
@@ -29,8 +31,9 @@ class NewProject extends StatefulWidget {
 
    NewProject({Key? key}) : super(key: key);
   static const String id = 'NewProject';
-   static String? ownerName='';
-   static int? ownerId=0;
+   static String? ownerName='',ownerId='0';
+   static TextEditingController? owner_name = TextEditingController();
+
    @override
   State<NewProject> createState() => _NewProjectState();
   static String? constructionLicense  ;
@@ -45,17 +48,13 @@ class _NewProjectState extends State<NewProject> {
   ];
   var z = 0;
   var b = 0;
-  Map<String, TextEditingController> controllerValue = {
-    'first_name': TextEditingController(),
-    'last_name': TextEditingController(),
-    'age': TextEditingController(),
-    'email': TextEditingController(),
-    'owmersName': TextEditingController(),
-    //test gui not importint
+  late Map<String, TextEditingController> controllerValue = {
+    'project_name': TextEditingController(),
+    'City': TextEditingController(),
+    'Region': TextEditingController(),
     'selectedDateStart': TextEditingController(),
     'selectedDateEnd': TextEditingController(),
-    // "city_user": TextEditingController(),
-    // 'account_type': TextEditingController(),
+    'owner_name': TextEditingController(),
   };
 
   late DateTime _selectedDateStart;
@@ -83,12 +82,20 @@ class _NewProjectState extends State<NewProject> {
       }
     });
   }
-  void initState() {
-    controllerValue['owmersName']!.text=NewProject.ownerName!;
 
-  }
+  // @override
+  // void initState() {
+  //  setState(() {
+  //     controllerValue['owner_name']!.text=NewProject.ownerName??"" ;
+  //   });
+  //   super.initState();
+  // }
+
   @override
   Widget build(BuildContext context) {
+    setState(() {
+      controllerValue['owner_name']!.text=NewProject.ownerName??"" ;
+    });
     return Scaffold(
       backgroundColor: AppTheme.getTheme(context: context)
           ? AppColors.black
@@ -162,17 +169,19 @@ class _NewProjectState extends State<NewProject> {
                         keyboardType: TextInputType.name,
                         onValidator: (value) => AppValidators.isEmpty(value),
                         hint: KeyLang.projectName.tr(),
+                        controller: controllerValue['project_name'],
                         pIcon: Icon(
                           Icons.home,
                           color: AppColors.blue,
                         ),
                       ),
                       SizedBox(height: 15.h),
-                      //*Address
+                      //*Address city
                       SimpleFiled(
                         keyboardType: TextInputType.name,
                         onValidator: (value) => AppValidators.isEmpty(value),
                         hint: KeyLang.address.tr(),
+                        controller: controllerValue['City'],
                         pIcon: Icon(
                           Icons.add_location_alt_rounded,
                           color: AppColors.blue,
@@ -183,11 +192,12 @@ class _NewProjectState extends State<NewProject> {
 
                       SizedBox(height: 15.h),
 
-                      /* Region */
+                      /* Address  Region */
                       SimpleFiled(
                         keyboardType: TextInputType.name,
                         onValidator: (value) => AppValidators.isEmpty(value),
                         hint: "  منطقة  ",
+                        controller: controllerValue['Region'],
                         pIcon: Icon(
                           Icons.add_location_alt_rounded,
                           color: AppColors.blue,
@@ -234,10 +244,10 @@ class _NewProjectState extends State<NewProject> {
                       //* the owner's name
                       SimpleFiled(
                         keyboardType: TextInputType.name,
-                        onValidator: (value) => AppValidators.isname(value),
+                        onValidator: (value) => AppValidators.isEmpty(value),
                         hint: KeyLang.ownerName.tr(),
                         readOnly: true,
-                        controller: controllerValue['owmersName'],
+                        controller: NewProject.owner_name,//controllerValue['owner_name'],
                         pIcon: IconButton(
                           icon: Icon(
                             Icons.person,
@@ -315,7 +325,7 @@ class _NewProjectState extends State<NewProject> {
                         child: Center(
                             child: SimpleBtn(
                                 btnText: KeyLang.add.toUpperCase().tr(),
-                                onTap: () async {
+                                onTap: ()  {
                                   setState(() {
 
                                    //  print("Upload_ImageState().bathImagereturn");
@@ -333,8 +343,26 @@ class _NewProjectState extends State<NewProject> {
                                       setState(() {
                                         validatorToConstructionLicense = false;
                                       });
-
-
+                                      Register().postDataCreateNewProject(
+                                       context: context,
+                                       user_no_eng: UserPreferences.getUserId()!,
+                                       project_name: controllerValue['project_name']!.text,
+                                       City:  controllerValue['City']!.text,
+                                       Region: controllerValue['Region']!.text,
+                                       selectedDateStart:  controllerValue['selectedDateStart']!.text,
+                                       selectedDateEnd: controllerValue['selectedDateEnd']!.text,
+                                       Owner_User_ID: NewProject.ownerId as String ,
+                                       owner_name: controllerValue['owner_name']!.text,
+                                       construction_license: NewProject.constructionLicense!,
+                                     );
+                                      // Map<String, TextEditingController> controllerValue = {
+                                      //   'project_name': TextEditingController(),
+                                      //   'City': TextEditingController(),
+                                      //   'Region': TextEditingController(),
+                                      //   'selectedDateStart': TextEditingController(),
+                                      //   'selectedDateEnd': TextEditingController(),
+                                      //   'owner_name': TextEditingController(),
+                                      // };
                                     } else {
                                       setState(() {
                                         validatorToConstructionLicense = true;
