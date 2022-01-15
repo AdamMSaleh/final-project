@@ -576,6 +576,7 @@ class Register extends State<RegisterState> {
         ProfileInformation.email = data["email"];
         ProfileInformation.city_user = data["city_user"];
         ProfileInformation.age = data["age"];
+        ProfileInformation.userNo = data["user_no"];
         ProfileInformation.picture_user = data["picture_user"];
         ProfileInformation.phoneage = data["phoneage"];
         ProfileInformation.first_name = data["first_name"];

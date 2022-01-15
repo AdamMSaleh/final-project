@@ -3,8 +3,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
+import 'package:flutter_finalproject/Packages/Components/Toast/simple_toast.dart';
 import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/design.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/Components/profile_information.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile_edit.dart';
@@ -169,18 +171,31 @@ class _ProfileState extends State<Profile> {
                   height: 220,
                 ),
               ),
-              Container(
-                // color: project_color('741b47'),
-                margin: const EdgeInsets.all(11),
-                child: ElevatedButton(
-                  onPressed: () => GoBack.selectScreen(
-                      context, const LaborManagementForProfessionals()),
-                  child: GoBack.tx('أدارة العمل',textColor: textColor),
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(project_color('741b47')),
+              Row(
+               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: () => GoBack.selectScreen(
+                        context, const LaborManagementForProfessionals()),
+                    child: GoBack.tx('أدارة العمل',textColor: textColor),
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(project_color('741b47')),
+                    ),
                   ),
-                ),
+                  ElevatedButton(
+                    onPressed: () {
+                       Clipboard.setData(ClipboardData(text: ProfileInformation.userNo!));
+                       simpleToast(message: 'The number has been copied');
+                    },
+
+                    child: GoBack.tx(ProfileInformation.userNo!+':الرقم التعريفي',textColor: textColor),
+                    style: ButtonStyle(
+                      backgroundColor:
+                      MaterialStateProperty.all(project_color('741b47')),
+                    ),
+                  ),
+                ],
               ),
               // Container(
               //   margin: const EdgeInsets.all(11),

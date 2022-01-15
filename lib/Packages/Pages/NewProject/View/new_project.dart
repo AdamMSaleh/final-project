@@ -15,6 +15,8 @@ import 'package:flutter_finalproject/Packages/Components/location/addres.dart';
 import 'package:flutter_finalproject/Packages/Components/text_filed/simple_filed.dart';
 import 'package:flutter_finalproject/Packages/Components/upload_image_php/img_upload.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/components/Button/but_up.dart';
+import 'package:flutter_finalproject/Packages/Pages/Research/view/add_crafts.dart';
+import 'package:flutter_finalproject/Packages/Pages/Research/view/body.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
 import 'package:flutter_finalproject/Theme/style.dart';
 import 'package:flutter_finalproject/Theme/theme_status.dart';
@@ -27,8 +29,9 @@ class NewProject extends StatefulWidget {
 
    NewProject({Key? key}) : super(key: key);
   static const String id = 'NewProject';
-
-  @override
+   static String? ownerName='';
+   static int? ownerId=0;
+   @override
   State<NewProject> createState() => _NewProjectState();
   static String? constructionLicense  ;
 }
@@ -47,7 +50,7 @@ class _NewProjectState extends State<NewProject> {
     'last_name': TextEditingController(),
     'age': TextEditingController(),
     'email': TextEditingController(),
-    'password': TextEditingController(),
+    'owmersName': TextEditingController(),
     //test gui not importint
     'selectedDateStart': TextEditingController(),
     'selectedDateEnd': TextEditingController(),
@@ -58,6 +61,7 @@ class _NewProjectState extends State<NewProject> {
   late DateTime _selectedDateStart;
   late DateTime _selectedDateEnd;
   bool validatorToConstructionLicense = false;
+
 
   void _datePicker({required bool starOrEndDate}) {
     var dateNow = DateTime.now();
@@ -79,7 +83,10 @@ class _NewProjectState extends State<NewProject> {
       }
     });
   }
+  void initState() {
+    controllerValue['owmersName']!.text=NewProject.ownerName!;
 
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -229,9 +236,23 @@ class _NewProjectState extends State<NewProject> {
                         keyboardType: TextInputType.name,
                         onValidator: (value) => AppValidators.isname(value),
                         hint: KeyLang.ownerName.tr(),
-                        pIcon: Icon(
-                          Icons.person,
-                          color: AppColors.blue,
+                        readOnly: true,
+                        controller: controllerValue['owmersName'],
+                        pIcon: IconButton(
+                          icon: Icon(
+                            Icons.person,
+                            color: AppColors.blue,
+                          ),
+                          onPressed: (){
+                            setState(() {
+                              AddCrafts.isHomePage=false;
+                              AddCrafts.isNewProject=true;
+                            });
+                            Navigator.pushNamed(
+                              context,
+                              Research.id,
+                            );
+                          },
                         ),
                       ),
                       SizedBox(height: 15.h),

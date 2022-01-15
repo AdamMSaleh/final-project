@@ -6,6 +6,7 @@ import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/su
 import 'package:flutter_finalproject/Packages/Components/upload_image_Invoice/upload_image.dart';
 import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/creat_invoices.dart';
 import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/view_invoices.dart';
+import 'package:flutter_finalproject/Packages/Pages/Research/view/add_crafts.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/view/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/project_%20parts/view/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/timeline/View/body.dart';
@@ -24,6 +25,12 @@ class ProjectsDetails extends StatefulWidget {
 }
 
 class _ProjectsDetailsState extends State<ProjectsDetails> {
+  void initState() {
+    setState(() {
+      AddCrafts.isHomePage=false;
+    });
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

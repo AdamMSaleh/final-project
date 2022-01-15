@@ -10,6 +10,7 @@ class ProfileInformation {
       picture_user,
       city_user,
       account_type,
+      userNo,
       constructionLicense;
 
 
