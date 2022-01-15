@@ -6,6 +6,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_finalproject/DataBase/register.dart';
+import 'package:flutter_finalproject/Packages/Pages/NewProject/View/new_project.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 
@@ -14,6 +15,7 @@ class Upload_Image extends StatefulWidget {
   bool? galleryOrCamera;
 
   String? bathImage = '';
+
 
   Upload_Image(
       {Key? key, this.galleryOrCamera = true, this.bathImage = 'profile'})
@@ -31,7 +33,7 @@ class Upload_ImageState extends State<Upload_Image> {
   // late File? tmpFile =null;
   final ImagePicker _picker = ImagePicker();
   String errMessage = 'Error Uploading Image';
-
+  String? bathImagereturn='';
   void chooseImage(bool galleryOrCamera) async {
     // setState(() {
     //   file =
@@ -171,13 +173,41 @@ class Upload_ImageState extends State<Upload_Image> {
       // print(widget.bathImage!);
       setStatus(result.statusCode == 200 ? result.body : errMessage);
       if (widget.bathImage == 'Driver_license') {
+        setState(() {
+          bathImagereturn =
+              'image/' + widget.bathImage! + '/' + fileName;
+        });
         Register().postImageDirvers(
             license_image: 'image/' + widget.bathImage! + '/' + fileName);
         // print('z,xcn,xmznc,mxznc,mzxncnm');
-      } else if(widget.bathImage == 'syndicate_card'){
+      }else if(widget.bathImage == 'syndicate_card'){
+
+        setState(() {
+          bathImagereturn =
+              'image/' + widget.bathImage! + '/' + fileName;
+        });
         Register().postImageSyndicateCard(
             Guild_picture: 'image/' + widget.bathImage! + '/' + fileName);
+
+      }else if(widget.bathImage == 'construction_license'){
+
+        // هون لسا ما تفقدة الميثود
+        setState(() {
+         bathImagereturn ='http://relaxbuilding.space/image/' + widget.bathImage! + '/' + fileName;
+          NewProject.constructionLicense = 'http://relaxbuilding.space/image/' + widget.bathImage! + '/' + fileName;
+
+        });
+        print(bathImagereturn??"33");
+        print( NewProject.constructionLicense ??"33");
+
+        Register().postImageSyndicateCard(
+            Guild_picture: 'image/' + widget.bathImage! + '/' + fileName);
+
       }else {
+        setState(() {
+          bathImagereturn =
+              'image/' + widget.bathImage! + '/' + fileName;
+        });
       Register().postDataUpdateImage(
       picture_user: 'image/' + widget.bathImage! + '/' + fileName);
       }
@@ -195,44 +225,46 @@ class Upload_ImageState extends State<Upload_Image> {
         backgroundColor: Colors.purple,
         title: const Text("Upload Image Demo"),
       ),
-      body: Container(
-        padding: const EdgeInsets.all(30.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            // ignore: deprecated_member_use
-            OutlineButton(
-              onPressed: () => chooseImage(widget.galleryOrCamera!),
-              child: const Text('Choose Image'),
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
-            showImage(),
-            const SizedBox(
-              height: 20.0,
-            ),
-            // ignore: deprecated_member_use
-            OutlineButton(
-              onPressed: startUpload,
-              child: const Text('Upload Image'),
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
-            Text(
-              status,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                color: Colors.green,
-                fontWeight: FontWeight.w500,
-                fontSize: 20.0,
+      body: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.all(30.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              // ignore: deprecated_member_use
+              OutlineButton(
+                onPressed: () => chooseImage(widget.galleryOrCamera!),
+                child: const Text('Choose Image'),
               ),
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
-          ],
+              const SizedBox(
+                height: 20.0,
+              ),
+              showImage(),
+              const SizedBox(
+                height: 20.0,
+              ),
+              // ignore: deprecated_member_use
+              OutlineButton(
+                onPressed: startUpload,
+                child: const Text('Upload Image'),
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              Text(
+                status,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: Colors.green,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 20.0,
+                ),
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+            ],
+          ),
         ),
       ),
     );

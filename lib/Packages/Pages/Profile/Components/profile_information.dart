@@ -9,7 +9,8 @@ class ProfileInformation {
       phone_number,
       picture_user,
       city_user,
-      account_type;
+      account_type,
+      constructionLicense;
 
 
 

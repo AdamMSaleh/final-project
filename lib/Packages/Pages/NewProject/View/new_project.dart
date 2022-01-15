@@ -6,12 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dropdown/flutter_dropdown.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Add_Image/alert_choose.dart';
+import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 import 'package:flutter_finalproject/Packages/Components/Btn/simple_btn.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Toast/simple_toast.dart';
 import 'package:flutter_finalproject/Packages/Components/location/addres.dart';
 import 'package:flutter_finalproject/Packages/Components/text_filed/simple_filed.dart';
+import 'package:flutter_finalproject/Packages/Components/upload_image_php/img_upload.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/components/Button/but_up.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
 import 'package:flutter_finalproject/Theme/style.dart';
@@ -22,11 +24,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 
 class NewProject extends StatefulWidget {
-  const NewProject({Key? key}) : super(key: key);
+
+   NewProject({Key? key}) : super(key: key);
   static const String id = 'NewProject';
 
   @override
   State<NewProject> createState() => _NewProjectState();
+  static String? constructionLicense  ;
 }
 
 class _NewProjectState extends State<NewProject> {
@@ -50,33 +54,32 @@ class _NewProjectState extends State<NewProject> {
     // "city_user": TextEditingController(),
     // 'account_type': TextEditingController(),
   };
+
   late DateTime _selectedDateStart;
   late DateTime _selectedDateEnd;
-
-
+  bool validatorToConstructionLicense = false;
 
   void _datePicker({required bool starOrEndDate}) {
-   var dateNow=DateTime.now();
+    var dateNow = DateTime.now();
     showDatePicker(
       context: context,
-      initialDate: starOrEndDate? dateNow.add(Duration(days: 10)):dateNow,
-      firstDate: starOrEndDate? dateNow.add(Duration(days: 2)):dateNow,
-      lastDate: dateNow.add(Duration(days: 7300)),//365 days * 20 years
+      initialDate: starOrEndDate ? dateNow.add(Duration(days: 10)) : dateNow,
+      firstDate: starOrEndDate ? dateNow.add(Duration(days: 2)) : dateNow,
+      lastDate: dateNow.add(Duration(days: 7300)), //365 days * 20 years
     ).then((value) {
-      if(value ==null){
+      if (value == null) {
         return;
       }
-      if(starOrEndDate){
-        _selectedDateEnd=value;
-        controllerValue['selectedDateEnd']!.text =value.toString();
-      }else{
-        _selectedDateStart=value;
-        controllerValue['selectedDateStart']!.text =value.toString();
-
+      if (starOrEndDate) {
+        _selectedDateEnd = value;
+        controllerValue['selectedDateEnd']!.text = value.toString();
+      } else {
+        _selectedDateStart = value;
+        controllerValue['selectedDateStart']!.text = value.toString();
       }
-    })
-   ;
+    });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -159,32 +162,30 @@ class _NewProjectState extends State<NewProject> {
                       ),
                       SizedBox(height: 15.h),
                       //*Address
-                    SimpleFiled(
-                      keyboardType: TextInputType.name,
-                      onValidator: (value) => AppValidators.isEmpty(value),
-                      hint: KeyLang.address.tr(),
-                      pIcon:  Icon(
+                      SimpleFiled(
+                        keyboardType: TextInputType.name,
+                        onValidator: (value) => AppValidators.isEmpty(value),
+                        hint: KeyLang.address.tr(),
+                        pIcon: Icon(
                           Icons.add_location_alt_rounded,
                           color: AppColors.blue,
                         ),
-
-                    ),
+                      ),
 
                       /******************************************/
 
                       SizedBox(height: 15.h),
 
-                    /* Region */
-                    SimpleFiled(
-                      keyboardType: TextInputType.name,
-                      onValidator: (value) => AppValidators.isEmpty(value),
-                      hint: "  منطقة  ",
-                      pIcon:  Icon(
+                      /* Region */
+                      SimpleFiled(
+                        keyboardType: TextInputType.name,
+                        onValidator: (value) => AppValidators.isEmpty(value),
+                        hint: "  منطقة  ",
+                        pIcon: Icon(
                           Icons.add_location_alt_rounded,
                           color: AppColors.blue,
                         ),
-
-                    ),
+                      ),
                       /*******************************/
                       SizedBox(height: 15.h),
                       //* Starting Date
@@ -193,13 +194,15 @@ class _NewProjectState extends State<NewProject> {
                         onValidator: (value) => AppValidators.isEmpty(value),
                         hint: KeyLang.startingDate.tr(),
                         readOnly: true,
-                        controller:  controllerValue['selectedDateStart'],
+                        controller: controllerValue['selectedDateStart'],
                         pIcon: IconButton(
                           icon: Icon(
                             Icons.date_range_outlined,
                             color: AppColors.blue,
                           ),
-                          onPressed: () {_datePicker(starOrEndDate: false);},
+                          onPressed: () {
+                            _datePicker(starOrEndDate: false);
+                          },
                         ),
                       ),
                       //* Expiry Date
@@ -209,13 +212,15 @@ class _NewProjectState extends State<NewProject> {
                         onValidator: (value) => AppValidators.isEmpty(value),
                         hint: KeyLang.expiryDate.tr(),
                         readOnly: true,
-                        controller:  controllerValue['selectedDateEnd'],
+                        controller: controllerValue['selectedDateEnd'],
                         pIcon: IconButton(
                           icon: Icon(
                             Icons.date_range_sharp,
                             color: AppColors.blue,
                           ),
-                          onPressed: () {_datePicker(starOrEndDate: true);},
+                          onPressed: () {
+                            _datePicker(starOrEndDate: true);
+                          },
                         ),
                       ),
                       SizedBox(height: 15.h),
@@ -245,12 +250,21 @@ class _NewProjectState extends State<NewProject> {
                               ),
                             );
                             b = 1;
+
                           },
                         )),
                       ),
 
-                      SizedBox(height: 15.h),
+                      // Validator to construction_license
+                      validatorToConstructionLicense
+                          ? Container(
+                              margin: EdgeInsets.symmetric(horizontal: 25.h),
+                              child: GoBack.tx('   من فضلك حمل رخصة البناء    ',
+                                  sizee: 15, textColor: Colors.red),
+                            )
+                          : Container(),
 
+                      SizedBox(height: 15.h),
 
                       // //* schemes
                       // Container(
@@ -273,6 +287,7 @@ class _NewProjectState extends State<NewProject> {
                       // SizedBox(height: 15.h),
 
                       //*button
+
                       SizedBox(height: 5.h),
                       Container(
                         margin: EdgeInsets.symmetric(horizontal: 15.h),
@@ -280,7 +295,30 @@ class _NewProjectState extends State<NewProject> {
                             child: SimpleBtn(
                                 btnText: KeyLang.add.toUpperCase().tr(),
                                 onTap: () async {
+                                  setState(() {
+
+                                   //  print("Upload_ImageState().bathImagereturn");
+                                   //  print( Upload_ImageState().bathImagereturn??"sami" );
+                                   //  print("constructionLicense");
+                                   // print( NewProject.constructionLicense! + 's4s4');
+                                  });
+
+
                                   if (_keyFoem.currentState!.validate()) {
+
+
+                                    if ( NewProject.constructionLicense != null &&
+                                        NewProject.constructionLicense!.length > 10) {
+                                      setState(() {
+                                        validatorToConstructionLicense = false;
+                                      });
+
+
+                                    } else {
+                                      setState(() {
+                                        validatorToConstructionLicense = true;
+                                      });
+                                    }
                                     simpleToast(message: 'ok');
                                   }
                                 })),

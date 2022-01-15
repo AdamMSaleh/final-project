@@ -82,7 +82,7 @@ class _ResearchState extends State<Research> {
                       ))),
               title: Text(person.name!),
               subtitle: Text(person.craftsmanship!),
-              trailing: Text('العمر :  ${person.age}'),
+              trailing: Text('الرقم التعريفي :  ${person.age}'),
             );
           },
         ),
@@ -97,7 +97,7 @@ class _ResearchState extends State<Research> {
             items: people,
             searchLabel: 'بحث ',
             suggestion: const Center(
-              child: Text('تصفية الناس بالاسم أو المهنة أو العمر'),
+              child: Text('تصفية الناس بالاسم أو المهنة أو الرقم التعريفي'),
             ),
             failure: const Center(
               child: Text('لم يتم العثور على أي شخص :('),
@@ -116,7 +116,7 @@ class _ResearchState extends State<Research> {
                       ))),
               title: Text(person.name!),
               subtitle: Text(person.craftsmanship!),
-              trailing: Text('العمر :${person.age}'),
+              trailing: Text('الرقم التعريفي :${person.age}'),
             ),
           ),
         ),

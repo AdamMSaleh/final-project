@@ -3,7 +3,7 @@
 import 'package:flutter_finalproject/DataBase/register.dart';
 
 class Person {
-  final String? name, location, phoneNumber, userNo, craftsmanship
+  final String? name, location, phoneNumber,  craftsmanship
 
       /*براعة
 
@@ -15,7 +15,7 @@ class Person {
   اسم الالة
   */
       ;
-  final int? age;
+  final int? userNo,age;
 // String ;
 
   Person(
@@ -50,7 +50,9 @@ class Person {
       people.add(Person(
         age: int.tryParse(x[i]['user_no']),
         name: x[i]['first_name'] + ' ' + x[i]['last_name'],
-
+        location:x[i] [''],
+        phoneNumber: x[i] [''],
+         userNo: int.tryParse(x[i]['user_no']),
         craftsmanship: stt, //x[i]['email'],
       ));
       print(i);
