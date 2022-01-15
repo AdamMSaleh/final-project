@@ -379,7 +379,9 @@ class _PlanUploadState extends State<PlanUpload> {
   Widget build(BuildContext context) {
     return Scaffold(
       //*Appbar
-      appBar: AppBHome(),
+      appBar: AppBar(
+        title: Text('المخططات'),
+      ),
       //*drawer
       drawer: DrawerHome(),
       body:

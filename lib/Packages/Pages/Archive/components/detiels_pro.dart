@@ -1,5 +1,3 @@
-// ignore_for_file: must_be_immutable, avoid_unnecessary_containers, prefer_const_constructors, prefer_adjacent_string_concatenation, implementation_imports
-
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/sup_appbar.dart';
@@ -9,21 +7,17 @@ import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/view_invo
 import 'package:flutter_finalproject/Packages/Pages/Research/view/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/project_%20parts/view/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/timeline/View/body.dart';
-
 import '../../Payment_History/View/body.dart';
 import '../../Plan/View/body.dart';
-import 'current_project_main1.dart';
 
-class ProjectsDetails extends StatefulWidget {
-  String str;
-
-  ProjectsDetails(this.str, {Key? key}) : super(key: key);
+class deteals_proj extends StatefulWidget {
+  const deteals_proj({Key? key}) : super(key: key);
 
   @override
-  _ProjectsDetailsState createState() => _ProjectsDetailsState();
+  _deteals_projState createState() => _deteals_projState();
 }
 
-class _ProjectsDetailsState extends State<ProjectsDetails> {
+class _deteals_projState extends State<deteals_proj> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
