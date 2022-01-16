@@ -619,6 +619,71 @@ class Register extends State<RegisterState> {
   }
 
   /********************************************************************************/
+  viewProjectsOwner(
+      String ownerId,
+
+      ) {
+    var data;
+    // bool dataLoaded = false;
+    bool error = false;
+    return Future.delayed(Duration.zero, () async {
+      var res = await http.post(
+        Uri.parse(url + 'Project_establishment/view_projects.php'),
+        body: {
+          'Owner_User_ID': ownerId,
+'user_no_eng':''
+        },
+      );
+      print('engId'+ownerId);
+      if (res.statusCode == 200) {
+        data = json.decode(res.body) as List<dynamic>;
+        print('viewProjectsOwner  :' +data);
+        error = false;
+
+      } else {
+
+
+        error = true;
+      }
+      return data;
+    });
+    // we use Future.delayed becuase there is
+    // async function inside it.
+  }
+  /********************************************************************************/
+
+  /********************************************************************************/
+  viewProjectsEng(
+      String engId,
+
+      ) {
+    var data;
+    // bool dataLoaded = false;
+    bool error = false;
+    return Future.delayed(Duration.zero, () async {
+      var res = await http.post(
+        Uri.parse(url + 'Project_establishment/view_projects.php'),
+        body: {
+          'user_no_eng': engId,
+'Owner_User_ID':''
+        },
+      );
+      print('engId'+engId);
+      if (res.statusCode == 200) {
+        data = json.decode(res.body) as List<dynamic>;
+        // print('viewProjectsEng  :' +data);
+        error = false;
+
+      } else {
+
+
+        error = true;
+      }
+      return data;
+    });
+    // we use Future.delayed becuase there is
+    // async function inside it.
+  }
   /********************************************************************************/
 
   String setaccount_type(type) {

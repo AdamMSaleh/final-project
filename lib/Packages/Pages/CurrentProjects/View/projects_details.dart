@@ -16,9 +16,36 @@ import '../../Plan/View/body.dart';
 import 'current_project_main1.dart';
 
 class ProjectsDetails extends StatefulWidget {
-  String str;
 
-  ProjectsDetails(this.str, {Key? key}) : super(key: key);
+  static const String id = 'ProjectsDetails';
+
+  String? str='',
+      Projec_No,
+      user_no_eng,
+      project_name,
+      City,
+      Region,
+      selectedDateStart,
+      selectedDateEnd,
+      Owner_User_ID,
+      owner_name,
+      construction_license,
+      state;
+
+  ProjectsDetails(
+      {this.str,
+      this.Projec_No,
+      this.user_no_eng,
+      this.project_name,
+      this.City,
+      this.Region,
+      this.selectedDateStart,
+      this.selectedDateEnd,
+      this.Owner_User_ID,
+      this.owner_name,
+      this.construction_license,
+      this.state,
+      Key? key}): super(key: key);
 
   @override
   _ProjectsDetailsState createState() => _ProjectsDetailsState();

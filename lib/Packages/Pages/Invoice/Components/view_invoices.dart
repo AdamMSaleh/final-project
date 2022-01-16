@@ -45,7 +45,10 @@ class _view_invoicesState extends State<view_invoices> {
         // centerTitle: true,
         leading: IconButton(
             onPressed: () {
-              SelSc().selectScreen(context, ProjectsDetails('تفاصيل المشروع'));
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil(ProjectsDetails.id, (Route<dynamic> route) => true);
+              // Navigator.removeRoute(context, MaterialPageRoute(builder: (BuildContext context) => ProjectsDetails()));
+              // Navigator.pushReplacement(context, ProjectsDetails.id);//popUntil (context ,ModalRoute.withName(ProjectsDetails.id));
             },
             icon: const Icon(Icons.arrow_back)),
       ),

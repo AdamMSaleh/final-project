@@ -83,7 +83,7 @@ class _CurrentProjectsState extends State<CurrentProjects_up> {
                         children: [
                           InkWell(
                             onTap: () => GoBack.selectScreen(
-                                context, ProjectsDetails("المشروع 2")),
+                                context, ProjectsDetails(str:"المشروع 2" ,)),
                             child: Center(
                               child: GoBack.rowOfProject(
                                   456, 'اسم المشروع2 ', '2اسم المالك', true),
@@ -95,7 +95,7 @@ class _CurrentProjectsState extends State<CurrentProjects_up> {
                         children: [
                           InkWell(
                             onTap: () => GoBack.selectScreen(
-                                context, ProjectsDetails("المشروع 41")),
+                                context, ProjectsDetails(str: "المشروع 41",)),
                             child: Center(
                               child: GoBack.rowOfProject(
                                   52, 'اسم المشروع4 ', '4اسم المالك', true),

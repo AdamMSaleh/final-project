@@ -82,7 +82,7 @@ class _ArchiveState extends State<Archive> {
             id: '1',
             num_project: 'zarqa unverste',
             onTap: () =>
-                GoBack.selectScreen(context, ProjectsDetails("المشروع 41")),
+                GoBack.selectScreen(context, ProjectsDetails(str:"المشروع 41" ,)),
             date_receipt: '3/8/2021',
             owner_name: 'adam',
           ),
@@ -91,7 +91,7 @@ class _ArchiveState extends State<Archive> {
             id: '2',
             num_project: 'Home',
             onTap: () =>
-                GoBack.selectScreen(context, ProjectsDetails("المشروع 41")),
+                GoBack.selectScreen(context, ProjectsDetails(str: "المشروع 41",)),
             date_receipt: '3/9/1999',
             owner_name: 'adam',
           ),

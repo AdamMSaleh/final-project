@@ -7,9 +7,9 @@ import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.dart';
-
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/projects_details.dart';
 import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/design.dart';
+import 'package:flutter_finalproject/Packages/Pages/NewProject/components/project_info.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
 import 'package:flutter_finalproject/Theme/theme_status.dart';
 import 'package:flutter_finalproject/Utils/path_images.dart';
@@ -24,12 +24,52 @@ class CurrentProjects extends StatefulWidget {
 }
 
 class _CurrentProjectsState extends State<CurrentProjects> {
+  List<ProjectInfo> project = [];
+
+  // ProjectInfo(
+  //     {this.Projec_No,
+  //       this.user_no_eng,
+  //       this.project_name,
+  //       this.City,
+  //       this.Region,
+  //       this.selectedDateStart,
+  //       this.selectedDateEnd,
+  //       this.Owner_User_ID,
+  //       this.owner_name,
+  //       this.construction_license});
+  x() async {
+    ProjectInfo.project = [];
+    await ProjectInfo.getDataProject();
+    setState(() {
+      print('allanlananlalnlna');
+      print(project.length);
+    });
+  }
+
+  @override
+  initState() {
+    x();
+    project = ProjectInfo.project;
+    // setState(() {
+    //   if(NewProject.ownerName!.length>1){
+    //     Navigator.pop (context ,NewProject.id);
+    //   }
+    // });
+    super.initState();
+  }
+
+  // ListView(
+  // // padding: EdgeInsets.all(5),
+  // children: [
+  // ...planData.map(
+  // (e) =>
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
+      body: ListView(
+        children: [
+          Column(
             children: [
               //* header
               Container(
@@ -139,87 +179,61 @@ class _CurrentProjectsState extends State<CurrentProjects> {
                       child: Table(
                         border: TableBorder.all(color: Colors.black),
                         children: [
-                          TableRow(
-                            children: [
-                              InkWell(
-                                onTap: () => GoBack.selectScreen(
-                                    context, ProjectsDetails("المشروع 2")),
-                                child: Center(
-                                  child: GoBack.rowOfProject(
-                                    456,
-                                    'اسم المشروع2 ',
-                                    '2اسم المالك',
-                                    true,
+                          ...project.map(
+                            (e) => TableRow(
+                              children: [
+                                InkWell(
+                                  onTap: () => GoBack.selectScreen(
+                                    context,
+                                    ProjectsDetails(
+                                      str: e.project_name,
+                                      Owner_User_ID: e.Owner_User_ID,
+                                      owner_name: e.owner_name,
+                                      selectedDateEnd: e.selectedDateEnd,
+                                      selectedDateStart: e.selectedDateStart,
+                                      Region: e.Region,
+                                      City: e.City,
+                                      construction_license:
+                                          e.construction_license,
+                                      Projec_No: e.construction_license,
+                                      project_name: e.project_name,
+                                      state: e.state,
+                                      user_no_eng: e.user_no_eng,
+                                    ),
+                                  ),
+                                  child: Center(
+                                    child: GoBack.rowOfProject(
+                                      int.parse(e.Projec_No!),
+                                      e.project_name!,
+                                      e.owner_name!,
+                                      e.state == 1 ? true : false,
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          TableRow(
-                            children: [
-                              InkWell(
-                                onTap: () => GoBack.selectScreen(
-                                    context, ProjectsDetails("المشروع 41")),
-                                child: Center(
-                                  child: GoBack.rowOfProject(
-                                      52, 'اسم المشروع4 ', '4اسم المالك', true),
-                                ),
-                              ),
-                            ],
-                          ),
+                              ],
+                            ),
+                          )
+                          // TableRow(
+                          //   children: [
+                          //     InkWell(
+                          //       onTap: () => GoBack.selectScreen(
+                          //           context, ProjectsDetails("المشروع 41")),
+                          //       child: Center(
+                          //         child: GoBack.rowOfProject(
+                          //             52, 'اسم المشروع4 ', '4اسم المالك', true),
+                          //       ),
+                          //     ),
+                          //   ],
+                          // ),
                         ],
                       ),
                     ),
                   ],
                 ),
-
-                /*
-Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    InkWell(
-                      onTap: () => GoBack.selectScreen(
-                          context, ProjectsDetails("المشروع 1")),
-                      child: Center(
-                        child: GoBack.rowOfProject(
-                            -1, 'اسم المشروع ', 'اسم المالك', true),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () => GoBack.selectScreen(
-                          context, ProjectsDetails("المشروع 2")),
-                      child: Center(
-                        child: GoBack.rowOfProject(
-                            456, 'اسم المشروع2 ', '2اسم المالك', true),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () => GoBack.selectScreen(
-                          context, ProjectsDetails("المشروع 31")),
-                      child: Center(
-                        child: GoBack.rowOfProject(
-                            453, 'اسم المشروع3 ', '3اسم المالك', false),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () => GoBack.selectScreen(
-                          context, ProjectsDetails("المشروع 41")),
-                      child: Center(
-                        child: GoBack.rowOfProject(
-                            52, 'اسم المشروع4 ', '4اسم المالك', true),
-                      ),
-                    ),
-                  ],
-                ),
-
-                */
               ),
             ],
           ),
-        ),
+        ],
       ),
     );
   }

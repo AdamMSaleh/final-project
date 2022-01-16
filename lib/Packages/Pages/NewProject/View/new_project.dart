@@ -352,7 +352,7 @@ class _NewProjectState extends State<NewProject> {
                                        selectedDateStart:  controllerValue['selectedDateStart']!.text,
                                        selectedDateEnd: controllerValue['selectedDateEnd']!.text,
                                        Owner_User_ID: NewProject.ownerId as String ,
-                                       owner_name: controllerValue['owner_name']!.text,
+                                       owner_name: NewProject.ownerName!,
                                        construction_license: NewProject.constructionLicense!,
                                      );
                                       // Map<String, TextEditingController> controllerValue = {

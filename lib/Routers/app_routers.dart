@@ -14,6 +14,7 @@ import 'package:flutter_finalproject/Packages/Pages/Auth/Views/forgot.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/login.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/register.dart';
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/body.dart';
+import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/projects_details.dart';
 import 'package:flutter_finalproject/Packages/Pages/Home/View/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/view_invoices.dart';
 
@@ -58,5 +59,6 @@ class AppRoutes {
     Upload_Image.id: (context) => Upload_Image(),
     Fill_payment_page.id: (context) => Fill_payment_page(),
     Fill_plane_page.id: (context) => Fill_plane_page(),
+    ProjectsDetails.id: (context) => ProjectsDetails(),
   };
 }

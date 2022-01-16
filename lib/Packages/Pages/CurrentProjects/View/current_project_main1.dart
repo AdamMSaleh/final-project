@@ -16,15 +16,15 @@ class CurrentProjectMain extends StatefulWidget {
 class _CurrentProjectMainState extends State<CurrentProjectMain> {
   String srt;
   _CurrentProjectMainState(this.srt);
-  Future<bool> maybePop(BuildContext context) {
-    return Navigator.of(context).maybePop(zz.ProjectsDetails("j"));
-  }
+  // Future<bool> maybePop(BuildContext context) {
+    // return Navigator.of(context).maybePop(zz.ProjectsDetails("j"));
+  // }
 
-  void selectScreen(BuildContext ctx) {
-    Navigator.of(ctx).push(MaterialPageRoute(builder: (_ /*context*/) {
-      return zz.ProjectsDetails("j");
-    }));
-  }
+  // void selectScreen(BuildContext ctx) {
+  //   Navigator.of(ctx).push(MaterialPageRoute(builder: (_ /*context*/) {
+  //     // return zz.ProjectsDetails("j");
+  //   }));
+  // }
 
   int countOfProject = 0;
   @override
@@ -37,15 +37,15 @@ class _CurrentProjectMainState extends State<CurrentProjectMain> {
       body: Column(
         children: [
           Text(srt),
-          InkWell(
-            onTap: () => selectScreen(context),
-            child: const Center(
-              child: Text(
-                'Go To Screen 2',
-                style: TextStyle(fontSize: 35),
-              ),
-            ),
-          ),
+          // InkWell(
+          //   onTap: () => selectScreen(context),
+          //   child: const Center(
+          //     child: Text(
+          //       'Go To Screen 2',
+          //       style: TextStyle(fontSize: 35),
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );
