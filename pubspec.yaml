@@ -37,6 +37,7 @@ dependencies:
   validators: ^3.0.0
   # Menage State
   provider: ^6.0.0
+  
   # toast
   fluttertoast: ^8.0.8
   # image

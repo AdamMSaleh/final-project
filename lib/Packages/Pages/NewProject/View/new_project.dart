@@ -1,6 +1,7 @@
-// ignore_for_file: prefer_const_constructors, implementation_imports, duplicate_ignore, sized_box_for_whitespace, prefer_final_fields, avoid_unnecessary_containers, unused_import, unused_field
+// ignore_for_file: prefer_const_constructors, implementation_imports, duplicate_ignore, sized_box_for_whitespace, prefer_final_fields, avoid_unnecessary_containers, unused_import, unused_field, unused_element, non_constant_identifier_names, prefer_typing_uninitialized_variables
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dropdown/flutter_dropdown.dart';
@@ -22,7 +23,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class NewProject extends StatefulWidget {
   const NewProject({Key? key}) : super(key: key);
   static const String id = 'NewProject';
-
   @override
   State<NewProject> createState() => _NewProjectState();
 }
@@ -36,8 +36,26 @@ class _NewProjectState extends State<NewProject> {
   ];
   var z = 0;
   var b = 0;
+  var day_s;
+  var day_e;
+  var month_s;
+  var month_e;
+  var year_s;
+  var year_e;
+  var deta_s;
+  var deta_e;
+  Map<String, TextEditingController> controllerValue = {
+    'eeee': TextEditingController(),
+    'ssss': TextEditingController(),
+  };
+
+  get builder => null;
   @override
   Widget build(BuildContext context) {
+    controllerValue['eeee']!.text =
+        deta_e == null ? "" : '$day_e - $month_e - $year_e';
+    controllerValue['ssss']!.text =
+        deta_s == null ? "" : '$day_s - $month_s - $year_s';
     return Scaffold(
       backgroundColor: AppTheme.getTheme(context: context)
           ? AppColors.black
@@ -123,6 +141,7 @@ class _NewProjectState extends State<NewProject> {
                       //* Starting Date
                       SimpleFiled(
                         keyboardType: TextInputType.datetime,
+                        controller: controllerValue['ssss'],
                         onValidator: (value) => AppValidators.isEmpty(value),
                         hint: KeyLang.startingDate.tr(),
                         pIcon: IconButton(
@@ -130,12 +149,27 @@ class _NewProjectState extends State<NewProject> {
                             Icons.date_range_outlined,
                             color: AppColors.blue,
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            showDatePicker(
+                                    context: context,
+                                    firstDate: DateTime.now(),
+                                    lastDate: DateTime(DateTime.now().year + 5),
+                                    initialDate: DateTime.now())
+                                .then((value) {
+                              setState(() {
+                                deta_s = value;
+                                day_s = value!.day;
+                                month_s = value.month;
+                                year_s = value.year;
+                              });
+                            });
+                          },
                         ),
                       ),
                       //* Expiry Date
                       SizedBox(height: 10.h),
                       SimpleFiled(
+                        controller: controllerValue['eeee'],
                         keyboardType: TextInputType.datetime,
                         onValidator: (value) => AppValidators.isEmpty(value),
                         hint: KeyLang.expiryDate.tr(),
@@ -144,7 +178,23 @@ class _NewProjectState extends State<NewProject> {
                             Icons.date_range_sharp,
                             color: AppColors.blue,
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            showDatePicker(
+                                    context: context,
+                                    firstDate: DateTime.now(),
+                                    lastDate:
+                                        DateTime(DateTime.now().year + 50),
+                                    initialDate: DateTime.now())
+                                .then((value) {
+                              setState(() {
+                                deta_e = value;
+
+                                day_e = value!.day;
+                                month_e = value.month;
+                                year_e = value.year;
+                              });
+                            });
+                          },
                         ),
                       ),
                       SizedBox(height: 15.h),
