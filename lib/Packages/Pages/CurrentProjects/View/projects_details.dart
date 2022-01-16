@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable, avoid_unnecessary_containers, prefer_const_constructors, prefer_adjacent_string_concatenation, implementation_imports
+// ignore_for_file: must_be_immutable, avoid_unnecessary_containers, prefer_const_constructors, prefer_adjacent_string_concatenation, implementation_imports, must_call_super
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
@@ -13,7 +13,6 @@ import 'package:flutter_finalproject/Packages/Pages/timeline/View/body.dart';
 
 import '../../Payment_History/View/body.dart';
 import '../../Plan/View/body.dart';
-import 'current_project_main1.dart';
 
 class ProjectsDetails extends StatefulWidget {
 
@@ -52,12 +51,13 @@ class ProjectsDetails extends StatefulWidget {
 }
 
 class _ProjectsDetailsState extends State<ProjectsDetails> {
+  @override
   void initState() {
     setState(() {
-      AddCrafts.isHomePage=false;
+      AddCrafts.isHomePage = false;
     });
-
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

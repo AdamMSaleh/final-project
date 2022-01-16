@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable, avoid_unnecessary_containers, unnecessary_null_comparison, avoid_init_to_null, override_on_non_overriding_member, camel_case_types, sized_box_for_whitespace, must_be_immutable
+// ignore_for_file: unused_local_variable, avoid_unnecessary_containers, unnecessary_null_comparison, avoid_init_to_null, override_on_non_overriding_member, camel_case_types, sized_box_for_whitespace, must_be_immutable, avoid_print
 
 import 'dart:convert';
 import 'dart:io';
@@ -16,7 +16,6 @@ class Upload_Image extends StatefulWidget {
 
   String? bathImage = '';
 
-
   Upload_Image(
       {Key? key, this.galleryOrCamera = true, this.bathImage = 'profile'})
       : super(key: key);
@@ -33,7 +32,7 @@ class Upload_ImageState extends State<Upload_Image> {
   // late File? tmpFile =null;
   final ImagePicker _picker = ImagePicker();
   String errMessage = 'Error Uploading Image';
-  String? bathImagereturn='';
+  String? bathImagereturn = '';
   void chooseImage(bool galleryOrCamera) async {
     // setState(() {
     //   file =
@@ -163,8 +162,7 @@ class Upload_ImageState extends State<Upload_Image> {
   upload(String fileName) {
     var now = DateTime.now();
     http.post(
-        Uri.parse(
-            "http://relaxbuilding.space/upload_image/uploadEndPoint.php"),
+        Uri.parse("http://relaxbuilding.space/upload_image/uploadEndPoint.php"),
         body: {
           //now.toString()+
           "image": base64Image,
@@ -174,42 +172,40 @@ class Upload_ImageState extends State<Upload_Image> {
       setStatus(result.statusCode == 200 ? result.body : errMessage);
       if (widget.bathImage == 'Driver_license') {
         setState(() {
-          bathImagereturn =
-              'image/' + widget.bathImage! + '/' + fileName;
+          bathImagereturn = 'image/' + widget.bathImage! + '/' + fileName;
         });
         Register().postImageDirvers(
             license_image: 'image/' + widget.bathImage! + '/' + fileName);
         // print('z,xcn,xmznc,mxznc,mzxncnm');
-      }else if(widget.bathImage == 'syndicate_card'){
-
+      } else if (widget.bathImage == 'syndicate_card') {
         setState(() {
-          bathImagereturn =
-              'image/' + widget.bathImage! + '/' + fileName;
+          bathImagereturn = 'image/' + widget.bathImage! + '/' + fileName;
         });
         Register().postImageSyndicateCard(
             Guild_picture: 'image/' + widget.bathImage! + '/' + fileName);
-
-      }else if(widget.bathImage == 'construction_license'){
-
+      } else if (widget.bathImage == 'construction_license') {
         // هون لسا ما تفقدة الميثود
         setState(() {
-         bathImagereturn ='http://relaxbuilding.space/image/' + widget.bathImage! + '/' + fileName;
-          NewProject.constructionLicense = 'http://relaxbuilding.space/image/' + widget.bathImage! + '/' + fileName;
-
+          bathImagereturn = 'http://relaxbuilding.space/image/' +
+              widget.bathImage! +
+              '/' +
+              fileName;
+          NewProject.constructionLicense = 'http://relaxbuilding.space/image/' +
+              widget.bathImage! +
+              '/' +
+              fileName;
         });
-        print(bathImagereturn??"33");
-        print( NewProject.constructionLicense ??"33");
+        print(bathImagereturn ?? "33");
+        print(NewProject.constructionLicense ?? "33");
 
         Register().postImageSyndicateCard(
             Guild_picture: 'image/' + widget.bathImage! + '/' + fileName);
-
-      }else {
+      } else {
         setState(() {
-          bathImagereturn =
-              'image/' + widget.bathImage! + '/' + fileName;
+          bathImagereturn = 'image/' + widget.bathImage! + '/' + fileName;
         });
-      Register().postDataUpdateImage(
-      picture_user: 'image/' + widget.bathImage! + '/' + fileName);
+        Register().postDataUpdateImage(
+            picture_user: 'image/' + widget.bathImage! + '/' + fileName);
       }
 
       Navigator.pop(context);

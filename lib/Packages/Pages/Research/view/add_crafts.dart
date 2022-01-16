@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable, no_logic_in_create_state, prefer_const_constructors, sized_box_for_whitespace
+// ignore_for_file: must_be_immutable, no_logic_in_create_state, prefer_const_constructors, sized_box_for_whitespace, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
@@ -42,8 +42,15 @@ class AddCrafts extends StatefulWidget {
   @override
   _AddCraftsState createState() =>
       // ignore: unnecessary_this
-      _AddCraftsState(this.name, this.craftsmanship, this.location,
-          this.phoneNumber, this.image, this.userNo, this.age);
+      _AddCraftsState(
+          this.name,
+          this.craftsmanship,
+          this.location,
+          // ignore: unnecessary_this
+          this.phoneNumber,
+          this.image,
+          this.userNo,
+          this.age);
 }
 
 class _AddCraftsState extends State<AddCrafts> {
@@ -186,15 +193,16 @@ class _AddCraftsState extends State<AddCrafts> {
                           onPressed: () {
                             //هاي باخذ منها المعلومات لصفحة مشروع جديد
                             if (AddCrafts.isNewProject) {
-                              NewProject.ownerName = name ;
+                              NewProject.ownerName = name;
                               NewProject.owner_name!.text = name;
                               print(name);
                               NewProject.ownerId = '$userNo';
 
-                              Navigator.popUntil (context ,ModalRoute.withName(NewProject.id));
+                              Navigator.popUntil(
+                                  context, ModalRoute.withName(NewProject.id));
                             }
 
-                              // (context, MaterialPageRoute(builder: (BuildContext context) => NewProject()));
+                            // (context, MaterialPageRoute(builder: (BuildContext context) => NewProject()));
                             // Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => NewProject()));
                           },
                           child: Icon(Icons.add_sharp),

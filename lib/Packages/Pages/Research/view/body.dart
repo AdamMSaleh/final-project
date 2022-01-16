@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, duplicate_ignore, implementation_imports, unused_import, avoid_print, unnecessary_null_comparison, prefer_is_empty
+// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, duplicate_ignore, implementation_imports, unused_import, avoid_print, unnecessary_null_comparison, prefer_is_empty, sized_box_for_whitespace
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
@@ -29,8 +29,6 @@ class Research extends StatefulWidget {
 }
 
 class _ResearchState extends State<Research> {
-
-
   List<Person> people = [];
 
   x() async {
@@ -56,9 +54,6 @@ class _ResearchState extends State<Research> {
 
   @override
   Widget build(BuildContext context) {
-
-
-
     print('samisamisasmaismasimsi');
     // print(people[1].craftsmanship);
     setState(() {
@@ -90,11 +85,10 @@ class _ResearchState extends State<Research> {
                         name: person.name!,
                         age: person.age!,
                         craftsmanship: person.craftsmanship!,
-                        userNo:  person.userNo!,
-                        location:  person.location!,
-                        phoneNumber:  person.phoneNumber!,
-                        image:  person.image!,
-
+                        userNo: person.userNo!,
+                        location: person.location!,
+                        phoneNumber: person.phoneNumber!,
+                        image: person.image!,
                       ))),
               title: Text(person.name!),
               subtitle: Text(person.craftsmanship!),
@@ -126,13 +120,13 @@ class _ResearchState extends State<Research> {
             builder: (person) => ListTile(
               onTap: () => Navigator.of(context).push(MaterialPageRoute(
                   builder: (_) => AddCrafts(
-                    name: person.name!,
-                    age: person.age!,
-                    craftsmanship: person.craftsmanship!,
-                    userNo:  person.userNo!,
-                    location:  person.location!,
-                    phoneNumber:  person.phoneNumber!,
-                    image:  person.image!,
+                        name: person.name!,
+                        age: person.age!,
+                        craftsmanship: person.craftsmanship!,
+                        userNo: person.userNo!,
+                        location: person.location!,
+                        phoneNumber: person.phoneNumber!,
+                        image: person.image!,
                       ))),
               title: Text(person.name!),
               subtitle: Text(person.craftsmanship!),

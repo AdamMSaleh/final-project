@@ -1,6 +1,7 @@
+// ignore_for_file: camel_case_types, non_constant_identifier_names, unused_element, unnecessary_null_comparison, avoid_print
+
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_finalproject/DataBase/register.dart';
@@ -12,7 +13,7 @@ import 'package:image_picker/image_picker.dart';
 class Fill_plane_page extends StatefulWidget {
   static const String id = 'fill_Plan';
 
-  Fill_plane_page({Key? key}) : super(key: key);
+  const Fill_plane_page({Key? key}) : super(key: key);
   @override
   _Fill_plane_pageState createState() => _Fill_plane_pageState();
 }
@@ -139,7 +140,7 @@ class _Fill_plane_pageState extends State<Fill_plane_page> {
               ),
               //----------------------------------------
               Container(
-                margin: EdgeInsets.all(12.0),
+                margin: const EdgeInsets.all(12.0),
                 child: TextField(
                   decoration: InputDecoration(
                     labelText: 'اسم المكتب الهندسي',
@@ -148,7 +149,7 @@ class _Fill_plane_pageState extends State<Fill_plane_page> {
                       color: b,
                     ),
                     hintText: 'Enter Office Name',
-                    hintStyle: TextStyle(
+                    hintStyle: const TextStyle(
                       fontSize: 15,
                       color: Colors.black54,
                     ),
@@ -172,7 +173,7 @@ class _Fill_plane_pageState extends State<Fill_plane_page> {
                       color: b,
                     ),
                     hintText: 'Enter Designer Name',
-                    hintStyle: TextStyle(
+                    hintStyle: const TextStyle(
                       fontSize: 15,
                       color: Colors.black54,
                     ),
@@ -196,7 +197,7 @@ class _Fill_plane_pageState extends State<Fill_plane_page> {
                       color: b,
                     ),
                     hintText: 'Enter Code Number',
-                    hintStyle: TextStyle(
+                    hintStyle: const TextStyle(
                       fontSize: 15,
                       color: Colors.black54,
                     ),
@@ -211,7 +212,7 @@ class _Fill_plane_pageState extends State<Fill_plane_page> {
               ),
 // -----------------------------------------------------
               Container(
-                  margin: EdgeInsets.all(12.0),
+                  margin: const EdgeInsets.all(12.0),
                   child: Row(
                     children: [
                       IconButton(
@@ -237,7 +238,7 @@ class _Fill_plane_pageState extends State<Fill_plane_page> {
               //
               //
               Container(
-                margin: EdgeInsets.all(10),
+                margin: const EdgeInsets.all(10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -276,7 +277,7 @@ class _Fill_plane_pageState extends State<Fill_plane_page> {
                           },
                         );
                       },
-                      child: Text(
+                      child: const Text(
                         '+',
                         style: TextStyle(
                           fontSize: 25,
@@ -297,48 +298,6 @@ class _Fill_plane_pageState extends State<Fill_plane_page> {
         ),
       ),
     );
-  }
-
-  _showOption(BuildContext context) {
-    return showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text('Make a choice'),
-        content: SingleChildScrollView(
-          child: Column(
-            children: [
-              ListTile(
-                leading: const Icon(Icons.image),
-                title: Text('Gallery'),
-                onTap: () => _imageFromGallery(context),
-              ),
-              ListTile(
-                leading: const Icon(Icons.camera),
-                title: Text('Camera'),
-                onTap: () => _imageFromCamera(context),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Future _imageFromGallery(BuildContext context) async {
-    try {
-      // Pick an image
-      final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
-      final imageTemorary = File(image!.path);
-      if (image == null) {
-        return;
-      }
-      setState(() {
-        imageFile = imageTemorary;
-      });
-      Navigator.pop(context);
-    } on PlatformException catch (e) {
-      print("Failed to pick image : $e");
-    }
   }
 
   Future _imageFromCamera(BuildContext context) async {

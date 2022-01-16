@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, implementation_imports, duplicate_ignore, sized_box_for_whitespace, prefer_final_fields, avoid_unnecessary_containers, unused_import, unused_field
+// ignore_for_file: prefer_const_constructors, implementation_imports, duplicate_ignore, sized_box_for_whitespace, prefer_final_fields, avoid_unnecessary_containers, unused_import, unused_field, prefer_const_constructors_in_immutables, non_constant_identifier_names
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
@@ -28,15 +28,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 
 class NewProject extends StatefulWidget {
-
-   NewProject({Key? key}) : super(key: key);
+  NewProject({Key? key}) : super(key: key);
   static const String id = 'NewProject';
-   static String? ownerName='',ownerId='0';
-   static TextEditingController? owner_name = TextEditingController();
+  static String? ownerName = '', ownerId = '0';
+  static TextEditingController? owner_name = TextEditingController();
 
-   @override
+  @override
   State<NewProject> createState() => _NewProjectState();
-  static String? constructionLicense  ;
+  static String? constructionLicense;
 }
 
 class _NewProjectState extends State<NewProject> {
@@ -60,7 +59,6 @@ class _NewProjectState extends State<NewProject> {
   late DateTime _selectedDateStart;
   late DateTime _selectedDateEnd;
   bool validatorToConstructionLicense = false;
-
 
   void _datePicker({required bool starOrEndDate}) {
     var dateNow = DateTime.now();
@@ -94,7 +92,7 @@ class _NewProjectState extends State<NewProject> {
   @override
   Widget build(BuildContext context) {
     setState(() {
-      controllerValue['owner_name']!.text=NewProject.ownerName??"" ;
+      controllerValue['owner_name']!.text = NewProject.ownerName ?? "";
     });
     return Scaffold(
       backgroundColor: AppTheme.getTheme(context: context)
@@ -247,16 +245,17 @@ class _NewProjectState extends State<NewProject> {
                         onValidator: (value) => AppValidators.isEmpty(value),
                         hint: KeyLang.ownerName.tr(),
                         readOnly: true,
-                        controller: NewProject.owner_name,//controllerValue['owner_name'],
+                        controller: NewProject
+                            .owner_name, //controllerValue['owner_name'],
                         pIcon: IconButton(
                           icon: Icon(
                             Icons.person,
                             color: AppColors.blue,
                           ),
-                          onPressed: (){
+                          onPressed: () {
                             setState(() {
-                              AddCrafts.isHomePage=false;
-                              AddCrafts.isNewProject=true;
+                              AddCrafts.isHomePage = false;
+                              AddCrafts.isNewProject = true;
                             });
                             Navigator.pushNamed(
                               context,
@@ -281,7 +280,6 @@ class _NewProjectState extends State<NewProject> {
                               ),
                             );
                             b = 1;
-
                           },
                         )),
                       ),
@@ -325,36 +323,43 @@ class _NewProjectState extends State<NewProject> {
                         child: Center(
                             child: SimpleBtn(
                                 btnText: KeyLang.add.toUpperCase().tr(),
-                                onTap: ()  {
+                                onTap: () {
                                   setState(() {
-
-                                   //  print("Upload_ImageState().bathImagereturn");
-                                   //  print( Upload_ImageState().bathImagereturn??"sami" );
-                                   //  print("constructionLicense");
-                                   // print( NewProject.constructionLicense! + 's4s4');
+                                    //  print("Upload_ImageState().bathImagereturn");
+                                    //  print( Upload_ImageState().bathImagereturn??"sami" );
+                                    //  print("constructionLicense");
+                                    // print( NewProject.constructionLicense! + 's4s4');
                                   });
 
-
                                   if (_keyFoem.currentState!.validate()) {
-
-
-                                    if ( NewProject.constructionLicense != null &&
-                                        NewProject.constructionLicense!.length > 10) {
+                                    if (NewProject.constructionLicense !=
+                                            null &&
+                                        NewProject.constructionLicense!.length >
+                                            10) {
                                       setState(() {
                                         validatorToConstructionLicense = false;
                                       });
                                       Register().postDataCreateNewProject(
-                                       context: context,
-                                       user_no_eng: UserPreferences.getUserId()!,
-                                       project_name: controllerValue['project_name']!.text,
-                                       City:  controllerValue['City']!.text,
-                                       Region: controllerValue['Region']!.text,
-                                       selectedDateStart:  controllerValue['selectedDateStart']!.text,
-                                       selectedDateEnd: controllerValue['selectedDateEnd']!.text,
-                                       Owner_User_ID: NewProject.ownerId as String ,
-                                       owner_name: NewProject.ownerName!,
-                                       construction_license: NewProject.constructionLicense!,
-                                     );
+                                        context: context,
+                                        user_no_eng:
+                                            UserPreferences.getUserId()!,
+                                        project_name:
+                                            controllerValue['project_name']!
+                                                .text,
+                                        City: controllerValue['City']!.text,
+                                        Region: controllerValue['Region']!.text,
+                                        selectedDateStart: controllerValue[
+                                                'selectedDateStart']!
+                                            .text,
+                                        selectedDateEnd:
+                                            controllerValue['selectedDateEnd']!
+                                                .text,
+                                        Owner_User_ID:
+                                            NewProject.ownerId as String,
+                                        owner_name: NewProject.ownerName!,
+                                        construction_license:
+                                            NewProject.constructionLicense!,
+                                      );
                                       // Map<String, TextEditingController> controllerValue = {
                                       //   'project_name': TextEditingController(),
                                       //   'City': TextEditingController(),
