@@ -13,7 +13,7 @@ class PathImages {
   static String dark = 'assets/icons/darkmod.jpg';
 
   //* Dialog Box
-  static String einglish = 'assets/icons/English-icon.png';
+  static String einglish = 'assets/icons/download.png';
   static String arabic = 'assets/icons/Arabia-icon.png';
   static String maintenance = 'assets/icons/maintenance-icon.png';
   static String building = 'assets/icons/building2-icon.png';

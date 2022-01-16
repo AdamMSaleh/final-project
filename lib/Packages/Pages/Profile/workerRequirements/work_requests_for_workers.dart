@@ -67,7 +67,7 @@ class _WorkRequestsForWorkersState extends State<WorkRequestsForWorkers> {
                               style: ButtonStyle(
                                 backgroundColor:
                                     MaterialStateProperty.all<Color>(
-                                        Colors.white38),
+                                        Colors.orange.shade100),
                               ),
                               onPressed: () {},
                               child: Padding(
@@ -82,14 +82,14 @@ class _WorkRequestsForWorkersState extends State<WorkRequestsForWorkers> {
                               style: ButtonStyle(
                                 backgroundColor:
                                     MaterialStateProperty.all<Color>(
-                                        Colors.white38),
+                                        Colors.orange.shade100),
                               ),
                               onPressed: () {},
                               child: Padding(
                                 padding: EdgeInsets.all(sizeBoxValue),
                                 child: const Icon(
                                   Icons.check_circle_outline_rounded,
-                                  color: Colors.lightGreen,
+                                  color: Colors.green,
                                 ),
                               ),
                             ),
@@ -97,7 +97,7 @@ class _WorkRequestsForWorkersState extends State<WorkRequestsForWorkers> {
                               style: ButtonStyle(
                                 backgroundColor:
                                     MaterialStateProperty.all<Color>(
-                                        Colors.white38),
+                                        Colors.orange.shade100),
                               ),
                               onPressed: () {},
                               child: Padding(
@@ -171,22 +171,22 @@ class _WorkRequestsForWorkersState extends State<WorkRequestsForWorkers> {
                     children: [
                       ElevatedButton(
                         style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all<Color>(Colors.white38),
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Colors.orange.shade100),
                         ),
                         onPressed: () {},
                         child: Padding(
                           padding: EdgeInsets.all(sizeBoxValue),
                           child: const Icon(
                             Icons.check_circle_outline_rounded,
-                            color: Colors.lightGreen,
+                            color: Colors.green,
                           ),
                         ),
                       ),
                       ElevatedButton(
                         style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all<Color>(Colors.white38),
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Colors.orange.shade100),
                         ),
                         onPressed: () {},
                         child: Padding(
@@ -203,12 +203,12 @@ class _WorkRequestsForWorkersState extends State<WorkRequestsForWorkers> {
               ),
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              GoBack.tx('طلبات العمل للعمال'),
-            ],
-          ),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   children: [
+          //     GoBack.tx('طلبات العمل للعمال'),
+          //   ],
+          // ),
         ],
       ),
     );

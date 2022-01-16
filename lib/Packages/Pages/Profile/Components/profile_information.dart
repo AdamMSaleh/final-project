@@ -9,7 +9,29 @@ class ProfileInformation {
       phone_number,
       picture_user,
       city_user,
-      account_type;
+      account_type,
+      userNo,
+      constructionLicense;
+
+
+
+/*
+  10
+  engineer
+
+
+  20
+  owner
+
+  30
+  worker
+
+
+  40
+  drivers
+
+  50
+  professional*/
 
   // ProfileInformation(
   //     { this.first_name,

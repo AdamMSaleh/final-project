@@ -5,24 +5,42 @@ import 'package:shared_preferences/shared_preferences.dart';
 class UserPreferences {
   static late SharedPreferences _preferences;
   static const String _keyUsername = 'username';
+  static const String _keyUserId = 'UserId';
   static const String _keyPassword = 'password';
 
   static Future init() async =>
       _preferences = await SharedPreferences.getInstance();
 
+// set Username
   static Future setUsername(String username) async =>
       await _preferences.setString(_keyUsername, username);
-
+// get Username
   static String? getUsername() => _preferences.getString(_keyUsername);
 
+  //***********************************************************************//
+
+ // set UserId
+  static Future setUserId(String UserId) async =>
+      await _preferences.setString(_keyUserId, UserId);
+// get UserId
+  static String? getUserId() => _preferences.getString(_keyUserId);
+
+  //************************************************************************//
+
+// set Password
   static Future setPassword(String Password) async =>
       await _preferences.setString(_keyPassword, Password);
-
+// get Password
   static String? getPassword() => _preferences.getString(_keyPassword);
+
+//**************************************************************************//
+
   static Future removePassword() async =>
       await _preferences.remove(_keyPassword);
   static Future removeUsername() async =>
       await _preferences.remove(_keyUsername);
+  static Future removeUserId() async =>
+      await _preferences.remove(_keyUserId);
 }
 
 

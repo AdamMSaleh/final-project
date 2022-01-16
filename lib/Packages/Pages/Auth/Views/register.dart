@@ -51,7 +51,7 @@ class _PageRegister extends State<PageRegister> {
   Map<String, TextEditingController> controllerValue = {
     'first_name': TextEditingController(),
     'last_name': TextEditingController(),
-    // 'age': TextEditingController(),
+    'age': TextEditingController(),
     'email': TextEditingController(),
     'password': TextEditingController(),
     //test gui not importint
@@ -202,6 +202,23 @@ class _PageRegister extends State<PageRegister> {
                                     ),
 
                                     SizedBox(height: 20.h),
+
+                                    //*age
+                                    SimpleFiled(
+                                      keyboardType: TextInputType.number,
+                                      controller:
+                                      controllerValue['age'],
+                                      onValidator: (value) =>
+                                          AppValidators.isAge(value),
+                                      hint: 'العمر',
+                                      pIcon: Icon(
+                                        Icons.filter_vintage_outlined,
+                                        color: AppColors.blue,
+                                      ),
+                                    ),
+
+                                    SizedBox(height: 20.h),
+
                                     //*password
                                     SimpleFiled(
                                         controller:

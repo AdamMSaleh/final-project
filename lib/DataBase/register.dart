@@ -11,6 +11,7 @@ import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_sh
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_user_Eng.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_workers.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/login.dart';
+import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/Home/View/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/Components/profile_information.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -30,6 +31,7 @@ class Register extends State<RegisterState> {
   }
 
   String url = "http://relaxbuilding.space/";
+
   //'http://10.0.2.2:80/v2/'; //"https://zuporjict1.000webhostapp.com/";
   String msg = "";
   String? emailSaved = '';
@@ -72,10 +74,18 @@ class Register extends State<RegisterState> {
       // ignore: unnecessary_string_escapes
       if (msg == '\"Login succeeded\"') {
         cicul = !cicul;
+        // await  UserPreferences.removeUsername();
+        // await UserPreferences.removePassword();
+        // await UserPreferences.removeUserId();
 
-        UserPreferences.setUsername(email);
-        UserPreferences.setPassword(password);
-        await Register().loadData();
+        await UserPreferences.setUsername(email);
+        print("UserPreferences.getUsername(");
+        print(UserPreferences.getUsername());
+        await UserPreferences.setPassword(password);
+        await Register().loadData(
+          email,
+          password,
+        );
         Navigator.pushReplacementNamed(context, PageHome.id);
       } else {
         Navigator.pushReplacementNamed(context, PageLogin.id);
@@ -554,7 +564,10 @@ class Register extends State<RegisterState> {
 // }
 
   /*********************************************************************************/
-  loadData() {
+  loadData(
+    String email,
+    String password,
+  ) {
     var data;
     // bool dataLoaded = false;
     bool error = false;
@@ -562,8 +575,8 @@ class Register extends State<RegisterState> {
       var res = await http.post(
         Uri.parse(url + 'personal%20information/Profile_information.php'),
         body: {
-          'email': emailSaved,
-          'password': passwordSaved,
+          'email': email,
+          'password': password,
         },
       );
       if (res.statusCode == 200) {
@@ -571,15 +584,18 @@ class Register extends State<RegisterState> {
 
         // print('sami msai kmsia mias mkkmsdi kkmdjmspa');
         // print(data);
+        var type = data["account_type"];
 
         ProfileInformation.email = data["email"];
         ProfileInformation.city_user = data["city_user"];
         ProfileInformation.age = data["age"];
+        ProfileInformation.userNo = data["user_no"];
+        UserPreferences.setUserId(data["user_no"]);
         ProfileInformation.picture_user = data["picture_user"];
         ProfileInformation.phoneage = data["phoneage"];
         ProfileInformation.first_name = data["first_name"];
         ProfileInformation.last_name = data["last_name"];
-        ProfileInformation.account_type = data["account_type"];
+        ProfileInformation.account_type = setaccount_type(type);
         ProfileInformation.phone_number = data["phone_number"];
 
         //  profileData = List<ProfileInformation>.from(data["data"].map((i){
@@ -603,6 +619,33 @@ class Register extends State<RegisterState> {
   }
 
   /********************************************************************************/
+  /********************************************************************************/
+
+  String setaccount_type(type) {
+    String type1 = "";
+    switch (type) {
+      case ('10'):
+        type1 = '   مهندس  ';
+        break;
+      case ('20'):
+        type1 = '  مالك عقار   ';
+        break;
+      case ('30'):
+        type1 = '   عامل   ';
+        break;
+      case ('40'):
+        type1 = '   سائق اليه   ';
+        break;
+      case ('50'):
+        type1 = '      صاحب مهنه   ';
+        break;
+    }
+    return type1;
+  }
+
+  /********************************************************************************/
+  /********************************************************************************/
+  /********************************************************************************/
   getSerchePage() async {
     var tx;
     try {
@@ -623,6 +666,54 @@ class Register extends State<RegisterState> {
   }
 
   /********************************************************************************/
+
+  //*******************************************************************************
+
+  postDataCreateNewProject({
+    required String user_no_eng,
+    required String project_name,
+    required String City,
+    required String Region,
+    required String selectedDateStart,
+    required String selectedDateEnd,
+    required String Owner_User_ID,
+    required String owner_name,
+    required String construction_license,
+    required BuildContext context,
+  }) async {
+    //200--success ,400,404,
+
+    try {
+      var response = await http.post(
+        Uri.parse(url + "Project_establishment/nuw_Project.php"),
+        body: {
+          'user_no_eng': user_no_eng,
+          'project_name': project_name,
+          'City': City,
+          'Region': Region,
+          'starting_date': selectedDateStart,
+          'Expected_completion_date': selectedDateEnd,
+          'Owner_User_ID': Owner_User_ID,
+          'owner_name': owner_name,
+          'construction_license': construction_license,
+          'Project_Type': 'new',
+          'state': '1',
+        },
+      );
+      msg = response.body;
+      print(response.body);
+      if (msg == '  لقد تمت اضافة المشروع   ') {
+        Navigator.pushReplacementNamed(context, CurrentProjects.id);
+      }
+    } catch (e) {
+      msg = e.toString();
+      print(e);
+    }
+    tostforRegsetr(msg);
+  }
+
+  //*******************************************************************************
+
   /********************************************************************************/
   /********************************************************************************/
   /********************************************************************************/

@@ -1,30 +1,41 @@
-// ignore_for_file: prefer_const_constructors, implementation_imports, duplicate_ignore, sized_box_for_whitespace, prefer_final_fields, avoid_unnecessary_containers, unused_import, unused_field, unused_element, non_constant_identifier_names, prefer_typing_uninitialized_variables
+// ignore_for_file: prefer_const_constructors, implementation_imports, duplicate_ignore, sized_box_for_whitespace, prefer_final_fields, avoid_unnecessary_containers, unused_import, unused_field, prefer_const_constructors_in_immutables, non_constant_identifier_names
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dropdown/flutter_dropdown.dart';
+import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
+import 'package:flutter_finalproject/Packages/Components/Add_Image/alert_choose.dart';
+import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 import 'package:flutter_finalproject/Packages/Components/Btn/simple_btn.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Toast/simple_toast.dart';
 import 'package:flutter_finalproject/Packages/Components/location/addres.dart';
 import 'package:flutter_finalproject/Packages/Components/text_filed/simple_filed.dart';
+import 'package:flutter_finalproject/Packages/Components/upload_image_php/img_upload.dart';
+import 'package:flutter_finalproject/Packages/Components/user_info_secure_storage/user_save_login.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/components/Button/but_up.dart';
+import 'package:flutter_finalproject/Packages/Pages/Research/view/add_crafts.dart';
+import 'package:flutter_finalproject/Packages/Pages/Research/view/body.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
 import 'package:flutter_finalproject/Theme/style.dart';
 import 'package:flutter_finalproject/Theme/theme_status.dart';
 import 'package:flutter_finalproject/Utils/path_images.dart';
 import 'package:flutter_finalproject/validators/app_validators.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 
 class NewProject extends StatefulWidget {
-  const NewProject({Key? key}) : super(key: key);
+  NewProject({Key? key}) : super(key: key);
   static const String id = 'NewProject';
+  static String? ownerName = '', ownerId = '0';
+  static TextEditingController? owner_name = TextEditingController();
+
   @override
   State<NewProject> createState() => _NewProjectState();
+  static String? constructionLicense;
 }
 
 class _NewProjectState extends State<NewProject> {
@@ -36,26 +47,53 @@ class _NewProjectState extends State<NewProject> {
   ];
   var z = 0;
   var b = 0;
-  var day_s;
-  var day_e;
-  var month_s;
-  var month_e;
-  var year_s;
-  var year_e;
-  var deta_s;
-  var deta_e;
-  Map<String, TextEditingController> controllerValue = {
-    'eeee': TextEditingController(),
-    'ssss': TextEditingController(),
+  late Map<String, TextEditingController> controllerValue = {
+    'project_name': TextEditingController(),
+    'City': TextEditingController(),
+    'Region': TextEditingController(),
+    'selectedDateStart': TextEditingController(),
+    'selectedDateEnd': TextEditingController(),
+    'owner_name': TextEditingController(),
   };
 
-  get builder => null;
+  late DateTime _selectedDateStart;
+  late DateTime _selectedDateEnd;
+  bool validatorToConstructionLicense = false;
+
+  void _datePicker({required bool starOrEndDate}) {
+    var dateNow = DateTime.now();
+    showDatePicker(
+      context: context,
+      initialDate: starOrEndDate ? dateNow.add(Duration(days: 10)) : dateNow,
+      firstDate: starOrEndDate ? dateNow.add(Duration(days: 2)) : dateNow,
+      lastDate: dateNow.add(Duration(days: 7300)), //365 days * 20 years
+    ).then((value) {
+      if (value == null) {
+        return;
+      }
+      if (starOrEndDate) {
+        _selectedDateEnd = value;
+        controllerValue['selectedDateEnd']!.text = value.toString();
+      } else {
+        _selectedDateStart = value;
+        controllerValue['selectedDateStart']!.text = value.toString();
+      }
+    });
+  }
+
+  // @override
+  // void initState() {
+  //  setState(() {
+  //     controllerValue['owner_name']!.text=NewProject.ownerName??"" ;
+  //   });
+  //   super.initState();
+  // }
+
   @override
   Widget build(BuildContext context) {
-    controllerValue['eeee']!.text =
-        deta_e == null ? "" : '$day_e - $month_e - $year_e';
-    controllerValue['ssss']!.text =
-        deta_s == null ? "" : '$day_s - $month_s - $year_s';
+    setState(() {
+      controllerValue['owner_name']!.text = NewProject.ownerName ?? "";
+    });
     return Scaffold(
       backgroundColor: AppTheme.getTheme(context: context)
           ? AppColors.black
@@ -129,71 +167,74 @@ class _NewProjectState extends State<NewProject> {
                         keyboardType: TextInputType.name,
                         onValidator: (value) => AppValidators.isEmpty(value),
                         hint: KeyLang.projectName.tr(),
+                        controller: controllerValue['project_name'],
                         pIcon: Icon(
                           Icons.home,
                           color: AppColors.blue,
                         ),
                       ),
                       SizedBox(height: 15.h),
-                      //*Address
-                      Address(),
+                      //*Address city
+                      SimpleFiled(
+                        keyboardType: TextInputType.name,
+                        onValidator: (value) => AppValidators.isEmpty(value),
+                        hint: KeyLang.address.tr(),
+                        controller: controllerValue['City'],
+                        pIcon: Icon(
+                          Icons.add_location_alt_rounded,
+                          color: AppColors.blue,
+                        ),
+                      ),
+
+                      /******************************************/
+
+                      SizedBox(height: 15.h),
+
+                      /* Address  Region */
+                      SimpleFiled(
+                        keyboardType: TextInputType.name,
+                        onValidator: (value) => AppValidators.isEmpty(value),
+                        hint: "  منطقة  ",
+                        controller: controllerValue['Region'],
+                        pIcon: Icon(
+                          Icons.add_location_alt_rounded,
+                          color: AppColors.blue,
+                        ),
+                      ),
+                      /*******************************/
                       SizedBox(height: 15.h),
                       //* Starting Date
                       SimpleFiled(
                         keyboardType: TextInputType.datetime,
-                        controller: controllerValue['ssss'],
                         onValidator: (value) => AppValidators.isEmpty(value),
                         hint: KeyLang.startingDate.tr(),
+                        readOnly: true,
+                        controller: controllerValue['selectedDateStart'],
                         pIcon: IconButton(
                           icon: Icon(
                             Icons.date_range_outlined,
                             color: AppColors.blue,
                           ),
                           onPressed: () {
-                            showDatePicker(
-                                    context: context,
-                                    firstDate: DateTime.now(),
-                                    lastDate: DateTime(DateTime.now().year + 5),
-                                    initialDate: DateTime.now())
-                                .then((value) {
-                              setState(() {
-                                deta_s = value;
-                                day_s = value!.day;
-                                month_s = value.month;
-                                year_s = value.year;
-                              });
-                            });
+                            _datePicker(starOrEndDate: false);
                           },
                         ),
                       ),
                       //* Expiry Date
                       SizedBox(height: 10.h),
                       SimpleFiled(
-                        controller: controllerValue['eeee'],
                         keyboardType: TextInputType.datetime,
                         onValidator: (value) => AppValidators.isEmpty(value),
                         hint: KeyLang.expiryDate.tr(),
+                        readOnly: true,
+                        controller: controllerValue['selectedDateEnd'],
                         pIcon: IconButton(
                           icon: Icon(
                             Icons.date_range_sharp,
                             color: AppColors.blue,
                           ),
                           onPressed: () {
-                            showDatePicker(
-                                    context: context,
-                                    firstDate: DateTime.now(),
-                                    lastDate:
-                                        DateTime(DateTime.now().year + 50),
-                                    initialDate: DateTime.now())
-                                .then((value) {
-                              setState(() {
-                                deta_e = value;
-
-                                day_e = value!.day;
-                                month_e = value.month;
-                                year_e = value.year;
-                              });
-                            });
+                            _datePicker(starOrEndDate: true);
                           },
                         ),
                       ),
@@ -201,11 +242,26 @@ class _NewProjectState extends State<NewProject> {
                       //* the owner's name
                       SimpleFiled(
                         keyboardType: TextInputType.name,
-                        onValidator: (value) => AppValidators.isname(value),
+                        onValidator: (value) => AppValidators.isEmpty(value),
                         hint: KeyLang.ownerName.tr(),
-                        pIcon: Icon(
-                          Icons.person,
-                          color: AppColors.blue,
+                        readOnly: true,
+                        controller: NewProject
+                            .owner_name, //controllerValue['owner_name'],
+                        pIcon: IconButton(
+                          icon: Icon(
+                            Icons.person,
+                            color: AppColors.blue,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              AddCrafts.isHomePage = false;
+                              AddCrafts.isNewProject = true;
+                            });
+                            Navigator.pushNamed(
+                              context,
+                              Research.id,
+                            );
+                          },
                         ),
                       ),
                       SizedBox(height: 15.h),
@@ -216,34 +272,108 @@ class _NewProjectState extends State<NewProject> {
                             child: SimpleBtnUp(
                           btnText: KeyLang.constructionLicense.tr(),
                           onTap: () {
+                            showDialog(
+                              barrierDismissible: false,
+                              context: context,
+                              builder: (context) => AlertChooseImage(
+                                bathImage: 'construction_license',
+                              ),
+                            );
                             b = 1;
                           },
                         )),
                       ),
 
-                      SizedBox(height: 15.h),
-                      //* schemes
-                      Container(
-                        margin: EdgeInsets.symmetric(horizontal: 25.h),
-                        child: Center(
-                            child: SimpleBtnUp(
-                          btnText: KeyLang.schemes.tr(),
-                          onTap: () {
-                            b = 2;
-                          },
-                        )),
-                      ),
+                      // Validator to construction_license
+                      validatorToConstructionLicense
+                          ? Container(
+                              margin: EdgeInsets.symmetric(horizontal: 25.h),
+                              child: GoBack.tx('   من فضلك حمل رخصة البناء    ',
+                                  sizee: 15, textColor: Colors.red),
+                            )
+                          : Container(),
+
                       SizedBox(height: 15.h),
 
+                      // //* schemes
+                      // Container(
+                      //   margin: EdgeInsets.symmetric(horizontal: 25.h),
+                      //   child: Center(
+                      //       child: SimpleBtnUp(
+                      //     btnText: KeyLang.schemes.tr(),
+                      //     onTap: () {
+                      //       showDialog(
+                      //         barrierDismissible: false,
+                      //         context: context,
+                      //         builder: (context) => AlertChooseImage(
+                      //           bathImage: 'schemes',
+                      //         ),
+                      //       );
+                      //       b = 2;
+                      //     },
+                      //   )),
+                      // ),
+                      // SizedBox(height: 15.h),
+
                       //*button
+
                       SizedBox(height: 5.h),
                       Container(
                         margin: EdgeInsets.symmetric(horizontal: 15.h),
                         child: Center(
                             child: SimpleBtn(
                                 btnText: KeyLang.add.toUpperCase().tr(),
-                                onTap: () async {
+                                onTap: () {
+                                  setState(() {
+                                    //  print("Upload_ImageState().bathImagereturn");
+                                    //  print( Upload_ImageState().bathImagereturn??"sami" );
+                                    //  print("constructionLicense");
+                                    // print( NewProject.constructionLicense! + 's4s4');
+                                  });
+
                                   if (_keyFoem.currentState!.validate()) {
+                                    if (NewProject.constructionLicense !=
+                                            null &&
+                                        NewProject.constructionLicense!.length >
+                                            10) {
+                                      setState(() {
+                                        validatorToConstructionLicense = false;
+                                      });
+                                      Register().postDataCreateNewProject(
+                                        context: context,
+                                        user_no_eng:
+                                            UserPreferences.getUserId()!,
+                                        project_name:
+                                            controllerValue['project_name']!
+                                                .text,
+                                        City: controllerValue['City']!.text,
+                                        Region: controllerValue['Region']!.text,
+                                        selectedDateStart: controllerValue[
+                                                'selectedDateStart']!
+                                            .text,
+                                        selectedDateEnd:
+                                            controllerValue['selectedDateEnd']!
+                                                .text,
+                                        Owner_User_ID:
+                                            NewProject.ownerId as String,
+                                        owner_name:
+                                            controllerValue['owner_name']!.text,
+                                        construction_license:
+                                            NewProject.constructionLicense!,
+                                      );
+                                      // Map<String, TextEditingController> controllerValue = {
+                                      //   'project_name': TextEditingController(),
+                                      //   'City': TextEditingController(),
+                                      //   'Region': TextEditingController(),
+                                      //   'selectedDateStart': TextEditingController(),
+                                      //   'selectedDateEnd': TextEditingController(),
+                                      //   'owner_name': TextEditingController(),
+                                      // };
+                                    } else {
+                                      setState(() {
+                                        validatorToConstructionLicense = true;
+                                      });
+                                    }
                                     simpleToast(message: 'ok');
                                   }
                                 })),

@@ -1,10 +1,14 @@
 // ignore_for_file: prefer_const_constructors, implementation_imports, duplicate_ignore, must_be_immutable, prefer_typing_uninitialized_variables, non_constant_identifier_names, avoid_print, unused_import
 
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
+import 'package:flutter_finalproject/Packages/Components/Toast/simple_toast.dart';
+import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/design.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/Components/profile_information.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile_edit.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile_for_workers.dart';
@@ -59,6 +63,10 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  Color textColor = Colors.white70;
+
+  bool processing = true;
+
   void SelectedItem(BuildContext context, item) {
     switch (item) {
       case 0:
@@ -93,27 +101,39 @@ class _ProfileState extends State<Profile> {
         break;
     }
   }
-
+@override
+  void initState() {
+  Timer(Duration(seconds: 5), () {
+    setState(() {
+      processing = false;
+    });
+  });
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.blue,
-        title: GoBack.tx(' الملف الشخصي'),
+        title: Text(
+          'الملف الشخصي',
+          style: TextStyle(color: Colors.white),
+        ), //GoBack.tx(' الملف الشخصي'),
         leading: GoBack.back(context),
         actions: [
           Theme(
             data: Theme.of(context).copyWith(
                 textTheme: TextTheme().apply(bodyColor: Colors.black),
                 dividerColor: Colors.white,
-                iconTheme: IconThemeData(color: Colors.black87)),
+                iconTheme: IconThemeData(color: Colors.white)),
             child: PopupMenuButton<int>(
               color: Colors.black,
               itemBuilder: (context) => [
-                const PopupMenuItem<int>(value: 0, child: Text("تعديل")),
-                const PopupMenuItem<int>(value: 1, child: Text("Setting")),
                 const PopupMenuItem<int>(
-                    value: 2, child: Text("Privacy Policy page")),
+                    value: 0, child: Text('تعديل الملف الشخصي')),
+                const PopupMenuItem<int>(value: 1, child: Text("الاعدادات")),
+                const PopupMenuItem<int>(
+                    value: 2, child: Text("السياسة والخصوصية")),
                 const PopupMenuDivider(),
                 PopupMenuItem<int>(
                     value: 5,
@@ -126,7 +146,7 @@ class _ProfileState extends State<Profile> {
                         SizedBox(
                           width: 7,
                         ),
-                        Text("Logout")
+                        Text('تسجيل الخروج')
                       ],
                     )),
               ],
@@ -141,34 +161,67 @@ class _ProfileState extends State<Profile> {
       // drawer: DrawerHome(),
       body: SingleChildScrollView(
         child: Container(
-          height: (MediaQuery.of(context).size.height),
+          // height: (MediaQuery.of(context).size.height),
           decoration: BoxDecoration(
             // color: Colors.amber[200],
-            gradient: LinearGradient(
-              colors: [Colors.amber, Colors.greenAccent.withOpacity(0.2)],
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-            ),
-            borderRadius: BorderRadius.circular(15),
+            // gradient: LinearGradient(
+            //   colors: [Colors.amber, Colors.greenAccent.withOpacity(0.2)],
+            //   begin: Alignment.topRight,
+            //   end: Alignment.bottomLeft,
+            // ),
+            color: project_color('efcba7'),
+            // borderRadius: BorderRadius.circular(15),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(222.0),
-                // padding: const EdgeInsets.all(20),
-                child: Image.network(
-                  ProfileForWorkers.image1,
-                  height: 220,
-                ),
+              //image
+
+              Column(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    // padding: const EdgeInsets.all(20),
+                    child: Image.network(
+                      ProfileForWorkers.image1,
+                      height: 220,
+                    ),
+                  ),
+                  processing
+                      ? CircularProgressIndicator(
+                          backgroundColor: Colors.black38,
+                          color: Colors.black45)
+                      : Container(),
+                ],
               ),
-              Container(
-                margin: const EdgeInsets.all(11),
-                child: ElevatedButton(
-                  onPressed: () => GoBack.selectScreen(
-                      context, const LaborManagementForProfessionals()),
-                  child: GoBack.tx('أدارة العمل'),
-                ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: () => GoBack.selectScreen(
+                        context, const LaborManagementForProfessionals()),
+                    child: GoBack.tx('أدارة العمل', textColor: textColor),
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(project_color('741b47')),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Clipboard.setData(
+                          ClipboardData(text: ProfileInformation.userNo!));
+                      simpleToast(message: 'The number has been copied');
+                    },
+                    child: GoBack.tx(
+                        ProfileInformation.userNo! + ':الرقم التعريفي',
+                        textColor: textColor),
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(project_color('741b47')),
+                    ),
+                  ),
+                ],
               ),
               // Container(
               //   margin: const EdgeInsets.all(11),
@@ -179,21 +232,23 @@ class _ProfileState extends State<Profile> {
               //   ),
               // ),
               Card(
-                color: Colors.white30,
+                // color: project_color('741b47'),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Card(
-                      color: Colors.white70,
+                      color: project_color('741b47'),
                       child: Container(
-                        width: (MediaQuery.of(context).size.width) - 50,
-                        padding: EdgeInsets.all(8),
+                        width: (MediaQuery.of(context).size.width) * 0.90,
+                        padding: EdgeInsets.all(5),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            GoBack.tx('الاسم : '),
-                            GoBack.tx(ProfileForWorkers.firstName1),
-                            GoBack.tx(ProfileForWorkers.lastName1),
+                            GoBack.tx('الاسم : ', textColor: textColor),
+                            GoBack.tx(ProfileForWorkers.firstName1,
+                                textColor: textColor),
+                            GoBack.tx(ProfileForWorkers.lastName1,
+                                textColor: textColor),
                           ],
                         ),
                       ),
@@ -201,6 +256,7 @@ class _ProfileState extends State<Profile> {
                   ],
                 ),
               ),
+
               /*
               *
               * ProfileForWorkers
@@ -209,68 +265,159 @@ class _ProfileState extends State<Profile> {
         occupation1 = occupation;
         age1 = age;
         region1 = region;*/
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Card(
-                  color: Colors.white30,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Card(
-                        color: Colors.white70,
-                        child: Container(
-                          padding: const EdgeInsets.all(8),
-                          child: Row(
-                            children: [
-                              GoBack.tx(' المهنه :'),
-                              GoBack.tx(ProfileForWorkers.occupation1),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Card(
-                        color: Colors.white70,
-                        child: Container(
-                          padding: EdgeInsets.all(8),
-                          child: Row(
-                            children: [
-                              GoBack.tx(' العمر :'),
-                              GoBack.tx(ProfileForWorkers.age1),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Card(
-                        color: Colors.white70,
-                        child: Container(
-                          padding: EdgeInsets.all(8),
-                          child: Row(
-                            children: [
-                              GoBack.tx(' المنطقة :'),
-                              GoBack.tx(ProfileForWorkers.region1),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+              // SingleChildScrollView(
+              //   scrollDirection: Axis.horizontal,
+              //   child: Container(
+              //     width: (MediaQuery.of(context).size.width) * 0.90,
+              //     child: Card(
+              //       //color: project_color('741b47'),
+              //       child: Row(
+              //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //         children: [
+              //           // Card(
+              //           //   color: project_color('741b47'),
+              //           //   child: Container(
+              //           //     padding: const EdgeInsets.all(5),
+              //           //     child: Row(
+              //           //       children: [
+              //           //         GoBack.tx(' المهنه :'),
+              //           //         GoBack.tx(ProfileForWorkers.occupation1),
+              //           //       ],
+              //           //     ),
+              //           //   ),
+              //           // ),
+              //           // Card(
+              //           //   color: project_color('741b47'),
+              //           //   child: Container(
+              //           //     padding: EdgeInsets.all(5),
+              //           //     child: Row(
+              //           //       children: [
+              //           //         GoBack.tx(' العمر :'),
+              //           //         GoBack.tx(ProfileForWorkers.age1),
+              //           //       ],
+              //           //     ),
+              //           //   ),
+              //           // ),
+              //           // Card(
+              //           //   color: project_color('741b47'),
+              //           //   child: Container(
+              //           //     padding: EdgeInsets.all(5),
+              //           //     child: Row(
+              //           //       children: [
+              //           //         GoBack.tx(' المنطقة :'),
+              //           //         GoBack.tx(ProfileForWorkers.region1),
+              //           //       ],
+              //           //     ),
+              //           //   ),
+              //           // ),
+              //         ],
+              //       ),
+              //     ),
+              //   ),
+              // ),
+
+              const SizedBox(
+                height: 50,
               ),
+
               Card(
-                color: Colors.white30,
+                //color: project_color('741b47'),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Card(
-                      color: Colors.white70,
+                      color: project_color('741b47'),
                       child: Container(
-                        width: (MediaQuery.of(context).size.width) - 50,
-                        padding: EdgeInsets.all(8),
+                        width: (MediaQuery.of(context).size.width) * 0.90,
+                        padding: EdgeInsets.all(5),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            GoBack.tx('الرقم : '),
-                            GoBack.tx(ProfileForWorkers.phoneNumber1),
+                            GoBack.tx(' المهنه :', textColor: textColor),
+                            GoBack.tx(ProfileForWorkers.occupation1,
+                                textColor: textColor),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              Card(
+                //color: project_color('741b47'),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Card(
+                      color: project_color('741b47'),
+                      child: Container(
+                        width: (MediaQuery.of(context).size.width) * 0.90,
+                        padding: EdgeInsets.all(5),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            GoBack.tx(' العمر :', textColor: textColor),
+                            GoBack.tx(ProfileForWorkers.age1,
+                                textColor: textColor),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(
+                height: 50,
+              ),
+
+              Card(
+                //color: project_color('741b47'),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Card(
+                      color: project_color('741b47'),
+                      child: Container(
+                        width: (MediaQuery.of(context).size.width) * 0.90,
+                        padding: EdgeInsets.all(5),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            GoBack.tx(' المنطقة :', textColor: textColor),
+                            GoBack.tx(ProfileForWorkers.region1,
+                                textColor: textColor),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(
+                height: 50,
+              ),
+
+              Card(
+                //color: project_color('741b47'),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Card(
+                      color: project_color('741b47'),
+                      child: Container(
+                        width: (MediaQuery.of(context).size.width) * 0.90,
+                        padding: EdgeInsets.all(5),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            GoBack.tx('الرقم : ', textColor: textColor),
+                            GoBack.tx(ProfileForWorkers.phoneNumber1,
+                                textColor: textColor),
                           ],
                         ),
                       ),
@@ -286,5 +433,34 @@ class _ProfileState extends State<Profile> {
         ),
       ),
     );
+  }
+
+  witcicullogin() {
+    var wigt;
+    if (!processing) {
+      wigt = Column(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            // padding: const EdgeInsets.all(20),
+            child: Image.network(
+              ProfileForWorkers.image1,
+              height: 220,
+            ),
+          ),
+          CircularProgressIndicator(
+              backgroundColor: Colors.black38, color: Colors.black45),
+        ],
+      );
+    } else {
+      wigt = CircularProgressIndicator(
+          backgroundColor: Colors.black38, color: Colors.black45);
+      Timer(Duration(seconds: 3), () {
+        setState(() {
+          processing = false;
+        });
+      });
+    }
+    return wigt;
   }
 }

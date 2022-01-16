@@ -43,11 +43,9 @@ class _CurrentProjectsForWorkersState extends State<CurrentProjectsForWorkers> {
                                 // crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   GoBack.tx("من :"),
-
                                   SizedBox(
                                     height: sizeBoxValue,
                                   ),
-
                                   GoBack.tx("اسم المشروع :"),
                                   SizedBox(
                                     height: sizeBoxValue,
@@ -63,8 +61,6 @@ class _CurrentProjectsForWorkersState extends State<CurrentProjectsForWorkers> {
                                 // mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
                                   GoBack.tx("يوسف منصور"),
-
-
                                   SizedBox(
                                     height: sizeBoxValue,
                                   ),
@@ -77,48 +73,54 @@ class _CurrentProjectsForWorkersState extends State<CurrentProjectsForWorkers> {
                                   SizedBox(
                                     height: sizeBoxValue,
                                   ),
-                                  GoBack.tx(DateFormat('yy/MM/dd')
-                                      .format(DateTime.now().add(const Duration(days: 35)))),
+                                  GoBack.tx(DateFormat('yy/MM/dd').format(
+                                      DateTime.now()
+                                          .add(const Duration(days: 35)))),
                                 ],
                               ),
                             ],
                           ),
-
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               ElevatedButton(
                                 style: ButtonStyle(
                                   backgroundColor:
-                                  MaterialStateProperty.all<Color>(
-                                      Colors.white38),
+                                      MaterialStateProperty.all<Color>(
+                                          Colors.orange.shade100),
                                 ),
                                 onPressed: () {},
                                 child: Padding(
                                   padding: EdgeInsets.all(sizeBoxValue),
-                                  child:  Text('تسليم',style:TextStyle(color: Colors.green[700],fontSize: 19,),
-
+                                  child: const Text(
+                                    'تسليم',
+                                    style: TextStyle(
+                                      color: Colors.green,
+                                      fontSize: 19,
+                                    ),
                                   ),
                                 ),
                               ),
-
                               ElevatedButton(
                                 style: ButtonStyle(
                                   backgroundColor:
-                                  MaterialStateProperty.all<Color>(
-                                      Colors.white38),
+                                      MaterialStateProperty.all<Color>(
+                                          Colors.orange.shade100),
                                 ),
                                 onPressed: () {},
                                 child: Padding(
                                   padding: EdgeInsets.all(sizeBoxValue),
-                                  child:  Text('تأجيل',style:TextStyle(color: Colors.red[600],fontSize: 19,),
+                                  child: const Text(
+                                    'تأجيل',
+                                    style: TextStyle(
+                                      color: Colors.red,
+                                      fontSize: 19,
+                                    ),
                                   ),
                                 ),
                               )
                             ],
                           ),
-
-
                         ],
                       ),
                     ),
@@ -148,11 +150,9 @@ class _CurrentProjectsForWorkersState extends State<CurrentProjectsForWorkers> {
                           // crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             GoBack.tx("من :"),
-
                             SizedBox(
                               height: sizeBoxValue,
                             ),
-
                             GoBack.tx("اسم المشروع :"),
                             SizedBox(
                               height: sizeBoxValue,
@@ -168,8 +168,6 @@ class _CurrentProjectsForWorkersState extends State<CurrentProjectsForWorkers> {
                           // mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             GoBack.tx("يوسف منصور"),
-
-
                             SizedBox(
                               height: sizeBoxValue,
                             ),
@@ -177,69 +175,68 @@ class _CurrentProjectsForWorkersState extends State<CurrentProjectsForWorkers> {
                             SizedBox(
                               height: sizeBoxValue,
                             ),
-                            GoBack.tx(DateFormat('yy/MM/dd')
-                                .format(DateTime.now())),
+                            GoBack.tx(
+                                DateFormat('yy/MM/dd').format(DateTime.now())),
                             SizedBox(
                               height: sizeBoxValue,
                             ),
-                            GoBack.tx(DateFormat('yy/MM/dd')
-                                .format(DateTime.now().add(const Duration(days: 49)))),
+                            GoBack.tx(DateFormat('yy/MM/dd').format(
+                                DateTime.now().add(const Duration(days: 49)))),
                           ],
                         ),
                       ],
                     ),
-
-
-                       Row(
-                         mainAxisAlignment: MainAxisAlignment.spaceAround,
-                         children: [
-                           ElevatedButton(
-                            style: ButtonStyle(
-                              backgroundColor:
-                              MaterialStateProperty.all<Color>(
-                                  Colors.white38),
-                            ),
-                            onPressed: () {},
-                            child: Padding(
-                              padding: EdgeInsets.all(sizeBoxValue),
-                              child:  Text('تسليم',style:TextStyle(color: Colors.green[700],fontSize: 19,),
-
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                Colors.orange.shade100),
+                          ),
+                          onPressed: () {},
+                          child: Padding(
+                            padding: EdgeInsets.all(sizeBoxValue),
+                            child: const Text(
+                              'تسليم',
+                              style: TextStyle(
+                                color: Colors.green,
+                                fontSize: 19,
                               ),
                             ),
-                      ),
-
-                           ElevatedButton(
-                             style: ButtonStyle(
-                               backgroundColor:
-                               MaterialStateProperty.all<Color>(
-                                   Colors.white38),
-                             ),
-                             onPressed: () {},
-                             child: Padding(
-                               padding: EdgeInsets.all(sizeBoxValue),
-                               child:  Text('تأجيل',style:TextStyle(color: Colors.red[600],fontSize: 19,),
-                             ),
-                           ),
-                           )
-                         ],
-                       ),
-
-
-
+                          ),
+                        ),
+                        ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                Colors.orange.shade100),
+                          ),
+                          onPressed: () {},
+                          child: Padding(
+                            padding: EdgeInsets.all(sizeBoxValue),
+                            child: const Text(
+                              'تأجيل',
+                              style: TextStyle(
+                                color: Colors.red,
+                                fontSize: 19,
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ],
                 ),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GoBack.tx('المشاريع الحالية للعمال'),              ],
-            ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: [
+            //     GoBack.tx('المشاريع الحالية للعمال'),              ],
+            // ),
           ],
         ),
       ),
     );
   }
 }
-
-

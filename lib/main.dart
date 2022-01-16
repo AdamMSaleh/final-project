@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
       designSize: Size(360, 690),
       builder: () {
         return MaterialApp(
-            title: 'Relax building',
+            title: 'Relax Building',
             debugShowCheckedModeBanner: false,
             theme: CustomTheme.lightTheme,
             darkTheme: CustomTheme.darkTheme,
@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,
-            initialRoute: PageSplash.id, // PageHome.id,//PageHome.id,
+            initialRoute: PageSplash.id, //PageHome.id, // PageHome.id,//,
             //  PlanUpload.id, // , //PageLogin.id,//PageRegister.id,// PageInfoEng.id,//Upload_Image.id,//
             routes: AppRoutes.routes);
       },

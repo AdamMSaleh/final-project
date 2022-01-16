@@ -19,6 +19,7 @@ import 'package:flutter_finalproject/Packages/Pages/NewProject/components/BoxDia
 
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/Components/support/support_class.dart';
+import 'package:flutter_finalproject/Packages/Pages/Research/view/add_crafts.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/view/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/ask_us/body.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
@@ -34,15 +35,16 @@ class PageHome extends StatefulWidget {
 }
 
 class _PageHomeState extends State<PageHome> {
-  x() async {
-    await Register().loadData();
-  }
-
-  @override
-  // ignore: must_call_super
-  void initState() {
-    x();
-  }
+  // x() async {
+  //   await Register().loadData();
+  // }
+  //
+  // @override
+  // // ignore: must_call_super
+  // void initState() {
+  //
+  //   x();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -106,6 +108,10 @@ class _PageHomeState extends State<PageHome> {
                       //*Search
                       IconBHome(
                         onTap: () {
+                          setState(() {
+                            AddCrafts.isHomePage=true;
+
+                          });
                           Navigator.pushNamed(
                             context,
                             Research.id,
