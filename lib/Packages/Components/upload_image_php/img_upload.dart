@@ -186,11 +186,11 @@ class Upload_ImageState extends State<Upload_Image> {
       } else if (widget.bathImage == 'construction_license') {
         // هون لسا ما تفقدة الميثود
         setState(() {
-          bathImagereturn = 'http://relaxbuilding.space/image/' +
+          bathImagereturn = 'http://relaxbuilding.space/upload_image/image/' +
               widget.bathImage! +
               '/' +
               fileName;
-          NewProject.constructionLicense = 'http://relaxbuilding.space/image/' +
+          NewProject.constructionLicense = 'http://relaxbuilding.space/upload_image/image/' +
               widget.bathImage! +
               '/' +
               fileName;
@@ -198,8 +198,8 @@ class Upload_ImageState extends State<Upload_Image> {
         print(bathImagereturn ?? "33");
         print(NewProject.constructionLicense ?? "33");
 
-        Register().postImageSyndicateCard(
-            Guild_picture: 'image/' + widget.bathImage! + '/' + fileName);
+        // Register().postImageSyndicateCard(
+        //     Guild_picture: 'image/' + widget.bathImage! + '/' + fileName);
       } else {
         setState(() {
           bathImagereturn = 'image/' + widget.bathImage! + '/' + fileName;

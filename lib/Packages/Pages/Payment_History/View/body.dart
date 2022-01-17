@@ -9,10 +9,12 @@ import 'package:flutter_finalproject/Packages/Components/Common_traits/Drawer/dr
 import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/sup_appbar.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.dart';
+import 'package:flutter_finalproject/Packages/Components/Toast/simple_toast.dart';
 import 'package:flutter_finalproject/Packages/Components/cach_image/image_user.dart';
 import 'package:flutter_finalproject/Packages/Pages/Archive/View/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/body.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/appbar.dart';
+import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/projects_details.dart';
 import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/design.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/View/new_project.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/components/BoxDialog/dialog.dart';
@@ -522,10 +524,10 @@ class _PaymentHistoryState extends State<PaymentHistory>
       floatingActionButton: FloatingActionButton(
         backgroundColor: project_color('741b47'),
         onPressed: () => setState(() {
-          Navigator.pushNamed(
+          ProjectsDetails().isStarted?Navigator.pushNamed(
             context,
             Fill_payment_page.id,
-          );
+          ):simpleToast(message: ' لا يمكن اضافة فاتورة لأن المشروع منتهي ');
         }),
         child: Icon(
           // Icons.verified_sharp,

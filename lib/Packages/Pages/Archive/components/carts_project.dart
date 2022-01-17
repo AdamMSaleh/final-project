@@ -37,7 +37,7 @@ class CartFProject extends StatelessWidget {
         GestureDetector(
           onTap: _onTap,
           child: Container(
-            height:(MediaQuery.of(context).size.height) * 0.138 ,
+            height:(MediaQuery.of(context).size.height) * 0.195 ,
             margin: EdgeInsets.symmetric(horizontal: 5.w),
             child: Card(
               elevation: 10,
@@ -45,7 +45,7 @@ class CartFProject extends StatelessWidget {
 
                 children: [
                   // * id App
-                  Container(
+                  SizedBox(
                     width: (MediaQuery.of(context).size.width) * 0.14 ,
                     child: Padding(
                       padding: EdgeInsets.all(8.w),
@@ -83,31 +83,25 @@ class CartFProject extends StatelessWidget {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         //* name project
-                        Container(
+                        SizedBox(
                           width: (MediaQuery.of(context).size.width) * 0.45 ,
                           // height: (MediaQuery.of(context).size.height) * 0.0 ,
-                          child: Expanded(
-                            // flex: 5,
-                            child: Text(
-                              _num_project,
-                              style: AppStyles.styleHeadline1Light.copyWith(
-                                  color: AppColors.blue, fontSize: 20.r.sm),
-                            ),
+                          child: Text(
+                            _num_project,
+                            style: AppStyles.styleHeadline1Light.copyWith(
+                                color: AppColors.blue, fontSize: 20.r.sm),
                           ),
                         ),
                         SizedBox(
                           height: 5.h,
                         ),
                         //* owner name
-                        Container(
+                        SizedBox(
                           width: (MediaQuery.of(context).size.width) * 0.45,
-                          child: Expanded(
-                            // flex: 1,
-                            child: Text(
-                              _owner_name,
-                              style: AppStyles.styleHeadline1Light.copyWith(
-                                  color: AppColors.blue, fontSize: 15.h),
-                            ),
+                          child: Text(
+                            _owner_name,
+                            style: AppStyles.styleHeadline1Light.copyWith(
+                                color: AppColors.blue, fontSize: 15.h),
                           ),
                         ),
                         //* date_receipt

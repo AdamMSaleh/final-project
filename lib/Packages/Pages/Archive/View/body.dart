@@ -9,6 +9,7 @@ import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dar
 import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.dart';
 import 'package:flutter_finalproject/Packages/Pages/Archive/components/carts_project.dart';
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/projects_details.dart';
+import 'package:flutter_finalproject/Packages/Pages/NewProject/components/project_info.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
 import 'package:flutter_finalproject/Theme/theme_status.dart';
 import 'package:flutter_finalproject/Utils/path_images.dart';
@@ -23,6 +24,35 @@ class Archive extends StatefulWidget {
 }
 
 class _ArchiveState extends State<Archive> {
+  List<ProjectInfo> project = [];
+  int isFinishedProject = 0;
+
+  x() async {
+    ProjectInfo.project = [];
+    isFinishedProject = 0;
+    await ProjectInfo.getDataProject();
+    if (project.isNotEmpty) {
+      for (int i = 0; i < project.length; i++) {
+        if (project[i].state == '0') {
+          isFinishedProject++;
+        }
+      }
+    }
+    setState(() {
+      ProjectInfo.project;
+
+      isFinishedProject ;
+    });
+  }
+
+  @override
+  initState() {
+    x();
+    project = ProjectInfo.project;
+    isFinishedProject ;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,30 +101,64 @@ class _ArchiveState extends State<Archive> {
                       style: AppTheme.h5(context: context)
                           ?.copyWith(color: AppColors.white),
                     ).tr(),
-                    
                   ],
                 ),
               ],
             ),
           ),
           SizedBox(height: 13.h),
-          CartFProject(
-            id: '1',
-            num_project: 'zarqa unverste',
-            onTap: () =>
-                GoBack.selectScreen(context, ProjectsDetails(str:"المشروع 41" ,)),
-            date_receipt: '3/8/2021',
-            owner_name: 'adam',
-          ),
-
-          CartFProject(
-            id: '2',
-            num_project: 'Home',
-            onTap: () =>
-                GoBack.selectScreen(context, ProjectsDetails(str: "المشروع 41",)),
-            date_receipt: '3/9/1999',
-            owner_name: 'adam',
-          ),
+          project.isNotEmpty && isFinishedProject > 0
+              ? Column(
+                  children: [
+                    ...project.map(
+                      (e) => e.state == '0'
+                          ? CartFProject(
+                              id: e.Projec_No!,
+                              num_project: e.project_name!,
+                              onTap: () => GoBack.selectScreen(
+                                context,
+                                ProjectsDetails(
+                                  str: e.project_name,
+                                  Owner_User_ID: e.Owner_User_ID,
+                                  owner_name: e.owner_name,
+                                  selectedDateEnd: e.selectedDateEnd,
+                                  selectedDateStart: e.selectedDateStart,
+                                  Region: e.Region,
+                                  City: e.City,
+                                  construction_license: e.construction_license,
+                                  Projec_No: e.construction_license,
+                                  project_name: e.project_name,
+                                  state: e.state,
+                                  user_no_eng: e.user_no_eng,
+                                ),
+                              ),
+                              date_receipt: e.selectedDateEnd!,
+                              owner_name: e.owner_name!,
+                            )
+                          : Container(),
+                    ),
+                  ],
+                )
+              : Container(
+                  child: GoBack.tx('   لا يوجد مشاريع مؤرشفة   '),
+                ),
+          // CartFProject(
+          //   id: '1',
+          //   num_project: 'zarqa unverste',
+          //   onTap: () =>
+          //       GoBack.selectScreen(context, ProjectsDetails(str:"المشروع 41" ,)),
+          //   date_receipt: '3/8/2021',
+          //   owner_name: 'adam',
+          // ),
+          //
+          // CartFProject(
+          //   id: '2',
+          //   num_project: 'Home',
+          //   onTap: () =>
+          //       GoBack.selectScreen(context, ProjectsDetails(str: "المشروع 41",)),
+          //   date_receipt: '3/9/1999',
+          //   owner_name: 'adam',
+          // ),
         ],
       )),
     );

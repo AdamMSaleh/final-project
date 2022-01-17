@@ -26,24 +26,23 @@ class CurrentProjects extends StatefulWidget {
 
 class _CurrentProjectsState extends State<CurrentProjects> {
   List<ProjectInfo> project = [];
+  int isStartedProject = 0;
 
-  // ProjectInfo(
-  //     {this.Projec_No,
-  //       this.user_no_eng,
-  //       this.project_name,
-  //       this.City,
-  //       this.Region,
-  //       this.selectedDateStart,
-  //       this.selectedDateEnd,
-  //       this.Owner_User_ID,
-  //       this.owner_name,
-  //       this.construction_license});
   x() async {
     ProjectInfo.project = [];
+    isStartedProject = 0;
     await ProjectInfo.getDataProject();
+    if (project.isNotEmpty) {
+      for (int i = 0; i < project.length; i++) {
+        if (project[i].state == '1') {
+          isStartedProject++;
+        }
+      }
+    }
     setState(() {
-      print('allanlananlalnlna');
-      print(project.length);
+      ProjectInfo.project;
+
+      isStartedProject ;
     });
   }
 
@@ -51,19 +50,9 @@ class _CurrentProjectsState extends State<CurrentProjects> {
   initState() {
     x();
     project = ProjectInfo.project;
-    // setState(() {
-    //   if(NewProject.ownerName!.length>1){
-    //     Navigator.pop (context ,NewProject.id);
-    //   }
-    // });
+    isStartedProject ;
     super.initState();
   }
-
-  // ListView(
-  // // padding: EdgeInsets.all(5),
-  // children: [
-  // ...planData.map(
-  // (e) =>
 
   @override
   Widget build(BuildContext context) {
@@ -182,65 +171,79 @@ class _CurrentProjectsState extends State<CurrentProjects> {
                                 (e) => e.state == '1'
                                     ? CartFProject(
                                         id: e.Projec_No!,
-                                        num_project:  e.project_name!,
+                                        num_project: e.project_name!,
                                         onTap: () => GoBack.selectScreen(
-                                            context,
-                                            ProjectsDetails(
-                                              str: e.project_name,
-                                            )),
+                                          context,
+                                          ProjectsDetails(
+                                            str: e.project_name,
+                                            Owner_User_ID: e.Owner_User_ID,
+                                            owner_name: e.owner_name,
+                                            selectedDateEnd: e.selectedDateEnd,
+                                            selectedDateStart:
+                                                e.selectedDateStart,
+                                            Region: e.Region,
+                                            City: e.City,
+                                            construction_license:
+                                                e.construction_license,
+                                            Projec_No: e.construction_license,
+                                            project_name: e.project_name,
+                                            state: e.state,
+                                            user_no_eng: e.user_no_eng,
+                                          ),
+                                        ),
                                         date_receipt: e.selectedDateStart!,
                                         owner_name: e.owner_name!,
-                                    )
-                                // Container(
-                                //         padding: EdgeInsets.all(5),
-                                //         child: Table(
-                                //           border: TableBorder.all(
-                                //               color: Colors.black),
-                                //           children: [
-                                //             TableRow(
-                                //               children: [
-                                //                 InkWell(
-                                //                   onTap: () =>
-                                //                       GoBack.selectScreen(
-                                //                     context,
-                                //                     ProjectsDetails(
-                                //                       str: e.project_name,
-                                //                       Owner_User_ID:
-                                //                           e.Owner_User_ID,
-                                //                       owner_name: e.owner_name,
-                                //                       selectedDateEnd:
-                                //                           e.selectedDateEnd,
-                                //                       selectedDateStart:
-                                //                           e.selectedDateStart,
-                                //                       Region: e.Region,
-                                //                       City: e.City,
-                                //                       construction_license: e
-                                //                           .construction_license,
-                                //                       Projec_No: e
-                                //                           .construction_license,
-                                //                       project_name:
-                                //                           e.project_name,
-                                //                       state: e.state,
-                                //                       user_no_eng:
-                                //                           e.user_no_eng,
-                                //                     ),
-                                //                   ),
-                                //                   child: Center(
-                                //                     child: GoBack.rowOfProject(
-                                //                       int.parse(e.Projec_No!),
-                                //                       e.project_name!,
-                                //                       e.owner_name!,
-                                //                       e.state == '1'
-                                //                           ? true
-                                //                           : false,
-                                //                     ),
-                                //                   ),
-                                //                 ),
-                                //               ],
-                                //             ),
-                                //           ],
-                                //         ),
-                                //       )
+                                      )
+                                    // Container(
+                                    //         padding: EdgeInsets.all(5),
+                                    //         child: Table(
+                                    //           border: TableBorder.all(
+                                    //               color: Colors.black),
+                                    //           children: [
+                                    //             TableRow(
+                                    //               children: [
+                                    //                 InkWell(
+                                    //                   onTap: () =>
+                                    //                       GoBack.selectScreen(
+                                    //                     context,
+                                    //                     ProjectsDetails(
+                                    //                       str: e.project_name,
+                                    //                       Owner_User_ID:
+                                    //                           e.Owner_User_ID,
+                                    //                       owner_name: e.owner_name,
+                                    //                       selectedDateEnd:
+                                    //                           e.selectedDateEnd,
+                                    //                       selectedDateStart:
+                                    //                           e.selectedDateStart,
+                                    //                       Region: e.Region,
+                                    //                       City: e.City,
+                                    //                       construction_license: e
+                                    //                           .construction_license,
+                                    //                       Projec_No: e
+                                    //                           .construction_license,
+                                    //                       project_name:
+                                    //                           e.project_name,
+                                    //                       state: e.state,
+                                    //                       user_no_eng:
+                                    //                           e.user_no_eng,
+                                    //                     ),
+                                    //                   ),
+                                    //                   child: Center(
+                                    //                     child: GoBack.rowOfProject(
+                                    //                       int.parse(e.Projec_No!),
+                                    //                       e.project_name!,
+                                    //                       e.owner_name!,
+                                    //                       e.state == '1'
+                                    //                           ? true
+                                    //                           : false,
+                                    //                     ),
+                                    //                   ),
+                                    //                 ),
+                                    //               ],
+                                    //             ),
+                                    //           ],
+                                    //         ),
+                                    //       )
                                     : Container(),
                               ),
                             ],

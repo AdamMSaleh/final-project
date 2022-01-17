@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/Select_Screen/select_screen.dart';
+import 'package:flutter_finalproject/Packages/Components/Toast/simple_toast.dart';
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/projects_details.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -290,13 +291,13 @@ class _view_invoicesState extends State<view_invoices> {
       floatingActionButton: FloatingActionButton(
         // Within the `FirstRoute` widget
         onPressed: () {
-          Navigator.push(
+          ProjectsDetails().isStarted?Navigator.push(
             context,
             MaterialPageRoute(
                 builder: (context) => invoices(
                       invoice_info: invoice_info1,
                     )),
-          );
+          ):simpleToast(message: ' لا يمكن اضافة فاتورة لأن المشروع منتهي ');
         },
         child: const Icon(
           Icons.add,

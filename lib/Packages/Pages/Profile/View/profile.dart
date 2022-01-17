@@ -14,7 +14,8 @@ import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile_edit.da
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile_for_workers.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/workerRequirements/laborManagementForProfessionals/labor_management_for_professionals.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
-
+import 'package:url_launcher/url_launcher.dart';
+import 'package:photo_view/photo_view.dart';
 class Profile extends StatefulWidget {
   static const String id = 'Profile';
 
@@ -110,6 +111,7 @@ class _ProfileState extends State<Profile> {
   });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -175,7 +177,7 @@ class _ProfileState extends State<Profile> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              //image
+              //image  -----------------------------------*--**-*-*-*-*-*-*---
 
               Column(
                 children: [
