@@ -7,6 +7,7 @@ import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.dart';
+import 'package:flutter_finalproject/Packages/Pages/Archive/components/carts_project.dart';
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/projects_details.dart';
 import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/design.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/components/project_info.dart';
@@ -136,98 +137,117 @@ class _CurrentProjectsState extends State<CurrentProjects> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      padding: EdgeInsets.all(5),
-                      color: project_color('efcba7'),
-                      child: Table(
-                        border:
-                            TableBorder.all(color: Colors.black, width: 1.5),
-                        children: const [
-                          TableRow(
-                            children: [
-                              Text(
-                                ' الرقم ',
-                                style: TextStyle(
-                                    fontSize: 15, color: Colors.black),
-                              ),
-                              Text(
-                                ' اسم المشروع ',
-                                style: TextStyle(
-                                    fontSize: 15, color: Colors.black),
-                              ),
-                              Text(
-                                ' اسم المالك ',
-                                style: TextStyle(
-                                    fontSize: 15, color: Colors.black),
-                              ),
-                              Text(
-                                ' حالة المشروع ',
-                                style: TextStyle(
-                                    fontSize: 15, color: Colors.black),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
+                    // Container(
+                    //   padding: EdgeInsets.all(5),
+                    //   color: project_color('efcba7'),
+                    //   child: Table(
+                    //     border:
+                    //         TableBorder.all(color: Colors.black, width: 1.5),
+                    //     children: const [
+                    //       TableRow(
+                    //         children: [
+                    //           Text(
+                    //             ' الرقم ',
+                    //             style: TextStyle(
+                    //                 fontSize: 15, color: Colors.black),
+                    //           ),
+                    //           Text(
+                    //             ' اسم المشروع ',
+                    //             style: TextStyle(
+                    //                 fontSize: 15, color: Colors.black),
+                    //           ),
+                    //           Text(
+                    //             ' اسم المالك ',
+                    //             style: TextStyle(
+                    //                 fontSize: 15, color: Colors.black),
+                    //           ),
+                    //           Text(
+                    //             ' حالة المشروع ',
+                    //             style: TextStyle(
+                    //                 fontSize: 15, color: Colors.black),
+                    //           ),
+                    //         ],
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
                     Container(
                       //padding: EdgeInsets.all(20),
                       margin: EdgeInsets.all(3),
                     ),
-                    Container(
-                      padding: EdgeInsets.all(5),
-                      child: Table(
-                        border: TableBorder.all(color: Colors.black),
-                        children: [
-                          ...project.map(
-                            (e) => TableRow(
-                              children: [
-                                InkWell(
-                                  onTap: () => GoBack.selectScreen(
-                                    context,
-                                    ProjectsDetails(
-                                      str: e.project_name,
-                                      Owner_User_ID: e.Owner_User_ID,
-                                      owner_name: e.owner_name,
-                                      selectedDateEnd: e.selectedDateEnd,
-                                      selectedDateStart: e.selectedDateStart,
-                                      Region: e.Region,
-                                      City: e.City,
-                                      construction_license:
-                                          e.construction_license,
-                                      Projec_No: e.construction_license,
-                                      project_name: e.project_name,
-                                      state: e.state,
-                                      user_no_eng: e.user_no_eng,
-                                    ),
-                                  ),
-                                  child: Center(
-                                    child: GoBack.rowOfProject(
-                                      int.parse(e.Projec_No!),
-                                      e.project_name!,
-                                      e.owner_name!,
-                                      e.state == 1 ? true : false,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
+                    project.isNotEmpty
+                        ? Column(
+                            children: [
+                              ...project.map(
+                                (e) => e.state == '1'
+                                    ? CartFProject(
+                                        id: e.Projec_No!,
+                                        num_project:  e.project_name!,
+                                        onTap: () => GoBack.selectScreen(
+                                            context,
+                                            ProjectsDetails(
+                                              str: e.project_name,
+                                            )),
+                                        date_receipt: e.selectedDateStart!,
+                                        owner_name: e.owner_name!,
+                                    )
+                                // Container(
+                                //         padding: EdgeInsets.all(5),
+                                //         child: Table(
+                                //           border: TableBorder.all(
+                                //               color: Colors.black),
+                                //           children: [
+                                //             TableRow(
+                                //               children: [
+                                //                 InkWell(
+                                //                   onTap: () =>
+                                //                       GoBack.selectScreen(
+                                //                     context,
+                                //                     ProjectsDetails(
+                                //                       str: e.project_name,
+                                //                       Owner_User_ID:
+                                //                           e.Owner_User_ID,
+                                //                       owner_name: e.owner_name,
+                                //                       selectedDateEnd:
+                                //                           e.selectedDateEnd,
+                                //                       selectedDateStart:
+                                //                           e.selectedDateStart,
+                                //                       Region: e.Region,
+                                //                       City: e.City,
+                                //                       construction_license: e
+                                //                           .construction_license,
+                                //                       Projec_No: e
+                                //                           .construction_license,
+                                //                       project_name:
+                                //                           e.project_name,
+                                //                       state: e.state,
+                                //                       user_no_eng:
+                                //                           e.user_no_eng,
+                                //                     ),
+                                //                   ),
+                                //                   child: Center(
+                                //                     child: GoBack.rowOfProject(
+                                //                       int.parse(e.Projec_No!),
+                                //                       e.project_name!,
+                                //                       e.owner_name!,
+                                //                       e.state == '1'
+                                //                           ? true
+                                //                           : false,
+                                //                     ),
+                                //                   ),
+                                //                 ),
+                                //               ],
+                                //             ),
+                                //           ],
+                                //         ),
+                                //       )
+                                    : Container(),
+                              ),
+                            ],
                           )
-                          // TableRow(
-                          //   children: [
-                          //     InkWell(
-                          //       onTap: () => GoBack.selectScreen(
-                          //           context, ProjectsDetails("المشروع 41")),
-                          //       child: Center(
-                          //         child: GoBack.rowOfProject(
-                          //             52, 'اسم المشروع4 ', '4اسم المالك', true),
-                          //       ),
-                          //     ),
-                          //   ],
-                          // ),
-                        ],
-                      ),
-                    ),
+                        : Container(
+                            child: GoBack.tx('   لا يوجد مشاريع   '),
+                          ),
                   ],
                 ),
               ),

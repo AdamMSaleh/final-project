@@ -37,19 +37,23 @@ class CartFProject extends StatelessWidget {
         GestureDetector(
           onTap: _onTap,
           child: Container(
-            height: 90.h,
+            height:(MediaQuery.of(context).size.height) * 0.138 ,
             margin: EdgeInsets.symmetric(horizontal: 5.w),
             child: Card(
               elevation: 10,
               child: Row(
+
                 children: [
                   // * id App
-                  Padding(
-                    padding: EdgeInsets.all(8.w),
-                    child: Text(
-                      _id,
-                      style: AppStyles.styleHeadline1Light
-                          .copyWith(color: AppColors.blue, fontSize: 20.h),
+                  Container(
+                    width: (MediaQuery.of(context).size.width) * 0.14 ,
+                    child: Padding(
+                      padding: EdgeInsets.all(8.w),
+                      child: Text(
+                        _id,
+                        style: AppStyles.styleHeadline1Light
+                            .copyWith(color: AppColors.blue, fontSize: 18.h),
+                      ),
                     ),
                   ),
 
@@ -76,28 +80,39 @@ class CartFProject extends StatelessWidget {
                     padding: EdgeInsets.all(8.0.w),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.max,
                       children: [
                         //* name project
-                        Expanded(
-                          child: Text(
-                            _num_project,
-                            style: AppStyles.styleHeadline1Light.copyWith(
-                                color: AppColors.blue, fontSize: 20.h),
+                        Container(
+                          width: (MediaQuery.of(context).size.width) * 0.45 ,
+                          // height: (MediaQuery.of(context).size.height) * 0.0 ,
+                          child: Expanded(
+                            // flex: 5,
+                            child: Text(
+                              _num_project,
+                              style: AppStyles.styleHeadline1Light.copyWith(
+                                  color: AppColors.blue, fontSize: 20.r.sm),
+                            ),
                           ),
                         ),
                         SizedBox(
                           height: 5.h,
                         ),
                         //* owner name
-                        Expanded(
-                          child: Text(
-                            _owner_name,
-                            style: AppStyles.styleHeadline1Light.copyWith(
-                                color: AppColors.blue, fontSize: 15.h),
+                        Container(
+                          width: (MediaQuery.of(context).size.width) * 0.45,
+                          child: Expanded(
+                            // flex: 1,
+                            child: Text(
+                              _owner_name,
+                              style: AppStyles.styleHeadline1Light.copyWith(
+                                  color: AppColors.blue, fontSize: 15.h),
+                            ),
                           ),
                         ),
                         //* date_receipt
                         Expanded(
+                          // flex: 2,
                           child: Row(
                             children: [
                               Text(
