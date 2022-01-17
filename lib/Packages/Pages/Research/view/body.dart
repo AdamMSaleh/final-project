@@ -90,9 +90,15 @@ class _ResearchState extends State<Research> {
                         phoneNumber: person.phoneNumber!,
                         image: person.image!,
                       ))),
+
               title: Text(person.name!),
               subtitle: Text(person.craftsmanship!),
-              trailing: Text('الرقم التعريفي :  ${person.userNo}'),
+              trailing: Column(
+                children: [
+                  Text('الرقم التعريفي :${person.userNo}'),Text(person.location!) ,
+
+                ],
+              ),
             );
           },
         ),
@@ -116,6 +122,7 @@ class _ResearchState extends State<Research> {
               person.name,
               person.craftsmanship,
               person.userNo.toString(),
+              person.location,
             ],
             builder: (person) => ListTile(
               onTap: () => Navigator.of(context).push(MaterialPageRoute(
@@ -128,9 +135,15 @@ class _ResearchState extends State<Research> {
                         phoneNumber: person.phoneNumber!,
                         image: person.image!,
                       ))),
+
               title: Text(person.name!),
               subtitle: Text(person.craftsmanship!),
-              trailing: Text('الرقم التعريفي :${person.userNo}'),
+              trailing: Column(
+                children: [
+                  Text('الرقم التعريفي :${person.userNo}'),Text(person.location!) ,
+
+                ],
+              ),
             ),
           ),
         ),
