@@ -189,6 +189,7 @@ class _CurrentProjectsState extends State<CurrentProjects> {
                                             project_name: e.project_name,
                                             state: e.state,
                                             user_no_eng: e.user_no_eng,
+                                              Project_Type:e.Project_Type,
                                           ),
                                         ),
                                         date_receipt: e.selectedDateStart!,

@@ -29,6 +29,7 @@ class ProjectsDetails extends StatefulWidget {
       Owner_User_ID,
       owner_name,
       construction_license,
+      Project_Type,
       state;
 
   ProjectsDetails(
@@ -42,6 +43,7 @@ class ProjectsDetails extends StatefulWidget {
       this.selectedDateEnd,
       this.Owner_User_ID,
       this.owner_name,
+      this.Project_Type,
       this.construction_license,
       this.state,
       Key? key})
@@ -112,6 +114,14 @@ class _ProjectsDetailsState extends State<ProjectsDetails> {
                                 textColor: Colors.lightBlue)
                             : GoBack.tx(("   منتهي   "),
                                 textColor: Colors.redAccent),
+                        GoBack.tx('حالة المشروع'),
+                      ]),
+                      TableRow(children: [
+                        widget.Project_Type == 'new'
+                            ? GoBack.tx(("  مشروع جديد  "),
+                                textColor: Colors.green.shade400)
+                            : GoBack.tx(("   مشروع ترميم/إصلاح   "),
+                                textColor: Colors.green.shade600),
                         GoBack.tx('حالة المشروع'),
                       ]),
                     ]),

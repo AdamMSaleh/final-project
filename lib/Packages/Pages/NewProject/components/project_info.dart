@@ -14,6 +14,7 @@ class ProjectInfo {
       Owner_User_ID,
       owner_name,
       construction_license,
+      Project_Type,
       state;
 
   ProjectInfo(
@@ -27,7 +28,7 @@ class ProjectInfo {
       this.Owner_User_ID,
       this.owner_name,
       this.construction_license,
-      this.state});
+      this.state, this.Project_Type});
 
   static List<ProjectInfo> project = [];
 
@@ -35,9 +36,11 @@ class ProjectInfo {
     // people=[];
     var x;
     if (ProfileInformation.account_type == '   مهندس  ') {
-      x = await Register().viewProjectsEng(UserPreferences.getUserId().toString());
+      x = await Register()
+          .viewProjectsEng(UserPreferences.getUserId().toString());
     } else if (ProfileInformation.account_type == '  مالك عقار   ') {
-      x = await Register().viewProjectsOwner(UserPreferences.getUserId().toString());
+      x = await Register()
+          .viewProjectsOwner(UserPreferences.getUserId().toString());
     }
     if (x != 'no data') {
       for (int i = 0; i < x.length; i++) {
@@ -53,12 +56,11 @@ class ProjectInfo {
           Owner_User_ID: x[i]['Owner_User_ID'],
           construction_license: x[i]['construction_license'],
           state: x[i]['state'],
-
+          Project_Type: x[i]['Project_Type'],
         ));
       }
-    }else{
+    } else {
       simpleToast(message: '   لا يوجد مشاريع   ');
     }
-
   }
 }
