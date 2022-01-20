@@ -26,6 +26,7 @@ import 'package:flutter_finalproject/Theme/app_color.dart';
 import 'package:flutter_finalproject/Theme/style.dart';
 import 'package:flutter_finalproject/Utils/path_images.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class PageHome extends StatefulWidget {
   static const String id = 'PageHome';
@@ -45,141 +46,158 @@ class _PageHomeState extends State<PageHome> {
   //
   //   x();
   // }
+  DateTime timeBackPressed =DateTime.now();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      //*Appbar
-      appBar: AppBHome(),
-      //*drawer
-      drawer: DrawerHome(),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              //* row 1
-              SizedBox(height: 35.h),
-              IconBox(
-                chldrn: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      //*new project
-                      IconBHome(
-                        onTap: () {
-                          showDialog(
-                            barrierDismissible: false,
-                            context: context,
-                            builder: (context) {
-                              return BoxDialog();
-                            },
-                          );
-                        },
-                        imag: PathImages.newProject,
-                        btnName: KeyLang.newProject,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      //*Current projects
-                      IconBHome(
-                        onTap: () {
-                          Navigator.pushNamed(
-                            context,
-                            CurrentProjects.id,
-                          );
-                        },
-                        imag: PathImages.currentProjects,
-                        btnName: KeyLang.currentProjects,
-                      ),
-                    ],
-                  )
-                ],
-              ),
-              //* row 2
-              SizedBox(height: 35.h),
-              IconBox(
-                chldrn: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      //*Search
-                      IconBHome(
-                        onTap: () {
-                          setState(() {
-                            AddCrafts.isHomePage=true;
+    return WillPopScope(
+      onWillPop: () async {
+        final difference =DateTime.now().difference(timeBackPressed);
+        final isExitWarning = difference >= Duration(seconds: 2);
 
-                          });
-                          Navigator.pushNamed(
-                            context,
-                            Research.id,
-                          );
-                        },
-                        imag: PathImages.search,
-                        btnName: KeyLang.research,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      //*Profile
-                      IconBHome(
-                        onTap: () {
-                          Navigator.pushNamed(
-                            context,
-                            Profile.id,
-                          );
-                        },
-                        imag: PathImages.profileicon,
-                        btnName: KeyLang.profile,
-                      ),
-                    ],
-                  )
-                ],
-              ),
-              //* row 3
-              SizedBox(height: 35.h),
-              IconBox(
-                chldrn: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      //* Work Archive
-                      IconBHome(
-                        onTap: () {
-                          Navigator.pushNamed(
-                            context,
-                            Archive.id,
-                          );
-                        },
-                        imag: PathImages.archive,
-                        btnName: KeyLang.archive,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      //* ask us
-                      IconBHome(
-                        onTap: () async {
-                          Navigator.pushNamed(
-                            context,
-                            AskUs.id,
-                          );
-                        },
-                        imag: PathImages.ask,
-                        btnName: KeyLang.ask,
-                        //hello
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            ],
+        timeBackPressed =DateTime.now();
+        if (isExitWarning) {
+          final message = 'Press back again to exit';
+          Fluttertoast. showToast(msg: message, fontSize: 18);
+          return false;
+        } else {
+          Fluttertoast.cancel();
+          return true;
+        }
+      },
+      child: Scaffold(
+        //*Appbar
+        appBar: AppBHome(),
+        //*drawer
+        drawer: DrawerHome(),
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                //* row 1
+                SizedBox(height: 35.h),
+                IconBox(
+                  chldrn: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        //*new project
+                        IconBHome(
+                          onTap: () {
+                            showDialog(
+                              barrierDismissible: false,
+                              context: context,
+                              builder: (context) {
+                                return BoxDialog();
+                              },
+                            );
+                          },
+                          imag: PathImages.newProject,
+                          btnName: KeyLang.newProject,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        //*Current projects
+                        IconBHome(
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              CurrentProjects.id,
+                            );
+                          },
+                          imag: PathImages.currentProjects,
+                          btnName: KeyLang.currentProjects,
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+                //* row 2
+                SizedBox(height: 35.h),
+                IconBox(
+                  chldrn: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        //*Search
+                        IconBHome(
+                          onTap: () {
+                            setState(() {
+                              AddCrafts.isHomePage=true;
+
+                            });
+                            Navigator.pushNamed(
+                              context,
+                              Research.id,
+                            );
+                          },
+                          imag: PathImages.search,
+                          btnName: KeyLang.research,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        //*Profile
+                        IconBHome(
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              Profile.id,
+                            );
+                          },
+                          imag: PathImages.profileicon,
+                          btnName: KeyLang.profile,
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+                //* row 3
+                SizedBox(height: 35.h),
+                IconBox(
+                  chldrn: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        //* Work Archive
+                        IconBHome(
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              Archive.id,
+                            );
+                          },
+                          imag: PathImages.archive,
+                          btnName: KeyLang.archive,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        //* ask us
+                        IconBHome(
+                          onTap: () async {
+                            Navigator.pushNamed(
+                              context,
+                              AskUs.id,
+                            );
+                          },
+                          imag: PathImages.ask,
+                          btnName: KeyLang.ask,
+                          //hello
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

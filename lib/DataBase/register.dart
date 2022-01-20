@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/user_info_secure_storage/user_save_login.dart';
+import 'package:flutter_finalproject/Packages/Pages/Archive/View/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/infi_professionals.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_mechanice.dart';
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_owner.dart';
@@ -760,15 +761,61 @@ class Register extends State<RegisterState> {
           'Expected_completion_date': selectedDateEnd,
           'Owner_User_ID': Owner_User_ID,
           'owner_name': owner_name,
-          'construction_license': construction_license,
-          'Project_Type': 'new',
-          'state': '1',
+          'construction_license': construction_license=='0'?'no License':construction_license,
+          'Project_Type': construction_license=='0'? 'fix':'new',
+          'state':'1',
         },
       );
       msg = response.body;
+
       print(response.body);
+
       if (msg == '  لقد تمت اضافة المشروع   ') {
         Navigator.pushReplacementNamed(context, CurrentProjects.id);
+      }
+    } catch (e) {
+      msg = e.toString();
+      print(e);
+    }
+    tostforRegsetr(msg);
+  }
+
+  //*******************************************************************************
+
+  //*******************************************************************************
+
+  StatusUpdateProject({
+    required String Projec_No,
+    required BuildContext context,
+  }) async {
+    //200--success ,400,404,
+
+    try {
+      msg ='';
+      var response = await http.post(
+        Uri.parse(url + "Project_establishment/status_update.php"),
+        body: {
+          'Projec_No': Projec_No,
+          'state':'0',
+        },
+      );
+      msg = response.body;
+
+      print(response.body);
+
+      if (msg == "  لقد تمت تم التحديث بنجاح   ") {
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+                builder: (context) => PageHome()
+            ),
+            ModalRoute.withName("/Home")
+        );
+        Navigator.pushNamed(
+            context,
+           Archive.id
+        );
+
       }
     } catch (e) {
       msg = e.toString();

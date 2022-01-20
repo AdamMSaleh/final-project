@@ -1,6 +1,7 @@
 // ignore_for_file: unused_local_variable, non_constant_identifier_names, deprecated_member_use, avoid_unnecessary_containers, unnecessary_null_comparison
 
 import 'package:flutter/material.dart';
+import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/design.dart';
 
 class GoBack {
@@ -173,6 +174,82 @@ class GoBack {
         ),
         child: tx(title, sizee: 15),
       ),
+    );
+  }
+
+  btnAlertDialog(
+    Widget title,
+        String Projec_No,
+    BuildContext ctx,
+
+    //      {
+    //       Function()? onPressed,
+    // }
+  ) {
+    return Container(
+      margin: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [project_color('741b47'), Colors.white.withOpacity(0.1)],
+          begin: Alignment.centerRight,
+          end: Alignment.bottomLeft,
+        ),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: TextButton(
+        // style: ButtonStyle(alignment: Alignment.center),
+        onPressed: () {
+          showAlertDialog(ctx,Projec_No );
+        },
+        child: title,
+      ),
+    );
+  }
+
+// */*/*/*/*/*/*///////////////////////////////////////////////////////
+
+  //showAlertDialog
+
+  showAlertDialog(BuildContext context, String Projec_No) {
+    // set up the buttons
+    Widget remindButton = TextButton(
+      child: const Text(
+          "  متأكد  "),
+      onPressed: () {
+       Register().StatusUpdateProject( context: context,Projec_No:Projec_No );
+      },
+    );
+    Widget cancelButton = TextButton(
+      child: const Text(" إنهاء "),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    );
+    // Widget launchButton = TextButton(
+    //   child: const Text("Launch missile"),
+    //   onPressed: () {},
+    // );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: const Text("  إحذر  ",textAlign: TextAlign.center,),
+      content: const Text(
+          "  هل متأكد من إنهاء المشروع \n لا يمكن التراجع في المستقبل\n هل أنت موافق ؟  ",textAlign: TextAlign.center,),
+      actions: [
+        Row(children: [ remindButton,
+          cancelButton,],
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,)
+
+        // launchButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 }

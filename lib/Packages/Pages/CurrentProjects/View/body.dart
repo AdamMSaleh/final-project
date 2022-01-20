@@ -185,7 +185,7 @@ class _CurrentProjectsState extends State<CurrentProjects> {
                                             City: e.City,
                                             construction_license:
                                                 e.construction_license,
-                                            Projec_No: e.construction_license,
+                                            Projec_No: e.Projec_No,
                                             project_name: e.project_name,
                                             state: e.state,
                                             user_no_eng: e.user_no_eng,

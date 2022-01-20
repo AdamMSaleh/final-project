@@ -28,6 +28,7 @@ import 'package:flutter_finalproject/Utils/path_icons.dart';
 import 'package:flutter_finalproject/Utils/path_images.dart';
 import 'package:flutter_finalproject/validators/app_validators.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class PageRegister extends StatefulWidget {
@@ -92,392 +93,408 @@ class _PageRegister extends State<PageRegister> {
     // controllerValue['password']!.text = 'gfgjk,sdeyhj';
     controllerValue['phone_number']!.text = '5786428197';
     // controllerValue['passwordAgin']!.text = 'gfgjk,sdeyhj';
+    DateTime timeBackPressed =DateTime.now();
+    return WillPopScope(
+      onWillPop: () async {
+        final difference =DateTime.now().difference(timeBackPressed);
+        final isExitWarning = difference >= Duration(seconds: 2);
 
-    return Scaffold(
-        backgroundColor: AppColors.blue,
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    //*image
-                    Container(
-                      alignment: Alignment.topCenter,
-                      child: CachedNetworkImage(
-                        imageUrl: PathImages.logo,
-                        //لتعديل ع صورة
-                        imageBuilder: (context, jjjjj) {
-                          return CircleAvatar(
-                            backgroundImage: jjjjj,
-                            radius: 75.r, //لتكبير
-                          );
-                        },
-                        placeholder: (context, url) =>
-                            AppLoading(chooseLoading: ChooseLoading.IMAGE),
+        timeBackPressed =DateTime.now();
+        if (isExitWarning) {
+          const message = 'Press back again to exit';
+          Fluttertoast. showToast(msg: message, fontSize: 18);
+          return false;
+        } else {
+          Fluttertoast.cancel();
+          return true;
+        }
+      },
+      child: Scaffold(
+          backgroundColor: AppColors.blue,
+          body: SafeArea(
+            child: SingleChildScrollView(
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      //*image
+                      Container(
+                        alignment: Alignment.topCenter,
+                        child: CachedNetworkImage(
+                          imageUrl: PathImages.logo,
+                          //لتعديل ع صورة
+                          imageBuilder: (context, jjjjj) {
+                            return CircleAvatar(
+                              backgroundImage: jjjjj,
+                              radius: 75.r, //لتكبير
+                            );
+                          },
+                          placeholder: (context, url) =>
+                              AppLoading(chooseLoading: ChooseLoading.IMAGE),
 
-                        errorWidget: (context, url, error) => Icon(Icons.error),
-                      ),
-                    ),
-                    //*tital
-                    Text(KeyLang.oneclickhome,
-                        style: AppStyles.styleHeadline1Light.copyWith(
-                          color: AppColors.white,
-                          fontSize: 40.h,
-                        )).tr(),
-                    SizedBox(height: 20.h),
-                    //*box
-                    Container(
-                        margin: EdgeInsets.symmetric(horizontal: 20.h),
-                        // height: 500,
-                        decoration: BoxDecoration(
-                          color: AppTheme.getTheme(context: context)
-                              ? AppColors.black
-                              : AppColors.white,
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(50.r),
-                            topRight: Radius.circular(50.r),
-                          ),
+                          errorWidget: (context, url, error) => Icon(Icons.error),
                         ),
-                        child: Column(
-                          children: [
-                            //*tital box
-                            Container(
-                              margin: EdgeInsets.symmetric(horizontal: 15.h),
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                KeyLang.register,
-                                style: AppStyles.styleHeadline1Light.copyWith(
-                                  color: AppColors.blue,
-                                  fontSize: 30.h,
-                                ),
-                              ).tr(),
+                      ),
+                      //*tital
+                      Text(KeyLang.oneclickhome,
+                          style: AppStyles.styleHeadline1Light.copyWith(
+                            color: AppColors.white,
+                            fontSize: 40.h,
+                          )).tr(),
+                      SizedBox(height: 20.h),
+                      //*box
+                      Container(
+                          margin: EdgeInsets.symmetric(horizontal: 20.h),
+                          // height: 500,
+                          decoration: BoxDecoration(
+                            color: AppTheme.getTheme(context: context)
+                                ? AppColors.black
+                                : AppColors.white,
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(50.r),
+                              topRight: Radius.circular(50.r),
                             ),
-                            SizedBox(height: 10.h),
+                          ),
+                          child: Column(
+                            children: [
+                              //*tital box
+                              Container(
+                                margin: EdgeInsets.symmetric(horizontal: 15.h),
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  KeyLang.register,
+                                  style: AppStyles.styleHeadline1Light.copyWith(
+                                    color: AppColors.blue,
+                                    fontSize: 30.h,
+                                  ),
+                                ).tr(),
+                              ),
+                              SizedBox(height: 10.h),
 
-                            Container(
-                              margin: EdgeInsets.symmetric(horizontal: 25.h),
-                              child: Form(
-                                key: _keyFoem,
-                                child: Column(
-                                  children: [
-                                    //* first name
-                                    SimpleFiled(
-                                      keyboardType: TextInputType.name,
-                                      controller: controllerValue['first_name'],
-                                      onValidator: (value) =>
-                                          AppValidators.isname(value),
-                                      hint: KeyLang.firstName.tr(),
-                                      pIcon: Icon(
-                                        Icons.person,
-                                        color: AppColors.blue,
+                              Container(
+                                margin: EdgeInsets.symmetric(horizontal: 25.h),
+                                child: Form(
+                                  key: _keyFoem,
+                                  child: Column(
+                                    children: [
+                                      //* first name
+                                      SimpleFiled(
+                                        keyboardType: TextInputType.name,
+                                        controller: controllerValue['first_name'],
+                                        onValidator: (value) =>
+                                            AppValidators.isname(value),
+                                        hint: KeyLang.firstName.tr(),
+                                        pIcon: Icon(
+                                          Icons.person,
+                                          color: AppColors.blue,
+                                        ),
                                       ),
-                                    ),
-                                    SizedBox(height: 20.h),
-                                    //* last name
-                                    SimpleFiled(
-                                      keyboardType: TextInputType.name,
-                                      controller: controllerValue['last_name'],
-                                      onValidator: (value) =>
-                                          AppValidators.isname(value),
-                                      hint: KeyLang.lastName.tr(),
-                                      pIcon: Icon(
-                                        Icons.person,
-                                        color: AppColors.blue,
+                                      SizedBox(height: 20.h),
+                                      //* last name
+                                      SimpleFiled(
+                                        keyboardType: TextInputType.name,
+                                        controller: controllerValue['last_name'],
+                                        onValidator: (value) =>
+                                            AppValidators.isname(value),
+                                        hint: KeyLang.lastName.tr(),
+                                        pIcon: Icon(
+                                          Icons.person,
+                                          color: AppColors.blue,
+                                        ),
                                       ),
-                                    ),
-                                    SizedBox(height: 20.h),
-                                    //*email
-                                    SimpleFiled(
-                                      keyboardType: TextInputType.emailAddress,
-                                      controller: controllerValue['email'],
-                                      onValidator: (value) =>
-                                          AppValidators.isEmail(value),
-                                      hint: KeyLang.email.tr(),
-                                      pIcon: Icon(
-                                        Icons.email,
-                                        color: AppColors.blue,
+                                      SizedBox(height: 20.h),
+                                      //*email
+                                      SimpleFiled(
+                                        keyboardType: TextInputType.emailAddress,
+                                        controller: controllerValue['email'],
+                                        onValidator: (value) =>
+                                            AppValidators.isEmail(value),
+                                        hint: KeyLang.email.tr(),
+                                        pIcon: Icon(
+                                          Icons.email,
+                                          color: AppColors.blue,
+                                        ),
                                       ),
-                                    ),
 
-                                    SizedBox(height: 20.h),
+                                      SizedBox(height: 20.h),
 
-                                    //*age
-                                    SimpleFiled(
-                                      keyboardType: TextInputType.number,
-                                      controller:
-                                      controllerValue['age'],
-                                      onValidator: (value) =>
-                                          AppValidators.isAge(value),
-                                      hint: 'العمر',
-                                      pIcon: Icon(
-                                        Icons.filter_vintage_outlined,
-                                        color: AppColors.blue,
-                                      ),
-                                    ),
-
-                                    SizedBox(height: 20.h),
-
-                                    //*password
-                                    SimpleFiled(
+                                      //*age
+                                      SimpleFiled(
+                                        keyboardType: TextInputType.number,
                                         controller:
-                                            controllerValue['passwordAgin'],
-                                        keyboardType:
-                                            TextInputType.emailAddress,
+                                        controllerValue['age'],
                                         onValidator: (value) =>
-                                            AppValidators.isPass(value),
-                                        onChanged: (value) => _pass = value,
-                                        hint: KeyLang.password.tr(),
-                                        isObscureText: _obscureText,
+                                            AppValidators.isAge(value),
+                                        hint: 'العمر',
                                         pIcon: Icon(
-                                          Icons.lock,
+                                          Icons.filter_vintage_outlined,
                                           color: AppColors.blue,
                                         ),
-                                        sIcon: Padding(
-                                          padding: EdgeInsets.all(10.0.w),
-                                          child: _iconSuffix,
-                                        ),
-                                        onSIcon: () {
-                                          setState(() {
-                                            if (_obscureText) {
-                                              _iconSuffix =
-                                                  PathIcons.eyeSlashIcon;
-                                              _obscureText = false;
-                                            } else {
-                                              _iconSuffix = PathIcons.eyeIcon;
-                                              _obscureText = true;
-                                            }
-                                          });
-                                        }),
+                                      ),
 
-                                    SizedBox(height: 20.h),
-                                    //* Confirem Password
-                                    SimpleFiled(
-                                        keyboardType:
-                                            TextInputType.emailAddress,
+                                      SizedBox(height: 20.h),
+
+                                      //*password
+                                      SimpleFiled(
+                                          controller:
+                                              controllerValue['passwordAgin'],
+                                          keyboardType:
+                                              TextInputType.emailAddress,
+                                          onValidator: (value) =>
+                                              AppValidators.isPass(value),
+                                          onChanged: (value) => _pass = value,
+                                          hint: KeyLang.password.tr(),
+                                          isObscureText: _obscureText,
+                                          pIcon: Icon(
+                                            Icons.lock,
+                                            color: AppColors.blue,
+                                          ),
+                                          sIcon: Padding(
+                                            padding: EdgeInsets.all(10.0.w),
+                                            child: _iconSuffix,
+                                          ),
+                                          onSIcon: () {
+                                            setState(() {
+                                              if (_obscureText) {
+                                                _iconSuffix =
+                                                    PathIcons.eyeSlashIcon;
+                                                _obscureText = false;
+                                              } else {
+                                                _iconSuffix = PathIcons.eyeIcon;
+                                                _obscureText = true;
+                                              }
+                                            });
+                                          }),
+
+                                      SizedBox(height: 20.h),
+                                      //* Confirem Password
+                                      SimpleFiled(
+                                          keyboardType:
+                                              TextInputType.emailAddress,
+                                          onValidator: (value) =>
+                                              AppValidators.isEqualPass(
+                                                  value, _pass),
+                                          controller: controllerValue['password'],
+                                          hint: KeyLang.cpass.tr(),
+                                          isObscureText: _obscureText,
+                                          pIcon: Icon(
+                                            Icons.lock,
+                                            color: AppColors.blue,
+                                          ),
+                                          sIcon: Padding(
+                                            padding: EdgeInsets.all(10.0.w),
+                                            child: _iconSuffix,
+                                          ),
+                                          onSIcon: () {
+                                            setState(() {
+                                              if (_obscureText) {
+                                                _iconSuffix =
+                                                    PathIcons.eyeSlashIcon;
+                                                _obscureText = false;
+                                              } else {
+                                                _iconSuffix = PathIcons.eyeIcon;
+                                                _obscureText = true;
+                                              }
+                                            });
+                                          }),
+                                      SizedBox(height: 20.h),
+                                      //*phone
+                                      SimpleFiled(
+                                        keyboardType: TextInputType.phone,
+                                        controller:
+                                            controllerValue['phone_number'],
                                         onValidator: (value) =>
-                                            AppValidators.isEqualPass(
-                                                value, _pass),
-                                        controller: controllerValue['password'],
-                                        hint: KeyLang.cpass.tr(),
-                                        isObscureText: _obscureText,
+                                            AppValidators.isPhoneNumber(value),
+                                        hint: KeyLang.phoneNumber.tr(),
                                         pIcon: Icon(
-                                          Icons.lock,
+                                          Icons.phone,
                                           color: AppColors.blue,
                                         ),
-                                        sIcon: Padding(
-                                          padding: EdgeInsets.all(10.0.w),
-                                          child: _iconSuffix,
-                                        ),
-                                        onSIcon: () {
-                                          setState(() {
-                                            if (_obscureText) {
-                                              _iconSuffix =
-                                                  PathIcons.eyeSlashIcon;
-                                              _obscureText = false;
-                                            } else {
-                                              _iconSuffix = PathIcons.eyeIcon;
-                                              _obscureText = true;
-                                            }
-                                          });
-                                        }),
-                                    SizedBox(height: 20.h),
-                                    //*phone
-                                    SimpleFiled(
-                                      keyboardType: TextInputType.phone,
-                                      controller:
-                                          controllerValue['phone_number'],
-                                      onValidator: (value) =>
-                                          AppValidators.isPhoneNumber(value),
-                                      hint: KeyLang.phoneNumber.tr(),
-                                      pIcon: Icon(
-                                        Icons.phone,
-                                        color: AppColors.blue,
                                       ),
-                                    ),
-                                    SizedBox(height: 20.h),
+                                      SizedBox(height: 20.h),
 
-                                    //* Dropdown Menu
-                                    Container(
-                                      child: DropDown<String>(
-                                        showUnderline: false,
-                                        dropDownType: DropDownType.Button,
-                                        items: _items,
-                                        icon: Icon(
-                                          Icons.expand_more,
-                                          color: Colors.blue,
+                                      //* Dropdown Menu
+                                      Container(
+                                        child: DropDown<String>(
+                                          showUnderline: false,
+                                          dropDownType: DropDownType.Button,
+                                          items: _items,
+                                          icon: Icon(
+                                            Icons.expand_more,
+                                            color: Colors.blue,
+                                          ),
+                                          customWidgets: <Widget>[
+                                            Row(
+                                              children: <Widget>[
+                                                Text(KeyLang.engineer,
+                                                    style: AppStyles
+                                                        .styleHeadline1Light
+                                                        .copyWith(
+                                                      color: AppColors.blue,
+                                                      fontSize: 15.sp,
+                                                    )).tr()
+                                              ],
+                                            ),
+                                            Row(
+                                              children: <Widget>[
+                                                Text(KeyLang.practitioner,
+                                                    style: AppStyles
+                                                        .styleHeadline1Light
+                                                        .copyWith(
+                                                      color: AppColors.blue,
+                                                      fontSize: 15.sp,
+                                                    )).tr(),
+                                              ],
+                                            ),
+                                            Row(
+                                              children: <Widget>[
+                                                Text(KeyLang.worker,
+                                                    style: AppStyles
+                                                        .styleHeadline1Light
+                                                        .copyWith(
+                                                      color: AppColors.blue,
+                                                      fontSize: 15.sp,
+                                                    )).tr(),
+                                              ],
+                                            ),
+                                            Row(
+                                              children: <Widget>[
+                                                Text(KeyLang.shopkeeper,
+                                                    style: AppStyles
+                                                        .styleHeadline1Light
+                                                        .copyWith(
+                                                      color: AppColors.blue,
+                                                      fontSize: 15.sp,
+                                                    )).tr(),
+                                              ],
+                                            ),
+                                            Row(
+                                              children: <Widget>[
+                                                Text(KeyLang.machineowners,
+                                                    style: AppStyles
+                                                        .styleHeadline1Light
+                                                        .copyWith(
+                                                      color: AppColors.blue,
+                                                      fontSize: 15.sp,
+                                                    )).tr(),
+                                              ],
+                                            ),
+                                            Row(
+                                              children: <Widget>[
+                                                Text(KeyLang.realestateowner,
+                                                    style: AppStyles
+                                                        .styleHeadline1Light
+                                                        .copyWith(
+                                                      color: AppColors.blue,
+                                                      fontSize: 15.sp,
+                                                    )).tr(),
+                                              ],
+                                            ),
+                                          ],
+                                          hint: Text(
+                                              KeyLang.typeOfProfession.tr(),
+                                              style: AppStyles.styleHeadline1Light
+                                                  .copyWith(
+                                                      color: AppColors.blue,
+                                                      fontSize: 15.sp)),
+                                          onChanged: (value) => {
+                                            if (value == KeyLang.realestateowner)
+                                              {
+                                                s = 6,
+                                              }
+                                            else if (value == KeyLang.engineer)
+                                              {
+                                                s = 1,
+                                              }
+                                            else if (value ==
+                                                KeyLang.practitioner)
+                                              {
+                                                s = 2,
+                                              }
+                                            else if (value == KeyLang.worker)
+                                              {
+                                                s = 3,
+                                              }
+                                            else if (value == KeyLang.shopkeeper)
+                                              {
+                                                s = 4,
+                                              }
+                                            else if (value ==
+                                                KeyLang.machineowners)
+                                              {
+                                                s = 5,
+                                              }
+                                          },
                                         ),
-                                        customWidgets: <Widget>[
-                                          Row(
-                                            children: <Widget>[
-                                              Text(KeyLang.engineer,
-                                                  style: AppStyles
-                                                      .styleHeadline1Light
-                                                      .copyWith(
-                                                    color: AppColors.blue,
-                                                    fontSize: 15.sp,
-                                                  )).tr()
-                                            ],
-                                          ),
-                                          Row(
-                                            children: <Widget>[
-                                              Text(KeyLang.practitioner,
-                                                  style: AppStyles
-                                                      .styleHeadline1Light
-                                                      .copyWith(
-                                                    color: AppColors.blue,
-                                                    fontSize: 15.sp,
-                                                  )).tr(),
-                                            ],
-                                          ),
-                                          Row(
-                                            children: <Widget>[
-                                              Text(KeyLang.worker,
-                                                  style: AppStyles
-                                                      .styleHeadline1Light
-                                                      .copyWith(
-                                                    color: AppColors.blue,
-                                                    fontSize: 15.sp,
-                                                  )).tr(),
-                                            ],
-                                          ),
-                                          Row(
-                                            children: <Widget>[
-                                              Text(KeyLang.shopkeeper,
-                                                  style: AppStyles
-                                                      .styleHeadline1Light
-                                                      .copyWith(
-                                                    color: AppColors.blue,
-                                                    fontSize: 15.sp,
-                                                  )).tr(),
-                                            ],
-                                          ),
-                                          Row(
-                                            children: <Widget>[
-                                              Text(KeyLang.machineowners,
-                                                  style: AppStyles
-                                                      .styleHeadline1Light
-                                                      .copyWith(
-                                                    color: AppColors.blue,
-                                                    fontSize: 15.sp,
-                                                  )).tr(),
-                                            ],
-                                          ),
-                                          Row(
-                                            children: <Widget>[
-                                              Text(KeyLang.realestateowner,
-                                                  style: AppStyles
-                                                      .styleHeadline1Light
-                                                      .copyWith(
-                                                    color: AppColors.blue,
-                                                    fontSize: 15.sp,
-                                                  )).tr(),
-                                            ],
-                                          ),
-                                        ],
-                                        hint: Text(
-                                            KeyLang.typeOfProfession.tr(),
-                                            style: AppStyles.styleHeadline1Light
-                                                .copyWith(
-                                                    color: AppColors.blue,
-                                                    fontSize: 15.sp)),
-                                        onChanged: (value) => {
-                                          if (value == KeyLang.realestateowner)
-                                            {
-                                              s = 6,
-                                            }
-                                          else if (value == KeyLang.engineer)
-                                            {
-                                              s = 1,
-                                            }
-                                          else if (value ==
-                                              KeyLang.practitioner)
-                                            {
-                                              s = 2,
-                                            }
-                                          else if (value == KeyLang.worker)
-                                            {
-                                              s = 3,
-                                            }
-                                          else if (value == KeyLang.shopkeeper)
-                                            {
-                                              s = 4,
-                                            }
-                                          else if (value ==
-                                              KeyLang.machineowners)
-                                            {
-                                              s = 5,
-                                            }
-                                        },
                                       ),
-                                    ),
-                                    //*finash dropdown
+                                      //*finash dropdown
 
-                                    SizedBox(height: 30.h),
-                                    //*button
-                                    Container(
-                                      margin: EdgeInsets.symmetric(
-                                          horizontal: 25.h),
-                                      child: Center(
-                                          child: SimpleBtn(
-                                              btnText: KeyLang.next
-                                                  .toUpperCase()
-                                                  .tr(),
-                                              onTap: () async {
-                                                if (account_type == '0') {
-                                                  simpleToast(
-                                                    message: KeyLang
-                                                        .massegRegister
-                                                        .tr(),
-                                                  );
-                                                } else {
-                                                  if (_keyFoem.currentState!
-                                                      .validate()) {
-                                                    print(
-                                                        'under buttton in register');
-                                                    Register().postData(
-                                                      first_name:
-                                                          controllerValue[
-                                                              'first_name']!,
-                                                      last_name:
-                                                          controllerValue[
-                                                              'last_name']!,
-                                                      email: controllerValue[
-                                                          'email']!,
-                                                      password: controllerValue[
-                                                          'password']!,
-                                                      phone_number:
-                                                          controllerValue[
-                                                              'phone_number']!,
-                                                      account_type:
-                                                          s.toString(),
-                                                      context: context,
+                                      SizedBox(height: 30.h),
+                                      //*button
+                                      Container(
+                                        margin: EdgeInsets.symmetric(
+                                            horizontal: 25.h),
+                                        child: Center(
+                                            child: SimpleBtn(
+                                                btnText: KeyLang.next
+                                                    .toUpperCase()
+                                                    .tr(),
+                                                onTap: () async {
+                                                  if (account_type == '0') {
+                                                    simpleToast(
+                                                      message: KeyLang
+                                                          .massegRegister
+                                                          .tr(),
                                                     );
+                                                  } else {
+                                                    if (_keyFoem.currentState!
+                                                        .validate()) {
+                                                      print(
+                                                          'under buttton in register');
+                                                      Register().postData(
+                                                        first_name:
+                                                            controllerValue[
+                                                                'first_name']!,
+                                                        last_name:
+                                                            controllerValue[
+                                                                'last_name']!,
+                                                        email: controllerValue[
+                                                            'email']!,
+                                                        password: controllerValue[
+                                                            'password']!,
+                                                        phone_number:
+                                                            controllerValue[
+                                                                'phone_number']!,
+                                                        account_type:
+                                                            s.toString(),
+                                                        context: context,
+                                                      );
+                                                    }
                                                   }
-                                                }
-                                              })),
-                                    ),
+                                                })),
+                                      ),
 
-                                    SizedBox(height: 10.h),
-                                    //*Rich Text
-                                    RichTextAuth(
-                                        fword: KeyLang.haveAccount,
-                                        sword: KeyLang.login,
-                                        onTap: () =>
-                                            Navigator.pushReplacementNamed(
-                                                context, PageLogin.id)),
-                                    SizedBox(height: 20.h),
-                                  ],
+                                      SizedBox(height: 10.h),
+                                      //*Rich Text
+                                      RichTextAuth(
+                                          fword: KeyLang.haveAccount,
+                                          sword: KeyLang.login,
+                                          onTap: () =>
+                                              Navigator.pushReplacementNamed(
+                                                  context, PageLogin.id)),
+                                      SizedBox(height: 20.h),
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        )),
-                    SizedBox(height: 35.h),
-                  ]),
+                            ],
+                          )),
+                      SizedBox(height: 35.h),
+                    ]),
+              ),
             ),
-          ),
-        ));
+          )),
+    );
   }
 }

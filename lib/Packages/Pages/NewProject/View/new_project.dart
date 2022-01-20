@@ -256,6 +256,7 @@ class _NewProjectState extends State<NewProject> {
                             setState(() {
                               AddCrafts.isHomePage = false;
                               AddCrafts.isNewProject = true;
+                              AddCrafts.isMainteneanceProject=false;
                             });
                             Navigator.pushNamed(
                               context,

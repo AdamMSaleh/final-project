@@ -3,11 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/sup_appbar.dart';
+import 'package:flutter_finalproject/Packages/Pages/NewProject/View/maintenance_project.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/View/new_project.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AddCrafts extends StatefulWidget {
-  static bool isHomePage = false, isNewProject = false;
+  static bool isHomePage = false, isNewProject = false,isMainteneanceProject=false;
   String name,
       craftsmanship,
       location,
@@ -191,7 +192,17 @@ class _AddCraftsState extends State<AddCrafts> {
                         width: (MediaQuery.of(context).size.width),
                         child: ElevatedButton(
                           onPressed: () {
-                            //هاي باخذ منها المعلومات لصفحة مشروع جديد
+
+
+                            //
+                            // if(AddCrafts.isNewProject){
+                            //   AddCrafts.isMainteneanceProject=!AddCrafts.isMainteneanceProject;
+                            // }else if(AddCrafts.isMainteneanceProject){
+                            //   AddCrafts.isNewProject=!AddCrafts.isNewProject;
+                            // }
+                            //
+
+                            // //هاي باخذ منها المعلومات لصفحة مشروع جديد
                             if (AddCrafts.isNewProject) {
                               NewProject.ownerName = name;
                               NewProject.owner_name!.text = name;
@@ -201,6 +212,18 @@ class _AddCraftsState extends State<AddCrafts> {
                               Navigator.popUntil(
                                   context, ModalRoute.withName(NewProject.id));
                             }
+
+                            //هاي باخذ منها المعلومات لصفحة مشروع صيانة
+                            if (AddCrafts.isMainteneanceProject) {
+                              MainteneanceProject.ownerName = name;
+                              MainteneanceProject.owner_name!.text = name;
+                              print(name);
+                              MainteneanceProject.ownerId = '$userNo';
+
+                              Navigator.popUntil(
+                                  context, ModalRoute.withName(MainteneanceProject.id));
+                            }
+
 
                             // (context, MaterialPageRoute(builder: (BuildContext context) => NewProject()));
                             // Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => NewProject()));

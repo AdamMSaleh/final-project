@@ -17,7 +17,7 @@ import '../../Plan/View/body.dart';
 
 class ProjectsDetails extends StatefulWidget {
   static const String id = 'ProjectsDetails';
-  bool isStarted =false;
+  bool isStarted = false;
   String? str = '',
       Projec_No,
       user_no_eng,
@@ -67,7 +67,7 @@ class _ProjectsDetailsState extends State<ProjectsDetails> {
     setState(() {
       AddCrafts.isHomePage = false;
     });
-    widget.isStarted =widget.state=='1';
+    widget.isStarted = widget.state == '1';
   }
 
   @override
@@ -108,8 +108,10 @@ class _ProjectsDetailsState extends State<ProjectsDetails> {
                       ]),
                       TableRow(children: [
                         widget.state == '1'
-                            ? GoBack.tx(("  قيد الأنشاء  "),textColor: Colors.lightBlue)
-                            : GoBack.tx(("   منتهي   "),textColor: Colors.redAccent),
+                            ? GoBack.tx(("  قيد الأنشاء  "),
+                                textColor: Colors.lightBlue)
+                            : GoBack.tx(("   منتهي   "),
+                                textColor: Colors.redAccent),
                         GoBack.tx('حالة المشروع'),
                       ]),
                     ]),
@@ -130,19 +132,21 @@ class _ProjectsDetailsState extends State<ProjectsDetails> {
                       context,
                       card1: 'عرض الفواتير',
                       pageCard1: view_invoices(),
-                      card2: widget.isStarted?"إنشاء فاتورة":null,
-                      pageCard2: widget.isStarted?invoices():null,
-                      card3: widget.isStarted?"تحميل فاتورة":null,
-                      pageCard3: widget.isStarted?UploadImageInvoice():null,
+                      card2: widget.isStarted ? "إنشاء فاتورة" : null,
+                      pageCard2: widget.isStarted ? invoices() : null,
+                      card3: widget.isStarted ? "تحميل فاتورة" : null,
+                      pageCard3: widget.isStarted ? UploadImageInvoice() : null,
                     ),
-                    widget.isStarted? GoBack.btn(
-                      "اضافة اصحاب المهن/ عمال",
-                      context,
-                      //card1: 'اضافة',
-                      page: Research(),
-                      //IconButton(onPressed: ()=>GoBack.selectScreen(context, SearchHomePage()), icon: Icon(Icons.arrow_forward_ios_sharp , color: Colors.black,)),
-                      // card3: card3,
-                    ):Container(),
+                    widget.isStarted
+                        ? GoBack.btn(
+                            "اضافة اصحاب المهن/ عمال",
+                            context,
+                            //card1: 'اضافة',
+                            page: Research(),
+                            //IconButton(onPressed: ()=>GoBack.selectScreen(context, SearchHomePage()), icon: Icon(Icons.arrow_forward_ios_sharp , color: Colors.black,)),
+                            // card3: card3,
+                          )
+                        : Container(),
                     GoBack.btn(
                       "الدفعات",
                       context,
@@ -158,14 +162,25 @@ class _ProjectsDetailsState extends State<ProjectsDetails> {
                       context,
                       page: WorkersDetection(),
                     ),
+                    widget.isStarted
+                        ?
+                        // _showOption(context)
+                        GoBack().btnAlertDialog(
+                            GoBack.tx("   انهاء المشروع   ",
+                                textColor: Colors.red.shade500, sizee: 19),
+                            widget.Projec_No!,
+                            context,
+                          )
+                        : Container(),
                   ],
                 ),
               ),
             ],
           ),
-
         ),
       ),
     );
   }
+
+
 }

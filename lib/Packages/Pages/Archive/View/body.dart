@@ -57,110 +57,96 @@ class _ArchiveState extends State<Archive> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Column(
+          child: SingleChildScrollView(
+            child: Column(
         children: [
-          //* header
-          Container(
-            height: 150.h,
-            decoration: BoxDecoration(
-              color: AppColors.blue,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(60.r),
-                bottomRight: Radius.circular(60.r),
+            //* header
+            Container(
+              height: 150.h,
+              decoration: BoxDecoration(
+                color: AppColors.blue,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(60.r),
+                  bottomRight: Radius.circular(60.r),
+                ),
+              ),
+              child:
+                  //* header elements
+                  Stack(
+                children: [
+                  Column(
+                    children: [
+                      SizedBox(height: 10.h),
+                      Container(
+                        alignment: Alignment.center,
+                        //*Image
+                        child: CachedNetworkImage(
+                          imageUrl: PathImages.logo,
+                          //لتعديل ع صورة
+                          imageBuilder: (context, jjjjj) {
+                            return CircleAvatar(
+                              backgroundImage: jjjjj,
+                              radius: 50.r, //لتكبير
+                            );
+                          },
+                          placeholder: (context, url) =>
+                              AppLoading(chooseLoading: ChooseLoading.IMAGE),
+
+                          errorWidget: (context, url, error) => Icon(Icons.error),
+                        ),
+                      ),
+                      // SizedBox(height: 10.h),
+                      //* tital
+                      Text(
+                        KeyLang.oneclickhome,
+                        style: AppTheme.h5(context: context)
+                            ?.copyWith(color: AppColors.white),
+                      ).tr(),
+                    ],
+                  ),
+                ],
               ),
             ),
-            child:
-                //* header elements
-                Stack(
-              children: [
-                Column(
-                  children: [
-                    SizedBox(height: 10.h),
-                    Container(
-                      alignment: Alignment.center,
-                      //*Image
-                      child: CachedNetworkImage(
-                        imageUrl: PathImages.logo,
-                        //لتعديل ع صورة
-                        imageBuilder: (context, jjjjj) {
-                          return CircleAvatar(
-                            backgroundImage: jjjjj,
-                            radius: 50.r, //لتكبير
-                          );
-                        },
-                        placeholder: (context, url) =>
-                            AppLoading(chooseLoading: ChooseLoading.IMAGE),
-
-                        errorWidget: (context, url, error) => Icon(Icons.error),
-                      ),
-                    ),
-                    // SizedBox(height: 10.h),
-                    //* tital
-                    Text(
-                      KeyLang.oneclickhome,
-                      style: AppTheme.h5(context: context)
-                          ?.copyWith(color: AppColors.white),
-                    ).tr(),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          SizedBox(height: 13.h),
-          project.isNotEmpty && isFinishedProject > 0
-              ? Column(
-                  children: [
-                    ...project.map(
-                      (e) => e.state == '0'
-                          ? CartFProject(
-                              id: e.Projec_No!,
-                              num_project: e.project_name!,
-                              onTap: () => GoBack.selectScreen(
-                                context,
-                                ProjectsDetails(
-                                  str: e.project_name,
-                                  Owner_User_ID: e.Owner_User_ID,
-                                  owner_name: e.owner_name,
-                                  selectedDateEnd: e.selectedDateEnd,
-                                  selectedDateStart: e.selectedDateStart,
-                                  Region: e.Region,
-                                  City: e.City,
-                                  construction_license: e.construction_license,
-                                  Projec_No: e.construction_license,
-                                  project_name: e.project_name,
-                                  state: e.state,
-                                  user_no_eng: e.user_no_eng,
+            SizedBox(height: 13.h),
+            project.isNotEmpty && isFinishedProject > 0
+                ? Column(
+                    children: [
+                      ...project.map(
+                        (e) => e.state == '0'
+                            ? CartFProject(
+                                id: e.Projec_No!,
+                                num_project: e.project_name!,
+                                onTap: () => GoBack.selectScreen(
+                                  context,
+                                  ProjectsDetails(
+                                    str: e.project_name,
+                                    Owner_User_ID: e.Owner_User_ID,
+                                    owner_name: e.owner_name,
+                                    selectedDateEnd: e.selectedDateEnd,
+                                    selectedDateStart: e.selectedDateStart,
+                                    Region: e.Region,
+                                    City: e.City,
+                                    construction_license: e.construction_license,
+                                    Projec_No: e.construction_license,
+                                    project_name: e.project_name,
+                                    state: e.state,
+                                    user_no_eng: e.user_no_eng,
+                                  ),
                                 ),
-                              ),
-                              date_receipt: e.selectedDateEnd!,
-                              owner_name: e.owner_name!,
-                            )
-                          : Container(),
-                    ),
-                  ],
-                )
-              : Container(
-                  child: GoBack.tx('   لا يوجد مشاريع مؤرشفة   '),
-                ),
-          // CartFProject(
-          //   id: '1',
-          //   num_project: 'zarqa unverste',
-          //   onTap: () =>
-          //       GoBack.selectScreen(context, ProjectsDetails(str:"المشروع 41" ,)),
-          //   date_receipt: '3/8/2021',
-          //   owner_name: 'adam',
-          // ),
-          //
-          // CartFProject(
-          //   id: '2',
-          //   num_project: 'Home',
-          //   onTap: () =>
-          //       GoBack.selectScreen(context, ProjectsDetails(str: "المشروع 41",)),
-          //   date_receipt: '3/9/1999',
-          //   owner_name: 'adam',
-          // ),
+                                date_receipt: e.selectedDateEnd!,
+                                owner_name: e.owner_name!,
+                              )
+                            : Container(),
+                      ),
+                    ],
+                  )
+                : Container(
+                    child: GoBack.tx('   لا يوجد مشاريع مؤرشفة   '),
+                  ),
+          SizedBox(height: 13.h),
         ],
-      )),
+      ),
+          )),
     );
   }
 }
