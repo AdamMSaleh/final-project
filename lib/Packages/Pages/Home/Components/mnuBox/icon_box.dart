@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 //* Main box representing row
 class IconBox extends StatelessWidget {
+
   const IconBox({required List<Widget> chldrn, double hrizntl = 30})
       : _chldrn = chldrn,
         _hrizntl = hrizntl;

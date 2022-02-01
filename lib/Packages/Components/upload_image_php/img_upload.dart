@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/View/new_project.dart';
+import 'package:flutter_finalproject/Packages/Pages/Plan/Components/fill_plan.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 
@@ -191,6 +192,23 @@ class Upload_ImageState extends State<Upload_Image> {
               '/' +
               fileName;
           NewProject.constructionLicense = 'http://relaxbuilding.space/upload_image/image/' +
+              widget.bathImage! +
+              '/' +
+              fileName;
+        });
+        print(bathImagereturn ?? "33");
+        print(NewProject.constructionLicense ?? "33");
+
+        // Register().postImageSyndicateCard(
+        //     Guild_picture: 'image/' + widget.bathImage! + '/' + fileName);
+      }else if (widget.bathImage == 'Plan_Image') {
+        // هون لسا ما تفقدة الميثود
+        setState(() {
+          bathImagereturn = 'http://relaxbuilding.space/upload_image/image/' +
+              widget.bathImage! +
+              '/' +
+              fileName;
+          Fill_plane_page.Plan_Image = 'http://relaxbuilding.space/upload_image/image/' +
               widget.bathImage! +
               '/' +
               fileName;

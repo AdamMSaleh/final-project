@@ -6,17 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/Drawer/drawer.dart';
+import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/appbar.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/cach_image/image_user.dart';
 import 'package:flutter_finalproject/Packages/Pages/Archive/View/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/body.dart';
-import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/appbar.dart';
 import 'package:flutter_finalproject/Packages/Pages/Home/Components/btnIcon/iconbhom.dart';
+import 'package:flutter_finalproject/Packages/Pages/Home/Components/img_bttn.dart';
 import 'package:flutter_finalproject/Packages/Pages/Home/Components/mnuBox/icon_box.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/View/new_project.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/components/BoxDialog/dialog.dart';
-
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/Components/support/support_class.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/view/add_crafts.dart';
@@ -46,19 +46,19 @@ class _PageHomeState extends State<PageHome> {
   //
   //   x();
   // }
-  DateTime timeBackPressed =DateTime.now();
+  DateTime timeBackPressed = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        final difference =DateTime.now().difference(timeBackPressed);
+        final difference = DateTime.now().difference(timeBackPressed);
         final isExitWarning = difference >= Duration(seconds: 2);
 
-        timeBackPressed =DateTime.now();
+        timeBackPressed = DateTime.now();
         if (isExitWarning) {
-          final message = 'Press back again to exit';
-          Fluttertoast. showToast(msg: message, fontSize: 18);
+          const message = 'Press back again to exit';
+          Fluttertoast.showToast(msg: message, fontSize: 18);
           return false;
         } else {
           Fluttertoast.cancel();
@@ -103,10 +103,12 @@ class _PageHomeState extends State<PageHome> {
                         //*Current projects
                         IconBHome(
                           onTap: () {
+                            CurrentProjects.titel = 'المشاريع الحالية';
                             Navigator.pushNamed(
                               context,
                               CurrentProjects.id,
                             );
+                            BtnImg.onLoading(context);
                           },
                           imag: PathImages.currentProjects,
                           btnName: KeyLang.currentProjects,
@@ -126,13 +128,13 @@ class _PageHomeState extends State<PageHome> {
                         IconBHome(
                           onTap: () {
                             setState(() {
-                              AddCrafts.isHomePage=true;
-
+                              AddCrafts.isHomePage = true;
                             });
                             Navigator.pushNamed(
                               context,
                               Research.id,
                             );
+                            BtnImg.onLoading(context);
                           },
                           imag: PathImages.search,
                           btnName: KeyLang.research,
@@ -167,10 +169,12 @@ class _PageHomeState extends State<PageHome> {
                         //* Work Archive
                         IconBHome(
                           onTap: () {
+                            CurrentProjects.titel = "الارشيف";
                             Navigator.pushNamed(
                               context,
-                              Archive.id,
+                              CurrentProjects.id,
                             );
+                            BtnImg.onLoading(context);
                           },
                           imag: PathImages.archive,
                           btnName: KeyLang.archive,

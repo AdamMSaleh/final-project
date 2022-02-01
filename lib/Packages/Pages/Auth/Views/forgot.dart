@@ -28,135 +28,119 @@ class PageForgetPass extends StatelessWidget {
   Widget build(BuildContext context) {
     // * access Provider AuthService
     DateTime timeBackPressed =DateTime.now();
-    return WillPopScope(
-      onWillPop: () async {
-        final difference =DateTime.now().difference(timeBackPressed);
-        final isExitWarning = difference >= Duration(seconds: 2);
+    return Scaffold(
+      backgroundColor: AppColors.blue,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  alignment: Alignment.topCenter,
+                  //*Image
+                  child: CachedNetworkImage(
+                    imageUrl: PathImages.logo,
+                    //لتعديل ع صورة
+                    imageBuilder: (context, jjjjj) {
+                      return CircleAvatar(
+                        backgroundImage: jjjjj,
+                        radius: 75.r, //لتكبير
+                      );
+                    },
+                    placeholder: (context, url) =>
+                        AppLoading(chooseLoading: ChooseLoading.IMAGE),
 
-        timeBackPressed =DateTime.now();
-        if (isExitWarning) {
-          const message = 'Press back again to exit';
-          Fluttertoast. showToast(msg: message, fontSize: 18);
-          return false;
-        } else {
-          Fluttertoast.cancel();
-          return true;
-        }
-      },
-      child: Scaffold(
-        backgroundColor: AppColors.blue,
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    alignment: Alignment.topCenter,
-                    //*Image
-                    child: CachedNetworkImage(
-                      imageUrl: PathImages.logo,
-                      //لتعديل ع صورة
-                      imageBuilder: (context, jjjjj) {
-                        return CircleAvatar(
-                          backgroundImage: jjjjj,
-                          radius: 75.r, //لتكبير
-                        );
-                      },
-                      placeholder: (context, url) =>
-                          AppLoading(chooseLoading: ChooseLoading.IMAGE),
-
-                      errorWidget: (context, url, error) => Icon(Icons.error),
-                    ),
+                    errorWidget: (context, url, error) => Icon(Icons.error),
                   ),
-                  //*tital
-                  Text(KeyLang.oneclickhome,
-                      style: AppStyles.styleHeadline1Light.copyWith(
-                        color: AppColors.white,
-                        fontSize: 40.sp,
-                      )).tr(),
-                  SizedBox(height: 20.h),
-                  //*box
-                  Container(
-                      margin: EdgeInsets.symmetric(horizontal: 20.w),
-                      decoration: BoxDecoration(
-                        color: AppTheme.getTheme(context: context)
-                            ? AppColors.black
-                            : AppColors.white,
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(50.r),
-                          topRight: Radius.circular(50.r),
-                        ),
+                ),
+                //*tital
+                Text(KeyLang.oneclickhome,
+                    style: AppStyles.styleHeadline1Light.copyWith(
+                      color: AppColors.white,
+                      fontSize: 40.sp,
+                    )).tr(),
+                SizedBox(height: 20.h),
+                //*box
+                Container(
+                    margin: EdgeInsets.symmetric(horizontal: 20.w),
+                    decoration: BoxDecoration(
+                      color: AppTheme.getTheme(context: context)
+                          ? AppColors.black
+                          : AppColors.white,
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(50.r),
+                        topRight: Radius.circular(50.r),
                       ),
-                      child: Form(
-                        key: _keyFoem,
-                        child: Column(
-                          children: [
-                            //* tital box
-                            Container(
-                              margin: EdgeInsets.symmetric(horizontal: 15.w),
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                KeyLang.forgot,
-                                style: AppStyles.styleHeadline1Light.copyWith(
-                                  color: AppColors.blue,
-                                  fontSize: 30.sp,
-                                ),
-                              ).tr(),
-                            ),
-                            SizedBox(height: 7.h),
-                            //*text
-                            Container(
-                              margin: EdgeInsets.symmetric(horizontal: 15.w),
-                              alignment: Alignment.center,
-                              child: Text(
-                                KeyLang.hintResetPass,
-                                style: AppStyles.styleHeadline1Light.copyWith(
-                                  color: AppTheme.getTheme(context: context)
-                                      ? AppColors.white
-                                      : AppColors.black,
-                                  fontSize: 20.sp,
-                                ),
-                              ).tr(),
-                            ),
-                            SizedBox(height: 15.h),
-                            //*email
-                            Container(
-                              margin: EdgeInsets.symmetric(horizontal: 25.w),
-                              alignment: Alignment.center,
-                              child: SimpleFiled(
-                                keyboardType: TextInputType.emailAddress,
-                                onValidator: (value) =>
-                                    AppValidators.isEmail(value),
-                                onSaved: (value) => _email = value ?? '',
-                                hint: KeyLang.email,
-                                pIcon: Icon(
-                                  Icons.email,
-                                  color: AppColors.blue,
-                                ),
+                    ),
+                    child: Form(
+                      key: _keyFoem,
+                      child: Column(
+                        children: [
+                          //* tital box
+                          Container(
+                            margin: EdgeInsets.symmetric(horizontal: 15.w),
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              KeyLang.forgot,
+                              style: AppStyles.styleHeadline1Light.copyWith(
+                                color: AppColors.blue,
+                                fontSize: 30.sp,
+                              ),
+                            ).tr(),
+                          ),
+                          SizedBox(height: 7.h),
+                          //*text
+                          Container(
+                            margin: EdgeInsets.symmetric(horizontal: 15.w),
+                            alignment: Alignment.center,
+                            child: Text(
+                              KeyLang.hintResetPass,
+                              style: AppStyles.styleHeadline1Light.copyWith(
+                                color: AppTheme.getTheme(context: context)
+                                    ? AppColors.white
+                                    : AppColors.black,
+                                fontSize: 20.sp,
+                              ),
+                            ).tr(),
+                          ),
+                          SizedBox(height: 15.h),
+                          //*email
+                          Container(
+                            margin: EdgeInsets.symmetric(horizontal: 25.w),
+                            alignment: Alignment.center,
+                            child: SimpleFiled(
+                              keyboardType: TextInputType.emailAddress,
+                              onValidator: (value) =>
+                                  AppValidators.isEmail(value),
+                              onSaved: (value) => _email = value ?? '',
+                              hint: KeyLang.email,
+                              pIcon: Icon(
+                                Icons.email,
+                                color: AppColors.blue,
                               ),
                             ),
-                            SizedBox(height: 20.h),
-                            //*button
-                            Container(
-                              margin: EdgeInsets.symmetric(horizontal: 25.w),
-                              child: Center(
-                                child: SimpleBtn(
-                                  onTap: () {
-                                    if (_keyFoem.currentState!.validate()) {}
-                                  },
-                                  btnText: KeyLang.send.toUpperCase().tr(),
-                                ),
+                          ),
+                          SizedBox(height: 20.h),
+                          //*button
+                          Container(
+                            margin: EdgeInsets.symmetric(horizontal: 25.w),
+                            child: Center(
+                              child: SimpleBtn(
+                                onTap: () {
+                                  if (_keyFoem.currentState!.validate()) {}
+                                },
+                                btnText: KeyLang.send.toUpperCase().tr(),
                               ),
                             ),
+                          ),
 
-                            SizedBox(height: 25.h),
-                          ],
-                        ),
-                      )),
-                ],
-              ),
+                          SizedBox(height: 25.h),
+                        ],
+                      ),
+                    )),
+              ],
             ),
           ),
         ),

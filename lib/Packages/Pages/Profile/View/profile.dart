@@ -3,19 +3,22 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 import 'package:flutter_finalproject/Packages/Components/Toast/simple_toast.dart';
+import 'package:flutter_finalproject/Packages/Components/user_info_secure_storage/user_save_login.dart';
 import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/design.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/Components/profile_information.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile_edit.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile_for_workers.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/workerRequirements/laborManagementForProfessionals/labor_management_for_professionals.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:photo_view/photo_view.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 class Profile extends StatefulWidget {
   static const String id = 'Profile';
 
@@ -33,15 +36,14 @@ class Profile extends StatefulWidget {
   static String image1 = ProfileInformation.picture_user ??
       "https://i2.wp.com/alghad.com/wp-content/uploads/2021/10/Squid-Game-Games-Ranked.jpg?resize=1024%2C512&ssl=1"; //صورة المستخدم
 
-  Profile(
-      {Key? key,
-      firstName,
-      lastName,
-      occupation,
-      age,
-      region,
-      phoneNumber,
-      image})
+  Profile({Key? key,
+    firstName,
+    lastName,
+    occupation,
+    age,
+    region,
+    phoneNumber,
+    image})
       : super(key: key) {
     if (firstName != null &&
         lastName != null &&
@@ -74,12 +76,12 @@ class _ProfileState extends State<Profile> {
         GoBack.selectScreen(
           context,
           ProfileEdit(
-            firstName: ProfileForWorkers.firstName1,
-            lastName: ProfileForWorkers.lastName1,
-            occupation: ProfileForWorkers.occupation1,
-            age: ProfileForWorkers.age1,
-            region: ProfileForWorkers.region1,
-            phoneNumber: ProfileForWorkers.phoneNumber1,
+            firstName: ProfileInformation.first_name,
+            lastName: ProfileInformation.last_name,
+            occupation: ProfileInformation.account_type,
+            age: ProfileInformation.age,
+            region: ProfileInformation.city_user,
+            phoneNumber: ProfileInformation.phone_number,
             image: ProfileInformation.picture_user ??
                 "https://i2.wp.com/alghad.com/wp-content/uploads/2021/10/"
                     "Squid-Game-Games-Ranked.jpg?resize=1024%2C512&ssl=1", //صورة المستخدم
@@ -94,21 +96,22 @@ class _ProfileState extends State<Profile> {
         break;
 
       case 5:
-        // print("User Logged out");
+      // print("User Logged out");
 
-        // Navigator.of(context).pushAndRemoveUntil(
-        //     MaterialPageRoute(builder: (context) => LoginPage()),
-        //         (route) => false);
+      // Navigator.of(context).pushAndRemoveUntil(
+      //     MaterialPageRoute(builder: (context) => LoginPage()),
+      //         (route) => false);
         break;
     }
   }
-@override
+
+  @override
   void initState() {
-  Timer(Duration(seconds: 5), () {
-    setState(() {
-      processing = false;
+    Timer(Duration(seconds: 5), () {
+      setState(() {
+        processing = false;
+      });
     });
-  });
     super.initState();
   }
 
@@ -130,17 +133,18 @@ class _ProfileState extends State<Profile> {
                 iconTheme: IconThemeData(color: Colors.white)),
             child: PopupMenuButton<int>(
               color: Colors.black,
-              itemBuilder: (context) => [
-                const PopupMenuItem<int>(
+              itemBuilder: (context) =>
+              [
+                 PopupMenuItem<int>(
                     value: 0, child: Text('تعديل الملف الشخصي')),
-                const PopupMenuItem<int>(value: 1, child: Text("الاعدادات")),
-                const PopupMenuItem<int>(
+                 PopupMenuItem<int>(value: 1, child: Text("الاعدادات")),
+                 PopupMenuItem<int>(
                     value: 2, child: Text("السياسة والخصوصية")),
-                const PopupMenuDivider(),
+                 PopupMenuDivider(),
                 PopupMenuItem<int>(
                     value: 5,
                     child: Row(
-                      children: const [
+                      children:  [
                         Icon(
                           Icons.logout,
                           color: Colors.red,
@@ -148,7 +152,15 @@ class _ProfileState extends State<Profile> {
                         SizedBox(
                           width: 7,
                         ),
-                        Text('تسجيل الخروج')
+                        TextButton(
+                          onPressed:(){
+                            UserPreferences.removeUsername();
+                            UserPreferences.removePassword();
+                            UserPreferences.removeUserId();
+                            Register().RemovingSessionData(context);
+                          },
+                          child: Text('تسجيل الخروج'),
+                        ),
                       ],
                     )),
               ],
@@ -184,16 +196,19 @@ class _ProfileState extends State<Profile> {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(20),
                     // padding: const EdgeInsets.all(20),
-                    child: Image.network(
-                      ProfileForWorkers.image1,
+                    child: CachedNetworkImage(
+                      imageUrl: ProfileInformation.picture_user!,
                       height: 220,
+                      placeholder: (context, url) =>
+                          CircularProgressIndicator(),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
                     ),
+
+                    // Image.network(
+                    //   ProfileForWorkers.image1,
+                    //   height: 220,
+                    // ),
                   ),
-                  processing
-                      ? CircularProgressIndicator(
-                          backgroundColor: Colors.black38,
-                          color: Colors.black45)
-                      : Container(),
                 ],
               ),
 
@@ -201,12 +216,13 @@ class _ProfileState extends State<Profile> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
-                    onPressed: () => GoBack.selectScreen(
-                        context, const LaborManagementForProfessionals()),
+                    onPressed: () =>
+                        GoBack.selectScreen(
+                            context, const LaborManagementForProfessionals()),
                     child: GoBack.tx('أدارة العمل', textColor: textColor),
                     style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.all(project_color('741b47')),
+                      MaterialStateProperty.all(project_color('741b47')),
                     ),
                   ),
                   ElevatedButton(
@@ -220,7 +236,7 @@ class _ProfileState extends State<Profile> {
                         textColor: textColor),
                     style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.all(project_color('741b47')),
+                      MaterialStateProperty.all(project_color('741b47')),
                     ),
                   ),
                 ],
@@ -241,15 +257,18 @@ class _ProfileState extends State<Profile> {
                     Card(
                       color: project_color('741b47'),
                       child: Container(
-                        width: (MediaQuery.of(context).size.width) * 0.90,
+                        width: (MediaQuery
+                            .of(context)
+                            .size
+                            .width) * 0.90,
                         padding: EdgeInsets.all(5),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             GoBack.tx('الاسم : ', textColor: textColor),
-                            GoBack.tx(ProfileForWorkers.firstName1,
+                            GoBack.tx(ProfileInformation.first_name!,
                                 textColor: textColor),
-                            GoBack.tx(ProfileForWorkers.lastName1,
+                            GoBack.tx(ProfileInformation.last_name!,
                                 textColor: textColor),
                           ],
                         ),
@@ -330,13 +349,16 @@ class _ProfileState extends State<Profile> {
                     Card(
                       color: project_color('741b47'),
                       child: Container(
-                        width: (MediaQuery.of(context).size.width) * 0.90,
+                        width: (MediaQuery
+                            .of(context)
+                            .size
+                            .width) * 0.90,
                         padding: EdgeInsets.all(5),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             GoBack.tx(' المهنه :', textColor: textColor),
-                            GoBack.tx(ProfileForWorkers.occupation1,
+                            GoBack.tx(ProfileInformation.account_type!,
                                 textColor: textColor),
                           ],
                         ),
@@ -356,13 +378,16 @@ class _ProfileState extends State<Profile> {
                     Card(
                       color: project_color('741b47'),
                       child: Container(
-                        width: (MediaQuery.of(context).size.width) * 0.90,
+                        width: (MediaQuery
+                            .of(context)
+                            .size
+                            .width) * 0.90,
                         padding: EdgeInsets.all(5),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             GoBack.tx(' العمر :', textColor: textColor),
-                            GoBack.tx(ProfileForWorkers.age1,
+                            GoBack.tx(ProfileInformation.age!,
                                 textColor: textColor),
                           ],
                         ),
@@ -384,13 +409,16 @@ class _ProfileState extends State<Profile> {
                     Card(
                       color: project_color('741b47'),
                       child: Container(
-                        width: (MediaQuery.of(context).size.width) * 0.90,
+                        width: (MediaQuery
+                            .of(context)
+                            .size
+                            .width) * 0.90,
                         padding: EdgeInsets.all(5),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             GoBack.tx(' المنطقة :', textColor: textColor),
-                            GoBack.tx(ProfileForWorkers.region1,
+                            GoBack.tx(ProfileInformation.city_user!,
                                 textColor: textColor),
                           ],
                         ),
@@ -412,13 +440,16 @@ class _ProfileState extends State<Profile> {
                     Card(
                       color: project_color('741b47'),
                       child: Container(
-                        width: (MediaQuery.of(context).size.width) * 0.90,
+                        width: (MediaQuery
+                            .of(context)
+                            .size
+                            .width) * 0.90,
                         padding: EdgeInsets.all(5),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             GoBack.tx('الرقم : ', textColor: textColor),
-                            GoBack.tx(ProfileForWorkers.phoneNumber1,
+                            GoBack.tx(ProfileInformation.phone_number!,
                                 textColor: textColor),
                           ],
                         ),
@@ -437,32 +468,32 @@ class _ProfileState extends State<Profile> {
     );
   }
 
-  witcicullogin() {
-    var wigt;
-    if (!processing) {
-      wigt = Column(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            // padding: const EdgeInsets.all(20),
-            child: Image.network(
-              ProfileForWorkers.image1,
-              height: 220,
-            ),
-          ),
-          CircularProgressIndicator(
-              backgroundColor: Colors.black38, color: Colors.black45),
-        ],
-      );
-    } else {
-      wigt = CircularProgressIndicator(
-          backgroundColor: Colors.black38, color: Colors.black45);
-      Timer(Duration(seconds: 3), () {
-        setState(() {
-          processing = false;
-        });
-      });
-    }
-    return wigt;
-  }
+// witcicullogin() {
+//   var wigt;
+//   if (!processing) {
+//     wigt = Column(
+//       children: [
+//         ClipRRect(
+//           borderRadius: BorderRadius.circular(20),
+//           // padding: const EdgeInsets.all(20),
+//           child: Image.network(
+//             ProfileForWorkers.image1,
+//             height: 220,
+//           ),
+//         ),
+//         CircularProgressIndicator(
+//             backgroundColor: Colors.black38, color: Colors.black45),
+//       ],
+//     );
+//   } else {
+//     wigt = CircularProgressIndicator(
+//         backgroundColor: Colors.black38, color: Colors.black45);
+//     Timer(Duration(seconds: 3), () {
+//       setState(() {
+//         processing = false;
+//       });
+//     });
+//   }
+//   return wigt;
+// }
 }
