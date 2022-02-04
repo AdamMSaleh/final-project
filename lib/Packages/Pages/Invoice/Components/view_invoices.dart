@@ -1,7 +1,6 @@
 // ignore_for_file: unnecessary_this, camel_case_types, non_constant_identifier_names, no_logic_in_create_state, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
-import 'package:flutter_finalproject/Packages/Components/Select_Screen/select_screen.dart';
 import 'package:flutter_finalproject/Packages/Components/Toast/simple_toast.dart';
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/projects_details.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -46,8 +45,8 @@ class _view_invoicesState extends State<view_invoices> {
         // centerTitle: true,
         leading: IconButton(
             onPressed: () {
-              Navigator.of(context)
-                  .pushNamedAndRemoveUntil(ProjectsDetails.id, (Route<dynamic> route) => true);
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                  ProjectsDetails.id, (Route<dynamic> route) => true);
               // Navigator.removeRoute(context, MaterialPageRoute(builder: (BuildContext context) => ProjectsDetails()));
               // Navigator.pushReplacement(context, ProjectsDetails.id);//popUntil (context ,ModalRoute.withName(ProjectsDetails.id));
             },
@@ -291,13 +290,16 @@ class _view_invoicesState extends State<view_invoices> {
       floatingActionButton: FloatingActionButton(
         // Within the `FirstRoute` widget
         onPressed: () {
-          ProjectsDetails().isStarted?Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => invoices(
-                      invoice_info: invoice_info1,
-                    )),
-          ):simpleToast(message: ' لا يمكن اضافة فاتورة لأن المشروع منتهي ');
+          ProjectsDetails().isStarted
+              ? Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => invoices(
+                            invoice_info: invoice_info1,
+                          )),
+                )
+              : simpleToast(
+                  message: ' لا يمكن اضافة فاتورة لأن المشروع منتهي ');
         },
         child: const Icon(
           Icons.add,

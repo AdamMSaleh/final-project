@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable, no_logic_in_create_state, prefer_const_constructors, sized_box_for_whitespace, avoid_print
+// ignore_for_file: must_be_immutable, no_logic_in_create_state, prefer_const_constructors, sized_box_for_whitespace, avoid_print, unnecessary_this, duplicate_ignore
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
@@ -8,7 +8,9 @@ import 'package:flutter_finalproject/Packages/Pages/NewProject/View/new_project.
 import 'package:url_launcher/url_launcher.dart';
 
 class AddCrafts extends StatefulWidget {
-  static bool isHomePage = false, isNewProject = false,isMainteneanceProject=false;
+  static bool isHomePage = false,
+      isNewProject = false,
+      isMainteneanceProject = false;
   String name,
       craftsmanship,
       location,
@@ -192,8 +194,6 @@ class _AddCraftsState extends State<AddCrafts> {
                         width: (MediaQuery.of(context).size.width),
                         child: ElevatedButton(
                           onPressed: () {
-
-
                             //
                             // if(AddCrafts.isNewProject){
                             //   AddCrafts.isMainteneanceProject=!AddCrafts.isMainteneanceProject;
@@ -220,10 +220,9 @@ class _AddCraftsState extends State<AddCrafts> {
                               print(name);
                               MainteneanceProject.ownerId = '$userNo';
 
-                              Navigator.popUntil(
-                                  context, ModalRoute.withName(MainteneanceProject.id));
+                              Navigator.popUntil(context,
+                                  ModalRoute.withName(MainteneanceProject.id));
                             }
-
 
                             // (context, MaterialPageRoute(builder: (BuildContext context) => NewProject()));
                             // Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => NewProject()));

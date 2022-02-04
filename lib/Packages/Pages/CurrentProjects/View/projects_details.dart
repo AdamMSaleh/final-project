@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable, avoid_unnecessary_containers, prefer_const_constructors, prefer_adjacent_string_concatenation, implementation_imports, must_call_super
+// ignore_for_file: must_be_immutable, avoid_unnecessary_containers, prefer_const_constructors, prefer_adjacent_string_concatenation, implementation_imports, must_call_super, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/DataBase/register.dart';
@@ -191,6 +191,4 @@ class _ProjectsDetailsState extends State<ProjectsDetails> {
       ),
     );
   }
-
-
 }

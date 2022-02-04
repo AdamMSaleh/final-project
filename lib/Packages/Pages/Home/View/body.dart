@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, implementation_imports, unused_import, must_be_immutable, sized_box_for_whitespace, duplicate_ignore, avoid_unnecessary_containers
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, implementation_imports, unused_import, must_be_immutable, sized_box_for_whitespace, duplicate_ignore, avoid_unnecessary_containers, prefer_const_declarations
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
@@ -46,19 +46,19 @@ class _PageHomeState extends State<PageHome> {
   //
   //   x();
   // }
-  DateTime timeBackPressed =DateTime.now();
+  DateTime timeBackPressed = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        final difference =DateTime.now().difference(timeBackPressed);
+        final difference = DateTime.now().difference(timeBackPressed);
         final isExitWarning = difference >= Duration(seconds: 2);
 
-        timeBackPressed =DateTime.now();
+        timeBackPressed = DateTime.now();
         if (isExitWarning) {
           final message = 'Press back again to exit';
-          Fluttertoast. showToast(msg: message, fontSize: 18);
+          Fluttertoast.showToast(msg: message, fontSize: 18);
           return false;
         } else {
           Fluttertoast.cancel();
@@ -126,8 +126,7 @@ class _PageHomeState extends State<PageHome> {
                         IconBHome(
                           onTap: () {
                             setState(() {
-                              AddCrafts.isHomePage=true;
-
+                              AddCrafts.isHomePage = true;
                             });
                             Navigator.pushNamed(
                               context,

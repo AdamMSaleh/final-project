@@ -1,4 +1,4 @@
-// ignore_for_file: no_logic_in_create_state
+// ignore_for_file: no_logic_in_create_state, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
@@ -17,7 +17,7 @@ class _CurrentProjectMainState extends State<CurrentProjectMain> {
   String srt;
   _CurrentProjectMainState(this.srt);
   // Future<bool> maybePop(BuildContext context) {
-    // return Navigator.of(context).maybePop(zz.ProjectsDetails("j"));
+  // return Navigator.of(context).maybePop(zz.ProjectsDetails("j"));
   // }
 
   // void selectScreen(BuildContext ctx) {

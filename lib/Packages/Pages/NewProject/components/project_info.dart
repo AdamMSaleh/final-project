@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, prefer_typing_uninitialized_variables
+
 import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Packages/Components/Toast/simple_toast.dart';
 import 'package:flutter_finalproject/Packages/Components/user_info_secure_storage/user_save_login.dart';
@@ -28,7 +30,8 @@ class ProjectInfo {
       this.Owner_User_ID,
       this.owner_name,
       this.construction_license,
-      this.state, this.Project_Type});
+      this.state,
+      this.Project_Type});
 
   static List<ProjectInfo> project = [];
 

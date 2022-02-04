@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, sized_box_for_whitespace, prefer_const_constructors, duplicate_ignore, unused_import, implementation_imports
+// ignore_for_file: use_key_in_widget_constructors, sized_box_for_whitespace, prefer_const_constructors, duplicate_ignore, unused_import, implementation_imports, prefer_const_declarations
 
 import 'dart:async';
 
@@ -46,18 +46,19 @@ class _PageSplashState extends State<PageSplash> {
     });
     super.initState();
   }
-  DateTime timeBackPressed =DateTime.now();
+
+  DateTime timeBackPressed = DateTime.now();
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        final difference =DateTime.now().difference(timeBackPressed);
+        final difference = DateTime.now().difference(timeBackPressed);
         final isExitWarning = difference >= Duration(seconds: 2);
 
-        timeBackPressed =DateTime.now();
+        timeBackPressed = DateTime.now();
         if (isExitWarning) {
           final message = 'Press back again to exit';
-          Fluttertoast. showToast(msg: message, fontSize: 18);
+          Fluttertoast.showToast(msg: message, fontSize: 18);
           return false;
         } else {
           Fluttertoast.cancel();
