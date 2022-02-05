@@ -524,7 +524,7 @@ class _PaymentHistoryState extends State<PaymentHistory>
       floatingActionButton: FloatingActionButton(
         backgroundColor: project_color('741b47'),
         onPressed: () => setState(() {
-          ProjectsDetails().isStarted?Navigator.pushNamed(
+          ProjectsDetails.state1 == '1' ?Navigator.pushNamed(
             context,
             Fill_payment_page.id,
           ):simpleToast(message: ' لا يمكن اضافة فاتورة لأن المشروع منتهي ');

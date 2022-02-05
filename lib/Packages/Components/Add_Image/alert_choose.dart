@@ -14,6 +14,7 @@ import 'package:image_picker/image_picker.dart';
 
 class AlertChooseImage extends StatefulWidget {
   String? bathImage = 'profile';
+
   AlertChooseImage({Key? key, this.bathImage = 'profile'}) : super(key: key);
 
   @override
@@ -23,6 +24,7 @@ class AlertChooseImage extends StatefulWidget {
 class _AlertChooseImageState extends State<AlertChooseImage> {
   final _picker = ImagePicker();
   File? _image;
+
 
   Future<File?> _getImage({bool isCamera = false}) async {
     try {

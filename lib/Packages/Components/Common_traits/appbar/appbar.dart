@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/cach_image/image_user.dart';
+import 'package:flutter_finalproject/Packages/Pages/Profile/Components/profile_information.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
 import 'package:flutter_finalproject/Theme/style.dart';
 import 'package:flutter_finalproject/Utils/path_images.dart';
@@ -52,7 +53,7 @@ class _AppBHomeState extends State<AppBHome> {
         Padding(
           padding: EdgeInsets.all(2.w),
           child: ImageUser(
-              image: PathImages.profile, radius: 20.r, sizeLoading: 20.r),
+              image: ProfileInformation.picture_user!, radius: 20.r, sizeLoading: 20.r),
         ),
         SizedBox(
           width: 7.w,

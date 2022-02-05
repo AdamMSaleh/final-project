@@ -23,25 +23,25 @@
 // ignore: duplicate_ignore
 // ignore_for_file: file_names, non_constant_identifier_names, duplicate_ignore
 
-import 'dart:io';
-
 // ignore: duplicate_ignore, duplicate_ignore, duplicate_ignore, duplicate_ignore
 class PlanInformion {
-  //String type;
-  // ignore: non_constant_identifier_names
-  String name_plan;
-  // ignore: non_constant_identifier_names
-  int code_number;
-  // ignore: non_constant_identifier_names
-  String Name_Office;
-  // ignore: non_constant_identifier_names
-  String Name_designer;
-  File? image;
+  String Projec_No,
+      Scheme_name,
+      Engineering_office_name,
+      designer_name,
+      Scheme_encoding,
+      chart_picture,
+      chart_type;
 
-  PlanInformion(
-      {required this.name_plan,
-      required this.Name_Office,
-      required this.Name_designer,
-      required this.code_number,
-      required this.image});
+  PlanInformion({
+    required this.Projec_No,
+    required this.Scheme_name,
+    required this.Engineering_office_name,
+    required this.designer_name,
+    required this.Scheme_encoding,
+    required this.chart_picture,
+    required this.chart_type,
+  });
+
+
 }

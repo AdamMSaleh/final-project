@@ -91,7 +91,7 @@ class _PageInfoMechState extends State<PageInfoMech> {
               //* page elements
               SizedBox(height: 10.h),
               //*imag
-              InfoImage(),
+              InfoImageState(),
               //*form
 
               Container(

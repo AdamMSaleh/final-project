@@ -33,7 +33,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class PageRegister extends StatefulWidget {
   static const String id = 'PageRegister';
-
+static String accType='';
   const PageRegister({Key? key}) : super(key: key);
 
   @override
@@ -87,12 +87,7 @@ class _PageRegister extends State<PageRegister> {
 
   @override
   Widget build(BuildContext context) {
-    controllerValue['first_name']!.text = 'dssa';
-    controllerValue['last_name']!.text = 'yuyuyuy';
-    controllerValue['email']!.text = 'ututtu@zu.com';
-    // controllerValue['password']!.text = 'gfgjk,sdeyhj';
-    controllerValue['phone_number']!.text = '5786428197';
-    // controllerValue['passwordAgin']!.text = 'gfgjk,sdeyhj';
+
     DateTime timeBackPressed =DateTime.now();
     return WillPopScope(
       onWillPop: () async {
@@ -452,6 +447,7 @@ class _PageRegister extends State<PageRegister> {
                                                         .validate()) {
                                                       print(
                                                           'under buttton in register');
+                                                      PageRegister.accType=s.toString();
                                                       Register().postData(
                                                         first_name:
                                                             controllerValue[

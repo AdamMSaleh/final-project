@@ -141,7 +141,7 @@ class _NewProjectState extends State<NewProject> {
                         SizedBox(height: 10.h),
                         //* tital
                         Text(
-                          KeyLang.oneclickhome,
+                          "إنشاء مشروع جديد",
                           style: AppTheme.h5(context: context)
                               ?.copyWith(color: AppColors.white),
                         ).tr(),

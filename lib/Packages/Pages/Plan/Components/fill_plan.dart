@@ -6,14 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Packages/Components/Add_Image/alert_choose.dart';
+import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/projects_details.dart';
 import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/design.dart';
 import 'package:flutter_finalproject/Packages/Pages/Plan/Components/planInformion.dart';
-import 'package:image_picker/image_picker.dart';
 
 class Fill_plane_page extends StatefulWidget {
   static const String id = 'fill_Plan';
+  static String Plan_Image = "";
+  static String Projec_No = '';
 
-  const Fill_plane_page({Key? key}) : super(key: key);
+  Fill_plane_page( {Key? key}) : super(key: key);
+
   @override
   _Fill_plane_pageState createState() => _Fill_plane_pageState();
 }
@@ -32,8 +35,8 @@ class _Fill_plane_pageState extends State<Fill_plane_page> {
   var myControllerOffice_name = TextEditingController();
   var myControllerDesigner_name = TextEditingController();
   var myControllerCode_number = TextEditingController();
+
 //var myControllertype = TextEditingController();
-  final ImagePicker _picker = ImagePicker();
 
   File? imageFile;
   File? imageFile1;
@@ -46,24 +49,24 @@ class _Fill_plane_pageState extends State<Fill_plane_page> {
     'مخطط التنظيمي'
   ];
   List<PlanInformion> planData = [
-    PlanInformion(
-        name_plan: 'univercity',
-        Name_Office: 'Amman',
-        Name_designer: 'Ali',
-        code_number: 202100,
-        image: null),
-    PlanInformion(
-        name_plan: 'home jarash',
-        Name_Office: 'zarqa',
-        Name_designer: 'mohammad',
-        code_number: 202100,
-        image: null),
-    PlanInformion(
-        name_plan: 'school',
-        Name_Office: 'ajlon',
-        Name_designer: 'Essa',
-        code_number: 202100,
-        image: null),
+    // PlanInformion(
+    //     name_plan: 'univercity',
+    //     Name_Office: 'Amman',
+    //     Name_designer: 'Ali',
+    //     code_number: 202100,
+    //     image: null),
+    // PlanInformion(
+    //     name_plan: 'home jarash',
+    //     Name_Office: 'zarqa',
+    //     Name_designer: 'mohammad',
+    //     code_number: 202100,
+    //     image: null),
+    // PlanInformion(
+    //     name_plan: 'school',
+    //     Name_Office: 'ajlon',
+    //     Name_designer: 'Essa',
+    //     code_number: 202100,
+    //     image: null),
   ];
 
   @override
@@ -207,7 +210,7 @@ class _Fill_plane_pageState extends State<Fill_plane_page> {
                     fontSize: 18,
                     color: b,
                   ),
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.text,
                 ),
               ),
 // -----------------------------------------------------
@@ -221,13 +224,16 @@ class _Fill_plane_pageState extends State<Fill_plane_page> {
                           size: 50,
                           color: b,
                         ),
-                        onPressed: () => showDialog(
-                          barrierDismissible: false,
-                          context: context,
-                          builder: (context) => AlertChooseImage(
-                            bathImage: 'Plan Image',
-                          ),
-                        ),
+                        onPressed: () {
+                          showDialog(
+                            barrierDismissible: false,
+                            context: context,
+                            builder: (context) =>
+                                AlertChooseImage(
+                                  bathImage: 'Plan_Image',
+                                ),
+                          );
+                        },
 
                         //_showOption(context),
                       ),
@@ -245,37 +251,42 @@ class _Fill_plane_pageState extends State<Fill_plane_page> {
                     ElevatedButton(
                       onPressed: () {
                         setState(
-                          () {
-                            if (myControllerName_Plan.text != '' &&
+                              () {
+
+                            if (Fill_plane_page.Plan_Image.isNotEmpty &&
+                                myControllerName_Plan.text != '' &&
                                 myControllerCode_number.text != '' &&
                                 myControllerDesigner_name.text != '' &&
-                                myControllerOffice_name.text != '') {
-                              planData.add(
-                                PlanInformion(
-                                    name_plan: myControllerName_Plan.text,
-                                    // type: myControllertype.text,
-                                    code_number: int.parse(
-                                        (myControllerCode_number).text),
-                                    Name_designer:
-                                        myControllerDesigner_name.text,
-                                    Name_Office: myControllerOffice_name.text,
-                                    image: imageFile),
-                              );
+                                myControllerOffice_name.text != '' &&
+                                (Fill_plane_page.Plan_Image != null &&
+                                    Fill_plane_page.Plan_Image.length > 10)) {
+                              Register().NewPlan(
+                                Projec_No: ProjectsDetails.Projec_No1!,
+                                Scheme_name: myControllerName_Plan.text,
+                                Engineering_office_name: myControllerOffice_name.text,
+                                designer_name: myControllerDesigner_name.text,
+                                Scheme_encoding: myControllerCode_number.text,
+                                chart_picture:Fill_plane_page.Plan_Image ,
+                                chart_type: selected_plan_type!,
+                                context: context,);
                               myControllerName_Plan.clear();
                               //myControllertype.clear();
                               myControllerOffice_name.clear();
                               myControllerDesigner_name.clear();
                               myControllerCode_number.clear();
                               imageFile = imageFile1;
-                              Navigator.pop(context);
+                              // Navigator.pop(context);
 
                               //ElevatedButtonAddValue(context);
                             } else {
                               Register()
                                   .tostforRegsetr('لطفاً إملأ جميع الحقول');
                             }
+
+
                           },
                         );
+                        // Navigator.pop(context);
                       },
                       child: const Text(
                         '+',
@@ -286,7 +297,7 @@ class _Fill_plane_pageState extends State<Fill_plane_page> {
                       ),
                       style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all(project_color('efcba7')),
+                        MaterialStateProperty.all(project_color('efcba7')),
                       ),
                     ),
                     //
@@ -300,20 +311,20 @@ class _Fill_plane_pageState extends State<Fill_plane_page> {
     );
   }
 
-  Future _imageFromCamera(BuildContext context) async {
-    try {
-      // Capture a photo
-      final XFile? photo = await _picker.pickImage(source: ImageSource.camera);
-      final photoTemorary = File(photo!.path);
-      if (photo == null) {
-        return;
-      }
-      setState(() {
-        imageFile = photoTemorary;
-      });
-      Navigator.pop(context);
-    } on PlatformException catch (e) {
-      print("Failed to pick image : $e");
-    }
-  }
+// Future _imageFromCamera(BuildContext context) async {
+//   try {
+//     // Capture a photo
+//     final XFile? photo = await _picker.pickImage(source: ImageSource.camera);
+//     final photoTemorary = File(photo!.path);
+//     if (photo == null) {
+//       return;
+//     }
+//     setState(() {
+//       imageFile = photoTemorary;
+//     });
+//     Navigator.pop(context);
+//   } on PlatformException catch (e) {
+//     print("Failed to pick image : $e");
+//   }
+// }
 }

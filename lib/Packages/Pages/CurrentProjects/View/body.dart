@@ -1,9 +1,10 @@
 // ignore_for_file: prefer_const_constructors, implementation_imports, duplicate_ignore
 
+import 'dart:async';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.dart';
@@ -19,6 +20,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class CurrentProjects extends StatefulWidget {
   const CurrentProjects({Key? key}) : super(key: key);
   static const String id = 'CurrentProjects';
+  static String titel = '';
 
   @override
   State<CurrentProjects> createState() => _CurrentProjectsState();
@@ -42,7 +44,7 @@ class _CurrentProjectsState extends State<CurrentProjects> {
     setState(() {
       ProjectInfo.project;
 
-      isStartedProject ;
+      isStartedProject;
     });
   }
 
@@ -50,7 +52,14 @@ class _CurrentProjectsState extends State<CurrentProjects> {
   initState() {
     x();
     project = ProjectInfo.project;
-    isStartedProject ;
+    isStartedProject;
+
+
+/****************************************************/
+    Timer(Duration(seconds: 3), () {
+      Navigator.pop(context); //pop dialog
+    });
+/****************************************************/
     super.initState();
   }
 
@@ -100,7 +109,7 @@ class _CurrentProjectsState extends State<CurrentProjects> {
                         SizedBox(height: 10.h),
                         //* tital
                         Text(
-                          KeyLang.oneclickhome,
+                          CurrentProjects.titel,
                           style: AppTheme.h5(context: context)
                               ?.copyWith(color: AppColors.white),
                         ).tr(),
@@ -122,10 +131,17 @@ class _CurrentProjectsState extends State<CurrentProjects> {
                   ],
                 ),
                 padding: EdgeInsets.all(15),
-                child: Column(
+                child:
+                    // Column(children: [
+                    //
+                    // ],)
+
+                    Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // projectt()
+
                     // Container(
                     //   padding: EdgeInsets.all(5),
                     //   color: project_color('efcba7'),
@@ -168,83 +184,116 @@ class _CurrentProjectsState extends State<CurrentProjects> {
                         ? Column(
                             children: [
                               ...project.map(
-                                (e) => e.state == '1'
-                                    ? CartFProject(
-                                        id: e.Projec_No!,
-                                        num_project: e.project_name!,
-                                        onTap: () => GoBack.selectScreen(
-                                          context,
-                                          ProjectsDetails(
-                                            str: e.project_name,
-                                            Owner_User_ID: e.Owner_User_ID,
-                                            owner_name: e.owner_name,
-                                            selectedDateEnd: e.selectedDateEnd,
-                                            selectedDateStart:
-                                                e.selectedDateStart,
-                                            Region: e.Region,
-                                            City: e.City,
-                                            construction_license:
-                                                e.construction_license,
-                                            Projec_No: e.Projec_No,
-                                            project_name: e.project_name,
-                                            state: e.state,
-                                            user_no_eng: e.user_no_eng,
-                                          ),
-                                        ),
-                                        date_receipt: e.selectedDateStart!,
-                                        owner_name: e.owner_name!,
-                                      )
-                                    // Container(
-                                    //         padding: EdgeInsets.all(5),
-                                    //         child: Table(
-                                    //           border: TableBorder.all(
-                                    //               color: Colors.black),
-                                    //           children: [
-                                    //             TableRow(
-                                    //               children: [
-                                    //                 InkWell(
-                                    //                   onTap: () =>
-                                    //                       GoBack.selectScreen(
-                                    //                     context,
-                                    //                     ProjectsDetails(
-                                    //                       str: e.project_name,
-                                    //                       Owner_User_ID:
-                                    //                           e.Owner_User_ID,
-                                    //                       owner_name: e.owner_name,
-                                    //                       selectedDateEnd:
-                                    //                           e.selectedDateEnd,
-                                    //                       selectedDateStart:
-                                    //                           e.selectedDateStart,
-                                    //                       Region: e.Region,
-                                    //                       City: e.City,
-                                    //                       construction_license: e
-                                    //                           .construction_license,
-                                    //                       Projec_No: e
-                                    //                           .construction_license,
-                                    //                       project_name:
-                                    //                           e.project_name,
-                                    //                       state: e.state,
-                                    //                       user_no_eng:
-                                    //                           e.user_no_eng,
-                                    //                     ),
-                                    //                   ),
-                                    //                   child: Center(
-                                    //                     child: GoBack.rowOfProject(
-                                    //                       int.parse(e.Projec_No!),
-                                    //                       e.project_name!,
-                                    //                       e.owner_name!,
-                                    //                       e.state == '1'
-                                    //                           ? true
-                                    //                           : false,
-                                    //                     ),
-                                    //                   ),
-                                    //                 ),
-                                    //               ],
-                                    //             ),
-                                    //           ],
-                                    //         ),
-                                    //       )
-                                    : Container(),
+                                (e) => CurrentProjects.titel ==
+                                        'المشاريع الحالية'
+                                    ? e.state == '1'
+                                        ? CartFProject(
+                                            id: e.Projec_No!,
+                                            num_project: e.project_name!,
+                                            onTap: () => GoBack.selectScreen(
+                                              context,
+                                              ProjectsDetails(
+                                                str: e.project_name,
+                                                Owner_User_ID: e.Owner_User_ID,
+                                                owner_name: e.owner_name,
+                                                selectedDateEnd:
+                                                    e.selectedDateEnd,
+                                                selectedDateStart:
+                                                    e.selectedDateStart,
+                                                Region: e.Region,
+                                                City: e.City,
+                                                construction_license:
+                                                    e.construction_license,
+                                                Projec_No: e.Projec_No,
+                                                project_name: e.project_name,
+                                                state: e.state,
+                                                user_no_eng: e.user_no_eng,
+                                                Project_Type: e.Project_Type,
+                                              ),
+                                            ),
+                                            date_receipt: e.selectedDateStart!,
+                                            owner_name: e.owner_name!,
+                                          )
+                                        // Container(
+                                        //         padding: EdgeInsets.all(5),
+                                        //         child: Table(
+                                        //           border: TableBorder.all(
+                                        //               color: Colors.black),
+                                        //           children: [
+                                        //             TableRow(
+                                        //               children: [
+                                        //                 InkWell(
+                                        //                   onTap: () =>
+                                        //                       GoBack.selectScreen(
+                                        //                     context,
+                                        //                     ProjectsDetails(
+                                        //                       str: e.project_name,
+                                        //                       Owner_User_ID:
+                                        //                           e.Owner_User_ID,
+                                        //                       owner_name: e.owner_name,
+                                        //                       selectedDateEnd:
+                                        //                           e.selectedDateEnd,
+                                        //                       selectedDateStart:
+                                        //                           e.selectedDateStart,
+                                        //                       Region: e.Region,
+                                        //                       City: e.City,
+                                        //                       construction_license: e
+                                        //                           .construction_license,
+                                        //                       Projec_No: e
+                                        //                           .construction_license,
+                                        //                       project_name:
+                                        //                           e.project_name,
+                                        //                       state: e.state,
+                                        //                       user_no_eng:
+                                        //                           e.user_no_eng,
+                                        //                     ),
+                                        //                   ),
+                                        //                   child: Center(
+                                        //                     child: GoBack.rowOfProject(
+                                        //                       int.parse(e.Projec_No!),
+                                        //                       e.project_name!,
+                                        //                       e.owner_name!,
+                                        //                       e.state == '1'
+                                        //                           ? true
+                                        //                           : false,
+                                        //                     ),
+                                        //                   ),
+                                        //                 ),
+                                        //               ],
+                                        //             ),
+                                        //           ],
+                                        //         ),
+                                        //       )
+                                        : Container()
+                                    : e.state == '0'
+                                        ? CartFProject(
+                                            id: e.Projec_No!,
+                                            num_project: e.project_name!,
+                                            onTap: () => GoBack.selectScreen(
+                                              context,
+                                              ProjectsDetails(
+                                                str: e.project_name,
+                                                Owner_User_ID: e.Owner_User_ID,
+                                                owner_name: e.owner_name,
+                                                selectedDateEnd:
+                                                    e.selectedDateEnd,
+                                                selectedDateStart:
+                                                    e.selectedDateStart,
+                                                Region: e.Region,
+                                                City: e.City,
+                                                construction_license:
+                                                    e.construction_license,
+                                                Projec_No: e.Projec_No,
+                                                project_name: e.project_name,
+                                                state: e.state,
+                                                user_no_eng: e.user_no_eng,
+                                                Project_Type: e.Project_Type,
+                                              ),
+                                            ),
+                                            date_receipt: e.selectedDateStart!,
+                                            owner_name: e.owner_name!,
+                                          )
+                                        : Container(),
                               ),
                             ],
                           )
@@ -258,6 +307,24 @@ class _CurrentProjectsState extends State<CurrentProjects> {
           ),
         ],
       ),
+    );
+  }
+
+  dig(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return Dialog(
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: const [
+              CircularProgressIndicator(),
+              Text("Loading"),
+            ],
+          ),
+        );
+      },
     );
   }
 }

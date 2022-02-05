@@ -14,6 +14,7 @@ import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_wo
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/login.dart';
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/Home/View/body.dart';
+import 'package:flutter_finalproject/Packages/Pages/Plan/View/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/Components/profile_information.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
@@ -100,7 +101,7 @@ class Register extends State<RegisterState> {
     }
     // cicul=!cicul;
     // cicul=!cicul;
-    tostforRegsetr(msg);
+    // tostforRegsetr(msg);
   }
 
   postData({
@@ -117,22 +118,24 @@ class Register extends State<RegisterState> {
     //200--success ,400,404,
     msg = '';
     try {
-      // var response = await http.post(
-      //   Uri.parse(url+"register.php"),
-      //   body: {
-      //     'first_name': first_name.text,
-      //     'last_name': last_name.text,
-      //     'age': '25', //age.text,
-      //     'email': email.text,
-      //     'password': password.text,
-      //     'phone_number': phone_number.text,
-      //     'picture_user': '2iuh64832svsv',
-      //     "city_user": 'amman', //city_user.text,
-      //     'account_type': account_type, //account_type.text,
-      //     'Account_Status': 'yes',
-      //     'Activity': 'yes',
-      //   },
-      // );
+      var response = await http.post(
+        Uri.parse(url+"register.php"),
+        body: {
+          'first_name': first_name.text,
+          'last_name': last_name.text,
+          'age': '25', //age.text,
+          'email': email.text,
+          'password': password.text,
+          'phone_number': phone_number.text,
+          'picture_user': '2iuh64832svsv',
+          "city_user": 'amman', //city_user.text,
+          'account_type': account_type, //account_type.text,
+          'Account_Status': 'yes',
+          'Activity': 'yes',
+        },
+      );
+      msg = response.body;
+
       UserPreferences.setUsername(email.text);
       UserPreferences.setPassword(password.text);
       if (account_type == '1') {
@@ -852,14 +855,58 @@ class Register extends State<RegisterState> {
     return tx;
   }
 
-  /********************************************************************************/
-  /********************************************************************************/
-  /********************************************************************************/
-  /********************************************************************************/
-  /********************************************************************************/
-  /********************************************************************************/
-  /********************************************************************************/
-  /********************************************************************************/
+    /********************************************************************************/
+    /********************************************************************************/
+    /********************************************************************************/
+    /********************************************************************************/
+    /********************************************************************************/
+    /********************************************************************************/
+    /********************************************************************************/
+    /********************************************************************************/
+ // اضافة مخطط
+  NewPlan({
+    required String Projec_No,
+    required String Scheme_name,
+    required String Engineering_office_name,
+    required String designer_name,
+    required String Scheme_encoding,
+    required String chart_picture,
+    required String chart_type,
+    required BuildContext context,
+  }) async {
+    //200--success ,400,404,
+
+    try {
+      msg ='';
+      var response = await http.post(
+        Uri.parse(url + "Project_establishment/plans/new_plan.php"),
+        body: {
+          'Projec_No': Projec_No,
+          'Scheme_name': Scheme_name,
+          'Engineering_office_name': Engineering_office_name,
+          'designer_name': designer_name,
+          'Scheme_encoding': Scheme_encoding,
+          'chart_picture': chart_picture,
+          'chart_type': chart_type,
+
+        },
+      );
+      msg = response.body;
+
+      print(response.body);
+
+      if (msg == "  لقد تمت اضافة المشروع   " ) {
+        Navigator.pop(context);
+
+      }
+    } catch (e) {
+      msg = e.toString();
+      print(e);
+    }
+    tostforRegsetr(msg);
+  }
+
+
   /********************************************************************************/
 
   tostforRegsetr(String mss) {

@@ -90,7 +90,7 @@ class _PageInfoPrState extends State<PageInfoPr> {
               //* page elements
               SizedBox(height: 10.h),
               //*imag
-              InfoImage(),
+              InfoImageState(),
               //*form
 
               Container(

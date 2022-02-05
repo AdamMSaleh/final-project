@@ -98,7 +98,7 @@ class _ArchiveState extends State<Archive> {
                       // SizedBox(height: 10.h),
                       //* tital
                       Text(
-                        KeyLang.oneclickhome,
+                        "الارشيف",
                         style: AppTheme.h5(context: context)
                             ?.copyWith(color: AppColors.white),
                       ).tr(),
@@ -118,6 +118,7 @@ class _ArchiveState extends State<Archive> {
                                 num_project: e.project_name!,
                                 onTap: () => GoBack.selectScreen(
                                   context,
+
                                   ProjectsDetails(
                                     str: e.project_name,
                                     Owner_User_ID: e.Owner_User_ID,
@@ -137,13 +138,16 @@ class _ArchiveState extends State<Archive> {
                                 owner_name: e.owner_name!,
                               )
                             : Container(),
+
                       ),
+
                     ],
                   )
                 : Container(
                     child: GoBack.tx('   لا يوجد مشاريع مؤرشفة   '),
                   ),
           SizedBox(height: 13.h),
+
         ],
       ),
           )),
