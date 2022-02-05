@@ -89,7 +89,7 @@ class _PageInfoworkerState extends State<PageInfoworker> {
               //* page elements
               SizedBox(height: 10.h),
               //*imag
-              InfoImage(),
+              InfoImageState(),
               //*form
 
               Container(

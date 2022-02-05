@@ -16,6 +16,7 @@ import 'package:flutter_finalproject/Theme/theme_status.dart';
 import 'package:flutter_finalproject/Utils/path_images.dart';
 import 'package:flutter_finalproject/validators/app_validators.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class PageInfoEng extends StatefulWidget {
   // ignore: unused_import
@@ -40,7 +41,24 @@ class _PageInfoEngState extends State<PageInfoEng> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    DateTime timeBackPressed = DateTime.now();
+    return WillPopScope(
+      onWillPop: () async {
+        final difference = DateTime.now().difference(timeBackPressed);
+        final isExitWarning = difference >= Duration(seconds: 2);
+
+        timeBackPressed = DateTime.now();
+        if (isExitWarning) {
+          const message = 'Press back again to exit';
+          Fluttertoast.showToast(msg: message, fontSize: 18);
+          return false;
+        } else {
+          Fluttertoast.cancel();
+          return false;
+        }
+      },
+      child:
+       Scaffold(
       backgroundColor: AppColors.white,
       body: SafeArea(
         child: SingleChildScrollView(
@@ -52,11 +70,11 @@ class _PageInfoEngState extends State<PageInfoEng> {
                 decoration: BoxDecoration(
                   color: AppColors.blue,
                   borderRadius:
-                      BorderRadius.only(bottomLeft: Radius.circular(100.r)),
+                  BorderRadius.only(bottomLeft: Radius.circular(100.r)),
                 ),
                 child:
-                    //* header elements
-                    Stack(
+                //* header elements
+                Stack(
                   children: [
                     Column(
                       children: [
@@ -97,7 +115,7 @@ class _PageInfoEngState extends State<PageInfoEng> {
               //* page elements
               SizedBox(height: 10.h),
               //*imag
-              InfoImage(),
+              InfoImageState(),
               //*form
 
               Container(
@@ -130,7 +148,8 @@ class _PageInfoEngState extends State<PageInfoEng> {
                               Container(
                                 child: Text(
                                   'upload Syndicate Card',
-                                  style: AppTheme.h5(context: context)?.copyWith(
+                                  style: AppTheme.h5(context: context)
+                                      ?.copyWith(
                                       color: AppColors.blue, fontSize: 20.sp),
                                 ).tr(),
                               ),
@@ -157,9 +176,10 @@ class _PageInfoEngState extends State<PageInfoEng> {
                                     showDialog(
                                       barrierDismissible: false,
                                       context: context,
-                                      builder: (context) => AlertChooseImage(
-                                        bathImage: 'syndicate_card',
-                                      ),
+                                      builder: (context) =>
+                                          AlertChooseImage(
+                                            bathImage: 'syndicate_card',
+                                          ),
                                     );
                                   },
                                   icon: Icon(
@@ -208,11 +228,10 @@ class _PageInfoEngState extends State<PageInfoEng> {
                                 btnText: KeyLang.register.toUpperCase().tr(),
                                 onTap: () async {
                                   if (_keyFoem.currentState!.validate()) {
-
                                     Register().postDataEngineer(
                                       city_user: controllerValue["city_user"]!,
                                       Guild_number:
-                                          controllerValue["Guild_number"]!,
+                                      controllerValue["Guild_number"]!,
                                       office_name: controllerValue["office_name"]!,
                                       context: context,
                                     );
@@ -227,6 +246,6 @@ class _PageInfoEngState extends State<PageInfoEng> {
           ),
         ),
       ),
-    );
+    ));
   }
 }
