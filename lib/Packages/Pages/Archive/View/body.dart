@@ -143,7 +143,7 @@ class _ArchiveState extends State<Archive> {
                     ],
                   )
                 : Container(
-                    child: GoBack.tx('   لا يوجد مشاريع مؤرشفة   '),
+                    child: GoBack.tx(KeyLang.noProjectsArchive.tr()),
                   ),
             SizedBox(height: 13.h),
           ],

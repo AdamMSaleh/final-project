@@ -90,6 +90,8 @@
     "Edit profile" : "Edit profile",
     "Settings" : "Settings",
     "Politics and Privacy" : "Politics and Privacy",
-    "logout" : "logout"
+    "logout" : "logout",
+    "You have no projects in the archive" : "You have no projects in the archive",
+    "Project details":"Project details"
 
 }

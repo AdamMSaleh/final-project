@@ -92,4 +92,6 @@ class KeyLang {
   static String settings = "Settings";
   static String politisAndPrivacy = "Politics and Privacy";
   static String logout = "logout";
+  static String noProjectsArchive = "You have no projects in the archive";
+  static String projectDetails = "Project details";
 }

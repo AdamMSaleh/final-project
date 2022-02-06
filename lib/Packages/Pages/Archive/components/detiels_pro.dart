@@ -1,6 +1,8 @@
 // ignore_for_file: camel_case_types, avoid_unnecessary_containers
 
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/sup_appbar.dart';
 import 'package:flutter_finalproject/Packages/Components/upload_image_Invoice/upload_image.dart';
@@ -24,7 +26,7 @@ class _deteals_projState extends State<deteals_proj> {
   Widget build(BuildContext context) {
     return Scaffold(
       //* AppBar
-      appBar: AppBSup(txt: 'تفاصيل المشروع'),
+      appBar: AppBSup(txt: KeyLang.projectDetails),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -35,15 +37,15 @@ class _deteals_projState extends State<deteals_proj> {
                   children: [
                     TableRow(children: [
                       GoBack.tx(' بناء مدرسة جامعة الزرقاء'),
-                      GoBack.tx(': اسم المشروع'),
+                      GoBack.tx(KeyLang.projectName.tr() + ':'),
                     ]),
                     TableRow(children: [
                       GoBack.tx('عمر خالد'),
-                      GoBack.tx(': اسم المالك'),
+                      GoBack.tx(KeyLang.ownerName.tr() + ':'),
                     ]),
                     TableRow(children: [
                       GoBack.tx('خالد'),
-                      GoBack.tx(': اسم المهندس'),
+                      GoBack.tx(KeyLang.engineer.tr() + ':'),
                     ]),
                     TableRow(children: [
                       GoBack.tx(' asmaa hassan'),
@@ -86,7 +88,7 @@ class _deteals_projState extends State<deteals_proj> {
                     page: PaymentHistory(),
                   ),
                   GoBack.btn(
-                    "المخطط الزمني",
+                    KeyLang.timeline.tr(),
                     context,
                     page: const TimeLine(),
                   ),

@@ -90,7 +90,9 @@
   "Edit profile" : "تعديل الملف الشخصي ",
   "Settings" : "الاعدادات",
   "Politics and Privacy": "السياسة والخصوصية",
-  "logout" : "تسجيل الخروج"
+  "logout" : "تسجيل الخروج",
+  "You have no projects in the archive" : "لا يوجد لديك مشاريع في السجل",
+  "Project details":"تفاصيل المشروع "
  
   
 }
