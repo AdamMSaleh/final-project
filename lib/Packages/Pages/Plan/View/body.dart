@@ -23,6 +23,7 @@ import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/design.da
 import 'package:flutter_finalproject/Packages/Pages/NewProject/View/new_project.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/components/BoxDialog/dialog.dart';
 import 'package:flutter_finalproject/Packages/Pages/Plan/Components/fill_plan.dart';
+import 'package:flutter_finalproject/Packages/Pages/Plan/Components/plan_info.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/upload_image.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/view/body.dart';
@@ -56,10 +57,10 @@ var myControllerOffice_name = TextEditingController();
 var myControllerDesigner_name = TextEditingController();
 var myControllerCode_number = TextEditingController();
 //var myControllertype = TextEditingController();
-final ImagePicker _picker = ImagePicker();
-
-File? imageFile;
-File? imageFile1;
+// final ImagePicker _picker = ImagePicker();
+//
+// File? imageFile;
+// File? imageFile1;
 
 class _PlanUploadState extends State<PlanUpload> {
   List<PlanInformion> planData = [
@@ -92,26 +93,59 @@ class _PlanUploadState extends State<PlanUpload> {
     ),
   ];
 
-  void btnPayment(BuildContext assoom) {
-    showModalBottomSheet(
-      // useRootNavigator: true,
-      isScrollControlled: true,
-      context: assoom,
-      builder: (_) {
-        return Container(
-          height: double.infinity,
-          padding: const EdgeInsets.all(20),
-          color: Theme.of(assoom).accentColor,
-          child: SingleChildScrollView(),
-        );
-//----------end buttom sheet-----------------------------------------------------
-      },
-    );
+  /*************************************************************/
+  List<PlanInfo> plan = [];
+  // int isStartedProject = 0;
+
+  x() async {
+    PlanInfo.plan = [];
+    // isStartedProject = 0;
+    await PlanInfo.getDataPlan();
+    // if (plan.isNotEmpty) {
+    //   for (int i = 0; i < plan.length; i++) {
+    //     if (plan[i].state == '1') {
+    //       isStartedProject++;
+    //     }
+    //   }
+    // }
+    setState(() {
+      PlanInfo.plan;
+
+      // isStartedProject;
+    });
   }
 
+  @override
+  initState() {
+    x();
+    plan = PlanInfo.plan;
+    // isStartedProject;
+
+
+    super.initState();
+  }
+  /*************************************************************/
+
+//   void btnPayment(BuildContext assoom) {
+//     showModalBottomSheet(
+//       // useRootNavigator: true,
+//       isScrollControlled: true,
+//       context: assoom,
+//       builder: (_) {
+//         return Container(
+//           height: double.infinity,
+//           padding: const EdgeInsets.all(20),
+//           color: Theme.of(assoom).accentColor,
+//           child: SingleChildScrollView(),
+//         );
+// //----------end buttom sheet-----------------------------------------------------
+//       },
+//     );
+//   }
+
 //-----------------------------------------
-  String? selected_plan_type;
-  List plan_type = ['a', 'b', 'c', 'd', 'e'];
+//   String? selected_plan_type;
+//   List plan_type = ['a', 'b', 'c', 'd', 'e'];
 
 //-------------------------------------------
 //   void btnplane(BuildContext assoom) {
@@ -578,62 +612,62 @@ class _PlanUploadState extends State<PlanUpload> {
   }
 
   /************************************************************ */
-  _showOption(BuildContext context) {
-    return showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text('Make a choice'),
-        content: SingleChildScrollView(
-          child: Column(
-            children: [
-              ListTile(
-                leading: const Icon(Icons.image),
-                title: Text('Gallery'),
-                onTap: () => _imageFromGallery(context),
-              ),
-              ListTile(
-                leading: const Icon(Icons.camera),
-                title: Text('Camera'),
-                onTap: () => _imageFromCamera(context),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
+  // _showOption(BuildContext context) {
+  //   return showDialog(
+  //     context: context,
+  //     builder: (context) => AlertDialog(
+  //       title: Text('Make a choice'),
+  //       content: SingleChildScrollView(
+  //         child: Column(
+  //           children: [
+  //             ListTile(
+  //               leading: const Icon(Icons.image),
+  //               title: Text('Gallery'),
+  //               onTap: () => _imageFromGallery(context),
+  //             ),
+  //             ListTile(
+  //               leading: const Icon(Icons.camera),
+  //               title: Text('Camera'),
+  //               onTap: () => _imageFromCamera(context),
+  //             ),
+  //           ],
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
-  Future _imageFromGallery(BuildContext context) async {
-    try {
-      // Pick an image
-      final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
-      final imageTemorary = File(image!.path);
-      if (image == null) {
-        return;
-      }
-      setState(() {
-        imageFile = imageTemorary;
-      });
-      Navigator.pop(context);
-    } on PlatformException catch (e) {
-      print("Failed to pick image : $e");
-    }
-  }
-
-  Future _imageFromCamera(BuildContext context) async {
-    try {
-      // Capture a photo
-      final XFile? photo = await _picker.pickImage(source: ImageSource.camera);
-      final photoTemorary = File(photo!.path);
-      if (photo == null) {
-        return;
-      }
-      setState(() {
-        imageFile = photoTemorary;
-      });
-      Navigator.pop(context);
-    } on PlatformException catch (e) {
-      print("Failed to pick image : $e");
-    }
-  }
+  // Future _imageFromGallery(BuildContext context) async {
+  //   try {
+  //     // Pick an image
+  //     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+  //     final imageTemorary = File(image!.path);
+  //     if (image == null) {
+  //       return;
+  //     }
+  //     setState(() {
+  //       imageFile = imageTemorary;
+  //     });
+  //     Navigator.pop(context);
+  //   } on PlatformException catch (e) {
+  //     print("Failed to pick image : $e");
+  //   }
+  // }
+  //
+  // Future _imageFromCamera(BuildContext context) async {
+  //   try {
+  //     // Capture a photo
+  //     final XFile? photo = await _picker.pickImage(source: ImageSource.camera);
+  //     final photoTemorary = File(photo!.path);
+  //     if (photo == null) {
+  //       return;
+  //     }
+  //     setState(() {
+  //       imageFile = photoTemorary;
+  //     });
+  //     Navigator.pop(context);
+  //   } on PlatformException catch (e) {
+  //     print("Failed to pick image : $e");
+  //   }
+  // }
 }

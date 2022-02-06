@@ -5,6 +5,7 @@ import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/sup_appbar.dart';
 import 'package:flutter_finalproject/Packages/Components/upload_image_Invoice/upload_image.dart';
+import 'package:flutter_finalproject/Packages/Pages/Home/Components/img_bttn.dart';
 import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/creat_invoices.dart';
 import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/view_invoices.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/view/add_crafts.dart';
@@ -114,6 +115,7 @@ class _ProjectsDetailsState extends State<ProjectsDetails> {
   //     Project_Type,
   //     state;
   String engName = '';
+
   x() async {
     engName = await Register().getEngName(ProjectsDetails.user_no_eng1!);
     setState(() {
@@ -207,14 +209,11 @@ class _ProjectsDetailsState extends State<ProjectsDetails> {
                       pageCard3: widget.isStarted ? UploadImageInvoice() : null,
                     ),
                     widget.isStarted
-                        ? GoBack.btn(
-                            "اضافة اصحاب المهن/ عمال",
-                            context,
-                            //card1: 'اضافة',
-                            page: Research(),
-                            //IconButton(onPressed: ()=>GoBack.selectScreen(context, SearchHomePage()), icon: Icon(Icons.arrow_forward_ios_sharp , color: Colors.black,)),
-                            // card3: card3,
-                          )
+                        ? GoBack.btnFn("اضافة اصحاب المهن/ عمال", context,
+                            func: () {
+                            GoBack.selectScreen(context, Research());
+                            BtnImg.onLoading(context);
+                          })
                         : Container(),
                     GoBack.btn(
                       "الدفعات",

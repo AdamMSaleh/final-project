@@ -119,7 +119,7 @@ class Register extends State<RegisterState> {
     msg = '';
     try {
       var response = await http.post(
-        Uri.parse(url+"register.php"),
+        Uri.parse(url + "register.php"),
         body: {
           'first_name': first_name.text,
           'last_name': last_name.text,
@@ -624,29 +624,22 @@ class Register extends State<RegisterState> {
 
   /********************************************************************************/
   viewProjectsOwner(
-      String ownerId,
-
-      ) {
+    String ownerId,
+  ) {
     var data;
     // bool dataLoaded = false;
     bool error = false;
     return Future.delayed(Duration.zero, () async {
       var res = await http.post(
         Uri.parse(url + 'Project_establishment/view_projects.php'),
-        body: {
-          'Owner_User_ID': ownerId,
-'user_no_eng':''
-        },
+        body: {'Owner_User_ID': ownerId, 'user_no_eng': ''},
       );
-      print('engId'+ownerId);
+      print('engId' + ownerId);
       if (res.statusCode == 200) {
         data = json.decode(res.body) as List<dynamic>;
-        print('viewProjectsOwner  :' +data);
+        print('viewProjectsOwner  :' + data);
         error = false;
-
       } else {
-
-
         error = true;
       }
       return data;
@@ -654,33 +647,55 @@ class Register extends State<RegisterState> {
     // we use Future.delayed becuase there is
     // async function inside it.
   }
+
   /********************************************************************************/
 
   /********************************************************************************/
+
+  //view Plans
+  /********************************************************************************/
+  viewPlans(
+    String Projec_No,
+  ) {
+    var data;
+    // bool dataLoaded = false;
+    bool error = false;
+    return Future.delayed(Duration.zero, () async {
+      var res = await http.post(
+        Uri.parse(url + '/Project_establishment/plans/view_plan.php'),
+        body: {
+          'Projec_No': Projec_No,
+        },
+      );
+      if (res.statusCode == 200) {
+        data = json.decode(res.body) as List<dynamic>;
+        error = false;
+      } else {
+        error = true;
+      }
+      return data;
+    });
+  }
+
+  //********************************************************************************/
+
   viewProjectsEng(
-      String engId,
-
-      ) {
+    String engId,
+  ) {
     var data;
     // bool dataLoaded = false;
     bool error = false;
     return Future.delayed(Duration.zero, () async {
       var res = await http.post(
         Uri.parse(url + 'Project_establishment/view_projects.php'),
-        body: {
-          'user_no_eng': engId,
-'Owner_User_ID':''
-        },
+        body: {'user_no_eng': engId, 'Owner_User_ID': ''},
       );
-      print('engId'+engId);
+      print('engId' + engId);
       if (res.statusCode == 200) {
         data = json.decode(res.body) as List<dynamic>;
         // print('viewProjectsEng  :' +data);
         error = false;
-
       } else {
-
-
         error = true;
       }
       return data;
@@ -688,6 +703,7 @@ class Register extends State<RegisterState> {
     // we use Future.delayed becuase there is
     // async function inside it.
   }
+
   /********************************************************************************/
 
   String setaccount_type(type) {
@@ -764,9 +780,10 @@ class Register extends State<RegisterState> {
           'Expected_completion_date': selectedDateEnd,
           'Owner_User_ID': Owner_User_ID,
           'owner_name': owner_name,
-          'construction_license': construction_license=='0'?'no License':construction_license,
-          'Project_Type': construction_license=='0'? 'fix':'new',
-          'state':'1',
+          'construction_license':
+              construction_license == '0' ? 'no License' : construction_license,
+          'Project_Type': construction_license == '0' ? 'fix' : 'new',
+          'state': '1',
         },
       );
       msg = response.body;
@@ -794,12 +811,12 @@ class Register extends State<RegisterState> {
     //200--success ,400,404,
 
     try {
-      msg ='';
+      msg = '';
       var response = await http.post(
         Uri.parse(url + "Project_establishment/status_update.php"),
         body: {
           'Projec_No': Projec_No,
-          'state':'0',
+          'state': '0',
         },
       );
       msg = response.body;
@@ -809,16 +826,9 @@ class Register extends State<RegisterState> {
       if (msg == "  لقد تمت تم التحديث بنجاح   ") {
         Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(
-                builder: (context) => PageHome()
-            ),
-            ModalRoute.withName("/Home")
-        );
-        Navigator.pushNamed(
-            context,
-           Archive.id
-        );
-
+            MaterialPageRoute(builder: (context) => PageHome()),
+            ModalRoute.withName("/Home"));
+        Navigator.pushNamed(context, Archive.id);
       }
     } catch (e) {
       msg = e.toString();
@@ -832,21 +842,17 @@ class Register extends State<RegisterState> {
   /********************************************************************************/
   // هون عشان اجيب اسم المهندس لصفحة تفاصيل المشروع
 
-  getEngName(
-      String engName
-      ) async {
+  getEngName(String engName) async {
     var tx;
     try {
       var response = await http.post(
-        Uri.parse(url + "/Project_establishment/get_eng_name.php"),
+          Uri.parse(url + "/Project_establishment/get_eng_name.php"),
           body: {
-            'eng_id':engName,
-          }
-      );
+            'eng_id': engName,
+          });
       tx = jsonDecode(response.body);
 
       print(tx);
-
     } catch (e) {
       tx = e.toString();
 
@@ -855,15 +861,15 @@ class Register extends State<RegisterState> {
     return tx;
   }
 
-    /********************************************************************************/
-    /********************************************************************************/
-    /********************************************************************************/
-    /********************************************************************************/
-    /********************************************************************************/
-    /********************************************************************************/
-    /********************************************************************************/
-    /********************************************************************************/
- // اضافة مخطط
+  /********************************************************************************/
+  /********************************************************************************/
+  /********************************************************************************/
+  /********************************************************************************/
+  /********************************************************************************/
+  /********************************************************************************/
+  /********************************************************************************/
+  /********************************************************************************/
+  // اضافة مخطط
   NewPlan({
     required String Projec_No,
     required String Scheme_name,
@@ -877,7 +883,7 @@ class Register extends State<RegisterState> {
     //200--success ,400,404,
 
     try {
-      msg ='';
+      msg = '';
       var response = await http.post(
         Uri.parse(url + "Project_establishment/plans/new_plan.php"),
         body: {
@@ -888,16 +894,14 @@ class Register extends State<RegisterState> {
           'Scheme_encoding': Scheme_encoding,
           'chart_picture': chart_picture,
           'chart_type': chart_type,
-
         },
       );
       msg = response.body;
 
       print(response.body);
 
-      if (msg == "  لقد تمت اضافة المشروع   " ) {
+      if (msg == "  لقد تمت اضافة المشروع   ") {
         Navigator.pop(context);
-
       }
     } catch (e) {
       msg = e.toString();
@@ -905,7 +909,6 @@ class Register extends State<RegisterState> {
     }
     tostforRegsetr(msg);
   }
-
 
   /********************************************************************************/
 

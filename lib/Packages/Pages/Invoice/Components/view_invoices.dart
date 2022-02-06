@@ -290,7 +290,7 @@ class _view_invoicesState extends State<view_invoices> {
       floatingActionButton: FloatingActionButton(
         // Within the `FirstRoute` widget
         onPressed: () {
-          ProjectsDetails().isStarted
+          ProjectsDetails.state1 == '1'
               ? Navigator.push(
                   context,
                   MaterialPageRoute(

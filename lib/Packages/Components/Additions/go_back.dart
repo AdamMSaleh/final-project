@@ -194,9 +194,8 @@ class GoBack {
       ),
       child: TextButton(
         // style: ButtonStyle(alignment: Alignment.center),
-        onPressed:() {
-          Function;
-        },
+        onPressed:() =>func()
+        ,
         child: tx(title, sizee: 15),
       ),
     );
