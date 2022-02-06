@@ -195,6 +195,7 @@ class _ProfileState extends State<Profile> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
+<<<<<<< HEAD
               //* imag
               SizedBox(height: 20.h),
               Container(
@@ -205,6 +206,27 @@ class _ProfileState extends State<Profile> {
                   border: Border.all(
                     width: 3,
                     color: AppColors.blue,
+=======
+              //image  -----------------------------------*--**-*-*-*-*-*-*---
+              InfoImageState(),
+              /* Column(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    // padding: const EdgeInsets.all(20),
+                    child: CachedNetworkImage(
+                      imageUrl: ProfileInformation.picture_user!,
+                      height: 220,
+                      placeholder: (context, url) =>
+                          CircularProgressIndicator(),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
+                    ),
+
+                    // Image.network(
+                    //   ProfileForWorkers.image1,
+                    //   height: 220,
+                    // ),
+>>>>>>> 1d97f6537ba769a3cbfc2c37b01845b5b7030ba2
                   ),
                 ),
                 child: ImageUser(

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 // ignore_for_file: prefer_const_constructors, annotate_overrides, must_call_super, avoid_print
+=======
+// ignore_for_file: prefer_const_constructors, avoid_print
+>>>>>>> 1d97f6537ba769a3cbfc2c37b01845b5b7030ba2
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +22,8 @@ class InfoImageState extends StatefulWidget {
 }
 
 class InfoImage extends State<InfoImageState> {
+  @override
+  // ignore: must_call_super
   void initState() {
     Upload_ImageState.profileImage;
     setState(() {

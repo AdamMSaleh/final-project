@@ -10,7 +10,11 @@ import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/Drawer/drawer.dart';
+<<<<<<< HEAD
 import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/sup_appbar.dart';
+=======
+import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/appbar.dart';
+>>>>>>> 1d97f6537ba769a3cbfc2c37b01845b5b7030ba2
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Photo_View/photo_view.dart';
@@ -18,7 +22,6 @@ import 'package:flutter_finalproject/Packages/Components/Toast/simple_toast.dart
 import 'package:flutter_finalproject/Packages/Components/cach_image/image_user.dart';
 import 'package:flutter_finalproject/Packages/Pages/Archive/View/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/body.dart';
-import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/appbar.dart';
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/projects_details.dart';
 import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/design.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/View/new_project.dart';
@@ -64,24 +67,33 @@ File? imageFile1;
 
 class _PlanUploadState extends State<PlanUpload> {
   List<PlanInformion> planData = [
-    // PlanInformion(
-    //     name_plan: 'univercity',
-    //     Name_Office: 'Amman',
-    //     Name_designer: 'Ali',
-    //     code_number: 202100,
-    //     image: null),
-    // PlanInformion(
-    //     name_plan: 'home jarash',
-    //     Name_Office: 'zarqa',
-    //     Name_designer: 'mohammad',
-    //     code_number: 202100,
-    //     image: null),
-    // PlanInformion(
-    //     name_plan: 'school',
-    //     Name_Office: 'ajlon',
-    //     Name_designer: 'Essa',
-    //     code_number: 202100,
-    //     image: null),
+    PlanInformion(
+      designer_name: 'Ali',
+      Scheme_name: 'univercity',
+      chart_type: '',
+      Scheme_encoding: "202100",
+      Projec_No: '',
+      Engineering_office_name: 'Amman',
+      chart_picture: null,
+    ),
+    PlanInformion(
+      designer_name: 'Ali',
+      Scheme_name: 'univercity',
+      chart_type: '',
+      Scheme_encoding: "202100",
+      Projec_No: '',
+      Engineering_office_name: 'Amman',
+      chart_picture: null,
+    ),
+    PlanInformion(
+      designer_name: 'Ali',
+      Scheme_name: 'univercity',
+      chart_type: '',
+      Scheme_encoding: "202100",
+      Projec_No: '',
+      Engineering_office_name: 'Amman',
+      chart_picture: null,
+    ),
   ];
 
   void btnPayment(BuildContext assoom) {
@@ -422,126 +434,121 @@ class _PlanUploadState extends State<PlanUpload> {
             color: project_color('efcba7'),
             child: ListView(
               // padding: EdgeInsets.all(5),
-              children: const [
-                // ...planData.map(
-                //       (e) =>
-                //       Container(
-                //         margin: EdgeInsets.all(10),
-                //         child: Card(
-                //           child: Column(
-                //             children: [
-                //               //space row
-                //               Row(
-                //                 children: [
-                //                   Container(
-                //                     margin: EdgeInsets.all(10),
-                //                   ),
-                //                 ],
-                //               ),
-                //               Row(
-                //                 mainAxisAlignment: MainAxisAlignment
-                //                     .spaceEvenly,
-                //                 children: [
-                //                   Text(
-                //                     'Plan Name : ',
-                //                     style: TextStyle(
-                //                       color: project_color('741b47'),
-                //                     ),
-                //                   ),
-                //                   Text(e.name_plan),
-                //                 ],
-                //               ),
-                //               Row(
-                //                 mainAxisAlignment: MainAxisAlignment
-                //                     .spaceEvenly,
-                //                 children: [
-                //                   Text(
-                //                     'Office Name : ',
-                //                     style: TextStyle(
-                //                       color: project_color('741b47'),
-                //                     ),
-                //                   ),
-                //                   Text(e.Name_Office)
-                //                 ],
-                //               ),
-                //               Row(
-                //                 mainAxisAlignment: MainAxisAlignment
-                //                     .spaceEvenly,
-                //                 children: [
-                //                   Text(
-                //                     'Designer Name :',
-                //                     style: TextStyle(
-                //                       color: project_color('741b47'),
-                //                     ),
-                //                   ),
-                //                   Text(e.Name_designer)
-                //                 ],
-                //               ),
-                //               Row(
-                //                 mainAxisAlignment: MainAxisAlignment
-                //                     .spaceEvenly,
-                //                 children: [
-                //                   Text(
-                //                     'Code Number : ',
-                //                     style: TextStyle(
-                //                       color: project_color('741b47'),
-                //                     ),
-                //                   ),
-                //                   Text('${e.code_number}')
-                //                 ],
-                //               ),
-                //               //space row
-                //               Row(
-                //                 children: [
-                //                   Container(
-                //                     margin: EdgeInsets.all(10),
-                //                   ),
-                //                 ],
-                //               ),
-                //
-                //               Row(
-                //                 mainAxisAlignment: MainAxisAlignment
-                //                     .spaceAround,
-                //                 children: [
-                //                   Text(
-                //                     'Plan Image :',
-                //                     style: TextStyle(
-                //                       color: project_color('741b47'),
-                //                     ),
-                //                   ),
-                //                   Container(
-                //                     child: e.image == null
-                //                         ? FlatButton(
-                //                       onPressed: () {
-                //                         GoBack.selectScreen(context, ImageView(
-                //                             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgaE5uDsb9aBw7dcDlZzcZHk6GlgOYv-a2zb7lEWkQXZlEjFMsGsozB_-r2mhy61GKES0&usqp=CAU'
-                //                         ));
-                //                       },
-                //                       child: Image.network(
-                //                         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgaE5uDsb9aBw7dcDlZzcZHk6GlgOYv-a2zb7lEWkQXZlEjFMsGsozB_-r2mhy61GKES0&usqp=CAU',
-                //                         height: 150,
-                //                       ),
-                //                     )
-                //                         : Image.file(
-                //                       e.image!,
-                //                       height: 150,
-                //                     ),
-                //                   ),
-                //                 ],
-                //               ),
-                //               //space row
-                //               Row(
-                //                 children: [
-                //                   Container(
-                //                     margin: EdgeInsets.all(10),
-                //                   ),
-                //                 ],
-                //               ),
-                //             ],
-                //           ),
-                //         ),
-                //       ),
-                // )
+              children: [
+                ...planData.map(
+                  (e) => Container(
+                    margin: EdgeInsets.all(10),
+                    child: Card(
+                      child: Column(
+                        children: [
+                          //space row
+                          Row(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.all(10),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Plan Name : ',
+                                style: TextStyle(
+                                  color: project_color('741b47'),
+                                ),
+                              ),
+                              Text(e.Scheme_name),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Office Name : ',
+                                style: TextStyle(
+                                  color: project_color('741b47'),
+                                ),
+                              ),
+                              Text(e.Engineering_office_name)
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Designer Name :',
+                                style: TextStyle(
+                                  color: project_color('741b47'),
+                                ),
+                              ),
+                              Text(e.designer_name)
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Code Number : ',
+                                style: TextStyle(
+                                  color: project_color('741b47'),
+                                ),
+                              ),
+                              Text(e.Scheme_encoding)
+                            ],
+                          ),
+                          //space row
+                          Row(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.all(10),
+                              ),
+                            ],
+                          ),
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                'Plan Image :',
+                                style: TextStyle(
+                                  color: project_color('741b47'),
+                                ),
+                              ),
+                              Container(
+                                child: e.chart_picture == null
+                                    ? FlatButton(
+                                        onPressed: () {
+                                          GoBack.selectScreen(
+                                              context,
+                                              ImageView(
+                                                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgaE5uDsb9aBw7dcDlZzcZHk6GlgOYv-a2zb7lEWkQXZlEjFMsGsozB_-r2mhy61GKES0&usqp=CAU'));
+                                        },
+                                        child: Image.network(
+                                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgaE5uDsb9aBw7dcDlZzcZHk6GlgOYv-a2zb7lEWkQXZlEjFMsGsozB_-r2mhy61GKES0&usqp=CAU',
+                                          height: 150,
+                                        ),
+                                      )
+                                    : Image.network(
+                                        e.chart_picture!,
+                                        height: 150,
+                                      ),
+                              ),
+                            ],
+                          ),
+                          //space row
+                          Row(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.all(10),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                )
               ],
             ),
           ),

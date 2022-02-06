@@ -1,8 +1,9 @@
-// ignore_for_file: no_logic_in_create_state, unused_import
+// ignore_for_file: no_logic_in_create_state, unused_import, duplicate_ignore
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 
+// ignore: unused_import
 import 'projects_details.dart' as zz;
 
 class CurrentProjectMain extends StatefulWidget {
