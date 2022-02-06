@@ -134,6 +134,8 @@ class Register extends State<RegisterState> {
           'Activity': 'yes',
         },
       );
+      msg = response.body;
+
       UserPreferences.setUsername(email.text);
       UserPreferences.setPassword(password.text);
       if (account_type == '1') {

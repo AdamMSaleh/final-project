@@ -6,6 +6,13 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_finalproject/DataBase/register.dart';
+import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/infi_professionals.dart';
+import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_mechanice.dart';
+import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_owner.dart';
+import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_shop.dart';
+import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_user_Eng.dart';
+import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_workers.dart';
+import 'package:flutter_finalproject/Packages/Pages/Auth/Views/register.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/View/new_project.dart';
 import 'package:flutter_finalproject/Packages/Pages/Plan/Components/fill_plan.dart';
 import 'package:http/http.dart' as http;
@@ -26,6 +33,7 @@ class Upload_Image extends StatefulWidget {
 }
 
 class Upload_ImageState extends State<Upload_Image> {
+ static String profileImage='';
   @override
   late File? file = null;
   String status = '';
@@ -168,7 +176,7 @@ class Upload_ImageState extends State<Upload_Image> {
           //now.toString()+
           "image": base64Image,
           "name": widget.bathImage! + '@' + fileName,
-        }).then((result) {
+        }).then((result) async {
       // print(widget.bathImage!);
       setStatus(result.statusCode == 200 ? result.body : errMessage);
       if (widget.bathImage == 'Driver_license') {
@@ -222,11 +230,56 @@ class Upload_ImageState extends State<Upload_Image> {
         setState(() {
           bathImagereturn = 'image/' + widget.bathImage! + '/' + fileName;
         });
-        Register().postDataUpdateImage(
+      await  Register().postDataUpdateImage(
             picture_user: 'image/' + widget.bathImage! + '/' + fileName);
-      }
+        setState(() {
+          profileImage='http://relaxbuilding.space/upload_image/image/' +
+              widget.bathImage! +
+              '/' +
+              fileName;
 
-      Navigator.pop(context);
+        });
+
+        print(profileImage+'16s6516s51d6s15d65s120s50s');
+      }
+      if (PageRegister.accType == '1') {
+        // المهندس
+
+        Navigator.pushNamed(
+          context,
+          PageInfoEng.id,
+        );
+      } else if (PageRegister.accType == '2') {
+        //صاحب مهنه
+        Navigator.pushNamed(
+          context,
+          PageInfoPr.id,
+        );
+      } else if (PageRegister.accType == '3') {
+        //العمال
+        //PageInfoworker
+        Navigator.pushNamed(
+          context,
+          PageInfoworker.id,
+        );
+      } else if (PageRegister.accType == '6') {
+        //المالك العقار
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const PageInfowner()),
+        );
+      } else if (PageRegister.accType == '4') {
+        //صاحب المتجر
+        Navigator.pushNamed(
+          context,
+          PageInfoShope.id,
+        );
+      } else if (PageRegister.accType == '5') {
+        //اصحاب الالات
+        Navigator.pushNamed(context, PageInfoMech.id);
+      }else {
+        Navigator.pop(context);
+      }
     }).catchError((error) {
       setStatus(error);
     });
