@@ -11,6 +11,7 @@ import 'package:flutter_finalproject/Packages/Components/Btn/simple_btn.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/text_filed/simple_filed.dart';
+import 'package:flutter_finalproject/Packages/Pages/NewProject/components/Button/but_up.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
 import 'package:flutter_finalproject/Theme/theme_status.dart';
 import 'package:flutter_finalproject/Utils/path_images.dart';
@@ -51,8 +52,9 @@ class _PageInfoEngState extends State<PageInfoEng> {
                 height: 175.h,
                 decoration: BoxDecoration(
                   color: AppColors.blue,
-                  borderRadius:
-                      BorderRadius.only(bottomLeft: Radius.circular(100.r)),
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(100.r),
+                      bottomRight: Radius.circular(100.r)),
                 ),
                 child:
                     //* header elements
@@ -118,62 +120,8 @@ class _PageInfoEngState extends State<PageInfoEng> {
                           color: AppColors.blue,
                         ),
                       ),
-                      SizedBox(height: 15.h),
-                      //*button up data Image
-                      // syndicate_card
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                child: Text(
-                                  'upload Syndicate Card',
-                                  style: AppTheme.h5(context: context)?.copyWith(
-                                      color: AppColors.blue, fontSize: 20.sp),
-                                ).tr(),
-                              ),
-                            ],
-                          ),
-                          SizedBox(width: 10.w),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 50.w,
-                                height: 30.h,
-                                // height: 100.w,
-                                decoration: BoxDecoration(
-                                  color: AppColors.blue,
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(100.r),
-                                  ),
-                                ),
-                                child: IconButton(
-                                  padding: EdgeInsets.zero,
-                                  alignment: Alignment.center,
-                                  onPressed: () {
-                                    showDialog(
-                                      barrierDismissible: false,
-                                      context: context,
-                                      builder: (context) => AlertChooseImage(
-                                        bathImage: 'syndicate_card',
-                                      ),
-                                    );
-                                  },
-                                  icon: Icon(
-                                    Icons.backup_rounded,
-                                    color: AppColors.white,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
 
-                      SizedBox(height: 10.h),
+                      SizedBox(height: 15.h),
                       //* eng office name
                       SimpleFiled(
                         controller: controllerValue["office_name"],
@@ -198,6 +146,24 @@ class _PageInfoEngState extends State<PageInfoEng> {
                           color: AppColors.blue,
                         ),
                       ),
+                      SizedBox(height: 15.h),
+                      //*button up data Image
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 25.h),
+                        child: Center(
+                            child: SimpleBtnUp(
+                          btnText: KeyLang.uploadlicense.tr(),
+                          onTap: () {
+                            showDialog(
+                              barrierDismissible: false,
+                              context: context,
+                              builder: (context) => AlertChooseImage(
+                                bathImage: 'syndicate_card',
+                              ),
+                            );
+                          },
+                        )),
+                      ),
                       SizedBox(height: 25.h),
 
                       //*button
@@ -208,12 +174,12 @@ class _PageInfoEngState extends State<PageInfoEng> {
                                 btnText: KeyLang.register.toUpperCase().tr(),
                                 onTap: () async {
                                   if (_keyFoem.currentState!.validate()) {
-
                                     Register().postDataEngineer(
                                       city_user: controllerValue["city_user"]!,
                                       Guild_number:
                                           controllerValue["Guild_number"]!,
-                                      office_name: controllerValue["office_name"]!,
+                                      office_name:
+                                          controllerValue["office_name"]!,
                                       context: context,
                                     );
                                   }

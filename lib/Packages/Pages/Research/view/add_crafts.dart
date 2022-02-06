@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/sup_appbar.dart';
+import 'package:flutter_finalproject/Packages/Components/Photo_View/photo_view.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/View/maintenance_project.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/View/new_project.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -78,13 +79,22 @@ class _AddCraftsState extends State<AddCrafts> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(200.0),
-                  child: Image.network(
-                    image,
-                    height: 200,
-                    // width: 250,
-                  ),
-                ),
+                    borderRadius: BorderRadius.circular(200.0),
+                    // ignore: deprecated_member_use
+                    child: FlatButton(
+                      onPressed: () {
+                        GoBack.selectScreen(
+                            context,
+                            ImageView(
+                              image,
+                            ));
+                      },
+                      child: Image.network(
+                        image,
+                        height: 200,
+                        // width: 250,
+                      ),
+                    )),
               ],
             ),
             SizedBox(

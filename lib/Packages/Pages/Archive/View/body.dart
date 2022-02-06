@@ -41,7 +41,7 @@ class _ArchiveState extends State<Archive> {
     setState(() {
       ProjectInfo.project;
 
-      isFinishedProject ;
+      isFinishedProject;
     });
   }
 
@@ -49,7 +49,7 @@ class _ArchiveState extends State<Archive> {
   initState() {
     x();
     project = ProjectInfo.project;
-    isFinishedProject ;
+    isFinishedProject;
     super.initState();
   }
 
@@ -58,8 +58,8 @@ class _ArchiveState extends State<Archive> {
     return Scaffold(
       body: SafeArea(
           child: SingleChildScrollView(
-            child: Column(
-        children: [
+        child: Column(
+          children: [
             //* header
             Container(
               height: 150.h,
@@ -92,13 +92,14 @@ class _ArchiveState extends State<Archive> {
                           placeholder: (context, url) =>
                               AppLoading(chooseLoading: ChooseLoading.IMAGE),
 
-                          errorWidget: (context, url, error) => Icon(Icons.error),
+                          errorWidget: (context, url, error) =>
+                              Icon(Icons.error),
                         ),
                       ),
                       // SizedBox(height: 10.h),
                       //* tital
                       Text(
-                        KeyLang.oneclickhome,
+                        KeyLang.archive.tr(),
                         style: AppTheme.h5(context: context)
                             ?.copyWith(color: AppColors.white),
                       ).tr(),
@@ -126,7 +127,8 @@ class _ArchiveState extends State<Archive> {
                                     selectedDateStart: e.selectedDateStart,
                                     Region: e.Region,
                                     City: e.City,
-                                    construction_license: e.construction_license,
+                                    construction_license:
+                                        e.construction_license,
                                     Projec_No: e.construction_license,
                                     project_name: e.project_name,
                                     state: e.state,
@@ -143,10 +145,10 @@ class _ArchiveState extends State<Archive> {
                 : Container(
                     child: GoBack.tx('   لا يوجد مشاريع مؤرشفة   '),
                   ),
-          SizedBox(height: 13.h),
-        ],
-      ),
-          )),
+            SizedBox(height: 13.h),
+          ],
+        ),
+      )),
     );
   }
 }

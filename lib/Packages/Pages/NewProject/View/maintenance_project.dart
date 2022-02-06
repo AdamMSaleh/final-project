@@ -116,7 +116,7 @@ class _MainteneanceProjectState extends State<MainteneanceProject> {
                         SizedBox(height: 10.h),
                         //* tital
                         Text(
-                          KeyLang.oneclickhome,
+                          "إنشاء مشروع صيانة",
                           style: AppTheme.h5(context: context)
                               ?.copyWith(color: AppColors.white),
                         ).tr(),

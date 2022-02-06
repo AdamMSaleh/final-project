@@ -141,7 +141,7 @@ class _NewProjectState extends State<NewProject> {
                         SizedBox(height: 10.h),
                         //* tital
                         Text(
-                          KeyLang.oneclickhome,
+                          KeyLang.newProject,
                           style: AppTheme.h5(context: context)
                               ?.copyWith(color: AppColors.white),
                         ).tr(),
@@ -194,7 +194,7 @@ class _NewProjectState extends State<NewProject> {
                       SimpleFiled(
                         keyboardType: TextInputType.name,
                         onValidator: (value) => AppValidators.isEmpty(value),
-                        hint: "  منطقة  ",
+                        hint: KeyLang.address,
                         controller: controllerValue['Region'],
                         pIcon: Icon(
                           Icons.add_location_alt_rounded,
@@ -256,7 +256,7 @@ class _NewProjectState extends State<NewProject> {
                             setState(() {
                               AddCrafts.isHomePage = false;
                               AddCrafts.isNewProject = true;
-                              AddCrafts.isMainteneanceProject=false;
+                              AddCrafts.isMainteneanceProject = false;
                             });
                             Navigator.pushNamed(
                               context,
