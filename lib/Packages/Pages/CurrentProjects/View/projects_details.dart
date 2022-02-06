@@ -7,6 +7,7 @@ import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/su
 import 'package:flutter_finalproject/Packages/Components/upload_image_Invoice/upload_image.dart';
 import 'package:flutter_finalproject/Packages/Pages/Home/Components/img_bttn.dart';
 import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/creat_invoices.dart';
+import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/image_invoices.dart';
 import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/view_invoices.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/view/add_crafts.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/view/body.dart';
@@ -206,7 +207,7 @@ class _ProjectsDetailsState extends State<ProjectsDetails> {
                       card2: widget.isStarted ? "إنشاء فاتورة" : null,
                       pageCard2: widget.isStarted ? invoices() : null,
                       card3: widget.isStarted ? "تحميل فاتورة" : null,
-                      pageCard3: widget.isStarted ? UploadImageInvoice() : null,
+                      pageCard3: widget.isStarted ? ImageInvoices() : null,
                     ),
                     widget.isStarted
                         ? GoBack.btnFn("اضافة اصحاب المهن/ عمال", context,

@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Packages/Components/Toast/simple_toast.dart';
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/projects_details.dart';
@@ -10,19 +12,20 @@ class PlanInfo {
       chart_picture,
       chart_type;
 
-  PlanInfo(
-      {this.Scheme_name,
-        this.Engineering_office_name,
-        this.designer_name,
-        this.Scheme_encoding,
-        this.chart_picture,
-        this.chart_type,});
+  PlanInfo({
+    this.Scheme_name,
+    this.Engineering_office_name,
+    this.designer_name,
+    this.Scheme_encoding,
+    this.chart_picture,
+    this.chart_type,
+  });
 
   static List<PlanInfo> plan = [];
 
   static getDataPlan() async {
     // people=[];
-    var x = Register().viewPlans(ProjectsDetails.Projec_No1!);
+    var x = await Register().viewPlans(ProjectsDetails.Projec_No1!);
 
     if (x != 'no data') {
       for (int i = 0; i < x.length; i++) {

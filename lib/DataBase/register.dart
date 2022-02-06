@@ -900,7 +900,7 @@ class Register extends State<RegisterState> {
 
       print(response.body);
 
-      if (msg == "  لقد تمت اضافة المشروع   ") {
+      if (msg == "  لقد تمت اضافة المخطط   ") {
         Navigator.pop(context);
       }
     } catch (e) {
@@ -911,6 +911,113 @@ class Register extends State<RegisterState> {
   }
 
   /********************************************************************************/
+
+  /********************************************************************************/
+  // انشاء فاتورة
+  createInvoices({
+    required String projec_No,
+    required String product_name,
+    required String price_pd,
+    required String number_pd,
+    required BuildContext context,
+  }) async {
+    //200--success ,400,404,
+
+    try {
+      msg = '';
+      var response = await http.post(
+        Uri.parse(url + "Project_establishment/invoices/create_invoices.php"),
+        body: {
+          'projec_No': projec_No,
+          'product_name': product_name,
+          'price_pd': price_pd,
+          'number_pd': number_pd,
+        },
+      );
+      msg = response.body;
+
+      print(response.body);
+
+      if (msg == "  لقد تمت اضافة الفاتورة   ") {
+        Navigator.pop(context);
+      }
+    } catch (e) {
+      msg = e.toString();
+      print(e);
+    }
+    tostforRegsetr(msg);
+  }
+
+  /********************************************************************************/
+
+  /********************************************************************************/
+  // تحميل فاتورة
+  uploadInvoice({
+    required String projec_No,
+    required String product_name,
+    required String price_pd,
+    required String image_pd,
+    required BuildContext context,
+  }) async {
+    //200--success ,400,404,
+
+    try {
+      msg = '';
+      var response = await http.post(
+        Uri.parse(url + "Project_establishment/invoices/upload_invoice.php"),
+        body: {
+          'projec_No': projec_No,
+          'product_name': product_name,
+          'price_pd': price_pd,
+          'image_pd': image_pd,
+        },
+      );
+      msg = response.body;
+
+      print(response.body);
+
+      if (msg == "  لقد تمت اضافة الفاتورة   ") {
+        Navigator.pop(context);
+      }
+    } catch (e) {
+      msg = e.toString();
+      print(e);
+    }
+    tostforRegsetr(msg);
+  }
+
+  /********************************************************************************/
+
+  //view invoice
+  /********************************************************************************/
+  viewInvoice(
+      String projec_No,
+      ) {
+    var data;
+    // bool dataLoaded = false;
+    bool error = false;
+    return Future.delayed(Duration.zero, () async {
+      var res = await http.post(
+        Uri.parse(url + 'Project_establishment/invoices/view_invoice.php'),
+        body: {
+          'projec_No': projec_No,
+        },
+      );
+      if (res.statusCode == 200) {
+        data = json.decode(res.body) as List<dynamic>;
+        error = false;
+      } else {
+        error = true;
+      }
+      return data;
+    });
+  }
+
+  //********************************************************************************/
+
+
+
+
 
   tostforRegsetr(String mss) {
     return Fluttertoast.showToast(

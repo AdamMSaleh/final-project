@@ -1,6 +1,8 @@
 // ignore_for_file: unnecessary_this, camel_case_types, non_constant_identifier_names, no_logic_in_create_state, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
+import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
+import 'package:flutter_finalproject/Packages/Components/Photo_View/photo_view.dart';
 import 'package:flutter_finalproject/Packages/Components/Toast/simple_toast.dart';
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/projects_details.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,29 +14,50 @@ import 'detiels_invoices.dart';
 // ignore: must_be_immutable
 class view_invoices extends StatefulWidget {
   static const String id = 'view_invoices';
-  List<Detiels_Invoices>? invoice_info;
+  // List<Detiels_Invoices>? invoice_info;
   view_invoices({
     Key? key,
-    this.invoice_info,
+    // this.invoice_info,
   }) : super(key: key) {
-    if (this.invoice_info == null) {
-      invoice_info = [];
-    }
+    // if (
+    // this.invoice_info == null) {
+    //   invoice_info = [];
+    // }
   }
 
   @override
   _view_invoicesState createState() =>
-      _view_invoicesState(invoice_info1: invoice_info);
+      _view_invoicesState(/*invoice_info1: invoice_info*/);
 }
 
 class _view_invoicesState extends State<view_invoices> {
-  List<Detiels_Invoices>? invoice_info1 = [];
-  countpuls(countt) {
-    return countt = countt + 1;
+
+  List<Detiels_Invoices>? invoice_info = [];
+
+
+
+
+  x() async {
+    Detiels_Invoices.invoice_info = [];
+
+    await Detiels_Invoices.getDataPlan();
+
+    setState(() {
+      Detiels_Invoices.invoice_info;
+      print(Detiels_Invoices.invoice_info);
+      // isStartedProject;
+    });
   }
 
-  _view_invoicesState({this.invoice_info1});
-  int count = -1;
+  @override
+  initState() {
+    x();
+    invoice_info = Detiels_Invoices.invoice_info;
+    // isStartedProject;
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,10 +86,10 @@ class _view_invoicesState extends State<view_invoices> {
         // ),
         height: (MediaQuery.of(context).size.height) * 0.75,
 
-        child: invoice_info1!.isNotEmpty
+        child: invoice_info!.isNotEmpty
             ? ListView(
                 children: [
-                  ...invoice_info1!.map(
+                  ...invoice_info!.map(
                     (e) => Container(
                       //هاد الكاتيغيوري لكل فاتورة
                       margin: const EdgeInsets.all(30),
@@ -116,15 +139,28 @@ class _view_invoicesState extends State<view_invoices> {
                                             padding: EdgeInsets.all(23.w),
                                             child: Text('${e.price}'),
                                           ),
-                                          Padding(
+                                          e.count_item!=null?Padding(
                                             // ignore: prefer_const_constructors
                                             padding: EdgeInsets.all(23),
                                             child: Text('${e.count_item}'),
+                                          ):FlatButton(
+                                            onPressed: () {
+                                              GoBack.selectScreen(
+                                                  context,
+                                                  ImageView(
+                                                    e.image_pd!,
+                                                  ));
+                                            },
+                                            child: Image.network(
+                                              e.image_pd!,
+                                              height: 100,
+                                              // width: 250,
+                                            ),
                                           ),
-                                          Padding(
+                                         e.count_item!=null? Padding(
                                             padding: const EdgeInsets.all(23),
-                                            child: Text('${e.total}'),
-                                          ),
+                                            child: Text('${(e.count_item!*e.price)}'),
+                                          ):Container(),
 
                                           //-----------------------
                                           //هاد الخط الفاصل بين ايقونات التعديل والحذف والمجموع
@@ -206,14 +242,17 @@ class _view_invoicesState extends State<view_invoices> {
                                             padding: EdgeInsets.all(20),
                                             child: Text(': السعر'),
                                           ),
-                                          const Padding(
+                                          e.count_item!=null?const Padding(
                                             padding: EdgeInsets.all(20),
                                             child: Text(': العدد'),
+                                          ):const Padding(
+                                            padding: EdgeInsets.all(20),
+                                            child: Text(': الصورة'),
                                           ),
-                                          const Padding(
+                                          e.count_item!=null?const Padding(
                                             padding: EdgeInsets.all(20),
                                             child: Text(': المجموع'),
-                                          ),
+                                          ):Container(),
                                           //-----------------------
                                           //هاد الخط الفاصل بين ايقونات التعديل والحذف والمجموع
                                           Padding(
@@ -295,7 +334,7 @@ class _view_invoicesState extends State<view_invoices> {
                   context,
                   MaterialPageRoute(
                       builder: (context) => invoices(
-                            invoice_info: invoice_info1,
+
                           )),
                 )
               : simpleToast(

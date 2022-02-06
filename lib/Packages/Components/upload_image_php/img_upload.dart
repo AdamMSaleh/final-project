@@ -6,6 +6,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_finalproject/DataBase/register.dart';
+import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/image_invoices.dart';
 import 'package:flutter_finalproject/Packages/Pages/NewProject/View/new_project.dart';
 import 'package:flutter_finalproject/Packages/Pages/Plan/Components/fill_plan.dart';
 import 'package:http/http.dart' as http;
@@ -216,8 +217,20 @@ class Upload_ImageState extends State<Upload_Image> {
                   '/' +
                   fileName;
         });
-        print(bathImagereturn ?? "33");
-        print(NewProject.constructionLicense ?? "33");
+        // print(bathImagereturn ?? "33");
+        // print(NewProject.constructionLicense ?? "33");
+
+        // Register().postImageSyndicateCard(
+        //     Guild_picture: 'image/' + widget.bathImage! + '/' + fileName);
+      } else if (widget.bathImage == 'invoies') {
+        // invoies
+        setState(() {
+          bathImagereturn = 'http://relaxbuilding.space/upload_image/image/' +
+              widget.bathImage! +
+              '/' +
+              fileName;
+          ImageInvoices.imageIv =bathImagereturn!;
+        });
 
         // Register().postImageSyndicateCard(
         //     Guild_picture: 'image/' + widget.bathImage! + '/' + fileName);
@@ -234,7 +247,7 @@ class Upload_ImageState extends State<Upload_Image> {
               fileName;
         });
 
-        print(profileImage + '16s6516s51d6s15d65s120s50s');
+        // print(profileImage + '16s6516s51d6s15d65s120s50s');
       }
       // if (PageRegister.accType == '1') {
       //   // المهندس
