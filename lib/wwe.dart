@@ -231,33 +231,35 @@
 //   }
 // }
 
-
-
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter',
       home: Scaffold(
           appBar: AppBar(
-            title: Text('Flutter'),
+            title: const Text('Flutter'),
           ),
-          body: MyLayout()),
+          body: const MyLayout()),
     );
   }
 }
 
 class MyLayout extends StatelessWidget {
+  const MyLayout({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ElevatedButton(
-        child: Text('Show alert'),
+        child: const Text('Show alert'),
         onPressed: () {
           showAlertDialog(context);
         },
@@ -266,25 +268,25 @@ class MyLayout extends StatelessWidget {
   }
 
   showAlertDialog(BuildContext context) {
-
     // set up the buttons
     Widget remindButton = TextButton(
-      child: Text("Remind me later"),
-      onPressed:  () {},
+      child: const Text("Remind me later"),
+      onPressed: () {},
     );
     Widget cancelButton = TextButton(
-      child: Text("Cancel"),
-      onPressed:  () {},
+      child: const Text("Cancel"),
+      onPressed: () {},
     );
     Widget launchButton = TextButton(
-      child: Text("Launch missile"),
-      onPressed:  () {},
+      child: const Text("Launch missile"),
+      onPressed: () {},
     );
 
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
-      title: Text("Notice"),
-      content: Text("Launching this missile will destroy the entire universe. Is this what you intended to do?"),
+      title: const Text("Notice"),
+      content: const Text(
+          "Launching this missile will destroy the entire universe. Is this what you intended to do?"),
       actions: [
         remindButton,
         cancelButton,

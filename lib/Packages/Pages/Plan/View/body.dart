@@ -71,7 +71,8 @@ class _PlanUploadState extends State<PlanUpload> {
       Projec_No: '',
       Engineering_office_name: 'Amman',
       chart_picture: null,
-    ), PlanInformion(
+    ),
+    PlanInformion(
       designer_name: 'Ali',
       Scheme_name: 'univercity',
       chart_type: '',
@@ -79,7 +80,8 @@ class _PlanUploadState extends State<PlanUpload> {
       Projec_No: '',
       Engineering_office_name: 'Amman',
       chart_picture: null,
-    ), PlanInformion(
+    ),
+    PlanInformion(
       designer_name: 'Ali',
       Scheme_name: 'univercity',
       chart_type: '',
@@ -433,123 +435,118 @@ class _PlanUploadState extends State<PlanUpload> {
               // padding: EdgeInsets.all(5),
               children: [
                 ...planData.map(
-                      (e) =>
-                      Container(
-                        margin: EdgeInsets.all(10),
-                        child: Card(
-                          child: Column(
+                  (e) => Container(
+                    margin: EdgeInsets.all(10),
+                    child: Card(
+                      child: Column(
+                        children: [
+                          //space row
+                          Row(
                             children: [
-                              //space row
-                              Row(
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.all(10),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment
-                                    .spaceEvenly,
-                                children: [
-                                  Text(
-                                    'Plan Name : ',
-                                    style: TextStyle(
-                                      color: project_color('741b47'),
-                                    ),
-                                  ),
-                                  Text(e.Scheme_name),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment
-                                    .spaceEvenly,
-                                children: [
-                                  Text(
-                                    'Office Name : ',
-                                    style: TextStyle(
-                                      color: project_color('741b47'),
-                                    ),
-                                  ),
-                                  Text(e.Engineering_office_name)
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment
-                                    .spaceEvenly,
-                                children: [
-                                  Text(
-                                    'Designer Name :',
-                                    style: TextStyle(
-                                      color: project_color('741b47'),
-                                    ),
-                                  ),
-                                  Text(e.designer_name)
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment
-                                    .spaceEvenly,
-                                children: [
-                                  Text(
-                                    'Code Number : ',
-                                    style: TextStyle(
-                                      color: project_color('741b47'),
-                                    ),
-                                  ),
-                                  Text(e.Scheme_encoding)
-                                ],
-                              ),
-                              //space row
-                              Row(
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.all(10),
-                                  ),
-                                ],
-                              ),
-
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment
-                                    .spaceAround,
-                                children: [
-                                  Text(
-                                    'Plan Image :',
-                                    style: TextStyle(
-                                      color: project_color('741b47'),
-                                    ),
-                                  ),
-                                  Container(
-                                    child: e.chart_picture  == null
-                                        ? FlatButton(
-                                      onPressed: () {
-                                        GoBack.selectScreen(context, ImageView(
-                                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgaE5uDsb9aBw7dcDlZzcZHk6GlgOYv-a2zb7lEWkQXZlEjFMsGsozB_-r2mhy61GKES0&usqp=CAU'
-                                        ));
-                                      },
-                                      child: Image.network(
-                                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgaE5uDsb9aBw7dcDlZzcZHk6GlgOYv-a2zb7lEWkQXZlEjFMsGsozB_-r2mhy61GKES0&usqp=CAU',
-                                        height: 150,
-                                      ),
-                                    )
-                                        : Image.network(
-                                      e.chart_picture!,
-                                      height: 150,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              //space row
-                              Row(
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.all(10),
-                                  ),
-                                ],
+                              Container(
+                                margin: EdgeInsets.all(10),
                               ),
                             ],
                           ),
-                        ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Plan Name : ',
+                                style: TextStyle(
+                                  color: project_color('741b47'),
+                                ),
+                              ),
+                              Text(e.Scheme_name),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Office Name : ',
+                                style: TextStyle(
+                                  color: project_color('741b47'),
+                                ),
+                              ),
+                              Text(e.Engineering_office_name)
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Designer Name :',
+                                style: TextStyle(
+                                  color: project_color('741b47'),
+                                ),
+                              ),
+                              Text(e.designer_name)
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Code Number : ',
+                                style: TextStyle(
+                                  color: project_color('741b47'),
+                                ),
+                              ),
+                              Text(e.Scheme_encoding)
+                            ],
+                          ),
+                          //space row
+                          Row(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.all(10),
+                              ),
+                            ],
+                          ),
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                'Plan Image :',
+                                style: TextStyle(
+                                  color: project_color('741b47'),
+                                ),
+                              ),
+                              Container(
+                                child: e.chart_picture == null
+                                    ? FlatButton(
+                                        onPressed: () {
+                                          GoBack.selectScreen(
+                                              context,
+                                              ImageView(
+                                                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgaE5uDsb9aBw7dcDlZzcZHk6GlgOYv-a2zb7lEWkQXZlEjFMsGsozB_-r2mhy61GKES0&usqp=CAU'));
+                                        },
+                                        child: Image.network(
+                                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgaE5uDsb9aBw7dcDlZzcZHk6GlgOYv-a2zb7lEWkQXZlEjFMsGsozB_-r2mhy61GKES0&usqp=CAU',
+                                          height: 150,
+                                        ),
+                                      )
+                                    : Image.network(
+                                        e.chart_picture!,
+                                        height: 150,
+                                      ),
+                              ),
+                            ],
+                          ),
+                          //space row
+                          Row(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.all(10),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
+                    ),
+                  ),
                 )
               ],
             ),
@@ -576,7 +573,6 @@ class _PlanUploadState extends State<PlanUpload> {
             } else {
               simpleToast(message: ' لا يمكن اضافة مخطط لأن المشروع منتهي ');
             }
-            ;
           }),
     );
   }

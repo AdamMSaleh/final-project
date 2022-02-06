@@ -7,6 +7,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_finalproject/DataBase/register.dart';
+import 'package:flutter_finalproject/Packages/Components/Add_Image/info_imeg.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 import 'package:flutter_finalproject/Packages/Components/Toast/simple_toast.dart';
 import 'package:flutter_finalproject/Packages/Components/user_info_secure_storage/user_save_login.dart';
@@ -36,14 +37,15 @@ class Profile extends StatefulWidget {
   static String image1 = ProfileInformation.picture_user ??
       "https://i2.wp.com/alghad.com/wp-content/uploads/2021/10/Squid-Game-Games-Ranked.jpg?resize=1024%2C512&ssl=1"; //صورة المستخدم
 
-  Profile({Key? key,
-    firstName,
-    lastName,
-    occupation,
-    age,
-    region,
-    phoneNumber,
-    image})
+  Profile(
+      {Key? key,
+      firstName,
+      lastName,
+      occupation,
+      age,
+      region,
+      phoneNumber,
+      image})
       : super(key: key) {
     if (firstName != null &&
         lastName != null &&
@@ -96,11 +98,11 @@ class _ProfileState extends State<Profile> {
         break;
 
       case 5:
-      // print("User Logged out");
+        // print("User Logged out");
 
-      // Navigator.of(context).pushAndRemoveUntil(
-      //     MaterialPageRoute(builder: (context) => LoginPage()),
-      //         (route) => false);
+        // Navigator.of(context).pushAndRemoveUntil(
+        //     MaterialPageRoute(builder: (context) => LoginPage()),
+        //         (route) => false);
         break;
     }
   }
@@ -133,18 +135,15 @@ class _ProfileState extends State<Profile> {
                 iconTheme: IconThemeData(color: Colors.white)),
             child: PopupMenuButton<int>(
               color: Colors.black,
-              itemBuilder: (context) =>
-              [
-                 PopupMenuItem<int>(
-                    value: 0, child: Text('تعديل الملف الشخصي')),
-                 PopupMenuItem<int>(value: 1, child: Text("الاعدادات")),
-                 PopupMenuItem<int>(
-                    value: 2, child: Text("السياسة والخصوصية")),
-                 PopupMenuDivider(),
+              itemBuilder: (context) => [
+                PopupMenuItem<int>(value: 0, child: Text('تعديل الملف الشخصي')),
+                PopupMenuItem<int>(value: 1, child: Text("الاعدادات")),
+                PopupMenuItem<int>(value: 2, child: Text("السياسة والخصوصية")),
+                PopupMenuDivider(),
                 PopupMenuItem<int>(
                     value: 5,
                     child: Row(
-                      children:  [
+                      children: [
                         Icon(
                           Icons.logout,
                           color: Colors.red,
@@ -153,7 +152,7 @@ class _ProfileState extends State<Profile> {
                           width: 7,
                         ),
                         TextButton(
-                          onPressed:(){
+                          onPressed: () {
                             UserPreferences.removeUsername();
                             UserPreferences.removePassword();
                             UserPreferences.removeUserId();
@@ -190,8 +189,8 @@ class _ProfileState extends State<Profile> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               //image  -----------------------------------*--**-*-*-*-*-*-*---
-
-              Column(
+              InfoImageState(),
+              /* Column(
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(20),
@@ -210,19 +209,18 @@ class _ProfileState extends State<Profile> {
                     // ),
                   ),
                 ],
-              ),
+              ),*/
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
-                    onPressed: () =>
-                        GoBack.selectScreen(
-                            context, const LaborManagementForProfessionals()),
+                    onPressed: () => GoBack.selectScreen(
+                        context, const LaborManagementForProfessionals()),
                     child: GoBack.tx('أدارة العمل', textColor: textColor),
                     style: ButtonStyle(
                       backgroundColor:
-                      MaterialStateProperty.all(project_color('741b47')),
+                          MaterialStateProperty.all(project_color('741b47')),
                     ),
                   ),
                   ElevatedButton(
@@ -236,7 +234,7 @@ class _ProfileState extends State<Profile> {
                         textColor: textColor),
                     style: ButtonStyle(
                       backgroundColor:
-                      MaterialStateProperty.all(project_color('741b47')),
+                          MaterialStateProperty.all(project_color('741b47')),
                     ),
                   ),
                 ],
@@ -257,10 +255,7 @@ class _ProfileState extends State<Profile> {
                     Card(
                       color: project_color('741b47'),
                       child: Container(
-                        width: (MediaQuery
-                            .of(context)
-                            .size
-                            .width) * 0.90,
+                        width: (MediaQuery.of(context).size.width) * 0.90,
                         padding: EdgeInsets.all(5),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -349,10 +344,7 @@ class _ProfileState extends State<Profile> {
                     Card(
                       color: project_color('741b47'),
                       child: Container(
-                        width: (MediaQuery
-                            .of(context)
-                            .size
-                            .width) * 0.90,
+                        width: (MediaQuery.of(context).size.width) * 0.90,
                         padding: EdgeInsets.all(5),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -378,10 +370,7 @@ class _ProfileState extends State<Profile> {
                     Card(
                       color: project_color('741b47'),
                       child: Container(
-                        width: (MediaQuery
-                            .of(context)
-                            .size
-                            .width) * 0.90,
+                        width: (MediaQuery.of(context).size.width) * 0.90,
                         padding: EdgeInsets.all(5),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -409,10 +398,7 @@ class _ProfileState extends State<Profile> {
                     Card(
                       color: project_color('741b47'),
                       child: Container(
-                        width: (MediaQuery
-                            .of(context)
-                            .size
-                            .width) * 0.90,
+                        width: (MediaQuery.of(context).size.width) * 0.90,
                         padding: EdgeInsets.all(5),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -440,10 +426,7 @@ class _ProfileState extends State<Profile> {
                     Card(
                       color: project_color('741b47'),
                       child: Container(
-                        width: (MediaQuery
-                            .of(context)
-                            .size
-                            .width) * 0.90,
+                        width: (MediaQuery.of(context).size.width) * 0.90,
                         padding: EdgeInsets.all(5),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,

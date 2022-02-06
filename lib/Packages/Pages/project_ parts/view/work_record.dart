@@ -4,9 +4,9 @@ import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/sup_appbar.dart';
+import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/design.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile.dart';
 import 'package:flutter_finalproject/Packages/Pages/project_%20parts/components/cardWorks/card.dart';
-import 'package:flutter_finalproject/Utils/path_images.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WorkRecond extends StatelessWidget {
@@ -26,12 +26,13 @@ class WorkRecond extends StatelessWidget {
       appBar: AppBSup(txt: KeyLang.workRecond.tr()),
       body: SafeArea(
         child: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(PathImages.background),
-              fit: BoxFit.cover,
-            ),
-          ),
+          color: project_color('efcba7 '),
+          // decoration: BoxDecoration(
+          //   image: DecorationImage(
+          //     image: AssetImage(PathImages.background),
+          //     fit: BoxFit.cover,
+          //   ),
+          // ),
           child: Column(
             children: [
               SizedBox(height: 15.h),

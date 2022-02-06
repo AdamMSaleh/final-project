@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable, avoid_unnecessary_containers, prefer_const_constructors, prefer_adjacent_string_concatenation, implementation_imports, must_call_super, non_constant_identifier_names
+// ignore_for_file: must_be_immutable, avoid_unnecessary_containers, prefer_const_constructors, prefer_adjacent_string_concatenation, implementation_imports, must_call_super, non_constant_identifier_names, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/DataBase/register.dart';

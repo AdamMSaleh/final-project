@@ -3,7 +3,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Packages/Components/Add_Image/alert_choose.dart';
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/projects_details.dart';
@@ -15,7 +14,7 @@ class Fill_plane_page extends StatefulWidget {
   static String Plan_Image = "";
   static String Projec_No = '';
 
-  Fill_plane_page( {Key? key}) : super(key: key);
+  const Fill_plane_page({Key? key}) : super(key: key);
 
   @override
   _Fill_plane_pageState createState() => _Fill_plane_pageState();
@@ -228,10 +227,9 @@ class _Fill_plane_pageState extends State<Fill_plane_page> {
                           showDialog(
                             barrierDismissible: false,
                             context: context,
-                            builder: (context) =>
-                                AlertChooseImage(
-                                  bathImage: 'Plan_Image',
-                                ),
+                            builder: (context) => AlertChooseImage(
+                              bathImage: 'Plan_Image',
+                            ),
                           );
                         },
 
@@ -251,8 +249,7 @@ class _Fill_plane_pageState extends State<Fill_plane_page> {
                     ElevatedButton(
                       onPressed: () {
                         setState(
-                              () {
-
+                          () {
                             if (Fill_plane_page.Plan_Image.isNotEmpty &&
                                 myControllerName_Plan.text != '' &&
                                 myControllerCode_number.text != '' &&
@@ -263,12 +260,14 @@ class _Fill_plane_pageState extends State<Fill_plane_page> {
                               Register().NewPlan(
                                 Projec_No: ProjectsDetails.Projec_No1!,
                                 Scheme_name: myControllerName_Plan.text,
-                                Engineering_office_name: myControllerOffice_name.text,
+                                Engineering_office_name:
+                                    myControllerOffice_name.text,
                                 designer_name: myControllerDesigner_name.text,
                                 Scheme_encoding: myControllerCode_number.text,
-                                chart_picture:Fill_plane_page.Plan_Image ,
+                                chart_picture: Fill_plane_page.Plan_Image,
                                 chart_type: selected_plan_type!,
-                                context: context,);
+                                context: context,
+                              );
                               myControllerName_Plan.clear();
                               //myControllertype.clear();
                               myControllerOffice_name.clear();
@@ -282,8 +281,6 @@ class _Fill_plane_pageState extends State<Fill_plane_page> {
                               Register()
                                   .tostforRegsetr('لطفاً إملأ جميع الحقول');
                             }
-
-
                           },
                         );
                         // Navigator.pop(context);
@@ -297,7 +294,7 @@ class _Fill_plane_pageState extends State<Fill_plane_page> {
                       ),
                       style: ButtonStyle(
                         backgroundColor:
-                        MaterialStateProperty.all(project_color('efcba7')),
+                            MaterialStateProperty.all(project_color('efcba7')),
                       ),
                     ),
                     //

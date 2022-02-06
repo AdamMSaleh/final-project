@@ -47,8 +47,9 @@ class _PageInfoMechState extends State<PageInfoMech> {
                 height: 175.h,
                 decoration: BoxDecoration(
                   color: AppColors.blue,
-                  borderRadius:
-                      BorderRadius.only(bottomLeft: Radius.circular(100.r)),
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(100.r),
+                      bottomRight: Radius.circular(100.r)),
                 ),
                 child:
                     //* header elements

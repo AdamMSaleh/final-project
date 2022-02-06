@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, implementation_imports, unused_import, must_be_immutable, sized_box_for_whitespace, duplicate_ignore, avoid_unnecessary_containers
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, implementation_imports, unused_import, must_be_immutable, sized_box_for_whitespace, duplicate_ignore, avoid_unnecessary_containers, prefer_const_declarations
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
@@ -57,7 +57,7 @@ class _PageHomeState extends State<PageHome> {
 
         timeBackPressed = DateTime.now();
         if (isExitWarning) {
-          const message = 'Press back again to exit';
+          final message = 'Press back again to exit';
           Fluttertoast.showToast(msg: message, fontSize: 18);
           return false;
         } else {

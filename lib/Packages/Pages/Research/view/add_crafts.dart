@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable, no_logic_in_create_state, prefer_const_constructors, sized_box_for_whitespace, avoid_print
+// ignore_for_file: must_be_immutable, no_logic_in_create_state, prefer_const_constructors, sized_box_for_whitespace, avoid_print, unnecessary_this, duplicate_ignore
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
@@ -80,6 +80,7 @@ class _AddCraftsState extends State<AddCrafts> {
               children: [
                 ClipRRect(
                     borderRadius: BorderRadius.circular(200.0),
+                    // ignore: deprecated_member_use
                     child: FlatButton(
                       onPressed: () {
                         GoBack.selectScreen(

@@ -1,3 +1,6 @@
+// ignore: duplicate_ignore
+// ignore_for_file: must_be_immutable, duplicate_ignore
+
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
 import 'package:photo_view/photo_view.dart';
