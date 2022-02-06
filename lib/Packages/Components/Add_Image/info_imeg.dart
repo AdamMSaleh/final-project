@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-// ignore_for_file: prefer_const_constructors, annotate_overrides, must_call_super, avoid_print
-=======
-// ignore_for_file: prefer_const_constructors, avoid_print
->>>>>>> 1d97f6537ba769a3cbfc2c37b01845b5b7030ba2
+// ignore_for_file: prefer_const_constructors, annotate_overrides, must_call_super, avoid_print, duplicate_ignore
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';

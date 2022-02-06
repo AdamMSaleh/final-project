@@ -10,11 +10,7 @@ import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/Drawer/drawer.dart';
-<<<<<<< HEAD
 import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/sup_appbar.dart';
-=======
-import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/appbar.dart';
->>>>>>> 1d97f6537ba769a3cbfc2c37b01845b5b7030ba2
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Photo_View/photo_view.dart';
