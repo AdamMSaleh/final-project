@@ -3,7 +3,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.dart';
@@ -41,7 +40,7 @@ class _ArchiveState extends State<Archive> {
     setState(() {
       ProjectInfo.project;
 
-      isFinishedProject ;
+      isFinishedProject;
     });
   }
 
@@ -49,7 +48,7 @@ class _ArchiveState extends State<Archive> {
   initState() {
     x();
     project = ProjectInfo.project;
-    isFinishedProject ;
+    isFinishedProject;
     super.initState();
   }
 
@@ -58,8 +57,8 @@ class _ArchiveState extends State<Archive> {
     return Scaffold(
       body: SafeArea(
           child: SingleChildScrollView(
-            child: Column(
-        children: [
+        child: Column(
+          children: [
             //* header
             Container(
               height: 150.h,
@@ -92,7 +91,8 @@ class _ArchiveState extends State<Archive> {
                           placeholder: (context, url) =>
                               AppLoading(chooseLoading: ChooseLoading.IMAGE),
 
-                          errorWidget: (context, url, error) => Icon(Icons.error),
+                          errorWidget: (context, url, error) =>
+                              Icon(Icons.error),
                         ),
                       ),
                       // SizedBox(height: 10.h),
@@ -118,7 +118,6 @@ class _ArchiveState extends State<Archive> {
                                 num_project: e.project_name!,
                                 onTap: () => GoBack.selectScreen(
                                   context,
-
                                   ProjectsDetails(
                                     str: e.project_name,
                                     Owner_User_ID: e.Owner_User_ID,
@@ -127,7 +126,8 @@ class _ArchiveState extends State<Archive> {
                                     selectedDateStart: e.selectedDateStart,
                                     Region: e.Region,
                                     City: e.City,
-                                    construction_license: e.construction_license,
+                                    construction_license:
+                                        e.construction_license,
                                     Projec_No: e.construction_license,
                                     project_name: e.project_name,
                                     state: e.state,
@@ -138,19 +138,16 @@ class _ArchiveState extends State<Archive> {
                                 owner_name: e.owner_name!,
                               )
                             : Container(),
-
                       ),
-
                     ],
                   )
                 : Container(
                     child: GoBack.tx('   لا يوجد مشاريع مؤرشفة   '),
                   ),
-          SizedBox(height: 13.h),
-
-        ],
-      ),
-          )),
+            SizedBox(height: 13.h),
+          ],
+        ),
+      )),
     );
   }
 }

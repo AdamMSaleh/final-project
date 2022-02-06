@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable, use_key_in_widget_constructors, sized_box_for_whitespace, prefer_const_constructors, unused_field, implementation_imports
+// ignore_for_file: must_be_immutable, use_key_in_widget_constructors, sized_box_for_whitespace, prefer_const_constructors, unused_field, implementation_imports, unused_local_variable
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
@@ -14,7 +14,6 @@ import 'package:flutter_finalproject/Theme/theme_status.dart';
 import 'package:flutter_finalproject/Utils/path_images.dart';
 import 'package:flutter_finalproject/validators/app_validators.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class PageForgetPass extends StatelessWidget {
   static const String id = 'PageForgetPass';
@@ -27,7 +26,7 @@ class PageForgetPass extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // * access Provider AuthService
-    DateTime timeBackPressed =DateTime.now();
+    DateTime timeBackPressed = DateTime.now();
     return Scaffold(
       backgroundColor: AppColors.blue,
       body: SafeArea(

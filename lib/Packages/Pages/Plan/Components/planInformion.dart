@@ -30,9 +30,9 @@ class PlanInformion {
       Engineering_office_name,
       designer_name,
       Scheme_encoding,
-      chart_picture,
-      chart_type;
 
+      chart_type;
+  String ? chart_picture;
   PlanInformion({
     required this.Projec_No,
     required this.Scheme_name,

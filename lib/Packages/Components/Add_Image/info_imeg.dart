@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, avoid_print
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +18,8 @@ class InfoImageState extends StatefulWidget {
 }
 
 class InfoImage extends State<InfoImageState> {
+  @override
+  // ignore: must_call_super
   void initState() {
     Upload_ImageState.profileImage;
     setState(() {
@@ -52,9 +54,9 @@ class InfoImage extends State<InfoImageState> {
               // ),
             ),
             child:
-            // Upload_ImageState.profileImage==''?Image.asset(PathImages.infoimage):
-            CachedNetworkImage(
-              imageUrl: Upload_ImageState.profileImage ,
+                // Upload_ImageState.profileImage==''?Image.asset(PathImages.infoimage):
+                CachedNetworkImage(
+              imageUrl: Upload_ImageState.profileImage,
               //لتعديل ع صورة
               imageBuilder: (context, jjjjj) {
                 return CircleAvatar(
@@ -66,7 +68,8 @@ class InfoImage extends State<InfoImageState> {
                   AppLoading(chooseLoading: ChooseLoading.IMAGE),
               // في حال خطاء بالاتصال بشبكة
 
-              errorWidget: (context, url, error) => Image.asset(PathImages.infoimage),
+              errorWidget: (context, url, error) =>
+                  Image.asset(PathImages.infoimage),
             ),
           ),
           // Add Image Icon

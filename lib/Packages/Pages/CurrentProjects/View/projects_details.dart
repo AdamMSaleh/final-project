@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable, avoid_unnecessary_containers, prefer_const_constructors, prefer_adjacent_string_concatenation, implementation_imports, must_call_super
+// ignore_for_file: must_be_immutable, avoid_unnecessary_containers, prefer_const_constructors, prefer_adjacent_string_concatenation, implementation_imports, must_call_super, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/DataBase/register.dart';
@@ -7,7 +7,6 @@ import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/su
 import 'package:flutter_finalproject/Packages/Components/upload_image_Invoice/upload_image.dart';
 import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/creat_invoices.dart';
 import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/view_invoices.dart';
-import 'package:flutter_finalproject/Packages/Pages/Plan/Components/fill_plan.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/view/add_crafts.dart';
 import 'package:flutter_finalproject/Packages/Pages/Research/view/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/project_%20parts/view/body.dart';
@@ -59,7 +58,7 @@ class ProjectsDetails extends StatefulWidget {
     Owner_User_ID1 = Owner_User_ID;
     owner_name1 = owner_name;
     Project_Type1 = Project_Type;
-    construction_license1 =construction_license ;
+    construction_license1 = construction_license;
     state1 = state;
   }
 
@@ -67,19 +66,19 @@ class ProjectsDetails extends StatefulWidget {
 
   @override
   _ProjectsDetailsState createState() => _ProjectsDetailsState(
-        // str1,
-        // Projec_No1,
-        // user_no_eng1,
-        // project_name1,
-        // City1,
-        // Region1,
-        // selectedDateStart1,
-        // selectedDateEnd1,
-        // Owner_User_ID1,
-        // owner_name1,
-        // Project_Type1,
-        // construction_license1,
-        // state1,
+      // str1,
+      // Projec_No1,
+      // user_no_eng1,
+      // project_name1,
+      // City1,
+      // Region1,
+      // selectedDateStart1,
+      // selectedDateEnd1,
+      // Owner_User_ID1,
+      // owner_name1,
+      // Project_Type1,
+      // construction_license1,
+      // state1,
       );
 }
 
@@ -130,17 +129,14 @@ class _ProjectsDetailsState extends State<ProjectsDetails> {
     });
     // Fill_plane_page.Projec_No = ProjectsDetails.Projec_No1!;
     widget.isStarted = ProjectsDetails.state1 == '1';
-
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       //* AppBar
       appBar: AppBSup(txt: 'تفاصيل المشروع'),
-      body:
-      Container(
+      body: Container(
         // padding: const EdgeInsets.only(top:10,),//fromLTRB(15,10,10,0),
 //----------------------------------------
         child: SingleChildScrollView(
@@ -234,7 +230,6 @@ class _ProjectsDetailsState extends State<ProjectsDetails> {
                       "سجل العمال",
                       context,
                       page: WorkersDetection(),
-
                     ),
                     widget.isStarted
                         ?
@@ -242,7 +237,7 @@ class _ProjectsDetailsState extends State<ProjectsDetails> {
                         GoBack().btnAlertDialog(
                             GoBack.tx("   انهاء المشروع   ",
                                 textColor: Colors.red.shade500, sizee: 19),
-                          ProjectsDetails.Projec_No1!,
+                            ProjectsDetails.Projec_No1!,
                             context,
                           )
                         : Container(),

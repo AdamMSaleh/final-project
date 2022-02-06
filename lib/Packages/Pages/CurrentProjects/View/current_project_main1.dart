@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 
+// ignore: unused_import
 import 'projects_details.dart' as zz;
 
 class CurrentProjectMain extends StatefulWidget {
@@ -17,7 +18,7 @@ class _CurrentProjectMainState extends State<CurrentProjectMain> {
   String srt;
   _CurrentProjectMainState(this.srt);
   // Future<bool> maybePop(BuildContext context) {
-    // return Navigator.of(context).maybePop(zz.ProjectsDetails("j"));
+  // return Navigator.of(context).maybePop(zz.ProjectsDetails("j"));
   // }
 
   // void selectScreen(BuildContext ctx) {

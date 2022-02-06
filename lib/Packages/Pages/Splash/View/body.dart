@@ -37,11 +37,13 @@ class _PageSplashState extends State<PageSplash> {
     // ignore: prefer_const_constructors
     Timer(Duration(seconds: 3), () {
       // Navigator.pushReplacementNamed(context, PageLogin.id);
+      //API
       Register().postLogin(
         context: context,
         email: UserPreferences.getUsername() ?? '',
         password: UserPreferences.getPassword() ?? '',
       );
+
       // Register().splashLogin(context);
     });
     super.initState();
@@ -90,7 +92,7 @@ class _PageSplashState extends State<PageSplash> {
                 SizedBox(
                   height: 20,
                 ),
-                Text(KeyLang.oneclickhome,
+                Text(KeyLang.welcome ,
                     style: AppStyles.welcome.copyWith(
                       color: AppColors.white,
                       fontSize: 35.h,
