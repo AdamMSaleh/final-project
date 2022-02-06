@@ -33,7 +33,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class PageRegister extends StatefulWidget {
   static const String id = 'PageRegister';
-static String accType='';
+  static String accType = '';
   const PageRegister({Key? key}) : super(key: key);
 
   @override
@@ -87,17 +87,16 @@ class _PageRegister extends State<PageRegister> {
 
   @override
   Widget build(BuildContext context) {
-
-    DateTime timeBackPressed =DateTime.now();
+    DateTime timeBackPressed = DateTime.now();
     return WillPopScope(
       onWillPop: () async {
-        final difference =DateTime.now().difference(timeBackPressed);
+        final difference = DateTime.now().difference(timeBackPressed);
         final isExitWarning = difference >= Duration(seconds: 2);
 
-        timeBackPressed =DateTime.now();
+        timeBackPressed = DateTime.now();
         if (isExitWarning) {
           const message = 'Press back again to exit';
-          Fluttertoast. showToast(msg: message, fontSize: 18);
+          Fluttertoast.showToast(msg: message, fontSize: 18);
           return false;
         } else {
           Fluttertoast.cancel();
@@ -128,7 +127,8 @@ class _PageRegister extends State<PageRegister> {
                           placeholder: (context, url) =>
                               AppLoading(chooseLoading: ChooseLoading.IMAGE),
 
-                          errorWidget: (context, url, error) => Icon(Icons.error),
+                          errorWidget: (context, url, error) =>
+                              Icon(Icons.error),
                         ),
                       ),
                       //*tital
@@ -176,7 +176,8 @@ class _PageRegister extends State<PageRegister> {
                                       //* first name
                                       SimpleFiled(
                                         keyboardType: TextInputType.name,
-                                        controller: controllerValue['first_name'],
+                                        controller:
+                                            controllerValue['first_name'],
                                         onValidator: (value) =>
                                             AppValidators.isname(value),
                                         hint: KeyLang.firstName.tr(),
@@ -189,7 +190,8 @@ class _PageRegister extends State<PageRegister> {
                                       //* last name
                                       SimpleFiled(
                                         keyboardType: TextInputType.name,
-                                        controller: controllerValue['last_name'],
+                                        controller:
+                                            controllerValue['last_name'],
                                         onValidator: (value) =>
                                             AppValidators.isname(value),
                                         hint: KeyLang.lastName.tr(),
@@ -199,31 +201,30 @@ class _PageRegister extends State<PageRegister> {
                                         ),
                                       ),
                                       SizedBox(height: 20.h),
+                                      //*age
+                                      SimpleFiled(
+                                        keyboardType: TextInputType.number,
+                                        controller: controllerValue['age'],
+                                        onValidator: (value) =>
+                                            AppValidators.isAge(value),
+                                        hint: KeyLang.age,
+                                        pIcon: Icon(
+                                          Icons.filter_vintage_outlined,
+                                          color: AppColors.blue,
+                                        ),
+                                      ),
+
+                                      SizedBox(height: 20.h),
                                       //*email
                                       SimpleFiled(
-                                        keyboardType: TextInputType.emailAddress,
+                                        keyboardType:
+                                            TextInputType.emailAddress,
                                         controller: controllerValue['email'],
                                         onValidator: (value) =>
                                             AppValidators.isEmail(value),
                                         hint: KeyLang.email.tr(),
                                         pIcon: Icon(
                                           Icons.email,
-                                          color: AppColors.blue,
-                                        ),
-                                      ),
-
-                                      SizedBox(height: 20.h),
-
-                                      //*age
-                                      SimpleFiled(
-                                        keyboardType: TextInputType.number,
-                                        controller:
-                                        controllerValue['age'],
-                                        onValidator: (value) =>
-                                            AppValidators.isAge(value),
-                                        hint: 'العمر',
-                                        pIcon: Icon(
-                                          Icons.filter_vintage_outlined,
                                           color: AppColors.blue,
                                         ),
                                       ),
@@ -270,7 +271,8 @@ class _PageRegister extends State<PageRegister> {
                                           onValidator: (value) =>
                                               AppValidators.isEqualPass(
                                                   value, _pass),
-                                          controller: controllerValue['password'],
+                                          controller:
+                                              controllerValue['password'],
                                           hint: KeyLang.cpass.tr(),
                                           isObscureText: _obscureText,
                                           pIcon: Icon(
@@ -389,12 +391,14 @@ class _PageRegister extends State<PageRegister> {
                                           ],
                                           hint: Text(
                                               KeyLang.typeOfProfession.tr(),
-                                              style: AppStyles.styleHeadline1Light
+                                              style: AppStyles
+                                                  .styleHeadline1Light
                                                   .copyWith(
                                                       color: AppColors.blue,
                                                       fontSize: 15.sp)),
                                           onChanged: (value) => {
-                                            if (value == KeyLang.realestateowner)
+                                            if (value ==
+                                                KeyLang.realestateowner)
                                               {
                                                 s = 6,
                                               }
@@ -411,7 +415,8 @@ class _PageRegister extends State<PageRegister> {
                                               {
                                                 s = 3,
                                               }
-                                            else if (value == KeyLang.shopkeeper)
+                                            else if (value ==
+                                                KeyLang.shopkeeper)
                                               {
                                                 s = 4,
                                               }
@@ -447,7 +452,8 @@ class _PageRegister extends State<PageRegister> {
                                                         .validate()) {
                                                       print(
                                                           'under buttton in register');
-                                                      PageRegister.accType=s.toString();
+                                                      PageRegister.accType =
+                                                          s.toString();
                                                       Register().postData(
                                                         first_name:
                                                             controllerValue[
@@ -457,8 +463,9 @@ class _PageRegister extends State<PageRegister> {
                                                                 'last_name']!,
                                                         email: controllerValue[
                                                             'email']!,
-                                                        password: controllerValue[
-                                                            'password']!,
+                                                        password:
+                                                            controllerValue[
+                                                                'password']!,
                                                         phone_number:
                                                             controllerValue[
                                                                 'phone_number']!,

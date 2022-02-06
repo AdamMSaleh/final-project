@@ -87,4 +87,9 @@ class KeyLang {
   static String welcome = "Welcome";
   static String payments = "Payments";
   static String timeline = "Time Line";
+  static String age = "Age";
+  static String editProfile = "Edit profile";
+  static String settings = "Settings";
+  static String politisAndPrivacy = "Politics and Privacy";
+  static String logout = "logout";
 }

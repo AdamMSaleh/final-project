@@ -4,12 +4,15 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_finalproject/DataBase/register.dart';
+import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Add_Image/info_imeg.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 import 'package:flutter_finalproject/Packages/Components/Toast/simple_toast.dart';
+import 'package:flutter_finalproject/Packages/Components/cach_image/image_user.dart';
 import 'package:flutter_finalproject/Packages/Components/user_info_secure_storage/user_save_login.dart';
 import 'package:flutter_finalproject/Packages/Pages/Invoice/Components/design.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/Components/profile_information.dart';
@@ -17,6 +20,7 @@ import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile_edit.da
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile_for_workers.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/workerRequirements/laborManagementForProfessionals/labor_management_for_professionals.dart';
 import 'package:flutter_finalproject/Theme/app_color.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -123,7 +127,7 @@ class _ProfileState extends State<Profile> {
       appBar: AppBar(
         backgroundColor: AppColors.blue,
         title: Text(
-          'الملف الشخصي',
+          KeyLang.profile.tr(),
           style: TextStyle(color: Colors.white),
         ), //GoBack.tx(' الملف الشخصي'),
         leading: GoBack.back(context),
@@ -136,9 +140,12 @@ class _ProfileState extends State<Profile> {
             child: PopupMenuButton<int>(
               color: Colors.black,
               itemBuilder: (context) => [
-                PopupMenuItem<int>(value: 0, child: Text('تعديل الملف الشخصي')),
-                PopupMenuItem<int>(value: 1, child: Text("الاعدادات")),
-                PopupMenuItem<int>(value: 2, child: Text("السياسة والخصوصية")),
+                PopupMenuItem<int>(
+                    value: 0, child: Text(KeyLang.editProfile.tr())),
+                PopupMenuItem<int>(
+                    value: 1, child: Text(KeyLang.settings.tr())),
+                PopupMenuItem<int>(
+                    value: 2, child: Text(KeyLang.politisAndPrivacy.tr())),
                 PopupMenuDivider(),
                 PopupMenuItem<int>(
                     value: 5,
@@ -158,7 +165,7 @@ class _ProfileState extends State<Profile> {
                             UserPreferences.removeUserId();
                             Register().RemovingSessionData(context);
                           },
-                          child: Text('تسجيل الخروج'),
+                          child: Text(KeyLang.logout.tr()),
                         ),
                       ],
                     )),
@@ -188,28 +195,25 @@ class _ProfileState extends State<Profile> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              //image  -----------------------------------*--**-*-*-*-*-*-*---
-              InfoImageState(),
-              /* Column(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    // padding: const EdgeInsets.all(20),
-                    child: CachedNetworkImage(
-                      imageUrl: ProfileInformation.picture_user!,
-                      height: 220,
-                      placeholder: (context, url) =>
-                          CircularProgressIndicator(),
-                      errorWidget: (context, url, error) => Icon(Icons.error),
-                    ),
-
-                    // Image.network(
-                    //   ProfileForWorkers.image1,
-                    //   height: 220,
-                    // ),
+              //* imag
+              SizedBox(height: 20.h),
+              Container(
+                height: 150.w,
+                width: 150.w,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    width: 3,
+                    color: AppColors.blue,
                   ),
-                ],
-              ),*/
+                ),
+                child: ImageUser(
+                  image: ProfileInformation.picture_user!,
+                  radius: 15.r,
+                  sizeLoading: 20.r,
+                ),
+              ),
+              SizedBox(height: 15.h),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -349,7 +353,8 @@ class _ProfileState extends State<Profile> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            GoBack.tx(' المهنه :', textColor: textColor),
+                            GoBack.tx(KeyLang.professionName.tr() + ':',
+                                textColor: textColor),
                             GoBack.tx(ProfileInformation.account_type!,
                                 textColor: textColor),
                           ],
@@ -375,7 +380,8 @@ class _ProfileState extends State<Profile> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            GoBack.tx(' العمر :', textColor: textColor),
+                            GoBack.tx(KeyLang.age.tr() + ':',
+                                textColor: textColor),
                             GoBack.tx(ProfileInformation.age!,
                                 textColor: textColor),
                           ],
@@ -403,7 +409,8 @@ class _ProfileState extends State<Profile> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            GoBack.tx(' المنطقة :', textColor: textColor),
+                            GoBack.tx(KeyLang.address.tr() + ':',
+                                textColor: textColor),
                             GoBack.tx(ProfileInformation.city_user!,
                                 textColor: textColor),
                           ],
@@ -431,7 +438,8 @@ class _ProfileState extends State<Profile> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            GoBack.tx('الرقم : ', textColor: textColor),
+                            GoBack.tx(KeyLang.phoneNumber.tr() + ':',
+                                textColor: textColor),
                             GoBack.tx(ProfileInformation.phone_number!,
                                 textColor: textColor),
                           ],
