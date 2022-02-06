@@ -10,6 +10,7 @@ import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 import 'package:flutter_finalproject/Packages/Components/Common_traits/Drawer/drawer.dart';
+import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/sup_appbar.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/app_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Loading/enum_loading.dart';
 import 'package:flutter_finalproject/Packages/Components/Photo_View/photo_view.dart';
@@ -384,11 +385,8 @@ class _PlanUploadState extends State<PlanUpload> {
   Widget build(BuildContext context) {
     return Scaffold(
       //*Appbar
-      appBar: AppBar(
-        title: Text('المخططات'),
-      ),
-      //*drawer
-      drawer: DrawerHome(),
+      appBar: AppBSup(txt: KeyLang.schemes),
+
       body:
           // Container(
           //   child: Column(

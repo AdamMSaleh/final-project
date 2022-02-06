@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, annotate_overrides, must_call_super, avoid_print
+// ignore_for_file: prefer_const_constructors
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -10,14 +10,14 @@ import 'package:flutter_finalproject/Theme/app_color.dart';
 import 'package:flutter_finalproject/Utils/path_images.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class InfoImageState extends StatefulWidget {
-  const InfoImageState({Key? key}) : super(key: key);
+class InfoImageS extends StatefulWidget {
+  const InfoImageS({Key? key}) : super(key: key);
 
   @override
-  State<InfoImageState> createState() => InfoImage();
+  State<InfoImageS> createState() => InfoImage();
 }
 
-class InfoImage extends State<InfoImageState> {
+class InfoImage extends State<InfoImageS> {
   void initState() {
     Upload_ImageState.profileImage;
     setState(() {

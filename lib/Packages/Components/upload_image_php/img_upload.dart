@@ -33,7 +33,7 @@ class Upload_Image extends StatefulWidget {
 }
 
 class Upload_ImageState extends State<Upload_Image> {
- static String profileImage='';
+  static String profileImage = '';
   @override
   late File? file = null;
   String status = '';
@@ -199,27 +199,29 @@ class Upload_ImageState extends State<Upload_Image> {
               widget.bathImage! +
               '/' +
               fileName;
-          NewProject.constructionLicense = 'http://relaxbuilding.space/upload_image/image/' +
-              widget.bathImage! +
-              '/' +
-              fileName;
+          NewProject.constructionLicense =
+              'http://relaxbuilding.space/upload_image/image/' +
+                  widget.bathImage! +
+                  '/' +
+                  fileName;
         });
         print(bathImagereturn ?? "33");
         print(NewProject.constructionLicense ?? "33");
 
         // Register().postImageSyndicateCard(
         //     Guild_picture: 'image/' + widget.bathImage! + '/' + fileName);
-      }else if (widget.bathImage == 'Plan_Image') {
+      } else if (widget.bathImage == 'Plan_Image') {
         // هون لسا ما تفقدة الميثود
         setState(() {
           bathImagereturn = 'http://relaxbuilding.space/upload_image/image/' +
               widget.bathImage! +
               '/' +
               fileName;
-          Fill_plane_page.Plan_Image = 'http://relaxbuilding.space/upload_image/image/' +
-              widget.bathImage! +
-              '/' +
-              fileName;
+          Fill_plane_page.Plan_Image =
+              'http://relaxbuilding.space/upload_image/image/' +
+                  widget.bathImage! +
+                  '/' +
+                  fileName;
         });
         print(bathImagereturn ?? "33");
         print(NewProject.constructionLicense ?? "33");
@@ -230,56 +232,55 @@ class Upload_ImageState extends State<Upload_Image> {
         setState(() {
           bathImagereturn = 'image/' + widget.bathImage! + '/' + fileName;
         });
-      await  Register().postDataUpdateImage(
+        await Register().postDataUpdateImage(
             picture_user: 'image/' + widget.bathImage! + '/' + fileName);
         setState(() {
-          profileImage='http://relaxbuilding.space/upload_image/image/' +
+          profileImage = 'http://relaxbuilding.space/upload_image/image/' +
               widget.bathImage! +
               '/' +
               fileName;
-
         });
 
-        print(profileImage+'16s6516s51d6s15d65s120s50s');
+        print(profileImage + '16s6516s51d6s15d65s120s50s');
       }
-      if (PageRegister.accType == '1') {
-        // المهندس
+      // if (PageRegister.accType == '1') {
+      //   // المهندس
 
-        Navigator.pushNamed(
-          context,
-          PageInfoEng.id,
-        );
-      } else if (PageRegister.accType == '2') {
-        //صاحب مهنه
-        Navigator.pushNamed(
-          context,
-          PageInfoPr.id,
-        );
-      } else if (PageRegister.accType == '3') {
-        //العمال
-        //PageInfoworker
-        Navigator.pushNamed(
-          context,
-          PageInfoworker.id,
-        );
-      } else if (PageRegister.accType == '6') {
-        //المالك العقار
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const PageInfowner()),
-        );
-      } else if (PageRegister.accType == '4') {
-        //صاحب المتجر
-        Navigator.pushNamed(
-          context,
-          PageInfoShope.id,
-        );
-      } else if (PageRegister.accType == '5') {
-        //اصحاب الالات
-        Navigator.pushNamed(context, PageInfoMech.id);
-      }else {
-        Navigator.pop(context);
-      }
+      //   Navigator.pushNamed(
+      //     context,
+      //     PageInfoEng.id,
+      //   );
+      // } else if (PageRegister.accType == '2') {
+      //   //صاحب مهنه
+      //   Navigator.pushNamed(
+      //     context,
+      //     PageInfoPr.id,
+      //   );
+      // } else if (PageRegister.accType == '3') {
+      //   //العمال
+      //   //PageInfoworker
+      //   Navigator.pushNamed(
+      //     context,
+      //     PageInfoworker.id,
+      //   );
+      // } else if (PageRegister.accType == '6') {
+      //   //المالك العقار
+      //   Navigator.push(
+      //     context,
+      //     MaterialPageRoute(builder: (context) => const PageInfowner()),
+      //   );
+      // } else if (PageRegister.accType == '4') {
+      //   //صاحب المتجر
+      //   Navigator.pushNamed(
+      //     context,
+      //     PageInfoShope.id,
+      //   );
+      // } else if (PageRegister.accType == '5') {
+      //   //اصحاب الالات
+      //   Navigator.pushNamed(context, PageInfoMech.id);
+      // }else {
+      Navigator.pop(context);
+      // }
     }).catchError((error) {
       setStatus(error);
     });

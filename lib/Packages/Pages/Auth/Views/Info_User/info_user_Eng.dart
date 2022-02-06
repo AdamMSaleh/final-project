@@ -44,242 +44,176 @@ class _PageInfoEngState extends State<PageInfoEng> {
   Widget build(BuildContext context) {
     DateTime timeBackPressed = DateTime.now();
     return WillPopScope(
-      onWillPop: () async {
-        final difference = DateTime.now().difference(timeBackPressed);
-        final isExitWarning = difference >= Duration(seconds: 2);
+        onWillPop: () async {
+          final difference = DateTime.now().difference(timeBackPressed);
+          final isExitWarning = difference >= Duration(seconds: 2);
 
-        timeBackPressed = DateTime.now();
-        if (isExitWarning) {
-          const message = 'Press back again to exit';
-          Fluttertoast.showToast(msg: message, fontSize: 18);
-          return false;
-        } else {
-          Fluttertoast.cancel();
-          return false;
-        }
-      },
-      child:
-       Scaffold(
-      backgroundColor: AppColors.white,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              //* header
-              Container(
-                height: 175.h,
-                decoration: BoxDecoration(
-                  color: AppColors.blue,
-<<<<<<< HEAD
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(100.r),
-                      bottomRight: Radius.circular(100.r)),
-=======
-                  borderRadius:
-                  BorderRadius.only(bottomLeft: Radius.circular(100.r)),
->>>>>>> 9bc7259f56eee730620a5d986aa2408af38c5aaf
-                ),
-                child:
-                //* header elements
-                Stack(
-                  children: [
-                    Column(
+          timeBackPressed = DateTime.now();
+          if (isExitWarning) {
+            const message = 'Press back again to exit';
+            Fluttertoast.showToast(msg: message, fontSize: 18);
+            return false;
+          } else {
+            Fluttertoast.cancel();
+            return false;
+          }
+        },
+        child: Scaffold(
+          backgroundColor: AppColors.white,
+          body: SafeArea(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  //* header
+                  Container(
+                    height: 175.h,
+                    decoration: BoxDecoration(
+                      color: AppColors.blue,
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(100.r),
+                          bottomRight: Radius.circular(100.r)),
+                    ),
+                    child:
+                        //* header elements
+                        Stack(
                       children: [
-                        SizedBox(height: 20.h),
-                        Container(
-                          alignment: Alignment.center,
-                          //*Image
+                        Column(
+                          children: [
+                            SizedBox(height: 20.h),
+                            Container(
+                              alignment: Alignment.center,
+                              //*Image
 
-                          // onPressed: () { Upload_ImageState().btnplane(context); },
-                          child: CachedNetworkImage(
-                            imageUrl: PathImages.logo,
-                            //لتعديل ع صورة
-                            imageBuilder: (context, jjjjj) {
-                              return CircleAvatar(
-                                backgroundImage: jjjjj,
-                                radius: 50.r, //لتكبير
-                              );
-                            },
-                            placeholder: (context, url) =>
-                                AppLoading(chooseLoading: ChooseLoading.IMAGE),
+                              // onPressed: () { Upload_ImageState().btnplane(context); },
+                              child: CachedNetworkImage(
+                                imageUrl: PathImages.logo,
+                                //لتعديل ع صورة
+                                imageBuilder: (context, jjjjj) {
+                                  return CircleAvatar(
+                                    backgroundImage: jjjjj,
+                                    radius: 50.r, //لتكبير
+                                  );
+                                },
+                                placeholder: (context, url) => AppLoading(
+                                    chooseLoading: ChooseLoading.IMAGE),
 
-                            errorWidget: (context, url, error) =>
-                                Icon(Icons.error),
-                          ),
+                                errorWidget: (context, url, error) =>
+                                    Icon(Icons.error),
+                              ),
+                            ),
+                            SizedBox(height: 10.h),
+                            //* tital
+                            Text(
+                              KeyLang.oneclickhome,
+                              style: AppTheme.h5(context: context)
+                                  ?.copyWith(color: AppColors.white),
+                            ).tr(),
+                          ],
                         ),
-                        SizedBox(height: 10.h),
-                        //* tital
-                        Text(
-                          KeyLang.oneclickhome,
-                          style: AppTheme.h5(context: context)
-                              ?.copyWith(color: AppColors.white),
-                        ).tr(),
                       ],
                     ),
-                  ],
-                ),
-              ),
-              //* page elements
-              SizedBox(height: 10.h),
-              //*imag
-              InfoImageState(),
-              //*form
+                  ),
+                  //* page elements
+                  SizedBox(height: 10.h),
+                  //*imag
+                  InfoImageState(),
+                  //*form
 
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 50.h),
-                child: Form(
-                  key: _keyFoem,
-                  child: Column(
-                    children: [
-                      SizedBox(height: 20.h),
-                      //* eng number
-                      SimpleFiled(
-                        controller: controllerValue["Guild_number"],
-                        keyboardType: TextInputType.name,
-                        onValidator: (value) => AppValidators.engnumber(value),
-                        hint: KeyLang.engnumber.tr(),
-                        pIcon: Icon(
-                          Icons.assignment_ind,
-                          color: AppColors.blue,
-                        ),
-                      ),
-<<<<<<< HEAD
-=======
-                      SizedBox(height: 15.h),
-                      //*button up data Image
-                      // syndicate_card
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 50.h),
+                    child: Form(
+                      key: _keyFoem,
+                      child: Column(
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                child: Text(
-                                  'upload Syndicate Card',
-                                  style: AppTheme.h5(context: context)
-                                      ?.copyWith(
-                                      color: AppColors.blue, fontSize: 20.sp),
-                                ).tr(),
-                              ),
-                            ],
+                          SizedBox(height: 20.h),
+                          //* eng number
+                          SimpleFiled(
+                            controller: controllerValue["Guild_number"],
+                            keyboardType: TextInputType.name,
+                            onValidator: (value) =>
+                                AppValidators.engnumber(value),
+                            hint: KeyLang.engnumber.tr(),
+                            pIcon: Icon(
+                              Icons.assignment_ind,
+                              color: AppColors.blue,
+                            ),
                           ),
-                          SizedBox(width: 10.w),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 50.w,
-                                height: 30.h,
-                                // height: 100.w,
-                                decoration: BoxDecoration(
-                                  color: AppColors.blue,
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(100.r),
+
+                          SizedBox(height: 15.h),
+                          //* eng office name
+                          SimpleFiled(
+                            controller: controllerValue["office_name"],
+                            keyboardType: TextInputType.name,
+                            onValidator: (value) => AppValidators.isname(value),
+                            hint: KeyLang.engOfficeName.tr(),
+                            pIcon: Icon(
+                              Icons.account_balance,
+                              color: AppColors.blue,
+                            ),
+                          ),
+
+                          SizedBox(height: 15.h),
+                          //*Address
+                          SimpleFiled(
+                            controller: controllerValue["city_user"],
+                            keyboardType: TextInputType.name,
+                            onValidator: (value) =>
+                                AppValidators.isEmpty(value),
+                            hint: KeyLang.address.tr(),
+                            pIcon: Icon(
+                              Icons.add_location_alt_rounded,
+                              color: AppColors.blue,
+                            ),
+                          ),
+                          SizedBox(height: 15.h),
+                          //*button up data Image
+                          Container(
+                            margin: EdgeInsets.symmetric(horizontal: 25.h),
+                            child: Center(
+                                child: SimpleBtnUp(
+                              btnText: KeyLang.uploadlicense.tr(),
+                              onTap: () {
+                                showDialog(
+                                  barrierDismissible: false,
+                                  context: context,
+                                  builder: (context) => AlertChooseImage(
+                                    bathImage: 'syndicate_card',
                                   ),
-                                ),
-                                child: IconButton(
-                                  padding: EdgeInsets.zero,
-                                  alignment: Alignment.center,
-                                  onPressed: () {
-                                    showDialog(
-                                      barrierDismissible: false,
-                                      context: context,
-                                      builder: (context) =>
-                                          AlertChooseImage(
-                                            bathImage: 'syndicate_card',
-                                          ),
-                                    );
-                                  },
-                                  icon: Icon(
-                                    Icons.backup_rounded,
-                                    color: AppColors.white,
-                                  ),
-                                ),
-                              ),
-                            ],
+                                );
+                              },
+                            )),
+                          ),
+                          SizedBox(height: 25.h),
+
+                          //*button
+                          Container(
+                            margin: EdgeInsets.symmetric(horizontal: 25.h),
+                            child: Center(
+                                child: SimpleBtn(
+                                    btnText:
+                                        KeyLang.register.toUpperCase().tr(),
+                                    onTap: () async {
+                                      if (_keyFoem.currentState!.validate()) {
+                                        Register().postDataEngineer(
+                                          city_user:
+                                              controllerValue["city_user"]!,
+                                          Guild_number:
+                                              controllerValue["Guild_number"]!,
+                                          office_name:
+                                              controllerValue["office_name"]!,
+                                          context: context,
+                                        );
+                                      }
+                                    })),
                           ),
                         ],
                       ),
->>>>>>> 9bc7259f56eee730620a5d986aa2408af38c5aaf
-
-                      SizedBox(height: 15.h),
-                      //* eng office name
-                      SimpleFiled(
-                        controller: controllerValue["office_name"],
-                        keyboardType: TextInputType.name,
-                        onValidator: (value) => AppValidators.isname(value),
-                        hint: KeyLang.engOfficeName.tr(),
-                        pIcon: Icon(
-                          Icons.account_balance,
-                          color: AppColors.blue,
-                        ),
-                      ),
-
-                      SizedBox(height: 15.h),
-                      //*Address
-                      SimpleFiled(
-                        controller: controllerValue["city_user"],
-                        keyboardType: TextInputType.name,
-                        onValidator: (value) => AppValidators.isEmpty(value),
-                        hint: KeyLang.address.tr(),
-                        pIcon: Icon(
-                          Icons.add_location_alt_rounded,
-                          color: AppColors.blue,
-                        ),
-                      ),
-                      SizedBox(height: 15.h),
-                      //*button up data Image
-                      Container(
-                        margin: EdgeInsets.symmetric(horizontal: 25.h),
-                        child: Center(
-                            child: SimpleBtnUp(
-                          btnText: KeyLang.uploadlicense.tr(),
-                          onTap: () {
-                            showDialog(
-                              barrierDismissible: false,
-                              context: context,
-                              builder: (context) => AlertChooseImage(
-                                bathImage: 'syndicate_card',
-                              ),
-                            );
-                          },
-                        )),
-                      ),
-                      SizedBox(height: 25.h),
-
-                      //*button
-                      Container(
-                        margin: EdgeInsets.symmetric(horizontal: 25.h),
-                        child: Center(
-                            child: SimpleBtn(
-                                btnText: KeyLang.register.toUpperCase().tr(),
-                                onTap: () async {
-                                  if (_keyFoem.currentState!.validate()) {
-                                    Register().postDataEngineer(
-                                      city_user: controllerValue["city_user"]!,
-                                      Guild_number:
-<<<<<<< HEAD
-                                          controllerValue["Guild_number"]!,
-                                      office_name:
-                                          controllerValue["office_name"]!,
-=======
-                                      controllerValue["Guild_number"]!,
-                                      office_name: controllerValue["office_name"]!,
->>>>>>> 9bc7259f56eee730620a5d986aa2408af38c5aaf
-                                      context: context,
-                                    );
-                                  }
-                                })),
-                      ),
-                    ],
-                  ),
-                ),
-              ), //*
-            ],
+                    ),
+                  ), //*
+                ],
+              ),
+            ),
           ),
-        ),
-      ),
-    ));
+        ));
   }
 }

@@ -1,10 +1,17 @@
-// ignore_for_file: prefer_final_fields, sized_box_for_whitespace, prefer_const_constructors
+// ignore_for_file: prefer_final_fields, sized_box_for_whitespace, prefer_const_constructors, implementation_imports
 
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_finalproject/Language/generated/key_lang.dart';
+import 'package:flutter_finalproject/Packages/Components/Add_Image/alert_choose.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
-import 'package:flutter_finalproject/Packages/Pages/Profile/View/test_crop_images.dart';
+import 'package:flutter_finalproject/Packages/Components/Common_traits/appbar/sup_appbar.dart';
+import 'package:flutter_finalproject/Packages/Components/cach_image/image_user.dart';
+import 'package:flutter_finalproject/Packages/Components/text_filed/simple_filed.dart';
+import 'package:flutter_finalproject/Packages/Pages/Profile/Components/profile_information.dart';
+import 'package:flutter_finalproject/Theme/app_color.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'profile_for_workers.dart';
 
@@ -29,7 +36,8 @@ class ProfileEdit extends StatefulWidget {
     occupation,
     age,
     region,
-    phoneNumber, File? imageFile,
+    phoneNumber,
+    File? imageFile,
   }) : super(key: key) {
     if (firstName != null &&
         lastName != null &&
@@ -127,99 +135,136 @@ class _ProfileEditState extends State<ProfileEdit> {
   Widget build(BuildContext context) {
     getValue();
     return Scaffold(
-      appBar: AppBar(
-        leading: GoBack.back(context),
-        title: GoBack.tx('تعديل الملف الشخصي'),
-      ),
+      appBar: AppBSup(txt: KeyLang.editProfile),
       body: SingleChildScrollView(
         child: Column(
           children: [
+            //* imag
+            SizedBox(height: 20.h),
             Stack(
-              alignment: AlignmentDirectional.bottomEnd,
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(222.0),
-                  child: Image.network(ProfileEdit.image1!,
-                    height: 220
+                Container(
+                  height: 125.w,
+                  width: 125.w,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      width: 3,
+                      color: AppColors.blue,
+                    ),
+                  ),
+                  child: ImageUser(
+                    image: ProfileInformation.picture_user!,
+                    radius: 15.r,
+                    sizeLoading: 20.r,
                   ),
                 ),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(150.0),
+                Positioned(
+                  bottom: 1,
+                  right: 10,
                   child: Container(
-                    // alignment: Alignment.center,
-                    height: 55,
-                    width: 55,
-                    child: ElevatedButton(
-                      onPressed: () => GoBack.selectScreen(
-                          context,
-                          const ImageCropperPage(
-                            title: 'تعديل صورة الملف الشخصي',
-                          )),
-                      child: Container(
-                        alignment: Alignment.center,
-                        // padding: EdgeInsets.all(5),
-                        child: Icon(Icons.add_sharp),
+                    width: 30.w,
+                    height: 30.w,
+                    decoration: BoxDecoration(
+                      color: Colors.blueAccent,
+                      shape: BoxShape.circle,
+                    ),
+                    child: IconButton(
+                      padding: EdgeInsets.zero,
+                      alignment: Alignment.center,
+                      onPressed: () {
+                        showDialog(
+                          barrierDismissible: false,
+                          context: context,
+                          builder: (context) => AlertChooseImage(),
+                        );
+                      },
+                      icon: Icon(
+                        Icons.add,
+                        color: AppColors.white,
                       ),
                     ),
                   ),
-                ),
+                )
               ],
             ),
-            TextField(
-              controller: _controllerFirstName1,
-              decoration: InputDecoration(
-                labelText: 'الاسم الاول',
+            SizedBox(height: 35.h),
+            Center(
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 40.h),
+                child: Column(
+                  children: [
+                    //*first Name
+                    SimpleFiled(
+                      controller: _controllerFirstName1,
+                      keyboardType: TextInputType.name,
+                      hint: KeyLang.firstName,
+                      pIcon: Icon(
+                        Icons.person,
+                        color: AppColors.blue,
+                      ),
+                    ),
+                    SizedBox(height: 15.h),
+                    //* last name
+                    SimpleFiled(
+                      controller: _controllerLastName1,
+                      keyboardType: TextInputType.name,
+                      hint: KeyLang.lastName,
+                      pIcon: Icon(
+                        Icons.person,
+                        color: AppColors.blue,
+                      ),
+                    ),
+                    SizedBox(height: 20.h),
+                    //* Age
+                    SimpleFiled(
+                      controller: _controllerAge1,
+                      keyboardType: TextInputType.number,
+                      hint: KeyLang.lastName,
+                      pIcon: Icon(
+                        Icons.filter_vintage_outlined,
+                        color: AppColors.blue,
+                      ),
+                    ),
+                    SizedBox(height: 20.h),
+                    //*profession
+                    SimpleFiled(
+                      controller: _controllerOccupation1,
+                      keyboardType: TextInputType.name,
+                      hint: KeyLang.professionName,
+                      pIcon: Icon(
+                        Icons.work,
+                        color: AppColors.blue,
+                      ),
+                    ),
+                    SizedBox(height: 20.h),
+                    //*Address
+                    SimpleFiled(
+                      controller: _controllerRegion1,
+                      keyboardType: TextInputType.name,
+                      hint: KeyLang.address,
+                      pIcon: Icon(
+                        Icons.add_location_alt_rounded,
+                        color: AppColors.blue,
+                      ),
+                    ),
+                    SizedBox(height: 20.h),
+                    //*phone
+                    SimpleFiled(
+                      keyboardType: TextInputType.phone,
+                      controller: _controllerPhoneNumber1,
+                      hint: KeyLang.phoneNumber,
+                      pIcon: Icon(
+                        Icons.phone,
+                        color: AppColors.blue,
+                      ),
+                    ),
+                    SizedBox(height: 20.h),
+                  ],
+                ),
               ),
             ),
-            const SizedBox(
-              height: 35,
-            ),
-            TextField(
-              controller: _controllerLastName1,
-              decoration: InputDecoration(
-                labelText: 'الاسم الاخير',
-              ),
-            ),
-            const SizedBox(
-              height: 35,
-            ),
-            TextField(
-              controller: _controllerAge1,
-              decoration: InputDecoration(
-                labelText: 'العمر',
-              ),
-              keyboardType: TextInputType.datetime,
-            ),
-            const SizedBox(
-              height: 35,
-            ),
-            TextField(
-              controller: _controllerOccupation1,
-              decoration: InputDecoration(
-                labelText: 'المهنه',
-              ),
-            ),
-            const SizedBox(
-              height: 35,
-            ),
-            TextField(
-              controller: _controllerRegion1,
-              decoration: InputDecoration(
-                labelText: 'المنطقة',
-              ),
-            ),
-            const SizedBox(
-              height: 35,
-            ),
-            TextField(
-              controller: _controllerPhoneNumber1,
-              decoration: InputDecoration(
-                labelText: 'رقم الهاتف',
-              ),
-            ),
-            const SizedBox(
-              height: 35,
-            ),
+
             IconButton(
                 onPressed: () => GoBack.selectScreen(
                       context,
@@ -230,7 +275,6 @@ class _ProfileEditState extends State<ProfileEdit> {
                         age: _controllerAge1.text,
                         region: _controllerRegion1.text,
                         phoneNumber: _controllerPhoneNumber1.text,
-                       
                       ),
                     ),
                 icon: Icon(Icons.save)),
