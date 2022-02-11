@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_this, camel_case_types, non_constant_identifier_names, no_logic_in_create_state, sized_box_for_whitespace
+// ignore_for_file: unnecessary_this, camel_case_types, non_constant_identifier_names, no_logic_in_create_state, sized_box_for_whitespace, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
@@ -31,11 +31,7 @@ class view_invoices extends StatefulWidget {
 }
 
 class _view_invoicesState extends State<view_invoices> {
-
   List<Detiels_Invoices>? invoice_info = [];
-
-
-
 
   x() async {
     Detiels_Invoices.invoice_info = [];
@@ -139,28 +135,37 @@ class _view_invoicesState extends State<view_invoices> {
                                             padding: EdgeInsets.all(23.w),
                                             child: Text('${e.price}'),
                                           ),
-                                          e.count_item!=null?Padding(
-                                            // ignore: prefer_const_constructors
-                                            padding: EdgeInsets.all(23),
-                                            child: Text('${e.count_item}'),
-                                          ):FlatButton(
-                                            onPressed: () {
-                                              GoBack.selectScreen(
-                                                  context,
-                                                  ImageView(
+                                          e.count_item != null
+                                              ? Padding(
+                                                  // ignore: prefer_const_constructors
+                                                  padding: EdgeInsets.all(23),
+                                                  child:
+                                                      Text('${e.count_item}'),
+                                                  // ignore: deprecated_member_use
+                                                )
+                                              // ignore: deprecated_member_use
+                                              : FlatButton(
+                                                  onPressed: () {
+                                                    GoBack.selectScreen(
+                                                        context,
+                                                        ImageView(
+                                                          e.image_pd!,
+                                                        ));
+                                                  },
+                                                  child: Image.network(
                                                     e.image_pd!,
-                                                  ));
-                                            },
-                                            child: Image.network(
-                                              e.image_pd!,
-                                              height: 100,
-                                              // width: 250,
-                                            ),
-                                          ),
-                                         e.count_item!=null? Padding(
-                                            padding: const EdgeInsets.all(23),
-                                            child: Text('${(e.count_item!*e.price)}'),
-                                          ):Container(),
+                                                    height: 100,
+                                                    // width: 250,
+                                                  ),
+                                                ),
+                                          e.count_item != null
+                                              ? Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(23),
+                                                  child: Text(
+                                                      '${(e.count_item! * e.price)}'),
+                                                )
+                                              : Container(),
 
                                           //-----------------------
                                           //هاد الخط الفاصل بين ايقونات التعديل والحذف والمجموع
@@ -242,17 +247,21 @@ class _view_invoicesState extends State<view_invoices> {
                                             padding: EdgeInsets.all(20),
                                             child: Text(': السعر'),
                                           ),
-                                          e.count_item!=null?const Padding(
-                                            padding: EdgeInsets.all(20),
-                                            child: Text(': العدد'),
-                                          ):const Padding(
-                                            padding: EdgeInsets.all(20),
-                                            child: Text(': الصورة'),
-                                          ),
-                                          e.count_item!=null?const Padding(
-                                            padding: EdgeInsets.all(20),
-                                            child: Text(': المجموع'),
-                                          ):Container(),
+                                          e.count_item != null
+                                              ? const Padding(
+                                                  padding: EdgeInsets.all(20),
+                                                  child: Text(': العدد'),
+                                                )
+                                              : const Padding(
+                                                  padding: EdgeInsets.all(20),
+                                                  child: Text(': الصورة'),
+                                                ),
+                                          e.count_item != null
+                                              ? const Padding(
+                                                  padding: EdgeInsets.all(20),
+                                                  child: Text(': المجموع'),
+                                                )
+                                              : Container(),
                                           //-----------------------
                                           //هاد الخط الفاصل بين ايقونات التعديل والحذف والمجموع
                                           Padding(
@@ -332,10 +341,7 @@ class _view_invoicesState extends State<view_invoices> {
           ProjectsDetails.state1 == '1'
               ? Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => invoices(
-
-                          )),
+                  MaterialPageRoute(builder: (context) => invoices()),
                 )
               : simpleToast(
                   message: ' لا يمكن اضافة فاتورة لأن المشروع منتهي ');

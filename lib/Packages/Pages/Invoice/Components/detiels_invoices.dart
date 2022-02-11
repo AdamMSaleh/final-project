@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, camel_case_types
+// ignore_for_file: non_constant_identifier_names, camel_case_types, avoid_print, prefer_if_null_operators
 
 import 'package:flutter_finalproject/DataBase/register.dart';
 import 'package:flutter_finalproject/Packages/Components/Toast/simple_toast.dart';
@@ -33,9 +33,7 @@ class Detiels_Invoices {
           count_item: x[i]['number_pd'] != null
               ? double.tryParse(x[i]['number_pd'])
               : null,
-          image_pd: x[i]['image_pd'] != null
-            ? x[i]['image_pd']
-              : null,
+          image_pd: x[i]['image_pd'] != null ? x[i]['image_pd'] : null,
         ));
       }
     } else {

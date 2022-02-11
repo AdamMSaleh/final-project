@@ -6,23 +6,23 @@ import 'package:flutter_finalproject/Packages/Components/Add_Image/alert_choose.
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/projects_details.dart';
 
 import 'design.dart';
-import 'detiels_invoices.dart';
 import 'view_invoices.dart';
 
 class ImageInvoices extends StatefulWidget {
-  const ImageInvoices({ Key? key, }) : super(key: key);
-static String imageIv='';
+  const ImageInvoices({
+    Key? key,
+  }) : super(key: key);
+  static String imageIv = '';
 
+  @override
   _invoicesState createState() => _invoicesState();
 }
 //-------------------------------------------------------
 //-------------------------------------------------------
 
 class _invoicesState extends State<ImageInvoices> {
-
   late TextEditingController myControllerNameItem = TextEditingController();
   late TextEditingController myControllerPriceItem = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -35,28 +35,19 @@ class _invoicesState extends State<ImageInvoices> {
                 () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        view_invoices(
-
-                        )),
+                MaterialPageRoute(builder: (context) => view_invoices()),
               );
             },
             icon: Icon(Icons.arrow_back_ios_new_outlined)),
       ),
       body: Container(
         color: project_color('741b47'),
-
         child: Container(
           //هاد الكاتيغيوري لكل فاتورة
           margin: const EdgeInsets.all(30),
-          height: (MediaQuery
-              .of(context)
-              .size
-              .height) * 0.70,
+          height: (MediaQuery.of(context).size.height) * 0.70,
 
           decoration: BoxDecoration(
-
             color: FitnessAppTheme.white,
             borderRadius: const BorderRadius.only(
                 topRight: Radius.circular(8.0),
@@ -72,8 +63,8 @@ class _invoicesState extends State<ImageInvoices> {
           ),
           child: Padding(
             padding:
-            //padding for 2100 and  of dialy gole
-            const EdgeInsets.only(top: 16, left: 16, right: 16, bottom: 16),
+                //padding for 2100 and  of dialy gole
+                const EdgeInsets.only(top: 16, left: 16, right: 16, bottom: 16),
             child: Row(
               children: <Widget>[
                 Expanded(
@@ -98,15 +89,14 @@ class _invoicesState extends State<ImageInvoices> {
                               ),
                               Padding(
                                 padding: EdgeInsets.only(left: 4, bottom: 3),
-                                child: textfild_function('ادخل المبلغ كامل', '935139',
-                                    myControllerPriceItem,
+                                child: textfild_function('ادخل المبلغ كامل',
+                                    '935139', myControllerPriceItem,
                                     TKbor: false),
                               ),
                             ],
                           ),
                         ],
                       ),
-
                     ],
                   ),
                 ),
@@ -152,7 +142,6 @@ class _invoicesState extends State<ImageInvoices> {
                                   ),
                                 ),
                               ),
-
                             ],
                           ),
                         ],
@@ -191,25 +180,21 @@ class _invoicesState extends State<ImageInvoices> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            setState(() {
-              if (myControllerNameItem.text.isNotEmpty &&
-                  myControllerPriceItem.text.isNotEmpty &&
-                  ImageInvoices.imageIv.isNotEmpty
-              ) {
-                Register().uploadInvoice(
-                    projec_No: ProjectsDetails.Projec_No1!,
-                    product_name: myControllerNameItem.text,
-                    price_pd: myControllerPriceItem.text,
-                    image_pd: ImageInvoices.imageIv,
-                    context: context);
+        onPressed: () => setState(() {
+          if (myControllerNameItem.text.isNotEmpty &&
+              myControllerPriceItem.text.isNotEmpty &&
+              ImageInvoices.imageIv.isNotEmpty) {
+            Register().uploadInvoice(
+                projec_No: ProjectsDetails.Projec_No1!,
+                product_name: myControllerNameItem.text,
+                price_pd: myControllerPriceItem.text,
+                image_pd: ImageInvoices.imageIv,
+                context: context);
 
-                myControllerNameItem.clear();
-                myControllerPriceItem.clear();
-
-              }
-
-            }),
+            myControllerNameItem.clear();
+            myControllerPriceItem.clear();
+          }
+        }),
         child: Icon(
           Icons.add,
           size: 40,

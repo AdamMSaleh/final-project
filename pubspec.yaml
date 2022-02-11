@@ -13,6 +13,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+    
   # first :  flutter clean
   #Font Awesome Icon
   font_awesome_flutter: ^9.1.0
