@@ -296,26 +296,6 @@ class _NewProjectState extends State<NewProject> {
 
                       SizedBox(height: 15.h),
 
-                      // //* schemes
-                      // Container(
-                      //   margin: EdgeInsets.symmetric(horizontal: 25.h),
-                      //   child: Center(
-                      //       child: SimpleBtnUp(
-                      //     btnText: KeyLang.schemes.tr(),
-                      //     onTap: () {
-                      //       showDialog(
-                      //         barrierDismissible: false,
-                      //         context: context,
-                      //         builder: (context) => AlertChooseImage(
-                      //           bathImage: 'schemes',
-                      //         ),
-                      //       );
-                      //       b = 2;
-                      //     },
-                      //   )),
-                      // ),
-                      // SizedBox(height: 15.h),
-
                       //*button
 
                       SizedBox(height: 5.h),

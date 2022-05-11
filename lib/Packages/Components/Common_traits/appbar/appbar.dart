@@ -53,7 +53,9 @@ class _AppBHomeState extends State<AppBHome> {
         Padding(
           padding: EdgeInsets.all(2.w),
           child: ImageUser(
-              image: ProfileInformation.picture_user!, radius: 20.r, sizeLoading: 20.r),
+              image: ProfileInformation.picture_user!,
+              radius: 20.r,
+              sizeLoading: 20.r),
         ),
         SizedBox(
           width: 7.w,
