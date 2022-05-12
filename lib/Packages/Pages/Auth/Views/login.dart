@@ -94,16 +94,16 @@ class _PageLoginState extends State<PageLogin> {
     //     processing = false;
     //
     // }
-    DateTime timeBackPressed =DateTime.now();
+    DateTime timeBackPressed = DateTime.now();
     return WillPopScope(
       onWillPop: () async {
-        final difference =DateTime.now().difference(timeBackPressed);
+        final difference = DateTime.now().difference(timeBackPressed);
         final isExitWarning = difference >= Duration(seconds: 2);
 
-        timeBackPressed =DateTime.now();
+        timeBackPressed = DateTime.now();
         if (isExitWarning) {
           const message = 'Press back again to exit';
-          Fluttertoast. showToast(msg: message, fontSize: 18);
+          Fluttertoast.showToast(msg: message, fontSize: 18);
           return false;
         } else {
           Fluttertoast.cancel();
@@ -135,7 +135,8 @@ class _PageLoginState extends State<PageLogin> {
                           placeholder: (context, url) =>
                               AppLoading(chooseLoading: ChooseLoading.IMAGE),
 
-                          errorWidget: (context, url, error) => Icon(Icons.error),
+                          errorWidget: (context, url, error) =>
+                              Icon(Icons.error),
                         ),
                       ),
                       SizedBox(height: 10.h),
@@ -186,7 +187,8 @@ class _PageLoginState extends State<PageLogin> {
                                         controller: controllerValue['email'],
                                         onValidator: (value) =>
                                             AppValidators.isEmail(value),
-                                        keyboardType: TextInputType.emailAddress,
+                                        keyboardType:
+                                            TextInputType.emailAddress,
                                         hint: KeyLang.email,
                                         pIcon: Icon(
                                           Icons.email,
@@ -197,7 +199,8 @@ class _PageLoginState extends State<PageLogin> {
                                       SizedBox(height: 20.h),
                                       //*password
                                       SimpleFiled(
-                                          controller: controllerValue['password'],
+                                          controller:
+                                              controllerValue['password'],
                                           onValidator: (value) =>
                                               AppValidators.isPass(value),
                                           keyboardType:
@@ -232,7 +235,8 @@ class _PageLoginState extends State<PageLogin> {
                                           //margin: EdgeInsets.symmetric(horizontal: 15),
                                           alignment: Alignment.centerRight,
                                           child: Text(KeyLang.forgotPass,
-                                              style: AppStyles.styleHeadline1Light
+                                              style: AppStyles
+                                                  .styleHeadline1Light
                                                   .copyWith(
                                                 color: AppColors.red,
                                                 fontSize: 15.sp,

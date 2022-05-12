@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, duplicate_ignore, implementation_imports, unused_import, avoid_print, unnecessary_null_comparison, prefer_is_empty, sized_box_for_whitespace
 
+import 'dart:async';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
@@ -44,6 +46,11 @@ class _ResearchState extends State<Research> {
   initState() {
     x();
     people = Person.people;
+    /****************************************************/
+    Timer(Duration(seconds: 3), () {
+      Navigator.pop(context); //pop dialog
+    });
+/****************************************************/
     // setState(() {
     //   if(NewProject.ownerName!.length>1){
     //     Navigator.pop (context ,NewProject.id);

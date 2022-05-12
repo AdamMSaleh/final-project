@@ -85,5 +85,13 @@
     "Work Recond":"Work Recond",
     "Welcome" :"Welcome",
     "Payments" :"Payments",
-    "Time Line" : "Time Line"
+    "Time Line" : "Time Line",
+    "Age" :"Age",
+    "Edit profile" : "Edit profile",
+    "Settings" : "Settings",
+    "Politics and Privacy" : "Politics and Privacy",
+    "logout" : "logout",
+    "You have no projects in the archive" : "You have no projects in the archive",
+    "Project details":"Project details"
+
 }

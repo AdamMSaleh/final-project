@@ -11,6 +11,7 @@ class PathImages {
   static String notif = 'assets/icons/notifi.png';
   static String langua = 'assets/icons/translate.png';
   static String dark = 'assets/icons/darkmod.jpg';
+  static String logout = 'assets/Images/exit.png';
 
   //* Dialog Box
   static String einglish = 'assets/icons/download.png';

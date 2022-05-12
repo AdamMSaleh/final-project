@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, implementation_imports
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, implementation_imports, non_constant_identifier_names, unused_field
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
@@ -18,8 +18,6 @@ import 'package:flutter_finalproject/Theme/theme_status.dart';
 import 'package:flutter_finalproject/Utils/path_images.dart';
 import 'package:flutter_finalproject/validators/app_validators.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'new_project.dart';
 
 class MainteneanceProject extends StatefulWidget {
   static const String id = 'MainteneanceProject';
@@ -118,7 +116,7 @@ class _MainteneanceProjectState extends State<MainteneanceProject> {
                         SizedBox(height: 10.h),
                         //* tital
                         Text(
-                          KeyLang.oneclickhome,
+                          "إنشاء مشروع صيانة",
                           style: AppTheme.h5(context: context)
                               ?.copyWith(color: AppColors.white),
                         ).tr(),
@@ -261,7 +259,6 @@ class _MainteneanceProjectState extends State<MainteneanceProject> {
                                   });
 
                                   if (_keyFoem.currentState!.validate()) {
-
                                     Register().postDataCreateNewProject(
                                       context: context,
                                       user_no_eng: UserPreferences.getUserId()!,
@@ -276,8 +273,9 @@ class _MainteneanceProjectState extends State<MainteneanceProject> {
                                           controllerValue['selectedDateEnd']!
                                               .text,
                                       Owner_User_ID:
-                                      MainteneanceProject.ownerId as String,
-                                      owner_name: MainteneanceProject.ownerName!,
+                                          MainteneanceProject.ownerId as String,
+                                      owner_name:
+                                          MainteneanceProject.ownerName!,
                                       construction_license: '0',
                                     );
                                     // Map<String, TextEditingController> controllerValue = {

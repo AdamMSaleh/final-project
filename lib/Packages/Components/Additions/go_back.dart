@@ -141,6 +141,7 @@ class GoBack {
 
   static btn(
     String title,
+
     BuildContext ctx, {
     String? card1,
     Widget? pageCard1,
@@ -172,6 +173,29 @@ class GoBack {
           pageCard3: pageCard3,
           page: page,
         ),
+        child: tx(title, sizee: 15),
+      ),
+    );
+  }
+  static btnFn(
+    String title,
+    BuildContext ctx, {
+    required Function func,
+  }) {
+    return Container(
+      margin: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [project_color('741b47'), Colors.white.withOpacity(0.1)],
+          begin: Alignment.centerRight,
+          end: Alignment.bottomLeft,
+        ),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: TextButton(
+        // style: ButtonStyle(alignment: Alignment.center),
+        onPressed:() =>func()
+        ,
         child: tx(title, sizee: 15),
       ),
     );
@@ -252,4 +276,5 @@ class GoBack {
       },
     );
   }
+
 }

@@ -66,8 +66,8 @@ class DrawerHome extends StatelessWidget {
                 height: 30.h,
               ),
               ListTileDrawer(
-                icon: 'assets/Images/exit.png',
-                title: 'Logout',
+                icon: PathImages.logout,
+                title: KeyLang.logout,
                 onPress: () {
                   UserPreferences.removeUsername();
                   UserPreferences.removePassword();

@@ -12,16 +12,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 
-class AlertChooseImage extends StatefulWidget {
+class AlertChooseImageS extends StatefulWidget {
   String? bathImage = 'profile';
 
-  AlertChooseImage({Key? key, this.bathImage = 'profile'}) : super(key: key);
+  AlertChooseImageS({Key? key, this.bathImage = 'profile'}) : super(key: key);
 
   @override
-  State<AlertChooseImage> createState() => _AlertChooseImageState();
+  State<AlertChooseImageS> createState() => _AlertChooseImageState();
 }
 
-class _AlertChooseImageState extends State<AlertChooseImage> {
+class _AlertChooseImageState extends State<AlertChooseImageS> {
   final _picker = ImagePicker();
   File? _image;
 

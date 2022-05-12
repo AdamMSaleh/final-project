@@ -1,8 +1,10 @@
-// ignore_for_file: must_be_immutable, prefer_typing_uninitialized_variables, non_constant_identifier_names, avoid_print, prefer_const_constructors
+// ignore_for_file: must_be_immutable, prefer_typing_uninitialized_variables, non_constant_identifier_names, avoid_print, prefer_const_constructors, implementation_imports
 
 import 'dart:io';
 
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_finalproject/Language/generated/key_lang.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/Components/profile_information.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/View/profile_edit.dart';
@@ -14,14 +16,14 @@ class ProfileForWorkers extends StatefulWidget {
   File? fileImage;
   static var imageNew1;
 
-  static String firstName1 = ProfileInformation.first_name!;//الاسم الاول
-  static String lastName1 = ProfileInformation.last_name!;//الاسم الاخير
-  static String occupation1 = ProfileInformation.account_type!;//المهنه
-  static String age1 = ProfileInformation.age!;//العمر
-  static String region1 = ProfileInformation.city_user!;//المنطقة
-  static String phoneNumber1 = ProfileInformation.phone_number!;//رقم الموبايل
-  static String image1 = ProfileInformation.picture_user ?? "https://i2.wp.com/alghad.com/wp-content/uploads/2021/10/Squid-Game-Games-Ranked.jpg?resize=1024%2C512&ssl=1";//صورة المستخدم
-
+  static String firstName1 = ProfileInformation.first_name!; //الاسم الاول
+  static String lastName1 = ProfileInformation.last_name!; //الاسم الاخير
+  static String occupation1 = ProfileInformation.account_type!; //المهنه
+  static String age1 = ProfileInformation.age!; //العمر
+  static String region1 = ProfileInformation.city_user!; //المنطقة
+  static String phoneNumber1 = ProfileInformation.phone_number!; //رقم الموبايل
+  static String image1 = ProfileInformation.picture_user ??
+      "https://i2.wp.com/alghad.com/wp-content/uploads/2021/10/Squid-Game-Games-Ranked.jpg?resize=1024%2C512&ssl=1"; //صورة المستخدم
 
   ProfileForWorkers(
       {Key? key,
@@ -33,7 +35,6 @@ class ProfileForWorkers extends StatefulWidget {
       phoneNumber,
       image})
       : super(key: key) {
-
     if (firstName != null &&
         lastName != null &&
         occupation != null &&
@@ -46,7 +47,7 @@ class ProfileForWorkers extends StatefulWidget {
       age1 = age;
       region1 = region;
       phoneNumber1 = phoneNumber;
-      image1 =image;
+      image1 = image;
     }
   }
 
@@ -92,7 +93,7 @@ class _ProfileForWorkersState extends State<ProfileForWorkers> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: GoBack.tx(' الملف الشخصي'),
+        title: GoBack.tx(KeyLang.profile.tr()),
         leading: GoBack.back(context),
         actions: [
           Theme(
@@ -146,9 +147,10 @@ class _ProfileForWorkersState extends State<ProfileForWorkers> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(222.0),
                 // padding: const EdgeInsets.all(20),
-                child: Image.network( ProfileForWorkers.image1,
-                      height: 220,
-                    ),
+                child: Image.network(
+                  ProfileForWorkers.image1,
+                  height: 220,
+                ),
               ),
               Container(
                 margin: const EdgeInsets.all(11),
@@ -179,7 +181,7 @@ class _ProfileForWorkersState extends State<ProfileForWorkers> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            GoBack.tx('الاسم : '),
+                            GoBack.tx(KeyLang.name + ':'),
                             GoBack.tx(ProfileForWorkers.firstName1),
                             GoBack.tx(ProfileForWorkers.lastName1),
                           ],
@@ -210,7 +212,7 @@ class _ProfileForWorkersState extends State<ProfileForWorkers> {
                           padding: const EdgeInsets.all(8),
                           child: Row(
                             children: [
-                              GoBack.tx(' المهنه :'),
+                              GoBack.tx(KeyLang.professionName.tr() + ':'),
                               GoBack.tx(ProfileForWorkers.occupation1),
                             ],
                           ),
@@ -222,7 +224,7 @@ class _ProfileForWorkersState extends State<ProfileForWorkers> {
                           padding: EdgeInsets.all(8),
                           child: Row(
                             children: [
-                              GoBack.tx(' العمر :'),
+                              GoBack.tx(KeyLang.age.tr() + ':'),
                               GoBack.tx(ProfileForWorkers.age1),
                             ],
                           ),
@@ -234,7 +236,7 @@ class _ProfileForWorkersState extends State<ProfileForWorkers> {
                           padding: EdgeInsets.all(8),
                           child: Row(
                             children: [
-                              GoBack.tx(' المنطقة :'),
+                              GoBack.tx(KeyLang.address.tr() + ':'),
                               GoBack.tx(ProfileForWorkers.region1),
                             ],
                           ),
@@ -257,7 +259,7 @@ class _ProfileForWorkersState extends State<ProfileForWorkers> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            GoBack.tx('الرقم : '),
+                            GoBack.tx(KeyLang.phoneNumber.tr() + ':'),
                             GoBack.tx(ProfileForWorkers.phoneNumber1),
                           ],
                         ),

@@ -7,13 +7,11 @@ class ProfileInformation {
       email,
       phoneage,
       phone_number,
-      picture_user,
+      picture_user = "assets/Images/userpng.png",
       city_user,
       account_type,
       userNo,
       constructionLicense;
-
-
 
 /*
   10

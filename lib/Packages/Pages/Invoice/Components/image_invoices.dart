@@ -1,50 +1,31 @@
-// ignore_for_file: no_logic_in_create_state, unnecessary_this, non_constant_identifier_names, camel_case_types, must_be_immutable, prefer_const_constructors, avoid_print, unused_import
+// ignore_for_file: no_logic_in_create_state, unnecessary_this, non_constant_identifier_names, camel_case_types, must_be_immutable, prefer_const_constructors, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/DataBase/register.dart';
+import 'package:flutter_finalproject/Packages/Components/Add_Image/alert_choose.dart';
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/projects_details.dart';
 
 import 'design.dart';
-import 'detiels_invoices.dart';
 import 'view_invoices.dart';
 
-class invoices extends StatefulWidget {
-  // List<Detiels_Invoices>? invoice_info;
-
-  invoices({
+class ImageInvoices extends StatefulWidget {
+  const ImageInvoices({
     Key? key,
-    // this.invoice_info,
-  }) : super(key: key) {
-    // if (this.invoice_info == null) {
-    //   invoice_info = [];
-    // }
-  }
+  }) : super(key: key);
+  static String imageIv = '';
 
   @override
-  _invoicesState createState() =>
-      _invoicesState(/*invoice_info1: invoice_info*/);
+  _invoicesState createState() => _invoicesState();
 }
 //-------------------------------------------------------
 //-------------------------------------------------------
 
-class _invoicesState extends State<invoices> {
-  // List<Detiels_Invoices>? invoice_info1 = [];
-
-  // _invoicesState({this.invoice_info1});
-
-  //--------------------
-  //--------------------
+class _invoicesState extends State<ImageInvoices> {
   late TextEditingController myControllerNameItem = TextEditingController();
   late TextEditingController myControllerPriceItem = TextEditingController();
-  late TextEditingController myControllerCountItem = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    // invoice_info1 = [
-    //   Detiels_Invoices('asmaa', 4.7, 2),
-    //   Detiels_Invoices('ali', 55, 3),
-    //   Detiels_Invoices('heba', 13, 6),
-    // ];
     return Scaffold(
       appBar: AppBar(
         backgroundColor: project_color('741b47'),
@@ -54,31 +35,19 @@ class _invoicesState extends State<invoices> {
                 () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                    builder: (context) => view_invoices(
-                        // invoice_info: invoice_info1,
-                        )),
+                MaterialPageRoute(builder: (context) => view_invoices()),
               );
             },
             icon: Icon(Icons.arrow_back_ios_new_outlined)),
       ),
       body: Container(
         color: project_color('741b47'),
-        // decoration: const BoxDecoration(
-        //   image: DecorationImage(
-        //     image: AssetImage('assets/Images/4545.jpg'),
-        //     fit: BoxFit.cover,
-        //   ),
-        // ),
         child: Container(
           //هاد الكاتيغيوري لكل فاتورة
           margin: const EdgeInsets.all(30),
           height: (MediaQuery.of(context).size.height) * 0.70,
 
           decoration: BoxDecoration(
-            // image: const DecorationImage(
-            //   image: AssetImage("assets/Images/4545.jpg"),
-            // ),
             color: FitnessAppTheme.white,
             borderRadius: const BorderRadius.only(
                 topRight: Radius.circular(8.0),
@@ -113,41 +82,21 @@ class _invoicesState extends State<invoices> {
                                 padding: const EdgeInsets.only(
                                     left: 4, bottom: 5, top: 3),
                                 child: textfild_function(
-                                  'ادخل اسم الصنف',
+                                  'ادخل اسم الفاتورة',
                                   '935139',
                                   myControllerNameItem,
                                 ),
                               ),
                               Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 4, bottom: 3),
-                                child: textfild_function('ادخل العدد', '935139',
-                                    myControllerCountItem,
-                                    TKbor: false),
-                              ),
-                              Padding(
                                 padding: EdgeInsets.only(left: 4, bottom: 3),
-                                child: textfild_function('ادخل السعر', '935139',
-                                    myControllerPriceItem,
+                                child: textfild_function('ادخل المبلغ كامل',
+                                    '935139', myControllerPriceItem,
                                     TKbor: false),
                               ),
                             ],
                           ),
                         ],
                       ),
-                      // Padding(
-                      //   //الخط الفاصل للمجموع
-                      //   padding: const EdgeInsets.only(
-                      //       left: 4, right: 4, top: 8, bottom: 16),
-                      //   child: Container(
-                      //     height: 1,
-                      //     decoration: BoxDecoration(
-                      //       color: project_color('76b5c5'),
-                      //       borderRadius:
-                      //           BorderRadius.all(Radius.circular(4.0)),
-                      //     ),
-                      //   ),
-                      // ),
                     ],
                   ),
                 ),
@@ -168,23 +117,7 @@ class _invoicesState extends State<invoices> {
                                 child: Padding(
                                   padding: EdgeInsets.only(top: 20),
                                   child: Text(
-                                    ': اسم الصنف',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontFamily: FitnessAppTheme.fontName,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 18,
-                                      color: FitnessAppTheme.text_color,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(left: 4, bottom: 3),
-                                child: Padding(
-                                  padding: EdgeInsets.only(top: 20),
-                                  child: Text(
-                                    ' : العدد ',
+                                    ': اسم الفاتورة',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontFamily: FitnessAppTheme.fontName,
@@ -199,7 +132,7 @@ class _invoicesState extends State<invoices> {
                                 padding: EdgeInsets.only(
                                     left: 4, bottom: 3, top: 30),
                                 child: Text(
-                                  ': السعر',
+                                  ': المبلغ',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontFamily: FitnessAppTheme.fontName,
@@ -213,19 +146,31 @@ class _invoicesState extends State<invoices> {
                           ),
                         ],
                       ),
-                      // Padding(
-                      //   //الخط الفاصل للمجموع
-                      //   padding: const EdgeInsets.only(
-                      //       left: 4, right: 4, top: 8, bottom: 16),
-                      //   child: Container(
-                      //     height: 1,
-                      //     decoration: BoxDecoration(
-                      //       color: project_color('76b5c5'),
-                      //       borderRadius:
-                      //           BorderRadius.all(Radius.circular(4.0)),
-                      //     ),
-                      //   ),
-                      // ),
+                      //upload image
+                      Container(
+                          margin: const EdgeInsets.all(12.0),
+                          child: Row(
+                            children: [
+                              IconButton(
+                                icon: Icon(
+                                  Icons.add_photo_alternate,
+                                  size: 50,
+                                  color: Colors.black54,
+                                ),
+                                onPressed: () {
+                                  showDialog(
+                                    barrierDismissible: false,
+                                    context: context,
+                                    builder: (context) => AlertChooseImage(
+                                      bathImage: 'invoies',
+                                    ),
+                                  );
+                                },
+
+                                //_showOption(context),
+                              ),
+                            ],
+                          )),
                     ],
                   ),
                 ),
@@ -236,27 +181,18 @@ class _invoicesState extends State<invoices> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => setState(() {
-          //ProjectsDetails.Projec_No1!
-          // var x = Detiels_Invoices(
-          //     myControllerNameItem.text,
-          //     double.parse(myControllerPriceItem.text),
-          //     int.parse(myControllerCountItem.text));
           if (myControllerNameItem.text.isNotEmpty &&
               myControllerPriceItem.text.isNotEmpty &&
-              myControllerCountItem.text.isNotEmpty) {
-            Register().createInvoices(
-              context: context,
-              projec_No: ProjectsDetails.Projec_No1!,
-              number_pd: myControllerCountItem.text,
-              price_pd: myControllerPriceItem.text,
-              product_name: myControllerNameItem.text,
-            );
-            // invoice_info1!.add(x);
-            // print(x);
+              ImageInvoices.imageIv.isNotEmpty) {
+            Register().uploadInvoice(
+                projec_No: ProjectsDetails.Projec_No1!,
+                product_name: myControllerNameItem.text,
+                price_pd: myControllerPriceItem.text,
+                image_pd: ImageInvoices.imageIv,
+                context: context);
+
             myControllerNameItem.clear();
             myControllerPriceItem.clear();
-            myControllerCountItem.clear();
-            Register().tostforRegsetr('تمت اضافة الفاتورة في صفحة الفواتير');
           }
         }),
         child: Icon(

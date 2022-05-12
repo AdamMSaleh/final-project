@@ -14,6 +14,7 @@ import 'package:flutter_finalproject/Packages/Pages/Auth/Views/Info_User/info_wo
 import 'package:flutter_finalproject/Packages/Pages/Auth/Views/login.dart';
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/Home/View/body.dart';
+import 'package:flutter_finalproject/Packages/Pages/Plan/View/body.dart';
 import 'package:flutter_finalproject/Packages/Pages/Profile/Components/profile_information.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
@@ -100,7 +101,7 @@ class Register extends State<RegisterState> {
     }
     // cicul=!cicul;
     // cicul=!cicul;
-    tostforRegsetr(msg);
+    // tostforRegsetr(msg);
   }
 
   postData({
@@ -117,22 +118,24 @@ class Register extends State<RegisterState> {
     //200--success ,400,404,
     msg = '';
     try {
-      // var response = await http.post(
-      //   Uri.parse(url+"register.php"),
-      //   body: {
-      //     'first_name': first_name.text,
-      //     'last_name': last_name.text,
-      //     'age': '25', //age.text,
-      //     'email': email.text,
-      //     'password': password.text,
-      //     'phone_number': phone_number.text,
-      //     'picture_user': '2iuh64832svsv',
-      //     "city_user": 'amman', //city_user.text,
-      //     'account_type': account_type, //account_type.text,
-      //     'Account_Status': 'yes',
-      //     'Activity': 'yes',
-      //   },
-      // );
+      var response = await http.post(
+        Uri.parse(url + "register.php"),
+        body: {
+          'first_name': first_name.text,
+          'last_name': last_name.text,
+          'age': '25', //age.text,
+          'email': email.text,
+          'password': password.text,
+          'phone_number': phone_number.text,
+          'picture_user': '2iuh64832svsv',
+          "city_user": 'amman', //city_user.text,
+          'account_type': account_type, //account_type.text,
+          'Account_Status': 'yes',
+          'Activity': 'yes',
+        },
+      );
+      msg = response.body;
+
       UserPreferences.setUsername(email.text);
       UserPreferences.setPassword(password.text);
       if (account_type == '1') {
@@ -621,29 +624,22 @@ class Register extends State<RegisterState> {
 
   /********************************************************************************/
   viewProjectsOwner(
-      String ownerId,
-
-      ) {
+    String ownerId,
+  ) {
     var data;
     // bool dataLoaded = false;
     bool error = false;
     return Future.delayed(Duration.zero, () async {
       var res = await http.post(
         Uri.parse(url + 'Project_establishment/view_projects.php'),
-        body: {
-          'Owner_User_ID': ownerId,
-'user_no_eng':''
-        },
+        body: {'Owner_User_ID': ownerId, 'user_no_eng': ''},
       );
-      print('engId'+ownerId);
+      print('engId' + ownerId);
       if (res.statusCode == 200) {
         data = json.decode(res.body) as List<dynamic>;
-        print('viewProjectsOwner  :' +data);
+        print('viewProjectsOwner  :' + data);
         error = false;
-
       } else {
-
-
         error = true;
       }
       return data;
@@ -651,33 +647,55 @@ class Register extends State<RegisterState> {
     // we use Future.delayed becuase there is
     // async function inside it.
   }
+
   /********************************************************************************/
 
   /********************************************************************************/
+
+  //view Plans
+  /********************************************************************************/
+  viewPlans(
+    String Projec_No,
+  ) {
+    var data;
+    // bool dataLoaded = false;
+    bool error = false;
+    return Future.delayed(Duration.zero, () async {
+      var res = await http.post(
+        Uri.parse(url + '/Project_establishment/plans/view_plan.php'),
+        body: {
+          'Projec_No': Projec_No,
+        },
+      );
+      if (res.statusCode == 200) {
+        data = json.decode(res.body) as List<dynamic>;
+        error = false;
+      } else {
+        error = true;
+      }
+      return data;
+    });
+  }
+
+  //********************************************************************************/
+
   viewProjectsEng(
-      String engId,
-
-      ) {
+    String engId,
+  ) {
     var data;
     // bool dataLoaded = false;
     bool error = false;
     return Future.delayed(Duration.zero, () async {
       var res = await http.post(
         Uri.parse(url + 'Project_establishment/view_projects.php'),
-        body: {
-          'user_no_eng': engId,
-'Owner_User_ID':''
-        },
+        body: {'user_no_eng': engId, 'Owner_User_ID': ''},
       );
-      print('engId'+engId);
+      print('engId' + engId);
       if (res.statusCode == 200) {
         data = json.decode(res.body) as List<dynamic>;
         // print('viewProjectsEng  :' +data);
         error = false;
-
       } else {
-
-
         error = true;
       }
       return data;
@@ -685,6 +703,7 @@ class Register extends State<RegisterState> {
     // we use Future.delayed becuase there is
     // async function inside it.
   }
+
   /********************************************************************************/
 
   String setaccount_type(type) {
@@ -761,9 +780,10 @@ class Register extends State<RegisterState> {
           'Expected_completion_date': selectedDateEnd,
           'Owner_User_ID': Owner_User_ID,
           'owner_name': owner_name,
-          'construction_license': construction_license=='0'?'no License':construction_license,
-          'Project_Type': construction_license=='0'? 'fix':'new',
-          'state':'1',
+          'construction_license':
+              construction_license == '0' ? 'no License' : construction_license,
+          'Project_Type': construction_license == '0' ? 'fix' : 'new',
+          'state': '1',
         },
       );
       msg = response.body;
@@ -791,12 +811,12 @@ class Register extends State<RegisterState> {
     //200--success ,400,404,
 
     try {
-      msg ='';
+      msg = '';
       var response = await http.post(
         Uri.parse(url + "Project_establishment/status_update.php"),
         body: {
           'Projec_No': Projec_No,
-          'state':'0',
+          'state': '0',
         },
       );
       msg = response.body;
@@ -806,16 +826,9 @@ class Register extends State<RegisterState> {
       if (msg == "  لقد تمت تم التحديث بنجاح   ") {
         Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(
-                builder: (context) => PageHome()
-            ),
-            ModalRoute.withName("/Home")
-        );
-        Navigator.pushNamed(
-            context,
-           Archive.id
-        );
-
+            MaterialPageRoute(builder: (context) => PageHome()),
+            ModalRoute.withName("/Home"));
+        Navigator.pushNamed(context, Archive.id);
       }
     } catch (e) {
       msg = e.toString();
@@ -829,21 +842,17 @@ class Register extends State<RegisterState> {
   /********************************************************************************/
   // هون عشان اجيب اسم المهندس لصفحة تفاصيل المشروع
 
-  getEngName(
-      String engName
-      ) async {
+  getEngName(String engName) async {
     var tx;
     try {
       var response = await http.post(
-        Uri.parse(url + "/Project_establishment/get_eng_name.php"),
+          Uri.parse(url + "/Project_establishment/get_eng_name.php"),
           body: {
-            'eng_id':engName,
-          }
-      );
+            'eng_id': engName,
+          });
       tx = jsonDecode(response.body);
 
       print(tx);
-
     } catch (e) {
       tx = e.toString();
 
@@ -860,7 +869,155 @@ class Register extends State<RegisterState> {
   /********************************************************************************/
   /********************************************************************************/
   /********************************************************************************/
+  // اضافة مخطط
+  NewPlan({
+    required String Projec_No,
+    required String Scheme_name,
+    required String Engineering_office_name,
+    required String designer_name,
+    required String Scheme_encoding,
+    required String chart_picture,
+    required String chart_type,
+    required BuildContext context,
+  }) async {
+    //200--success ,400,404,
+
+    try {
+      msg = '';
+      var response = await http.post(
+        Uri.parse(url + "Project_establishment/plans/new_plan.php"),
+        body: {
+          'Projec_No': Projec_No,
+          'Scheme_name': Scheme_name,
+          'Engineering_office_name': Engineering_office_name,
+          'designer_name': designer_name,
+          'Scheme_encoding': Scheme_encoding,
+          'chart_picture': chart_picture,
+          'chart_type': chart_type,
+        },
+      );
+      msg = response.body;
+
+      print(response.body);
+
+      if (msg == "  لقد تمت اضافة المخطط   ") {
+        Navigator.pop(context);
+      }
+    } catch (e) {
+      msg = e.toString();
+      print(e);
+    }
+    tostforRegsetr(msg);
+  }
+
   /********************************************************************************/
+
+  /********************************************************************************/
+  // انشاء فاتورة
+  createInvoices({
+    required String projec_No,
+    required String product_name,
+    required String price_pd,
+    required String number_pd,
+    required BuildContext context,
+  }) async {
+    //200--success ,400,404,
+
+    try {
+      msg = '';
+      var response = await http.post(
+        Uri.parse(url + "Project_establishment/invoices/create_invoices.php"),
+        body: {
+          'projec_No': projec_No,
+          'product_name': product_name,
+          'price_pd': price_pd,
+          'number_pd': number_pd,
+        },
+      );
+      msg = response.body;
+
+      print(response.body);
+
+      if (msg == "  لقد تمت اضافة الفاتورة   ") {
+        Navigator.pop(context);
+      }
+    } catch (e) {
+      msg = e.toString();
+      print(e);
+    }
+    tostforRegsetr(msg);
+  }
+
+  /********************************************************************************/
+
+  /********************************************************************************/
+  // تحميل فاتورة
+  uploadInvoice({
+    required String projec_No,
+    required String product_name,
+    required String price_pd,
+    required String image_pd,
+    required BuildContext context,
+  }) async {
+    //200--success ,400,404,
+
+    try {
+      msg = '';
+      var response = await http.post(
+        Uri.parse(url + "Project_establishment/invoices/upload_invoice.php"),
+        body: {
+          'projec_No': projec_No,
+          'product_name': product_name,
+          'price_pd': price_pd,
+          'image_pd': image_pd,
+        },
+      );
+      msg = response.body;
+
+      print(response.body);
+
+      if (msg == "  لقد تمت اضافة الفاتورة   ") {
+        Navigator.pop(context);
+      }
+    } catch (e) {
+      msg = e.toString();
+      print(e);
+    }
+    tostforRegsetr(msg);
+  }
+
+  /********************************************************************************/
+
+  //view invoice
+  /********************************************************************************/
+  viewInvoice(
+      String projec_No,
+      ) {
+    var data;
+    // bool dataLoaded = false;
+    bool error = false;
+    return Future.delayed(Duration.zero, () async {
+      var res = await http.post(
+        Uri.parse(url + 'Project_establishment/invoices/view_invoice.php'),
+        body: {
+          'projec_No': projec_No,
+        },
+      );
+      if (res.statusCode == 200) {
+        data = json.decode(res.body) as List<dynamic>;
+        error = false;
+      } else {
+        error = true;
+      }
+      return data;
+    });
+  }
+
+  //********************************************************************************/
+
+
+
+
 
   tostforRegsetr(String mss) {
     return Fluttertoast.showToast(
