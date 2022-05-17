@@ -191,16 +191,7 @@ class _NewProjectState extends State<NewProject> {
                       SizedBox(height: 15.h),
 
                       /* Address  Region */
-                      SimpleFiled(
-                        keyboardType: TextInputType.name,
-                        onValidator: (value) => AppValidators.isEmpty(value),
-                        hint: KeyLang.address,
-                        controller: controllerValue['Region'],
-                        pIcon: Icon(
-                          Icons.add_location_alt_rounded,
-                          color: AppColors.blue,
-                        ),
-                      ),
+
                       /*******************************/
                       SizedBox(height: 15.h),
                       //* Starting Date
