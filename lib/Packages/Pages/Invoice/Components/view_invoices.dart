@@ -5,6 +5,7 @@ import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart'
 import 'package:flutter_finalproject/Packages/Components/Photo_View/photo_view.dart';
 import 'package:flutter_finalproject/Packages/Components/Toast/simple_toast.dart';
 import 'package:flutter_finalproject/Packages/Pages/CurrentProjects/View/projects_details.dart';
+import 'package:flutter_finalproject/Utils/path_images.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'creat_invoices.dart';
@@ -149,11 +150,11 @@ class _view_invoicesState extends State<view_invoices> {
                                                     GoBack.selectScreen(
                                                         context,
                                                         ImageView(
-                                                          e.image_pd!,
+                                                          PathImages.logo,
                                                         ));
                                                   },
                                                   child: Image.network(
-                                                    e.image_pd!,
+                                                    PathImages.logo,
                                                     height: 100,
                                                     // width: 250,
                                                   ),

@@ -1,7 +1,7 @@
 import 'package:flutter_finalproject/Packages/Pages/Profile/Components/profile_information.dart';
 
 class PathImages {
-  static String logo = 'http://relaxbuilding.space/image/logo5.png';
+  static String logo = 'https://zuporjict1.000webhostapp.com/image/logo5.png';
 
   static String infoimage = 'assets/Images/userpng.png';
   static String profileNew = 'assets/Images/account.png';

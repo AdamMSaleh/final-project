@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: Size(360, 690),
-      builder: () {
+      builder: (_) {
         return MaterialApp(
             title: 'Relax Building',
             debugShowCheckedModeBanner: false,
@@ -52,10 +52,12 @@ class MyApp extends StatelessWidget {
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,
-            initialRoute: PageHome.id, //,
-            //  PlanUpload.id, // , //PageLogin.id,//PageRegister.id,// PageInfoEng.id,//Upload_Image.id,//
+            initialRoute: PageSplash
+                .id, //PageHome.id, // PageLogin.id, //PageSplash.id, //,
+            //  PlanUpload.id, // , //,//PageRegister.id,// PageInfoEng.id,//Upload_Image.id,//
             routes: AppRoutes.routes);
       },
     );
   }
 }
+//خليها تفعل خيارات المطور   

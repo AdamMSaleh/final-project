@@ -233,7 +233,8 @@ class _ImageCropperPageState extends State<ImageCropperPage> {
   // }
 
   Future<void> _cropImage() async {
-    File? croppedFile = await ImageCropper.cropImage(
+    File? croppedFile = await ImageCropper().cropImage(
+        /*ImageCropper.cropImage*/
         sourcePath: imageFile!.path,
         aspectRatioPresets: Platform.isAndroid
             ? [

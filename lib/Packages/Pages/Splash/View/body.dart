@@ -93,7 +93,7 @@ class _PageSplashState extends State<PageSplash> {
                 SizedBox(
                   height: 20,
                 ),
-                Text(KeyLang.welcome ,
+                Text(KeyLang.welcome,
                     style: AppStyles.welcome.copyWith(
                       color: AppColors.white,
                       fontSize: 35.h,

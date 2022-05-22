@@ -229,7 +229,7 @@ class Upload_ImageState extends State<Upload_Image> {
               widget.bathImage! +
               '/' +
               fileName;
-          ImageInvoices.imageIv =bathImagereturn!;
+          ImageInvoices.imageIv = bathImagereturn!;
         });
 
         // Register().postImageSyndicateCard(
@@ -306,7 +306,7 @@ class Upload_ImageState extends State<Upload_Image> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               // ignore: deprecated_member_use
-              OutlineButton(
+              OutlinedButton(
                 onPressed: () => chooseImage(widget.galleryOrCamera!),
                 child: const Text('Choose Image'),
               ),
@@ -318,7 +318,7 @@ class Upload_ImageState extends State<Upload_Image> {
                 height: 20.0,
               ),
               // ignore: deprecated_member_use
-              OutlineButton(
+              OutlinedButton(
                 onPressed: startUpload,
                 child: const Text('Upload Image'),
               ),

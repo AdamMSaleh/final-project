@@ -9,7 +9,7 @@ class AppStyles {
   // * * * * * * * * * * * * *** font type *** * * * * * * * * * * *
   //لتغير الخط
   static TextStyle _fontType({TextStyle? style}) {
-    return GoogleFonts.amiko(textStyle: style);
+    return GoogleFonts.aBeeZee(textStyle: style);
     //
   }
 

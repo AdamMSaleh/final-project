@@ -32,8 +32,10 @@ class Register extends State<RegisterState> {
     gggg();
   }
 
-  String url = "http://relaxbuilding.space/";
-
+  String url = 'http://relaxbuilding.space/';
+  // 'http://10.0.2.2:80/php-backend-relaxbuilding-main/'; // 'https://zuporjict1.000webhostapp.com/';
+  //
+//http://192.168.80.1
   //'http://10.0.2.2:80/v2/'; //"https://zuporjict1.000webhostapp.com/";
   String msg = "";
   String? emailSaved = '';
@@ -62,7 +64,7 @@ class Register extends State<RegisterState> {
       cicul = !cicul;
       PageLogin().startTime = DateTime.now();
       var response = await http.post(
-        Uri.parse(url + "login.php"),
+        Uri.parse(url + 'login.php'),
         body: {
           'email': email,
           'password': password,
@@ -662,13 +664,18 @@ class Register extends State<RegisterState> {
     bool error = false;
     return Future.delayed(Duration.zero, () async {
       var res = await http.post(
-        Uri.parse(url + '/Project_establishment/plans/view_plan.php'),
+        Uri.parse(url + 'Project_establishment/plans/view_plan.php'),
         body: {
           'Projec_No': Projec_No,
         },
       );
       if (res.statusCode == 200) {
-        data = json.decode(res.body) as List<dynamic>;
+        if (res.body == 'no data') {
+          data = 'no data';
+        } else {
+          data = json.decode(res.body) as List<dynamic>;
+        }
+
         error = false;
       } else {
         error = true;
@@ -692,7 +699,12 @@ class Register extends State<RegisterState> {
       );
       print('engId' + engId);
       if (res.statusCode == 200) {
-        data = json.decode(res.body) as List<dynamic>;
+        if (res.body == 'no data') {
+          data = 'no data';
+        } else {
+          data = json.decode(res.body) as List<dynamic>;
+        }
+
         // print('viewProjectsEng  :' +data);
         error = false;
       } else {
@@ -991,8 +1003,8 @@ class Register extends State<RegisterState> {
   //view invoice
   /********************************************************************************/
   viewInvoice(
-      String projec_No,
-      ) {
+    String projec_No,
+  ) {
     var data;
     // bool dataLoaded = false;
     bool error = false;
@@ -1004,7 +1016,12 @@ class Register extends State<RegisterState> {
         },
       );
       if (res.statusCode == 200) {
-        data = json.decode(res.body) as List<dynamic>;
+        if (res.body == 'no data') {
+          data = 'no data';
+        } else {
+          data = json.decode(res.body) as List<dynamic>;
+        }
+
         error = false;
       } else {
         error = true;
@@ -1014,10 +1031,6 @@ class Register extends State<RegisterState> {
   }
 
   //********************************************************************************/
-
-
-
-
 
   tostforRegsetr(String mss) {
     return Fluttertoast.showToast(

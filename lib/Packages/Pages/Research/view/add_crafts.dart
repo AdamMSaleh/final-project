@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable, no_logic_in_create_state, prefer_const_constructors, sized_box_for_whitespace, avoid_print, unnecessary_this, duplicate_ignore
+// ignore_for_file: must_be_immutable, no_logic_in_create_state, prefer_const_constructors, sized_box_for_whitespace, avoid_print, unnecessary_this, duplicate_ignore, deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:flutter_finalproject/Packages/Components/Additions/go_back.dart';

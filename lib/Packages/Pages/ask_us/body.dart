@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, implementation_imports
+// ignore_for_file: prefer_const_constructors, implementation_imports, deprecated_member_use
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
@@ -95,15 +95,14 @@ class _AskUsState extends State<AskUs> {
                 ),
               ),
             ),
-
           ],
         ),
       ),
-
     );
   }
+
   Future<void> _launchInWebViewOrVC() async {
-    const url ='http://relaxbuilding.space/';
+    const url = 'http://relaxbuilding.space/';
     if (!await launch(
       url,
       forceSafariVC: true,
@@ -115,13 +114,11 @@ class _AskUsState extends State<AskUs> {
   }
 
   _launchURLEmail() async {
-    final url =
-    Uri.encodeFull('mailto:aseteam@relaxbuilding.space');
+    final url = Uri.encodeFull('mailto:aseteam@relaxbuilding.space');
     if (await canLaunch(url)) {
       await launch(url);
     } else {
       throw 'Could not launch $url';
     }
   }
-
 }

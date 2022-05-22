@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, annotate_overrides, must_call_super, avoid_print, duplicate_ignore
+// ignore_for_file: prefer_const_constructors, annotate_overrides, must_call_super, avoid_print, duplicate_ignore, unnecessary_null_comparison
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -56,7 +56,8 @@ class InfoImage extends State<InfoImageState> {
             child:
                 // Upload_ImageState.profileImage==''?Image.asset(PathImages.infoimage):
                 CachedNetworkImage(
-              imageUrl: Upload_ImageState.profileImage,
+              imageUrl: Upload_ImageState
+                  .profileImage, // Upload_ImageState.profileImage,
               //لتعديل ع صورة
               imageBuilder: (context, jjjjj) {
                 return CircleAvatar(
